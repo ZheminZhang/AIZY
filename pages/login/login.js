@@ -106,7 +106,10 @@ Page({
   toComReg: function () {
     console.log("<<<")
     wx.navigateTo({
-      url: '../regist_company/regist_company'
+      url: '../regist_company/regist_company',
+      fail: function(e){
+        console.log(e)
+      }
     });
   },
 
