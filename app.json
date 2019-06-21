@@ -19,8 +19,8 @@
         "selectedIconPath": "images/mySelected.png"
       },
       {
-        "pagePath": "pages/login/login",
-        "text": "MY",
+        "pagePath": "pages/resign_company/resign_company",
+        "text": "REG",
         "iconPath": "images/my.png",
         "selectedIconPath": "images/mySelected.png"
       }
