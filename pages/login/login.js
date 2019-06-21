@@ -103,6 +103,13 @@ Page({
     });
   },
 
+  toComReg: function () {
+    console.log("<<<")
+    wx.navigateTo({
+      url: '../regist_company/regist_company'
+    });
+  },
+
   // Tool按钮弹窗动画
   powerDrawer: function (e) {
     var currentStatu = e.currentTarget.dataset.statu;
