@@ -31,12 +31,23 @@
     </view>
 
     <!-- 公司 个人私钥 -->
-    <view class="tab-item" hover-class="tab-item-hover" catchtap="goTOOL">
+    <view class="tab-item" hover-class="tab-item-hover" catchtap="powerDrawer" data-statu="open">
         <view>
             <image src="../../images/coin.png" mode="aspectFit" class="tab-icon"></image>
             <text class="tab-text">TOOL</text>
         </view>
-        
-        <view class="tab-arrow"></view>
     </view>
+</view>
+<!--mask-->
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+<!--content-->
+<!--使用animation属性指定需要执行的动画-->
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+ 
+  <!--drawer content-->
+  <view class="drawer_title">弹窗标题</view>
+  <view class="drawer_content">
+    
+  </view>
+  <view class="btn_ok" bindtap="powerDrawer" data-statu="close">确定</view>
 </view>

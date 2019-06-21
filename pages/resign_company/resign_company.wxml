@@ -1,2 +1,52 @@
 <!--pages/resign_company.wxml-->
-<text>pages/resign_company.wxml</text>
+<view class="container">
+  <view class="page-body">
+    <form catchsubmit="formSubmit" catchreset="formReset">
+      <!-- 名称 -->
+      <view class="page-section">
+        <view class="page-section-title">公司名称</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__bd">
+              <input class="weui-input" name="name" placeholder="" />
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 联系方式 -->
+      <view class="page-section page-section-gap">
+      <view class="page-section-title">联系方式</view>
+        <radio-group name="contract_type">
+          <label><radio value="phone"/>电话</label>
+          <label><radio value="else"/>其他</label>
+        </radio-group>
+      </view>
+
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__bd">
+              <input class="weui-input" name="contract_content" placeholder="" />
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 经营范围 -->
+      <view class="page-section page-section-gap">
+      <view class="page-section-title">经营范围</view>
+        <radio-group name="business_scope">
+          <label><radio value="radio1"/>xxx</label>
+          <label><radio value="radio2"/>xxx</label>
+        </radio-group>
+      </view>
+
+      <view class="btn-area">
+        <button type="primary" formType="submit">Submit</button>
+        <button formType="reset">Reset</button>
+      </view>
+    </form>
+  </view>
+</view>
+
