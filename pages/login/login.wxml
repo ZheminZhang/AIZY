@@ -26,7 +26,7 @@
             <text class="tab-text">申请管理</text>
         </view>
         
-        <text class="tab-text" wx:if="{{hasLogin}}">{{userInfo.balance}}</text>
+        <text class="tab-text" wx:if="{{hasLogin}}">{{numApply}}</text>
         <text class="tab-text" wx:else></text>
     </view>
 

@@ -8,7 +8,8 @@ Page({
     userInfo: {},   // 用户信息
     hasLogin: wx.getStorageSync('loginFlag')
       ? true
-      : false     // 是否登录，根据后台返回的skey判断
+      : false,     // 是否登录，根据后台返回的skey判断
+    numApply: 0
   },
 
   // 检查本地 storage 中是否有skey登录态标识
