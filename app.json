@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/resign_company/resign_company"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f2f2f2",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/login/login",
+        "text": "MY",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/mySelected.png"
+      },
+      {
+        "pagePath": "pages/login/login",
+        "text": "MY",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/mySelected.png"
+      }
+    ],
+    "color": "#bfbfbf",
+    "selectedColor": "#1AAD19"
+  },
+  "networkTimeout": {
+    "request": 3000
+  },
+  "sitemapLocation": "sitemap.json"
+}
