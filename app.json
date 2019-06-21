@@ -2,7 +2,8 @@
   "pages": [
     "pages/login/login",
     "pages/regist_company/regist_company",
-    "pages/apply_list/apply_list"
+    "pages/apply_list/apply_list",
+    "pages/query/query"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -20,8 +21,8 @@
         "selectedIconPath": "images/mySelected.png"
       },
       {
-        "pagePath": "pages/login/login",
-        "text": "MY",
+        "pagePath": "pages/query/query",
+        "text": "查询",
         "iconPath": "images/my.png",
         "selectedIconPath": "images/mySelected.png"
       }

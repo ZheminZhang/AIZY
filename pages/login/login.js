@@ -82,13 +82,8 @@ Page({
   /**
    * TODO:两个页面跳转
    */
-  goTOOL: function () {
-    wx.navigateTo({
-      url: ''
-    });
-  },
 
-  goApplay: function () {
+  goApply: function () {
     
   },
 
