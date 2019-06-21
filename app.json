@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/login/login",
-    "pages/resign_company/resign_company"
+    "pages/regist_company/regist_company"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -19,7 +19,7 @@
         "selectedIconPath": "images/mySelected.png"
       },
       {
-        "pagePath": "pages/resign_company/resign_company",
+        "pagePath": "pages/regist_company/regist_company",
         "text": "REG",
         "iconPath": "images/my.png",
         "selectedIconPath": "images/mySelected.png"
