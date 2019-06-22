@@ -1,0 +1,9 @@
+<!--pages/query/query.wxml-->
+<import src="../../template/query_t/query_t.wxml"/>
+<view class="container">
+  <view class="page-body">
+    <form catchsubmit="formSubmit" catchreset="formReset">
+      <template is="query_t" data="{{item}}"/>
+    </form>
+  </view>
+</view>
