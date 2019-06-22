@@ -3,8 +3,7 @@
     "pages/login/login",
     "pages/regist_company/regist_company",
     "pages/apply_list/apply_list",
-    "pages/query/query",
-    "pages/apply_list_1/apply_list"
+    "pages/query/query"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -28,7 +27,7 @@
         "selectedIconPath": "images/mySelected.png"
       },
       {
-        "pagePath": "pages/apply_list_1/apply_list",
+        "pagePath": "pages/apply_list/apply_list",
         "text": "测试",
         "iconPath": "images/my.png",
         "selectedIconPath": "images/mySelected.png"
