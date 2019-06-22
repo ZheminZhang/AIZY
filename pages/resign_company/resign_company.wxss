@@ -8,7 +8,15 @@ label {
 form{
   width: 100%;
 }
-.picker-text {
-  margin-left: 20rpx;
-  position: relative;
+.btn-area{
+  margin:10px;
+}
+.page-section-title{
+  
+}
+.page-section{
+  margin: 5px;
+  display: flex;
+  flex-wrap:nowrap;
+  justify-content: center;
 }
