@@ -1,20 +1,11 @@
 // pages/query/query.js
 Page({
   data: {
-    item: {
-      disabled_name: false,
-      start_date: '2019-06-01',
-      end_date: '2019-06-01',
-      begin: '2019-06-01',
-      end: '2019-06-01',
-    }
-  },
-  onLoad: function () {
-    var tampData = this.data.item;
-    // ----------------------------
-    console.log(tampData);
-    tampData.bindDateChange = "bindDateChange";
-    this.setData({ item: tampData })
+    disabled_name: false,
+    start_date: '2019-06-01',
+    end_date: '2019-06-01',
+    begin: '2000-06-01',
+    end: '2100-06-01',
   },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e)
