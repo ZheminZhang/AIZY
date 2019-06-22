@@ -1,49 +1,9 @@
 <!--pages/query/query.wxml-->
+<import src="../../template/query_t/query_t.wxml"/>
 <view class="container">
   <view class="page-body">
     <form catchsubmit="formSubmit" catchreset="formReset">
-      <!-- 查询目标 -->
-      <view class="page-section">
-        <view class="page-section-title">查询对象</view>
-        <view class="weui-cells weui-cells_after-title">
-          <view class="weui-cell weui-cell_input">
-            <view class="weui-cell__bd">
-              <input class="weui-input" name="name" placeholder="" />
-            </view>
-          </view>
-        </view>
-      </view>
-      <!-- 账单类型 -->
-      <view class="page-section page-section-gap">
-      <view class="page-section-title">账单类型</view>
-        <!-- 账单类型的下拉列表 -->
-      </view>
-
-      <!-- 时间范围 -->
-      <view class="page-section page-section-gap">
-        <view class="page-section-title">时间范围</view>
-        <!-- 时间选择器 -->
-        <!-- 开始时间 -->
-        <view class="section">
-          <picker mode="date" value="{{start_date}}" start="2015-09-01" end="2020-09-01" bindchange="bindDateChange" id='start_date'>
-              <view class="picker">
-                  {{start_date}}
-              </view>
-          </picker>
-        </view>
-        <!-- 结束时间 -->
-        <view class="section">
-          <picker mode="date" value="{{start_date}}" start="2015-09-01" end="2020-09-01" bindchange="bindDateChange" id='end_date'>
-              <view class="picker">
-                {{end_date}}
-              </view>
-          </picker>
-        </view>
-      </view>
-      <view class="btn-area">
-        <button type="primary" formType="submit">Submit</button>
-        <button formType="reset">Reset</button>
-      </view>
+      <template is="query_t" data="{{item}}"/>
     </form>
   </view>
 </view>
