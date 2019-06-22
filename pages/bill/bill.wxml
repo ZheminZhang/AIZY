@@ -63,7 +63,7 @@
           </button>
         </view>
       </view>
-      <view wx:if="{{currentTab==1}}">
+      <view class="list_style" wx:if="{{currentTab==1}}">
         <view class="content_list" wx:for="{{in_tabOut}}">
           <button type="primary" plain="true"  bindtap="in_click_list" data-index="{{index}}">
             <image class="money-icon" src="/../images/down-circle.png"></image>
