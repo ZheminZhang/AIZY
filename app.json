@@ -4,7 +4,8 @@
     "pages/regist_company/regist_company",
     "pages/apply_list/apply_list",
     "pages/query/query",
-    "pages/authorize/authorize"
+    "pages/authorize/authorize",
+    "pages/bill/bill"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -18,6 +19,12 @@
       {
         "pagePath": "pages/login/login",
         "text": "MY",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/mySelected.png"
+      },
+      {
+        "pagePath": "pages/bill/bill",
+        "text": "BILL",
         "iconPath": "images/my.png",
         "selectedIconPath": "images/mySelected.png"
       },
