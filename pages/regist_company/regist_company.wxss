@@ -8,15 +8,31 @@ label {
 form{
   width: 100%;
 }
+
 .btn-area{
-  margin:10px;
+  margin:50rpx;
+  margin-left: 200rpx;
+  width: 40%;
 }
 .page-section-title{
-  
+  position: relative;
+  right:10rpx;
 }
 .page-section{
-  margin: 5px;
+  margin-top: 10rpx;
   display: flex;
   flex-wrap:nowrap;
-  justify-content: center;
+  position: relative;
+  left:50rpx;
+}
+.page-section1{
+  margin-top: 10rpx;
+  display: flex;
+  flex-wrap:nowrap;
+  position: relative;
+  left:200rpx;
+}
+.page-body{
+  position: relative;
+  top:100rpx;
 }

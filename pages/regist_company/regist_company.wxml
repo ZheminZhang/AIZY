@@ -5,17 +5,13 @@
       <!-- 名称 -->
       <view class="page-section">
         <view class="page-section-title">公司名称</view>
-        <view class="weui-cells weui-cells_after-title">
-          <view class="weui-cell weui-cell_input">
             <view class="weui-cell__bd">
-              <input class="weui-input" name="name" placeholder="" />
-            </view>
-          </view>
+              <input  class="weui-input"  name="name" placeholder="" />
         </view>
       </view>
 
       <!-- 联系方式 -->
-      <view class="page-section page-section-gap">
+      <view class="page-section">
       <view class="page-section-title">联系方式</view>
       <view class="page_section">
         <radio-group name="contract_type">
@@ -25,27 +21,24 @@
         </view>
       </view>
 
-      <view class="page-section">
-        <view class="weui-cells weui-cells_after-title">
-          <view class="weui-cell weui-cell_input">
+      <view class="page-section1">
+ 
             <view class="weui-cell__bd">
               <input class="weui-input" name="contract_content" placeholder="" />
             </view>
-          </view>
-        </view>
+
       </view>
 
       <!-- 经营范围 -->
-      <view class="page-section page-section-gap">
+      <view class="page-section">
       <view class="page-section-title">经营范围</view>
         <radio-group name="business_scope">
           <label><radio value="radio1"/>xxx</label>
           <label><radio value="radio2"/>xxx</label>
         </radio-group>
       </view>
-
       <view class="btn-area">
-        <button type="primary" formType="submit">Submit</button>
+        <button type="primary" formType="submit" >Submit</button>
         </view>
         <view class="btn-area">
         <button formType="reset">Reset</button>

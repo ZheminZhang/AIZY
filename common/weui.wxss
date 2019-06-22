@@ -88,9 +88,11 @@ icon {
           align-items: flex-start;
 }
 .weui-cell__bd {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-          flex: 1;
+    height: 80rpx;
+    border-radius:25rpx;
+    width:400rpx;
+    border: 1px solid #FFFFFF;
+    background-color: white; 
 }
 .weui-cell__ft {
   text-align: right;
@@ -162,10 +164,11 @@ icon {
   word-break: break-all;
 }
 .weui-input {
-  height: 2.58823529em;
-  min-height: 2.58823529em;
-  line-height: 2.58823529em;
-  width: 180px;
+  height: 80rpx;
+  width: 250rpx;
+  position: relative;
+  left:20rpx;
+ 
 }
 .weui-toptips {
   position: fixed;

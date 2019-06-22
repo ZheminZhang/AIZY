@@ -5,9 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+     client:["小米","小智","小徐"],
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -62,5 +61,8 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  agree:function(e){
+    console.log(e);
   }
 })

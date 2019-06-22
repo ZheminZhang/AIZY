@@ -88,8 +88,10 @@ Page({
     });
   },
 
-  goApplay: function () {
-    
+  goApply: function () {
+    wx.navigateTo({
+      url: '../apply_list/apply_list',
+    })
   },
 
   onLoad: function () {
