@@ -12,9 +12,9 @@
 <view hidden="{{currentTab!==1}}">
   <view class="container">
   <view  wx:for="{{client}}">
-     <view class="client_info">
+     <view class="client_info" bindtap='toDetail' id="{{item.id}}">
       <image src="../../images/coin.png" class="userinfo-avatar" background-size="cover" ></image>
-      <view class="name">{{item}}</view>
+      <view class="name">{{item.name}}</view>
       <view class="btn_accept" hover="true" hover-class="btn_accept_hover" bindtap="agree">接受</view>
      </view>
   </view>

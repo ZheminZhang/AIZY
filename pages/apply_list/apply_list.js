@@ -3,12 +3,26 @@ Page({
   data: {
     navbar: ['已授权', '申请'],
     currentTab: 0,
-    client: ["小米", "小智", "小徐"],
-
+    client: [
+      {
+        name: "xx",
+        id: 1
+      },
+      {
+        name: "yy",
+        id: 2
+      }
+    ],
   },
   navbarTap: function (e) {
     this.setData({
       currentTab: e.currentTarget.dataset.idx
+    })
+  },
+  toDetail: function (e) {
+    console.log(e)
+    wx.navigateTo({
+      url: '../athorize/athorize?id=' + e.target.id,
     })
   }
 })

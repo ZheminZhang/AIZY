@@ -13,7 +13,7 @@ App({
     if (loginFlag) {
       // 检查 session_key 是否过期
       wx.checkSession({
-        // session_key 有效(为过期)
+        // session_key 有效(不过期)
         success: function () {
           // 直接从Storage中获取用户信息
           let userStorageInfo = wx.getStorageSync('userInfo');
