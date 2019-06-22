@@ -3,20 +3,30 @@
 <view class="navbar">
   <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
 </view>
- <!-- 已授权 -->
+<!-- 已授权 -->
 <view hidden="{{currentTab!==0}}">
-  tab_01
+  <view class="container">
+    <view wx:for-items="{{client}}">
+      <view class="client_info">
+        <image src="../../images/coin.png " class="userinfo-avatar " background-size="cover "></image>
+        <view class="name ">{{item.name}}</view>
+        <view class="btn_accept_hover ">已接受</view>
+      </view>
+    </view>
+  </view>
 </view>
- 
- <!-- 申请 -->
+
+
+
+<!-- 申请 -->
 <view hidden="{{currentTab!==1}}">
   <view class="container">
-  <view  wx:for="{{client}}">
-     <view class="client_info">
-      <image src="../../images/coin.png" class="userinfo-avatar" background-size="cover" ></image>
-      <view class="name">{{item}}</view>
-      <view class="btn_accept" hover="true" hover-class="btn_accept_hover" bindtap="agree">接受</view>
-     </view>
-  </view>
+    <block wx:for-items="{{client}}">
+      <view wx:if="!{{item.done}}" class="client_info">
+        <image src="../../images/coin.png " class="userinfo-avatar " background-size="cover"></image>
+        <view class="name ">{{item.name}}</view>
+        <view class="btn_accept " hover="true " hover-class="btn_accept_hover " bindtap="agree">接受</view>
+      </view>
+  </block>
 </view>
 </view>

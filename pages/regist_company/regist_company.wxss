@@ -8,9 +8,8 @@ label {
 form{
   width: 100%;
 }
-
 .btn-area{
-  margin:50rpx;
+  margin:20rpx;
   margin-left: 200rpx;
   width: 40%;
 }
@@ -19,20 +18,21 @@ form{
   right:10rpx;
 }
 .page-section{
-  margin-top: 10rpx;
+  margin-bottom: 40rpx;
   display: flex;
   flex-wrap:nowrap;
   position: relative;
   left:50rpx;
 }
-.page-section1{
-  margin-top: 10rpx;
-  display: flex;
-  flex-wrap:nowrap;
-  position: relative;
-  left:200rpx;
-}
 .page-body{
   position: relative;
   top:100rpx;
 }
+.select_sell{
+  position: relative;
+  left:50rpx;
+}
+.button_position{
+  margin-top:300rpx; 
+}
+

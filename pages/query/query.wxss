@@ -14,7 +14,30 @@ form{
   position: relative;
 }
 .picker{
-  padding: 19rpx 26rpx;
+  height: 60rpx;
   background-color: #FFFFFF;
-  border: 1px solid cornflowerblue;
+  border: 1rpx solid cornflowerblue;
+  margin: 10rpx;
+}
+.page-section-title{
+  position: relative;
+  right:10rpx;
+}
+.page-section{
+  margin-bottom: 40rpx;
+  display: flex;
+  flex-wrap:nowrap;
+  flex-direction: column;
+  position: relative;
+  right:100rpx;
+}
+.section{
+ display: flex;
+ flex-wrap:wrap;
+}
+.btn-area{
+  margin-top:400rpx;
+  margin-left: 200rpx;
+  width: 40%; 
+  height: 80rpx;
 }
