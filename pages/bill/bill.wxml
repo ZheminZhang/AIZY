@@ -1,0 +1,77 @@
+<view class="navbar">
+  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
+</view>
+
+<view class="flex-wrp" style="flex-direction:row;">
+  <view class="flex-wrp" style="flex-direction:row;">
+    <view class="ui-width-40">
+      <image class="money-icon ui-ml20" src="/../images/down-circle.png"></image>
+      <text class="ui-ml20">金额:</text>
+    </view>
+    <view>
+      <input class="digit-fromat" type="digit" vaule='' bindinput = "digitFunction"/>
+    </view>
+    <view>
+      <text class="ui-mr20">元</text>
+    </view>
+  </view>
+  <!--分类按钮-->
+  <view class="btn" bindtap="powerDrawer" data-statu="open">
+    <view wx:if="{{currentTab==0}}">
+      <image  class="tab-icon" src="{{selectImg}}"></image>
+      {{selectName}}
+    </view>
+    <view wx:if="{{currentTab==1}}">
+      <image  class="tab-icon" src="{{in_selectImg}}"></image>
+      {{in_selectName}}
+    </view>
+  </view>
+</view>
+
+<!--日期-->
+<view class="pay-money">
+  <image class="money-icon" src="/../images/down-circle.png"></image>
+  <text class="ui-ml20">日期:</text>
+  <picker class="date-text" mode="date" value="{{date}}" bindchange="onDateChange">
+    <view>{{date}}
+    </view>
+  </picker>
+</view>
+
+<view class="pay-money">
+  <image class="money-icon" src="/../images/down-circle.png"></image>
+  <text class="ui-ml20">备注:</text>
+  <input class="ui-ml20 ui-flex-1" bindinput="onInputRemarks" value = "{{remarksText}}" type="text"/>
+</view>
+
+<!--完成按钮-->
+<button class="blue-button ui-mt20" hover-class="blue-button-p"  bindtap="confirmData">完成</button>
+ 
+<!--分类弹窗-->
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+<!--content-->
+<!--使用animation属性指定需要执行的动画-->
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+  <!--drawer content-->
+  <view class="drawer_content">
+    <view class="top grid">
+      <view class="list_style" wx:if="{{currentTab==0}}">
+        <view class="content_list" wx:for="{{tabOut}}">
+          <button type="primary" plain="true"  bindtap="click_list" data-index="{{index}}">
+            <image class="money-icon" src="/../images/down-circle.png"></image>
+            <view class="col-0">{{item.text}}</view>
+          </button>
+        </view>
+      </view>
+      <view wx:if="{{currentTab==1}}">
+        <view class="content_list" wx:for="{{in_tabOut}}">
+          <button type="primary" plain="true"  bindtap="in_click_list" data-index="{{index}}">
+            <image class="money-icon" src="/../images/down-circle.png"></image>
+            <view class="col-0">{{item.text}}</view>
+          </button>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="btn_ok" bindtap="powerDrawer" data-statu="close">确定</view>
+</view>
