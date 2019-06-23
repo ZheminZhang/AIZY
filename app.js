@@ -1,11 +1,109 @@
 //app.js
 const api = require('./config/config.js');
 App({
+  data: {
+    //授权信息
+    author: [
+      {
+        name: "zhiqiang",
+        id: 1
+      },
+      {
+        name: "yitai",
+        id: 2
+      }
+    ],
+    //申请信息
+    application: [
+      {
+        name: "zhangsan",
+        id: 2333
+      },
+      {
+        name: "lisi",
+        id: 666
+      }
+    ]
+  },
+
   onLaunch: function () {
     let that = this;
     // 检查登录状态
     that.checkLoginStatus();
   },
+
+  /* 监听小程序启动或切前台
+     向后台request，得到数据存入storage
+     目前只实现人为定义数据存入storage */
+  onShow: function(options) {
+    var that = this;
+    let value_author = [];
+    let value_applicaton = [];
+    /* 已授权用户 */
+    try {
+      value_author = wx.getStorageSync('User_Data_Author')
+    } catch (e) {
+      //
+    }
+    if (value_author == "") {
+      value_author = [];
+      wx.request({
+        url: api.manageUrl + "?type=authorized",
+        success: function (res) {
+          console.log(res)
+        },
+        fail: function (res) {
+          console.log(res)
+        }
+      })
+    }
+    // for (let index in that.data.author){
+    //   let json =
+    //   {
+    //     name: that.data.author[index].name,
+    //     id: that.data.author[index].id
+    //   };
+    //   value_author.push(json);
+    // }
+    try {
+      wx.setStorageSync('User_Data_Author', value_author)
+    } catch (e) {
+    }
+
+    /* 申请查询用户 */
+    try {
+      value_applicaton = wx.getStorageSync('Users_Data_Application')
+    } catch (e) {
+    }
+    if (value_applicaton == "") {
+      value_applicaton = [];
+    }
+    for (let index in that.data.application) {
+      let json =
+      {
+        name: that.data.application[index].name,
+        id: that.data.application[index].id
+      };
+      value_applicaton.push(json);
+    }
+    try {
+      wx.setStorageSync('Users_Data_Application', value_applicaton)
+    } catch (e) {
+    }
+    // wx.showToast({
+    //   title: '数据拉取成功',
+    //   icon: 'success',
+    //   duration: 500,
+    //   success: function () {
+    //     setTimeout(function () {
+    //       wx.navigateBack({
+    //         delta: 1
+    //       })
+    //     }, 500)
+    //   }
+    // });
+  },
+
   // 检查本地 storage 中是否有登录态标识
   checkLoginStatus: function () {
     let that = this;

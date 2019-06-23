@@ -57,7 +57,7 @@ Page({
     });
   },
 
-  //完成支出或者收入记录
+  //完成支出或者收入记录,将结果存入storage
   confirmData: function () {
     var that = this;
     if (parseFloat(that.data.money) <= 0) {
@@ -68,19 +68,16 @@ Page({
       return;
     }
 
+    //支出记录
     if (that.data.currentTab == 0) {
-      //支出记录
       let value = [];
       try {
-        //记录存入内存
         value = wx.getStorageSync('Bill_Out')
       } catch (e) {
       }
-
       if (value == "") {
         value = [];
       }
-
       let json =
       {
         date: that.data.date,
@@ -88,7 +85,6 @@ Page({
         remarks: that.data.remarksText,
         spendWay: that.data.selectName,
       };
-
       value.push(json);
       try {
         wx.setStorageSync('Bill_Out', value)
@@ -107,19 +103,16 @@ Page({
         }
       });
     }
+    //收入记录
     else if (that.data.currentTab == 1) {
-      //收入记录
       let value = [];
       try {
-        //记录存入内存
         value = wx.getStorageSync('Bill_In')
       } catch (e) {
       }
-
       if (value == "") {
         value = [];
       }
-
       let json =
       {
         date: that.data.date,
@@ -127,7 +120,6 @@ Page({
         remarks: that.data.remarksText,
         incomeWay: that.data.in_selectName,
       };
-
       value.push(json);
       try {
         wx.setStorageSync('Bill_In', value)
