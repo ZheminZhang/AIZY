@@ -13,7 +13,7 @@ App({
     if (loginFlag) {
       // 检查 session_key 是否过期
       wx.checkSession({
-        // session_key 有效(为过期)
+        // session_key 有效(不过期)
         success: function () {
           // 直接从Storage中获取用户信息
           let userStorageInfo = wx.getStorageSync('userInfo');
@@ -55,7 +55,7 @@ App({
             withCredentials: true, // 非必填, 默认为true
             success: function (infoRes) {
               // 请求服务端的登录接口
-              console.log(infoRes)
+              //console.log(infoRes)
               wx.request({
                 url: api.loginUrl,
                 data: {
@@ -135,6 +135,14 @@ App({
     return wx.getStorageSync('loginFlag');
   },
 
+  // TODO:获取用户的授权用户列表信息
+  getPermintedList: function () {
+
+  },
+  // TODO:获取用户的申请列表
+  getApplyList: function () {
+
+  },
 
   // 封装 wx.showToast 方法
   showInfo: function (info = 'error', icon = 'none') {
