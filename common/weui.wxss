@@ -88,11 +88,14 @@ icon {
           align-items: flex-start;
 }
 .weui-cell__bd {
+
     height: 80rpx;
     border-radius:25rpx;
     width:400rpx;
     border: 1px solid #FFFFFF;
     background-color: white; 
+    position: absolute;
+    left:200rpx;
 }
 .weui-cell__ft {
   text-align: right;

@@ -36,6 +36,7 @@ page {
 }
 
 .flex-wrp {
+  height: 100rpx;
   display: flex;
   }
 .flex-view {
@@ -62,6 +63,7 @@ page {
 }
 
 .pay-money {
+  height: 100rpx;
   margin: 20rpx;
   display: flex;
   -webkit-align-items: center;
@@ -71,6 +73,7 @@ page {
   width: 32rpx;
   height: 32rpx;
 }
+
 
 .date-text {
   color: gray;
@@ -149,7 +152,7 @@ background-color: #3B3B3B;
   box-sizing: border-box;
 }
 
-.btn {
+.category {
   text-align: center;
 }
  
@@ -169,8 +172,8 @@ background-color: #3B3B3B;
 /*content*/
 .drawer_box {
   width: 650rpx;
-  height: 60%;
-  overflow: auto;
+  height: 68%;
+  /*overflow: auto;*/
   position: fixed;
   top: 50%;
   left: 0;
@@ -186,7 +189,7 @@ background-color: #3B3B3B;
   text-align: center;
 }
 .drawer_content {
-  height: 260px;
+  height: 265px;
   overflow-y: scroll; /*超出父盒子高度可滚动*/
 }
 
@@ -203,7 +206,7 @@ background-color: #3B3B3B;
   margin-bottom:15rpx;
 }
 
-.btn_ok{
+.category_ok{
   padding: 10px;
   height: 20px;
   font: 15px "microsoft yahei";
@@ -256,8 +259,10 @@ background-color: #3B3B3B;
 	margin-right: 20px;
 }
 .grid { display: -webkit-box; display: flex; flex-direction: column;}
-.col-0 {-webkit-box-flex:0;box-flex:0;}
-.col-1 {-webkit-box-flex:1;box-flex:1;}
+.font-size {-webkit-box-flex:0;box-flex:0;font-size:30rpx;}
+.category-bt::after {
+  border: none;
+}
 .fl { float: left;}
 .fr { float: right;}
 
