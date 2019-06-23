@@ -9,7 +9,7 @@
   <view class="container">
     <view  wx:for="{{author}}">
       <view class="client_info" bindtap='toDetail' id="{{item.id}}" data-tp="1">
-        <image src="../../images/coin.png" class="userinfo-avatar" background-size="cover" ></image>
+        <image src="../../images/head.png" class="userinfo-avatar" background-size="cover" ></image>
         <view class="name">{{item.name}}</view>
         <view class="btn_accept" hover="true" hover-class="btn_accept_hover" bindtap="agree">接受</view>
       </view>
@@ -23,7 +23,7 @@
   <view class="container">
   <view  wx:for="{{application}}">
      <view class="client_info" bindtap='toDetail' id="{{item.id}}" data-tp="2">
-      <image src="../../images/coin.png" class="userinfo-avatar" background-size="cover" ></image>
+      <image src="../../images/head1.png" class="userinfo-avatar" background-size="cover" ></image>
       <view class="name">{{item.name}}</view>
       <view class="btn_accept" hover="true" hover-class="btn_accept_hover" bindtap="agree">接受</view>
     </view>

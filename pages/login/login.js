@@ -90,8 +90,10 @@ Page({
     }
     else {
       // TODO:弹出登录提示框
-      this.setData({
-        modalShow: true
+      wx.showToast({
+        title: '请先登录',
+        icon:'none',
+        duration:2000
       })
     }
   },
@@ -115,7 +117,6 @@ Page({
   },
 
   toComReg: function () {
-    console.log("<<<")
     wx.navigateTo({
       url: '../regist_company/regist_company',
       fail: function(e){
@@ -128,7 +129,6 @@ Page({
   powerDrawer: function (e) {
     var currentStatu = e.currentTarget.dataset.statu;
     this.util(currentStatu)
-    //this.util(currentStatu, modalShow, 2)
   },
   util: function (currentStatu) {
     /* 动画部分 */
@@ -163,7 +163,7 @@ Page({
       if (currentStatu == "close") {
         this.setData(
           {
-            showModalStatus: false
+            showModalStatus: false,
           }
         );
       }
@@ -173,7 +173,7 @@ Page({
     if (currentStatu == "open") {
       this.setData(
         {
-          showModalStatus: true
+          showModalStatus: true,
         }
       );
     }

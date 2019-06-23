@@ -25,8 +25,8 @@
       {
         "pagePath": "pages/bill/bill",
         "text": "BILL",
-        "iconPath": "images/my.png",
-        "selectedIconPath": "images/mySelected.png"
+        "iconPath": "images/debt.png",
+        "selectedIconPath": "images/debtSelected.png"
       },
       {
         "pagePath": "pages/query/query",

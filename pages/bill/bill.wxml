@@ -19,11 +19,19 @@
   <!--分类按钮-->
   <view class="category ui-width-30" bindtap="powerDrawer" data-statu="open">
     <view class="ui-mt30" wx:if="{{currentTab==0}}">
+<<<<<<< HEAD
       <image  class="icon-BILL-3" src="{{selectImg}}"></image>
       {{selectName}}
     </view>
     <view class="ui-mt30" wx:if="{{currentTab==1}}">
       <image  class="icon-BILL-3" src="{{in_selectImg}}"></image>
+=======
+      <image class="tab-icon" src="{{selectImg}}"></image>
+      {{selectName}}
+    </view>
+    <view class="ui-mt30" wx:if="{{currentTab==1}}">
+      <image class="tab-icon" src="{{in_selectImg}}"></image>
+>>>>>>> 7c46f8a73c284066d9c83ffbdd7b63d7277165c2
       {{in_selectName}}
     </view>
   </view>
@@ -43,6 +51,7 @@
   </picker>
 </view>
 
+<<<<<<< HEAD
 <!--横线-->
 <view class="line-BILL-3">
 </view>
@@ -56,6 +65,18 @@
 <!--完成按钮-->
 <button class="button-BILL-1" hover-class="button-BILL-1-p"  bindtap="confirmData">完成</button>
  
+=======
+<view class="pay-money">
+  <image class="money-icon" src="/../images/down-circle.png"></image>
+  <text class="ui-ml20">备注:</text>
+
+  <input class="ui-ml20 ui-flex-1 input-box-2" bindinput="onInputRemarks" value = "{{remarksText}}" type="text"/>
+</view>
+
+<!--完成按钮-->
+<button class="green-button ui-width-80" hover-class="green-button-p" bindtap="confirmData">完成</button>
+
+>>>>>>> 7c46f8a73c284066d9c83ffbdd7b63d7277165c2
 <!--分类弹窗-->
 <view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
 <!--content-->
@@ -87,3 +108,4 @@
   </view>
   <view class="category_ok" bindtap="powerDrawer" data-statu="close">取消</view>
 </view>
+
