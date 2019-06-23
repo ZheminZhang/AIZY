@@ -29,7 +29,7 @@
 
 .tab-item {
 	padding: 20rpx 30rpx;
-
+  height: 70rpx;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -41,14 +41,15 @@
 }
 
 .tab-icon {
-	width: 30rpx;
-	height: 30rpx;
+	width: 40rpx;
+	height: 40rpx;
 }
 
 .tab-text {
 	display: inline-block;
-	margin-left: 20rpx;
+	margin-left: 30rpx;
 	color: #1e1e1e;
+  text-align: center;
 }
 
 .tab-arrow {

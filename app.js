@@ -6,6 +6,39 @@ App({
     // 检查登录状态
     that.checkLoginStatus();
   },
+
+  /* 监听小程序启动或切前台
+     向后台request，得到数据存入storage */
+  onShow: function(options) {
+    wx.request({
+      url: api.manageUrl + "?type=authorized",
+      success: function (res) {
+        /* 读取并存储已授权列表 */
+        wx.setStorageSync('User_Data_Author', "");
+        wx.setStorageSync('User_Data_Author', res.data.authorized);
+
+        /* 读取并存储申请列表 */
+        wx.setStorageSync('User_Data_Application', "");
+        wx.setStorageSync('User_Data_Application', res.data.unauthorized);
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    })
+    // wx.showToast({
+    //   title: '数据拉取成功',
+    //   icon: 'success',
+    //   duration: 500,
+    //   success: function () {
+    //     setTimeout(function () {
+    //       wx.navigateBack({
+    //         delta: 1
+    //       })
+    //     }, 500)
+    //   }
+    // });
+  },
+
   // 检查本地 storage 中是否有登录态标识
   checkLoginStatus: function () {
     let that = this;

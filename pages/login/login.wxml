@@ -4,7 +4,7 @@
     <view class="userinfo">
         
         <block wx:if="{{!hasLogin}}">
-            <image class="userinfo-avatar" src="../../images/login.png" background-size="cover" catchtap="doLogin">
+            <image class="userinfo-avatar" src="../../images/login1.png" background-size="cover" catchtap="doLogin">
             </image>
             <button open-type="getUserInfo" bindgetuserinfo="doLogin"> 登录 </button>
         </block>
@@ -37,7 +37,7 @@
     <!-- 申请管理 -->
     <view class="tab-item border-bottom" catchtap="goApply">
         <view>
-            <image src="../../images/icon_addresslist.png" mode="aspectFit" class="tab-icon"></image>
+            <image src="../../images/manage.png" mode="aspectFit" class="tab-icon"></image>
             <text class="tab-text">申请管理</text>
         </view>
         
