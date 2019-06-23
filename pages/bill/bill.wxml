@@ -18,11 +18,11 @@
   <!--分类按钮-->
   <view class="category ui-width-30" bindtap="powerDrawer" data-statu="open">
     <view class="ui-mt30" wx:if="{{currentTab==0}}">
-      <image  class="tab-icon" src="{{selectImg}}"></image>
+      <image class="tab-icon" src="{{selectImg}}"></image>
       {{selectName}}
     </view>
     <view class="ui-mt30" wx:if="{{currentTab==1}}">
-      <image  class="tab-icon" src="{{in_selectImg}}"></image>
+      <image class="tab-icon" src="{{in_selectImg}}"></image>
       {{in_selectName}}
     </view>
   </view>
@@ -41,12 +41,13 @@
 <view class="pay-money">
   <image class="money-icon" src="/../images/down-circle.png"></image>
   <text class="ui-ml20">备注:</text>
+
   <input class="ui-ml20 ui-flex-1 input-box-2" bindinput="onInputRemarks" value = "{{remarksText}}" type="text"/>
 </view>
 
 <!--完成按钮-->
-<button class="green-button ui-width-80" hover-class="green-button-p"  bindtap="confirmData">完成</button>
- 
+<button class="green-button ui-width-80" hover-class="green-button-p" bindtap="confirmData">完成</button>
+
 <!--分类弹窗-->
 <view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
 <!--content-->
@@ -78,3 +79,4 @@
   </view>
   <view class="category_ok" bindtap="powerDrawer" data-statu="close">取消</view>
 </view>
+
