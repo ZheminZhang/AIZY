@@ -33,13 +33,8 @@
         "text": "查询",
         "iconPath": "images/my.png",
         "selectedIconPath": "images/mySelected.png"
-      },
-      {
-        "pagePath": "pages/authorize/authorize",
-        "text": "测试",
-        "iconPath": "images/my.png",
-        "selectedIconPath": "images/mySelected.png"
       }
+      
     ],
     "color": "#bfbfbf",
     "selectedColor": "#1AAD19"

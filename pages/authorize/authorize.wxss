@@ -1,1 +1,44 @@
-/* pages/authorize/authorize.wxss */
+/* pages/query/query.wxss */
+@import "../../common/weui.wxss";
+
+label {
+  display: inline-block;
+  min-width: 270rpx;
+  margin-right: 20rpx;
+}
+form{
+  width: 100%;
+}
+.picker-text {
+  margin-left: 20rpx;
+  position: relative;
+}
+.picker{
+  height: 60rpx;
+  background-color: #FFFFFF;
+  border: 1rpx solid cornflowerblue;
+  margin: 10rpx;
+  border-radius:15rpx;
+  width:250rpx;
+  margin-left:200rpx;
+
+}
+.page-section-title{
+  position: relative;
+  right:10rpx;
+}
+.page-section{
+  margin-bottom: 40rpx;
+  display: flex;
+  flex-wrap:nowrap;
+  flex-direction: column;
+  position: relative;
+  right:100rpx;
+}
+
+.btn-area{
+margin-top:250rpx;
+margin-left:120rpx;
+width:50%;
+height:80rpx;
+}

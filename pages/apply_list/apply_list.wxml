@@ -3,18 +3,21 @@
 <view class="navbar">
   <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
 </view>
- <!-- 已授权 -->
+<!-- 已授权 -->
 <view hidden="{{currentTab!==0}}">
-  tab_01
+
 </view>
- 
- <!-- 申请 -->
+
+
+
+<!-- 申请 -->
 <view hidden="{{currentTab!==1}}">
   <view class="container">
+
   <view  wx:for="{{client}}">
-     <view class="client_info">
+     <view class="client_info" bindtap='toDetail' id="{{item.id}}">
       <image src="../../images/coin.png" class="userinfo-avatar" background-size="cover" ></image>
-      <view class="name">{{item}}</view>
+      <view class="name">{{item.name}}</view>
       <view class="btn_accept" hover="true" hover-class="btn_accept_hover" bindtap="agree">接受</view>
      </view>
   </view>
