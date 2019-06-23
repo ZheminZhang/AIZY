@@ -141,8 +141,10 @@ App({
   },
   // TODO:获取用户的申请列表
   getApplyList: function () {
-
+    
   },
+
+  // TODO:获取用户个人账单统计
 
   // 封装 wx.showToast 方法
   showInfo: function (info = 'error', icon = 'none') {
