@@ -4,40 +4,68 @@
 
 <view class="flex-wrp" style="flex-direction:row;">
   <view class="flex-wrp ui-width-70" style="flex-direction:row;">
-    <view class="ui-width-40 ui-mt30">
-      <image class="money-icon ui-ml20" src="/../images/down-circle.png"></image>
-      <text class="ui-ml20">金额:</text>
+    <view class="text-BILL-1">
+      <image class="icon-BILL-1" src="../../images/BILL/YUAN.png"></image>
+      <text>金额:</text>
     </view>
-    <view class="input-box ui-width-40">
-      <input class="digit-fromat" type="digit" vaule='' bindinput = "digitFunction"/>
-    </view>
-    <view class="ui-mt30">
-      <text class="ui-mr20">元</text>
-    </view>
+    <input class="weui-input_BILL_1" type="digit" vaule='' bindinput = "digitFunction"/>
+    <text class="text-BILL-2">元</text>
   </view>
+
+  <!--竖线-->
+  <view class="line-BILL-1">
+  </view>
+
   <!--分类按钮-->
   <view class="category ui-width-30" bindtap="powerDrawer" data-statu="open">
     <view class="ui-mt30" wx:if="{{currentTab==0}}">
+<<<<<<< HEAD
+      <image  class="icon-BILL-3" src="{{selectImg}}"></image>
+      {{selectName}}
+    </view>
+    <view class="ui-mt30" wx:if="{{currentTab==1}}">
+      <image  class="icon-BILL-3" src="{{in_selectImg}}"></image>
+=======
       <image class="tab-icon" src="{{selectImg}}"></image>
       {{selectName}}
     </view>
     <view class="ui-mt30" wx:if="{{currentTab==1}}">
       <image class="tab-icon" src="{{in_selectImg}}"></image>
+>>>>>>> 7c46f8a73c284066d9c83ffbdd7b63d7277165c2
       {{in_selectName}}
     </view>
   </view>
 </view>
 
+<!--横线-->
+<view class="line-BILL-2">
+</view>
+
 <!--日期-->
-<view class="pay-money">
-  <image class="money-icon" src="/../images/down-circle.png"></image>
-  <text class="ui-ml20">日期:</text>
+<view class="list-BILL-1">
+  <image class="icon-BILL-2" src="../../images/down-circle.png"></image>
+  <text>日期:</text>
   <picker class="date-text" mode="date" value="{{date}}" bindchange="onDateChange">
     <view>{{date}}
     </view>
   </picker>
 </view>
 
+<<<<<<< HEAD
+<!--横线-->
+<view class="line-BILL-3">
+</view>
+
+<view class="list-BILL-1">
+  <image class="icon-BILL-2" src="../../images/down-circle.png"></image>
+  <text>备注:</text>
+  <input class="weui-input_BILL_2" bindinput="onInputRemarks" value = "{{remarksText}}" type="text"/>
+</view>
+
+<!--完成按钮-->
+<button class="button-BILL-1" hover-class="button-BILL-1-p"  bindtap="confirmData">完成</button>
+ 
+=======
 <view class="pay-money">
   <image class="money-icon" src="/../images/down-circle.png"></image>
   <text class="ui-ml20">备注:</text>
@@ -48,6 +76,7 @@
 <!--完成按钮-->
 <button class="green-button ui-width-80" hover-class="green-button-p" bindtap="confirmData">完成</button>
 
+>>>>>>> 7c46f8a73c284066d9c83ffbdd7b63d7277165c2
 <!--分类弹窗-->
 <view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
 <!--content-->
@@ -59,7 +88,7 @@
       <view class="list_style" wx:if="{{currentTab==0}}">
         <view class="content_list" wx:for="{{tabOut}}">
           <button class="category-bt" bindtap="click_list" data-index="{{index}}">
-            <image class="money-icon" src="/../images/down-circle.png"></image>
+            <image class="icon-BILL-1" src="../../images/down-circle.png"></image>
             <view class="font-size">{{item.text}}</view>
           </button>
         </view>
@@ -67,7 +96,7 @@
       <view class="list_style" wx:if="{{currentTab==1}}">
         <view class="content_list" wx:for="{{in_tabOut}}">
           <button class="category-bt" bindtap="in_click_list" data-index="{{index}}">
-            <image class="money-icon" src="/../images/down-circle.png"></image>
+            <image class="icon-BILL-1" src="../../images/down-circle.png"></image>
             <view class="font-size">{{item.text}}</view>
           </button>
         </view>
@@ -75,7 +104,7 @@
     </view>
   </view>
   <!--横线-->
-  <view class="line">
+  <view class="line-row">
   </view>
   <view class="category_ok" bindtap="powerDrawer" data-statu="close">取消</view>
 </view>
