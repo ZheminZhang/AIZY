@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "MY",
   "navigationBarBackgroundColor": "#ffffff",
-  "usingComponents": {}
+  "usingComponents": {
+    "zy-modal": "../../component/zy-modal/zy-modal"
+  }
 } 
