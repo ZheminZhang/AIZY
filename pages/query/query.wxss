@@ -65,7 +65,7 @@ border-radius:30rpx;
 }
 .billType{
   background-color: white;
-  border:solid 1rpx blue; 
+  border:solid 1rpx rgb(96, 188, 165); 
   height:45rpx;
   width:90rpx;
   border-radius: 30rpx;

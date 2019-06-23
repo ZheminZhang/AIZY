@@ -71,7 +71,7 @@
   <view class="drawer_title">支出</view>
   <view class="sele_bill">
     <view wx:for-items="{{tabOut}}">
-      <view class="billType" style="{{item.done?'background-color:red':'background-color:white'}}" bindtap="click_bill_0" data-index="{{index}}">
+      <view class="billType" style="{{item.done?'background-color:rgba(96, 223, 191, 0.534)':'background-color:white'}}" bindtap="click_bill_0" data-index="{{index}}">
         <text class="text_type">{{item.text}}</text>
       </view>
     </view>

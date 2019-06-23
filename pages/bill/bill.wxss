@@ -364,7 +364,7 @@ input {
 
 .button-BILL-1{
   margin: 500rpx 100rpx 0 100rpx;
-  background-color: rgb(53, 199, 162);
+  background-color: rgb(96, 223, 191);
   color: white;
 }
 .button-BILL-1-p{
