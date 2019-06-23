@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "授权管理",
   "navigationBarBackgroundColor": "#ffffff",
-  "usingComponents": {}
+  "usingComponents": {},
+  "enablePullDownRefresh": true
 }

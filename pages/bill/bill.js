@@ -63,7 +63,7 @@ Page({
     if (parseFloat(that.data.money) <= 0) {
       wx.showToast({
         title: '请输入金额',
-        duration: 2000
+        duration: 1500
       });
       return;
     }
@@ -125,7 +125,7 @@ Page({
         date: that.data.date,
         money: that.data.money,
         remarks: that.data.remarksText,
-        incomeWay: that.data.selectName,
+        incomeWay: that.data.in_selectName,
       };
 
       value.push(json);
@@ -137,12 +137,13 @@ Page({
         title: '记账成功',
         icon: 'success',
         duration: 500,
+        //记账成功则调用该函数
         success: function () {
-          setTimeout(function () {
-            wx.navigateBack({
-              delta: 1
-            })
-          }, 500)
+          // setTimeout(function () {
+          //   wx.navigateBack({
+          //     delta: 1
+          //   })
+          // }, 500)
         }
       });
     }
