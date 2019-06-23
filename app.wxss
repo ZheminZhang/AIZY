@@ -141,6 +141,9 @@ flex:1;
 .ui-m20 {
   margin: 20rpx;
 }
+.ui-m60 {
+  margin: 60rpx;
+}
 .ui-mt20 {
   margin-top: 20rpx;
 }
@@ -150,8 +153,14 @@ flex:1;
 .ui-mr20{
   margin-right: 20rpx;
 }
+.ui-mt30 {
+  margin-top: 30rpx;
+}
 .ui-mr40{
   margin-right: 40rpx;
+}
+.ui-mt40{
+  margin-top: 40rpx;
 }
 .ui-ml120{
   margin-left: 120rpx;
@@ -168,6 +177,9 @@ flex:1;
 }
 .ui-height-80{
   height: 80%;
+}
+.ui-width-70 {
+  width: 70%;
 }
 .ui-width-60 {
   width: 60%;
@@ -195,8 +207,10 @@ flex:1;
 }
 
 .line{
-  height: 1rpx;
-  border-top: 1rpx solid gray;
+  height: 1rpx;/*线高*/
+  /*border-top: 1rpx solid gray;*/
+  background: rgba(177, 182, 177, 0.603);/*颜色*/
+  /*margin-top: 10rpx;距两端距离*/
 }
 .show{
   display: block;
@@ -204,12 +218,12 @@ flex:1;
 .hidden{
   display: none;
 }
-.blue-button{
-  background-color: rgb(99, 187, 153);
+.green-button{
+  background-color: rgb(96, 188, 165);
   color: white;
 }
-.blue-button-p{
-  background-color: rgb(97, 153, 132);
+.green-button-p{
+  background-color: rgb(57, 122, 106);
   color: white;
 }
 /*记账页面*/

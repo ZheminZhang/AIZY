@@ -10,5 +10,10 @@ Page({
     this.setData({
       currentTab: e.currentTarget.dataset.idx
     })
+  },
+
+  /* 下拉刷新，自动监听 */
+  onPullDownRefresh: function () {
+    // Do something when pull down.
   }
 })
