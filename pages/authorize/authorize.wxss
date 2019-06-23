@@ -37,8 +37,7 @@ form{
 }
 
 .btn-area{
-margin-top:250rpx;
-margin-left:120rpx;
-width:50%;
+margin-top:200rpx;
+width:40%;
 height:80rpx;
 }
