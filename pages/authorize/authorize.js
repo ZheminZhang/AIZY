@@ -1,4 +1,3 @@
-// pages/authorize/authorize.js
 Page({
   data: {
     disabled_name: true,

@@ -19,6 +19,12 @@ Page({
       currentTab: e.currentTarget.dataset.idx
     })
   },
+
+  /* 下拉刷新，自动监听 */
+  onPullDownRefresh: function () {
+    // Do something when pull down.
+  },
+  
   toDetail: function (e) {
     //console.log(e)
     wx.navigateTo({
@@ -27,5 +33,5 @@ Page({
         console.log(e)
       }
     })
-  }
+  },
 })
