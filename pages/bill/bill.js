@@ -35,7 +35,7 @@ Page({
     in_selectImg: "../../images/down-circle.png",
 
 
-    showModalStatus: false
+    showModalStatus: false  //是否显示分类弹窗
   },
 
   navbarTap: function (e) {
@@ -57,7 +57,7 @@ Page({
     });
   },
 
-  //完成支出或者收入记录
+  //完成支出或者收入记录,将结果存入storage
   confirmData: function () {
     var that = this;
     if (parseFloat(that.data.money) <= 0) {
@@ -68,19 +68,16 @@ Page({
       return;
     }
 
+    //支出记录
     if (that.data.currentTab == 0) {
-      //支出记录
       let value = [];
       try {
-        //记录存入内存
         value = wx.getStorageSync('Bill_Out')
       } catch (e) {
       }
-
       if (value == "") {
         value = [];
       }
-
       let json =
       {
         date: that.data.date,
@@ -88,7 +85,6 @@ Page({
         remarks: that.data.remarksText,
         spendWay: that.data.selectName,
       };
-
       value.push(json);
       try {
         wx.setStorageSync('Bill_Out', value)
@@ -107,19 +103,16 @@ Page({
         }
       });
     }
+    //收入记录
     else if (that.data.currentTab == 1) {
-      //收入记录
       let value = [];
       try {
-        //记录存入内存
         value = wx.getStorageSync('Bill_In')
       } catch (e) {
       }
-
       if (value == "") {
         value = [];
       }
-
       let json =
       {
         date: that.data.date,
@@ -127,7 +120,6 @@ Page({
         remarks: that.data.remarksText,
         incomeWay: that.data.in_selectName,
       };
-
       value.push(json);
       try {
         wx.setStorageSync('Bill_In', value)
@@ -155,16 +147,18 @@ Page({
     var id = e.currentTarget.dataset.index;
     this.setData({
       selectName: this.data.tabOut[id].text,
-      selectImg: this.data.tabOut[id].icon
+      selectImg: this.data.tabOut[id].icon,
+      showModalStatus: false
     })
   },
-  //支付分类列表中，类别按钮触发事件
+  //收入分类列表中，类别按钮触发事件
   in_click_list: function (e) {
     console.log(e.currentTarget.dataset.index);
     var id = e.currentTarget.dataset.index;
     this.setData({
       in_selectName: this.data.in_tabOut[id].text,
-      in_selectImg: this.data.in_tabOut[id].icon
+      in_selectImg: this.data.in_tabOut[id].icon,
+      showModalStatus: false
     })
   },
 
@@ -176,7 +170,7 @@ Page({
     /* 动画部分 */
     // 第1步：创建动画实例 
     var animation = wx.createAnimation({
-      duration: 200,  //动画时长
+      duration: 100,  //动画时长
       timingFunction: "linear", //线性
       delay: 0  //0则不延迟
     });
@@ -204,7 +198,7 @@ Page({
           }
         );
       }
-    }.bind(this), 200)
+    }.bind(this), 100)
     // 显示
     if (currentStatu == "open") {
       this.setData(
