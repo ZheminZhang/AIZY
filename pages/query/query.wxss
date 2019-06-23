@@ -155,6 +155,6 @@ padding-left: 70rpx;
 }
 button[type=primary] {
 color:#FFFFFF;
-background-color:rgb(170, 173, 25);
+background-color:rgb(96, 188, 165);
 margin-top:100rpx; 
 }

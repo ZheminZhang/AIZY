@@ -63,6 +63,7 @@ Page({
     if (parseFloat(that.data.money) <= 0) {
       wx.showToast({
         title: '请输入金额',
+        icon:'none',
         duration: 1500
       });
       return;
