@@ -35,4 +35,5 @@ Page({
       type: options.type
     })
   }
+  
 })
