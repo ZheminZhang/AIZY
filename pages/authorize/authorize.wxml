@@ -6,7 +6,7 @@
       <view class="page-section">
         <view class="page-section-title">查询对象</view>
         <view class="weui-cell__bd">
-          <input class="weui-input" name="name" placeholder="" disabled='{{disabled_name}}' />
+          <input class="weui-input" name="name" placeholder="{{name}}" disabled='{{disabled_name}}' />
         </view>
       </view>
 
