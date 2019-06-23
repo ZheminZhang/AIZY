@@ -3,7 +3,7 @@ var util = require('../../utils/util.js')
 
 Page({
   data: {
-    navbar: ['支出', '收入', '其他'],
+    navbar: ['支出', '收入'],
     currentTab: 0,
     money: 0.00,  //金额
     //id: 0,        //分类序号
