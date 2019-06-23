@@ -26,21 +26,19 @@
         <view class="page-section-title">时间范围</view>
         <!-- 时间选择器 -->
         <!-- 开始时间 -->
-        <view class="section">
+        
           <picker mode="date" value="{{start_date}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='start_date'>
               <view class="picker">
                 {{start_date}}
               </view>
           </picker>
-        </view>
         <!-- 结束时间 -->
-        <view class="section">
+      
           <picker mode="date" value="{{start_date}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='end_date'>
               <view class="picker">
                 {{end_date}}
               </view>
           </picker>
-        </view>
       </view>
       <view class="btn-area">
         <button type="primary" formType="submit">Submit</button>

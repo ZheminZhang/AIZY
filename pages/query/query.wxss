@@ -14,10 +14,14 @@ form{
   position: relative;
 }
 .picker{
-  height: 60rpx;
+  height: 70rpx;
   background-color: #FFFFFF;
   border: 1rpx solid cornflowerblue;
   margin: 10rpx;
+  border-radius:15rpx;
+  width:250rpx;
+  margin-left:200rpx;
+
 }
 .page-section-title{
   position: relative;
@@ -31,13 +35,10 @@ form{
   position: relative;
   right:100rpx;
 }
-.section{
- display: flex;
- flex-wrap:wrap;
-}
+
 .btn-area{
-  margin-top:400rpx;
-  margin-left: 200rpx;
-  width: 40%; 
-  height: 80rpx;
+margin-top:250rpx;
+margin-left:120rpx;
+width:50%;
+height:80rpx;
 }
