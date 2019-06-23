@@ -20,9 +20,12 @@ Page({
     })
   },
   toDetail: function (e) {
-    console.log(e)
+    //console.log(e)
     wx.navigateTo({
-      url: '../athorize/athorize?id=' + e.target.id,
+      url: '../authorize/authorize?id=' + e.target.id,
+      fail: function(e) {
+        console.log(e)
+      }
     })
   }
 })

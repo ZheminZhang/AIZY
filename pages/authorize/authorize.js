@@ -29,8 +29,9 @@ Page({
   onLoad: function (options) {
     //var that = this
     var id_ = JSON.parse(options.id);
+    console.log(id_);
     this.setData({
-      id: queryBean
+      id: id_,
     })
   }
 })
