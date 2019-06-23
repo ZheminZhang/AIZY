@@ -35,7 +35,7 @@ Page({
     in_selectImg: "../../images/down-circle.png",
 
 
-    showModalStatus: false
+    showModalStatus: false  //是否显示分类弹窗
   },
 
   navbarTap: function (e) {
@@ -155,16 +155,18 @@ Page({
     var id = e.currentTarget.dataset.index;
     this.setData({
       selectName: this.data.tabOut[id].text,
-      selectImg: this.data.tabOut[id].icon
+      selectImg: this.data.tabOut[id].icon,
+      showModalStatus: false
     })
   },
-  //支付分类列表中，类别按钮触发事件
+  //收入分类列表中，类别按钮触发事件
   in_click_list: function (e) {
     console.log(e.currentTarget.dataset.index);
     var id = e.currentTarget.dataset.index;
     this.setData({
       in_selectName: this.data.in_tabOut[id].text,
-      in_selectImg: this.data.in_tabOut[id].icon
+      in_selectImg: this.data.in_tabOut[id].icon,
+      showModalStatus: false
     })
   },
 
@@ -176,7 +178,7 @@ Page({
     /* 动画部分 */
     // 第1步：创建动画实例 
     var animation = wx.createAnimation({
-      duration: 200,  //动画时长
+      duration: 100,  //动画时长
       timingFunction: "linear", //线性
       delay: 0  //0则不延迟
     });
@@ -204,7 +206,7 @@ Page({
           }
         );
       }
-    }.bind(this), 200)
+    }.bind(this), 100)
     // 显示
     if (currentStatu == "open") {
       this.setData(

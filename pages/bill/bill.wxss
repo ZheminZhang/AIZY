@@ -79,6 +79,7 @@ page {
   color: gray;
   flex: 1;
   text-align: end;
+  margin-right: 36rpx;
 }
 
 .money-text {
@@ -172,7 +173,7 @@ background-color: #3B3B3B;
 /*content*/
 .drawer_box {
   width: 650rpx;
-  height: 68%;
+  height: 800rpx;
   /*overflow: auto;*/
   position: fixed;
   top: 50%;
@@ -189,7 +190,7 @@ background-color: #3B3B3B;
   text-align: center;
 }
 .drawer_content {
-  height: 265px;
+  height: 680rpx;
   overflow-y: scroll; /*超出父盒子高度可滚动*/
 }
 
@@ -208,7 +209,7 @@ background-color: #3B3B3B;
 
 .category_ok{
   padding: 10px;
-  height: 20px;
+  height: 70rpx;
   font: 15px "microsoft yahei";
   text-align: center;
   /*border-top: 1px solid #E8E8EA;*/
@@ -250,11 +251,37 @@ background-color: #3B3B3B;
 	line-height: 30px;
 }
  
+.digit-format {
+  /*height: 100rpx;*/
+}
+
+input {
+  height: 100rpx;
+}
+
 .input {
 	font: 12px "microsoft yahei";
 	background: #fff;
 	color:#000 ;
 }
+.input-box {
+  border-width: 2rpx;
+  border-color: black;
+  border-style: solid;
+  height:70rpx;
+  width: 300rpx;
+  margin-top: 20rpx;
+  margin-right: 30rpx;
+}
+.input-box-2 {
+  border-width: 2rpx;
+  border-color: black;
+  border-style: solid;
+  height:70rpx;
+  width: 300rpx;
+  margin-right: 30rpx;
+}
+
 .radio{
 	margin-right: 20px;
 }
