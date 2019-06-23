@@ -4,7 +4,8 @@
     "pages/regist_company/regist_company",
     "pages/apply_list/apply_list",
     "pages/query/query",
-    "pages/authorize/authorize"
+    "pages/authorize/authorize",
+    "pages/bill/bill"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -22,17 +23,18 @@
         "selectedIconPath": "images/mySelected.png"
       },
       {
-        "pagePath": "pages/query/query",
-        "text": "查询",
+        "pagePath": "pages/bill/bill",
+        "text": "BILL",
         "iconPath": "images/my.png",
         "selectedIconPath": "images/mySelected.png"
       },
       {
-        "pagePath": "pages/authorize/authorize",
-        "text": "测试",
+        "pagePath": "pages/query/query",
+        "text": "查询",
         "iconPath": "images/my.png",
         "selectedIconPath": "images/mySelected.png"
       }
+      
     ],
     "color": "#bfbfbf",
     "selectedColor": "#1AAD19"

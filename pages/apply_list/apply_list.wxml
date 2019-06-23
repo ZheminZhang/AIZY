@@ -5,17 +5,7 @@
 </view>
 <!-- 已授权 -->
 <view hidden="{{currentTab!==0}}">
-  <view class="container">
-  <block wx:for-items="{{client}}">
-    <view wx:if="{{item.done}}">
-      <view class="client_info">
-        <image src="../../images/coin.png " class="userinfo-avatar " background-size="cover "></image>
-        <view class="name ">{{item.name}}</view>
-        <view class="btn_accept_hover ">已接受</view>
-      </view>
-    </view>
-  </block>
-  </view>
+
 </view>
 
 
@@ -23,12 +13,13 @@
 <!-- 申请 -->
 <view hidden="{{currentTab!==1}}">
   <view class="container">
-    <block wx:for-items="{{client}}">
-      <view wx:if="!{{item.done}}" class="client_info">
-        <image src="../../images/coin.png " class="userinfo-avatar " background-size="cover"></image>
-        <view class="name ">{{item.name}}</view>
-        <view class="btn_accept " hover="true " hover-class="btn_accept_hover " bindtap="agree">接受</view>
-      </view>
-  </block>
+
+  <view  wx:for="{{client}}">
+     <view class="client_info" bindtap='toDetail' id="{{item.id}}">
+      <image src="../../images/coin.png" class="userinfo-avatar" background-size="cover" ></image>
+      <view class="name">{{item.name}}</view>
+      <view class="btn_accept" hover="true" hover-class="btn_accept_hover" bindtap="agree">接受</view>
+     </view>
+  </view>
 </view>
 </view>

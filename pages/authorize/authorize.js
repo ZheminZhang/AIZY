@@ -1,6 +1,7 @@
 Page({
   data: {
-    disabled_name: false,
+    disabled_name: true,
+    id:-1,
     start_date: '2019-06-01',
     end_date: '2019-06-01',
     begin: '2000-06-01',
@@ -21,4 +22,15 @@ Page({
       })
     }
   },
+  // -------------------------------
+  // 加载url中的参数
+  // -------------------------------
+  onLoad: function (options) {
+    //var that = this
+    var id_ = JSON.parse(options.id);
+    console.log(id_);
+    this.setData({
+      id: id_,
+    })
+  }
 })
