@@ -10,7 +10,9 @@ Page({
       ? true
       : false,     // 是否登录，根据后台返回的skey判断
     numApply: 0,
-    showModalStatus: false
+    showModalStatus: false,
+    modalShow:false,
+    imageUrl:'../../images/coin.png'
   },
   
   // 检查本地 storage 中是否有skey登录态标识
@@ -20,10 +22,6 @@ Page({
 
     if (loginFlag) {
       // 检查 session_key 是否过期
-      // -------------------------------------------
-      // 临时，测试页面登录
-      //that.getUserInfo();
-      // -------------------------------------------
       wx.checkSession({
         // session_key 有效(未过期)
         success: function () {
@@ -84,8 +82,24 @@ Page({
    */
 
   goApply: function () {
-    wx.navigateTo({
-      url: '../apply_list/apply_list',
+    let loginFlag = wx.getStorageSync('loginFlag');
+    if (loginFlag) {
+      wx.navigateTo({
+        url: '../apply_list/apply_list',
+      })
+    }
+    else {
+      // TODO:弹出登录提示框
+      this.setData({
+        modalShow: true
+      })
+    }
+  },
+
+  // 未登录模态弹窗函数
+  modalConfirm:function () {
+    this.setData({
+      modalShow: false
     })
   },
 
@@ -110,10 +124,11 @@ Page({
     });
   },
 
-  // Tool按钮弹窗动画
+  // 动画1
   powerDrawer: function (e) {
     var currentStatu = e.currentTarget.dataset.statu;
     this.util(currentStatu)
+    //this.util(currentStatu, modalShow, 2)
   },
   util: function (currentStatu) {
     /* 动画部分 */

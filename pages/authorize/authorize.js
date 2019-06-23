@@ -29,7 +29,7 @@ Page({
   onLoad: function (options) {
     //var that = this
     var id_ = JSON.parse(options.id);
-    console.log(id_);
+    //console.log(id_);
     this.setData({
       id: id_,
     })
