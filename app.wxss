@@ -210,7 +210,7 @@ flex:1;
   height: 1rpx;/*线高*/
   /*border-top: 1rpx solid gray;*/
   background: rgba(177, 182, 177, 0.603);/*颜色*/
-  /*margin-top: 10rpx;距两端距离*/
+  margin: 10rpx;
 }
 .show{
   display: block;
