@@ -27,7 +27,7 @@ form{
   position: relative;
   right:10rpx;
 }
-.page-section{
+.time_selection{
   margin-bottom: 40rpx;
   display: flex;
   flex-wrap:nowrap;
@@ -35,10 +35,38 @@ form{
   position: relative;
   right:100rpx;
 }
-
+.page-section{
+  margin-bottom: 40rpx;
+  display: flex;
+  flex-wrap:nowrap;
+  position: relative;
+  right:100rpx;
+}
 .btn-area{
-margin-top:250rpx;
-margin-left:120rpx;
-width:50%;
+margin-top:200rpx;
+width:40%;
 height:80rpx;
+}
+.billType{
+  background-color: #FFFFFF;
+  height:45rpx;
+  width:90rpx;
+  border-radius: 30rpx;
+  align-items: center;
+  vertical-align: center;
+  justify-content: center;
+  display: flex;
+  margin-left:50rpx;
+}
+.text_type{
+font-size: 30rpx;
+color: gainsboro;
+}
+.x_po{
+color:dark;
+font-size:25rpx;
+position:relative;
+left:20rpx;
+bottom:40rpx;
+
 }
