@@ -20,10 +20,7 @@ form{
   position: relative;
   left:50rpx;
 }
-.page-body{
-  position: relative;
-  top:100rpx;
-}
+
 .select_sell{
   position: relative;
   left:50rpx;

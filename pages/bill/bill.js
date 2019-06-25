@@ -3,8 +3,8 @@ var util = require('../../utils/util.js')
 
 Page({
   data: {
-    tabitemConsume: {},
-    tabitemRecharge: {},
+    tabitemVoice: {},
+    tabitemForm: {},
     activeTabId: null,
 
     /* 记账相关信息 */
@@ -12,16 +12,14 @@ Page({
     money_bor: 0.00,      //借
     money_loan: 0.00,     //贷
     remarksText: "",      //备注
-
-    navbar: ['支出', '收入'],
-    currentTab: 0,
-    money: 0.00,  //金额
     date: "",       //日期
   },
 
   tabChange(e) {
-    var id = e.detail.currentItemId;
-    this.setActiveTab(id);
+    if (e.detail.source == "touch") {
+      var id = e.detail.currentItemId;
+      this.setActiveTab(id);
+    }
   },
 
   tabclick(e) {
@@ -131,19 +129,19 @@ Page({
     var query = wx.createSelectorQuery().in(this),
       _this = this;
     _this.animation = wx.createAnimation({
-      duration: 300,  //动画持续时间
+      duration: 500,  //动画持续时间
       timingFunction: "ease",  //动画效果
     })
-    query.select('#tabitemConsume').boundingClientRect(function (rect) {
+    query.select('#tabitemForm').boundingClientRect(function (rect) {
       _this.setData({
-        tabitemConsume: rect
+        tabitemForm: rect
       });
     })
-    query.select('#tabitemRecharge').boundingClientRect(function (rect) {
+    query.select('#tabitemVoice').boundingClientRect(function (rect) {
       _this.setData({
-        tabitemRecharge: rect
+        tabitemVoice: rect
       });
-      _this.setActiveTab('tabitemRecharge');
+      _this.setActiveTab('tabitemVoice');
     })
     query.exec();
 

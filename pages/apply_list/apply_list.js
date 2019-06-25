@@ -18,8 +18,10 @@ Page({
   },
 
   tabChange(e) {
-    var id = e.detail.currentItemId;
-    this.setActiveTab(id);
+    if (e.detail.source == "touch") {
+      var id = e.detail.currentItemId;
+      this.setActiveTab(id);
+    }
   },
 
   tabclick(e) {
