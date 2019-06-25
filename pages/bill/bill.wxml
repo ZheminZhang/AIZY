@@ -65,37 +65,6 @@
 
           <!--完成按钮-->
           <button class="button-BILL-1" hover-class="button-BILL-1-p"  bindtap="confirmData">完成</button>
-          
-          <!--分类弹窗-->
-          <!--view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
-          <!--content-->
-          <!--使用animation属性指定需要执行的动画-->
-          <!--view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
-            <view class="drawer_content">
-              <view class="top grid">
-                <view class="list_style" wx:if="{{currentTab==0}}">
-                  <view class="content_list" wx:for="{{tabOut}}">
-                    <button class="category-bt" bindtap="click_list" data-index="{{index}}">
-                      <image class="icon-BILL-1" src="../../images/down-circle.png"></image>
-                      <view class="font-size">{{item.text}}</view>
-                    </button>
-                  </view>
-                </view>
-                <view class="list_style" wx:if="{{currentTab==1}}">
-                  <view class="content_list" wx:for="{{in_tabOut}}">
-                    <button class="category-bt" bindtap="in_click_list" data-index="{{index}}">
-                      <image class="icon-BILL-1" src="../../images/down-circle.png"></image>
-                      <view class="font-size">{{item.text}}</view>
-                    </button>
-                  </view>
-                </view>
-              </view>
-            </view>
-            <!--横线-->
-            <!--view class="line-row">
-            </view>
-            <view class="category_ok" bindtap="powerDrawer" data-statu="close">取消</view>
-          </view-->
         </view>
       </scroll-view>
     </swiper-item>

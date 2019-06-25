@@ -147,7 +147,6 @@ Page({
 
     this.setData({
       date: util.formatTime(new Date(), "yyyy-MM-dd"),
-      todayDate: util.formatTime(new Date(), "yyyy-MM-dd"),
     });
   },
   onShow: function () {
