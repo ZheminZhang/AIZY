@@ -25,14 +25,14 @@
       {
         "pagePath": "pages/bill/bill",
         "text": "BILL",
-        "iconPath": "images/debt.png",
-        "selectedIconPath": "images/debtSelected.png"
+        "iconPath": "images/bill.png",
+        "selectedIconPath": "images/billSelected.png"
       },
       {
         "pagePath": "pages/query/query",
-        "text": "查询",
-        "iconPath": "images/my.png",
-        "selectedIconPath": "images/mySelected.png"
+        "text": "SEARCH",
+        "iconPath": "images/search.png",
+        "selectedIconPath": "images/searchSelected.png"
       }
       
     ],
