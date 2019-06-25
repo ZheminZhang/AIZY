@@ -171,13 +171,13 @@ Page({
     }
   },
   onUnload: function () {
-    for (var i = 0; i < timeIDs.length; i++) {
-      clearTimeout(timeIDs[i]);
+    for (var i = 0; i < this.data.timeIDs.length; i++) {
+      clearTimeout(this.data.timeIDs[i]);
     }
   },
   onHide: function () {
-    for (var i = 0; i < timeIDs.length; i++) {
-      clearTimeout(timeIDs[i]);
+    for (var i = 0; i < this.data.timeIDs.length; i++) {
+      clearTimeout(this.data.timeIDs[i]);
     }
   }
 })
