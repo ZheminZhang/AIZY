@@ -95,7 +95,6 @@ App({
                 }
               });
             },
-
             fail: function (error) {
               // 获取 userInfo 失败，去检查是否未开启权限
               wx.hideLoading();
@@ -137,13 +136,12 @@ App({
     });
   },
 
-
   // 获取用户登录标示 供全局调用
   getLoginFlag: function () {
     return wx.getStorageSync('loginFlag');
   },
 
-  // TODO:获取用户的授权用户列表信息
+  // 获取用户的授权用户列表信息
   getPermintedList: function () {
     wx.request({
       url: api.manageUrl + "?type=authorized",

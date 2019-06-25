@@ -9,6 +9,7 @@ Page({
     end: '2100-06-01',
     type:[]
   },
+  // TODO: 
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e)
   },
@@ -24,9 +25,7 @@ Page({
       })
     }
   },
-  // -------------------------------
   // 加载url中的参数
-  // -------------------------------
   onLoad: function (options) {
     this.setData({
       name: options.name,

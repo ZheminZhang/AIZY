@@ -86,28 +86,28 @@ Page({
       return;
     }
 
-  //记录
-    let value = [];
-    try {
-      value = wx.getStorageSync('Bill')
-    } catch (e) {
-    }
-    if (value == "") {
-      value = [];
-    }
-    let json =
-    {
-      classification: that.data.classification,
-      money_bor: that.data.money_bor,
-      money_loan: that.data.money_loan,
-      date: that.data.date,
-      remarks: that.data.remarksText,
-    };
-    value.push(json);
-    try {
-      wx.setStorageSync('Bill', value)
-    } catch (e) {
-    }
+    //记录
+    // let value = [];
+    // try {
+    //   value = wx.getStorageSync('Bill')
+    // } catch (e) {
+    // }
+    // if (value == "") {
+    //   value = [];
+    // }
+    // let json =
+    // {
+    //   classification: that.data.classification,
+    //   money_bor: that.data.money_bor,
+    //   money_loan: that.data.money_loan,
+    //   date: that.data.date,
+    //   remarks: that.data.remarksText,
+    // };
+    // value.push(json);
+    // try {
+    //   wx.setStorageSync('Bill', value)
+    // } catch (e) {
+    // }
     wx.showToast({
       title: '记账成功',
       icon: 'success',
@@ -126,8 +126,6 @@ Page({
     // 页面加载 options为页面跳转所带来的参数
   },
   onReady: function () {
-    // 页面初次渲染完成
-
     /* 滑动动画相关 */
     var query = wx.createSelectorQuery().in(this),
       _this = this;
@@ -153,35 +151,4 @@ Page({
       todayDate: util.formatTime(new Date(), "yyyy-MM-dd"),
     });
   },
-  onShow: function () {
-    // 页面显示
-  },
-  onHide: function () {
-    // 页面隐藏
-  },
-  onUnload: function () {
-    // 页面卸载
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
-
