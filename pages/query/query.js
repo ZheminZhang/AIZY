@@ -35,9 +35,6 @@ Page({
         "types": JSON.stringify([1,2])
       },
       method: 'POST',
-      // header:{
-      //   "Content-Type":"application/json",
-      // },
       success: function (res) {
         console.log(res);
       },
