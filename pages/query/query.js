@@ -22,11 +22,7 @@ Page({
       { 'id': 1, 'text': '股票', 'done':false},
     ],
   },
-  getPhoneNumber(e) {
-    console.log(e.detail.errMsg)
-    console.log(e.detail.iv)
-    console.log(e.detail.encryptedData)
-  },
+
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e)
     wx.request({

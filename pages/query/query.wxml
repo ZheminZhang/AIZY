@@ -59,7 +59,6 @@
     </form>
   </view>
    <button  class="button-BILL-1" hover-class="button-BILL-1-p"  bindtap="formSubmit">完成</button>
-   <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>
 </view>
 
 
