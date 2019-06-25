@@ -1,0 +1,36 @@
+<!--pages/resign_company.wxml-->
+<view class="container">
+  <view class="page-body">
+    <form catchsubmit="formSubmit" catchreset="formReset">
+      <!-- 名称 -->
+      <view class="page-section">
+        <view class="page-section-title">公司名称</view>
+            <view class="weui-cell__bd">
+              <input  class="weui-input"  name="name" placeholder="" />
+        </view>
+      </view>
+      <!-- 联系方式 -->
+      <view class="page-section">
+      <view class="page-section-title">电话</view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name="contract_content" placeholder="" />
+            </view>
+      </view>
+      <!-- 经营范围 -->
+      <view class="page-section">
+      <view class="page-section-title">经营范围</view>
+    <view class="select_sell">
+    <radio-group name="business_scope">
+          <label><radio value="radio1"/>xxx</label>
+          <label><radio value="radio2"/>xxx</label>
+        </radio-group>
+    </view>
+      </view>
+      <view class="button_position">
+     
+      <button  class="button-BILL-1" hover-class="button-BILL-1-p"  bindtap="getMessage" formType="submit" >Submit</button>
+      </view>
+    </form>
+  </view>
+</view>
+

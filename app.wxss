@@ -1,0 +1,207 @@
+/**app.wxss**/
+
+page {
+  background-color: #f2f2f2;
+}
+
+.bg-white {
+	background-color: #ffffff;
+}
+
+.image-icon {
+	width: 30rpx;
+	height: 30rpx;
+}
+
+.border-bottom {
+	border-bottom: 1px solid #dbdbdb;
+}
+
+/* 修正 text 组件 英文&符号不换行的问题  begin */
+text {
+	word-wrap: break-all;
+	word-break: break-word;
+	text-align: justify;
+}
+/* 修正 text 组件 英文&符号不换行的问题  end */
+
+
+.fixed-bottom{
+	position: fixed;
+	bottom: 0rpx;
+	left: 0rpx;
+	box-shadow: 0 -5rpx 20rpx #c9c9c9;
+}
+
+.block-full-width{
+	display: block;
+	width: 100%;
+	height: 150rpx;
+}
+
+.flex-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.full-button {
+	width: 80%;
+}
+
+/*甜甜圈loading start*/
+@keyframes donut-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.donut {
+  display: inline-block;
+  border: 4rpx solid rgba(0, 0, 0, 0.1);
+  border-left-color: #1AAD19;
+  border-radius: 50%;
+  width: 60rpx;
+  height: 60rpx;
+  animation: donut-spin 0.5s linear infinite;
+}
+/*甜甜圈loading end*/
+
+
+/*记账页面*/
+
+.ui-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.ui-flex-ver {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+.ui-flex-center {
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.ui-flex-hor-center {
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.ui-flex-ver-center {
+  -webkit-align-items: center;
+  align-items: center;
+}
+.ui-flex-1{
+flex:1;
+}
+
+.ui-p10{
+  padding: 10rpx;
+}
+.ui-p20 {
+  padding: 20rpx;
+}
+
+.ui-pt20 {
+  padding-top: 20rpx;
+}
+.ui-m10 {
+  margin: 10rpx;
+}
+.ui-m20 {
+  margin: 20rpx;
+}
+.ui-m60 {
+  margin: 60rpx;
+}
+.ui-mt20 {
+  margin-top: 20rpx;
+}
+.ui-ml20{
+  margin-left: 20rpx;
+}
+.ui-mr20{
+  margin-right: 20rpx;
+}
+.ui-mt30 {
+  margin-top: 30rpx;
+}
+.ui-mr40{
+  margin-right: 40rpx;
+}
+.ui-mt40{
+  margin-top: 40rpx;
+}
+.ui-ml120{
+  margin-left: 120rpx;
+}
+
+.ui-width-100 {
+  width: 100%;
+}
+.ui-height-100{
+  height: 100%;
+}
+.ui-width-80 {
+  width: 80%;
+}
+.ui-height-80{
+  height: 80%;
+}
+.ui-width-70 {
+  width: 70%;
+}
+.ui-width-60 {
+  width: 60%;
+}
+.ui-height-60{
+  height: 60%;
+}
+.ui-width-40 {
+  width: 40%;
+}
+.ui-height-40{
+  height: 40%;
+}
+.ui-width-30 {
+  width: 30%;
+}
+.ui-height-30{
+  height: 30%;
+}
+.ui-width-20 {
+  width: 20%;
+}
+.ui-height-20{
+  height: 20%;
+}
+
+.line-row {
+  height: 3rpx;/*线高*/
+  background: rgba(177, 182, 177, 0.603);/*颜色*/
+  margin: 5rpx;
+}
+.line-column {
+  height: 5rpx;/*线宽*/
+  background: rgba(177, 182, 177, 0.603);/*颜色*/
+  margin: 2rpx;
+}
+.show{
+  display: block;
+}
+.hidden{
+  display: none;
+}
+
+/*记账页面*/

@@ -1,0 +1,145 @@
+/**index.wxss**/
+@import "../../common/weui.wxss";
+.user-container {
+	padding: 50rpx 0;
+	/*border: 1px solid black;*/
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.tab-container {
+	/*border: 1px solid black;*/
+	
+	margin-top: 30rpx;
+}
+
+.tab-item {
+	padding: 20rpx 30rpx;
+  height: 70rpx;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.tab-item-hover {
+	background-color: #e6e6e6;
+}
+
+.tab-icon {
+	width: 40rpx;
+	height: 40rpx;
+}
+
+.tab-text {
+	display: inline-block;
+	margin-left: 30rpx;
+	color: #1e1e1e;
+  text-align: center;
+}
+
+.tab-arrow {
+	display: inline-block;
+	width: 20rpx;
+	height: 20rpx;
+	border: 1px solid #cdcdcd;
+
+	border-left: none;
+	border-bottom: none;
+
+	transform: rotate(45deg);
+}
+
+.commodity_attr_box {
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  height: 60px;
+  background: #fff;
+
+}
+.title {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+}
+
+.btn {
+  width: 80%;
+  padding: 20rpx 0;
+  border-radius: 10rpx;
+  text-align: center;
+  margin: 40rpx 10%;
+  background: #000;
+  color: #fff;
+}
+  
+.top{
+	padding-top:8px;
+}
+.bottom {
+	padding-bottom:8px;
+}
+.title {
+	height: 30px;
+	line-height: 30px;
+	width: 160rpx;
+	text-align: center;
+	display: inline-block;
+	font: 300 28rpx/30px "microsoft yahei";
+}
+ 
+.input_base {
+	border: 2rpx solid #ccc;
+	padding-left: 10rpx;
+	margin-right: 50rpx;
+}
+.input_h30{
+	height: 30px;
+	line-height: 30px;
+}
+.input_h60{
+	height: 60px;
+}
+.input_view{
+	font: 12px "microsoft yahei";
+	background: #fff;
+	color:#000;
+	line-height: 30px;
+}
+ 
+input {
+	font: 12px "microsoft yahei";
+	background: #fff;
+	color:#000 ;
+}
+radio{
+	margin-right: 20px;
+}
+.grid { display: -webkit-box; display: box; }
+.col-0 {-webkit-box-flex:0;box-flex:0;}
+.col-1 {-webkit-box-flex:1;box-flex:1;}
+.fl { float: left;}
+.fr { float: right;}
