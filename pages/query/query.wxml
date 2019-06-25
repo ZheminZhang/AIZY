@@ -6,7 +6,7 @@
       <view class="page-section">
         <view class="page-section-title">查询对象</view>
         <view class="weui-cell__bd">
-          <input class="weui-input" name="name" placeholder="" disabled='{{disabled_name}}' />
+          <input class="weui-input" name="name" placeholder="请输入查询对象" disabled='{{disabled_name}}' />
         </view>
 
       </view>
@@ -22,11 +22,13 @@
             <view class="sele_bill" wx:for-items="{{tabOut}}">
               <view class="billType" wx:if="{{item.done}}" bindtap="click_cancel0" data-index="{{index}}">
                 <text class="text_type">{{item.text}}</text>
+                <text class="text_icon">x</text>
               </view>
             </view>
             <view class="sele_bill" wx:for-items="{{in_tabOut}}">
               <view class="billType" wx:if="{{item.done}}" bindtap="click_cancel1" data-index="{{index}}" >
                 <text class="text_type">{{item.text}}</text>
+                <text class="text_icon">x</text>
               </view>
             </view>
           </view>
