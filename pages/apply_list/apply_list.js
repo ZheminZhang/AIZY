@@ -1,7 +1,10 @@
 // pages/apply_list_1/apply_list.js
 Page({
   data: {
-    navbar: ['已授权', '申请'],
+    tabitemConsume: {},
+    tabitemRecharge: {},
+    activeTabId: null,
+    //navbar: ['已授权', '申请'],
     currentTab: 0,
     author: [
     ],
@@ -14,11 +17,57 @@ Page({
     })
   },
 
+  tabChange(e) {
+    if (e.detail.source == "touch") {
+      var id = e.detail.currentItemId;
+      this.setActiveTab(id);
+    }
+  },
+
+  tabclick(e) {
+    var id = e.target.id;
+    this.setActiveTab(id);
+  },
+
+  setActiveTab(id) {
+    var rect = this.data[id];
+    if (rect) {
+      this.animation.width(rect.width).translate(rect.left, 0);
+      this.setData({
+        activeTabId: id,
+        indicatorAnim: this.animation.step().export()
+      })
+    }
+  },
+
   /* 下拉刷新，自动监听 */
   onPullDownRefresh: function () {
     // Do something when pull down.
   },
   
+  onReady: function () {
+    /* 滑动动画相关 */
+    var query = wx.createSelectorQuery().in(this),
+      _this = this;
+    _this.animation = wx.createAnimation({
+      duration: 300,  //动画持续时间
+      timingFunction: "ease",  //动画效果
+    })
+    query.select('#tabitemConsume').boundingClientRect(function (rect) {
+      _this.setData({
+        tabitemConsume: rect
+      });
+    })
+    query.select('#tabitemRecharge').boundingClientRect(function (rect) {
+      _this.setData({
+        tabitemRecharge: rect
+      });
+      _this.setActiveTab('tabitemRecharge');
+    })
+    query.exec();
+
+  },
+
   /* 加载页面 */
   onLoad: function () {
     this.setData({

@@ -1,156 +1,217 @@
 /* pages/record-expend/record-expend.wxss */
+@import "../../common/weui.wxss";
+
+view {
+  display: flex;
+}
 
 page {
   overflow: auto;
   height: 100%;
 }
 
-.tab-icon {
-  width: 30rpx;
-  height: 30rpx;
+.container-BILL {
+  height: 100%;
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
 }
 
-.navbar{
-  flex: none;
-  display: flex;
-  background: #fff;
-}
-.navbar .item{
+.tabbar-BILL {
+  height: 80rpx;
+  background-color: #8992c8;
+  color: #fff;
+  font-size: 30rpx;
+  align-items: center;
+  justify-content: space-around;
   position: relative;
-  flex: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-item {
+  height: 120rpx;
+  line-height: 120rpx;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.list-item-l {
+  flex: 1;
+  align-items: center;
+}
+
+.list-item-r {
+  margin-left: auto;
+  padding: 0 10rpx;
+}
+
+.list-item-r .icon-left1 {
+  color: #90aac8;
+}
+
+.border-radius {
+  border-radius: 20rpx;
+}
+
+page, .container {
+  height: 100%;
+}
+
+
+.tabitem {
+  width: 120rpx;
   text-align: center;
-  line-height: 80rpx;
+  color: #e0e0e0;
+  font-weight: 400;
 }
-.navbar .item.active{
-  color: #FFCC00;
+.tabitem-active {
+  color: #fff;
 }
-.navbar .item.active:after{
-  content: "";
-  display: block;
+.tabindicator {
   position: absolute;
+  width: 0rpx;
+  height: 6rpx;
+  background-color: #fff;
   bottom: 0;
   left: 0;
-  right: 0;
-  height: 4rpx;
-  background: #FFCC00;
+}
+.tab-content {
+  height: 100%;
+}
+
+.scrollview-content {
+  flex: 1;
+}
+
+.text-BILL-1 {
+  width:160rpx;
+  margin: 10rpx;
+  align-items: center;
+}
+.text-BILL-2 {
+  margin: 15rpx 20rpx 0 200rpx;
+}
+.text-BILL-3 {
+  width:400rpx;
+}
+
+.weui-input_BILL_1 {
+  height:80rpx;
+  width:450rpx;
+  border-radius:25rpx;
+  border:1px solid #FFFFFF;
+  background-color:white;
+  position:absolute;
+  left:165rpx;
+}
+.weui-input_BILL_2 {
+  height:80rpx;
+  width:200rpx;
+  border-radius:25rpx;
+  border:1px solid #FFFFFF;
+  background-color:white;
+  position:absolute;
+  left:165rpx;
+}
+.weui-input_BILL_3 {
+  height:80rpx;
+  border-radius:25rpx;
+  width:520rpx;
+  border:1px solid #FFFFFF;
+  background-color:white;
+  position:absolute;
+  left:165rpx;
+}
+
+.line-BILL-1 {
+  margin:10rpx 30rpx 25rpx 30rpx;
+  height:2rpx;
+  background: rgba(177,182,177,0.603);
+}
+.line-BILL-2 {
+  margin:25rpx 30rpx 25rpx 30rpx;
+  height:3rpx;
+  background: rgba(177,182,177,0.603);
+}
+.line-BILL-3 {
+  margin:25rpx 30rpx -5rpx 30rpx;
+  height:3rpx;
+  background: rgba(177,182,177,0.603);
+}
+.line-BILL-4 {
+  margin:-5rpx 30rpx 10rpx 30rpx;
+  height:2rpx;
+  background: rgba(177,182,177,0.603);
 }
 
 .flex-wrp {
   height: 100rpx;
   display: flex;
-  }
-.flex-view {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  overflow: hidden;
-  display: block;
-  text-align: center;
 }
 
-.select-consumption-patterns {
-  width: 100%;
+.list-BILL-1 {
+  height:100rpx;
+  margin:50rpx 10rpx 10rpx 10rpx;
+  display:flex;
+  align-items:center;
 }
-.consumption-patterns-item {
-  width: 25%;
-  display: inline-block;
-  position: relative;
+.list-BILL-2 {
+  height:100rpx;
+  margin:10rpx;
+  display:flex;
+  align-items:center;
 }
-.consumption-patterns-item-icon {
-  width: 100rpx;
-  height: 100rpx;
+.list-BILL-3 {
+  height:100rpx;
+  margin:10rpx;
+  display:flex;
+  align-items:center;
+}
+.list-BILL-4 {
+  height:100rpx;
+  margin:10rpx;
+  display:flex;
+  align-items:center;
 }
 
-.pay-money {
-  height: 100rpx;
-  margin: 20rpx;
-  display: flex;
-  -webkit-align-items: center;
-  align-items: center;
+.icon-BILL-1 {
+  width: 39rpx;
+  height: 39rpx;
+  margin:0rpx 15rpx 0 10rpx;
 }
-.money-icon {
-  width: 32rpx;
-  height: 32rpx;
+.icon-BILL-2 {
+  width: 39rpx;
+  height: 39rpx;
+  margin:0rpx 50rpx 0 10rpx;
 }
-
+.icon-BILL-3 {
+  width: 39rpx;
+  height: 39rpx;
+  margin:0rpx 15rpx 0 10rpx;
+}
 
 .date-text {
   color: gray;
   flex: 1;
   text-align: end;
   margin-right: 36rpx;
-}
-
-.money-text {
-  color: red;
-  flex: 1;
-  text-align: end;
-}
-
-.calculator {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  z-index: 999;
-  display: flex;
-  background-color: lightgray;
-  border: 1rpx solid gray;
-   box-sizing: border-box;
-   height: 400rpx;
-}
-
-.calculator-number {
-  flex: 3;
-  width: 75%;
-}
-
-.calculator-number-item {
-  width: 100%;
-  display: flex;
-  height: 25%;
-}
-
-.number {
-  flex: 1;
-  text-align: center;
-  vertical-align: middle;
-  border: 1rpx solid gray;
-  width: 100%;
-  box-sizing: border-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  height: 100%;
-}
-.number-hover{
-background-color: #3B3B3B;
-}
-
-.calculator-operator {
-  flex: 1;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-}
-
-.operator {
-  border: 1rpx solid gray;
-  flex: 2;
-  text-align: center;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
 }
 
 .category {
@@ -250,16 +311,9 @@ background-color: #3B3B3B;
 	color:#000;
 	line-height: 30px;
 }
- 
-.digit-format {
-  /*height: 100rpx;*/
-}
-
-input {
-  height: 100rpx;
-}
 
 .input {
+  height: 100rpx;
 	font: 12px "microsoft yahei";
 	background: #fff;
 	color:#000 ;
@@ -282,14 +336,19 @@ input {
   margin-right: 30rpx;
 }
 
-.radio{
-	margin-right: 20px;
-}
 .grid { display: -webkit-box; display: flex; flex-direction: column;}
 .font-size {-webkit-box-flex:0;box-flex:0;font-size:30rpx;}
 .category-bt::after {
   border: none;
 }
-.fl { float: left;}
-.fr { float: right;}
 
+.button-BILL-1{
+  margin: 150rpx 100rpx 0 100rpx;
+  background-color: #87a7d6;
+  color: white;
+}
+.button-BILL-1-p{
+  margin: 150rpx 100rpx 0 100rpx;
+  background-color: #87a7d6;
+  color: white;
+}

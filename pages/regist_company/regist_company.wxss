@@ -1,10 +1,6 @@
 @import "../../common/weui.wxss";
 
-label {
-  display: inline-block;
-  min-width: 270rpx;
-  margin-right: 20rpx;
-}
+
 form{
   width: 100%;
 }
@@ -24,15 +20,10 @@ form{
   position: relative;
   left:50rpx;
 }
-.page-body{
-  position: relative;
-  top:100rpx;
-}
+
 .select_sell{
   position: relative;
   left:50rpx;
 }
-.button_position{
-  margin-top:300rpx; 
-}
+
 

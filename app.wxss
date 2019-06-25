@@ -1,14 +1,4 @@
 /**app.wxss**/
-.container {
-  height: 100%;
-  display: flex; 
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 100rpx 0;
-  box-sizing: border-box;
-  /*border: 1px solid green;*/
-}
 
 page {
   background-color: #f2f2f2;
@@ -82,15 +72,6 @@ text {
 
 
 /*记账页面*/
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-} 
 
 .ui-flex {
   display: -webkit-box;
@@ -206,11 +187,15 @@ flex:1;
   height: 20%;
 }
 
-.line{
-  height: 1rpx;/*线高*/
-  /*border-top: 1rpx solid gray;*/
+.line-row {
+  height: 3rpx;/*线高*/
   background: rgba(177, 182, 177, 0.603);/*颜色*/
-  margin: 10rpx;
+  margin: 5rpx;
+}
+.line-column {
+  height: 5rpx;/*线宽*/
+  background: rgba(177, 182, 177, 0.603);/*颜色*/
+  margin: 2rpx;
 }
 .show{
   display: block;
@@ -218,12 +203,5 @@ flex:1;
 .hidden{
   display: none;
 }
-.green-button{
-  background-color: rgb(96, 188, 165);
-  color: white;
-}
-.green-button-p{
-  background-color: rgb(57, 122, 106);
-  color: white;
-}
+
 /*记账页面*/

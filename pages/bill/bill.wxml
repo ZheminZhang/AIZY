@@ -1,82 +1,105 @@
-<view class="navbar">
-  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
-</view>
-
-<view class="flex-wrp" style="flex-direction:row;">
-  <view class="flex-wrp ui-width-70" style="flex-direction:row;">
-    <view class="ui-width-40 ui-mt30">
-      <image class="money-icon ui-ml20" src="/../images/down-circle.png"></image>
-      <text class="ui-ml20">金额:</text>
-    </view>
-    <view class="input-box ui-width-40">
-      <input class="digit-fromat" type="digit" vaule='' bindinput = "digitFunction"/>
-    </view>
-    <view class="ui-mt30">
-      <text class="ui-mr20">元</text>
-    </view>
+<view class='container-BILL'>
+  <view class='tabbar-BILL'>
+    <text id="tabitemVoice" class='tabitem {{activeTabId=="tabitemVoice"?"tabitem-active":""}}' bindtap='tabclick'>语音</text>
+    <text id="tabitemForm" class='tabitem {{activeTabId=="tabitemForm"?"tabitem-active":""}}' bindtap='tabclick'>表单</text>
+    <view class='tabindicator' animation="{{indicatorAnim}}"></view>
   </view>
-  <!--分类按钮-->
-  <view class="category ui-width-30" bindtap="powerDrawer" data-statu="open">
-    <view class="ui-mt30" wx:if="{{currentTab==0}}">
-      <image class="tab-icon" src="{{selectImg}}"></image>
-      {{selectName}}
-    </view>
-    <view class="ui-mt30" wx:if="{{currentTab==1}}">
-      <image class="tab-icon" src="{{in_selectImg}}"></image>
-      {{in_selectName}}
-    </view>
-  </view>
-</view>
 
-<!--日期-->
-<view class="pay-money">
-  <image class="money-icon" src="/../images/down-circle.png"></image>
-  <text class="ui-ml20">日期:</text>
-  <picker class="date-text" mode="date" value="{{date}}" bindchange="onDateChange">
-    <view>{{date}}
-    </view>
-  </picker>
-</view>
+  <swiper class='scrollview-content' current-item-id='{{activeTabId}}' bindchange='tabChange'>
+    <swiper-item item-id="tabitemVoice">
+      <scroll-view scroll-y="true" class="tab-content">
+        <view>语音识别</view>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item item-id="tabitemForm">
+      <scroll-view scroll-y="true" class="tab-content">
+        <view class="Form">
+          <view class="list-BILL-1">
+            <image class="icon-BILL-1" src="../../images/down-circle.png"></image>
+            <text>分类:</text>
+            <input class="weui-input_BILL_1" bindinput="classFunction" type="text"/>
+          </view>
 
-<view class="pay-money">
-  <image class="money-icon" src="/../images/down-circle.png"></image>
-  <text class="ui-ml20">备注:</text>
+          <view class="line-BILL-1"/>
 
-  <input class="ui-ml20 ui-flex-1 input-box-2" bindinput="onInputRemarks" value = "{{remarksText}}" type="text"/>
-</view>
+          <view class="list-BIll-2">
+            <view class="text-BILL-1">
+              <image class="icon-BILL-2" 
+              src="../../images/BILL/YUAN.png"></image>
+              <text>借:</text>
+            </view>
+            <input class="weui-input_BILL_2" type="digit" vaule='' bindinput = "borrowFunction"/>
+            <text class="text-BILL-2">元</text>
+          </view>
 
-<!--完成按钮-->
-<button class="green-button ui-width-80" hover-class="green-button-p" bindtap="confirmData">完成</button>
+          <view class="line-BILL-2"/>
 
-<!--分类弹窗-->
-<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
-<!--content-->
-<!--使用animation属性指定需要执行的动画-->
-<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
-  <!--drawer content-->
-  <view class="drawer_content">
-    <view class="top grid">
-      <view class="list_style" wx:if="{{currentTab==0}}">
-        <view class="content_list" wx:for="{{tabOut}}">
-          <button class="category-bt" bindtap="click_list" data-index="{{index}}">
-            <image class="money-icon" src="/../images/down-circle.png"></image>
-            <view class="font-size">{{item.text}}</view>
-          </button>
+          <view class="list-BIll-2">
+            <view class="text-BILL-1">
+              <image class="icon-BILL-2" 
+              src="../../images/BILL/YUAN.png"></image>
+              <text>贷:</text>
+            </view>
+            <input class="weui-input_BILL_2" type="digit" vaule='' bindinput = "loanFunction"/>
+            <text class="text-BILL-2">元</text>
+          </view>
+
+          <view class="line-BILL-3"/>
+
+          <view class="list-BILL-3">
+            <image class="icon-BILL-3" src="../../images/down-circle.png"></image>
+            <text class="text-BILL-3">日期:</text>
+            <picker class="date-text" mode="date" value="{{date}}" bindchange="onDateChange">
+              <view>{{date}}
+              </view>
+            </picker>
+          </view>
+
+          <view class="line-BILL-4"/>
+
+          <view class="list-BILL-4">
+            <image class="icon-BILL-3" src="../../images/down-circle.png"></image>
+            <text>备注:</text>
+            <input class="weui-input_BILL_3" bindinput="onInputRemarks" type="text"/>
+          </view>
+
+          <!--完成按钮-->
+          <button class="button-BILL-1" hover-class="button-BILL-1-p"  bindtap="confirmData">完成</button>
+          
+          <!--分类弹窗-->
+          <!--view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+          <!--content-->
+          <!--使用animation属性指定需要执行的动画-->
+          <!--view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+            <view class="drawer_content">
+              <view class="top grid">
+                <view class="list_style" wx:if="{{currentTab==0}}">
+                  <view class="content_list" wx:for="{{tabOut}}">
+                    <button class="category-bt" bindtap="click_list" data-index="{{index}}">
+                      <image class="icon-BILL-1" src="../../images/down-circle.png"></image>
+                      <view class="font-size">{{item.text}}</view>
+                    </button>
+                  </view>
+                </view>
+                <view class="list_style" wx:if="{{currentTab==1}}">
+                  <view class="content_list" wx:for="{{in_tabOut}}">
+                    <button class="category-bt" bindtap="in_click_list" data-index="{{index}}">
+                      <image class="icon-BILL-1" src="../../images/down-circle.png"></image>
+                      <view class="font-size">{{item.text}}</view>
+                    </button>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <!--横线-->
+            <!--view class="line-row">
+            </view>
+            <view class="category_ok" bindtap="powerDrawer" data-statu="close">取消</view>
+          </view-->
         </view>
-      </view>
-      <view class="list_style" wx:if="{{currentTab==1}}">
-        <view class="content_list" wx:for="{{in_tabOut}}">
-          <button class="category-bt" bindtap="in_click_list" data-index="{{index}}">
-            <image class="money-icon" src="/../images/down-circle.png"></image>
-            <view class="font-size">{{item.text}}</view>
-          </button>
-        </view>
-      </view>
-    </view>
-  </view>
-  <!--横线-->
-  <view class="line">
-  </view>
-  <view class="category_ok" bindtap="powerDrawer" data-statu="close">取消</view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
 </view>
+
 
