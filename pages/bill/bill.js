@@ -19,6 +19,9 @@ Page({
     money_bor: 0.00,      //借
     money_loan: 0.00,     //贷
     remarksText: "",      //备注
+    navbar: ['支出', '收入'],
+    currentTab: 0,
+    money: 0.00,    //金额
     date: "",       //日期
   },
 
@@ -83,9 +86,10 @@ Page({
   //分类信息输入
   classFunction: function (e) {
     var text = e.detail.value;
-    this.setData({
-      classification: text,
-    })
+    this.data.classification = text;
+    // this.setData({
+    //   classification: text,
+    // })
   },
   //金额，借
   borrowFunction: function(e) {
@@ -125,28 +129,28 @@ Page({
       return;
     }
 
-  //记录
-    let value = [];
-    try {
-      value = wx.getStorageSync('Bill')
-    } catch (e) {
-    }
-    if (value == "") {
-      value = [];
-    }
-    let json =
-    {
-      classification: that.data.classification,
-      money_bor: that.data.money_bor,
-      money_loan: that.data.money_loan,
-      date: that.data.date,
-      remarks: that.data.remarksText,
-    };
-    value.push(json);
-    try {
-      wx.setStorageSync('Bill', value)
-    } catch (e) {
-    }
+    //记录
+    // let value = [];
+    // try {
+    //   value = wx.getStorageSync('Bill')
+    // } catch (e) {
+    // }
+    // if (value == "") {
+    //   value = [];
+    // }
+    // let json =
+    // {
+    //   classification: that.data.classification,
+    //   money_bor: that.data.money_bor,
+    //   money_loan: that.data.money_loan,
+    //   date: that.data.date,
+    //   remarks: that.data.remarksText,
+    // };
+    // value.push(json);
+    // try {
+    //   wx.setStorageSync('Bill', value)
+    // } catch (e) {
+    // }
     wx.showToast({
       title: '记账成功',
       icon: 'success',
@@ -166,8 +170,6 @@ Page({
     this.initRecord()
   },
   onReady: function () {
-    // 页面初次渲染完成
-
     /* 滑动动画相关 */
     var query = wx.createSelectorQuery().in(this),
       _this = this;
@@ -192,35 +194,4 @@ Page({
       date: util.formatTime(new Date(), "yyyy-MM-dd"),
     });
   },
-  onShow: function () {
-    // 页面显示
-  },
-  onHide: function () {
-    // 页面隐藏
-  },
-  onUnload: function () {
-    // 页面卸载
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
-

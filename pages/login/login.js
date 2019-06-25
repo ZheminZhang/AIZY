@@ -1,18 +1,17 @@
 /** index.js **/
-
 //获取app实例
 const app = getApp();
 
 Page({
   data: {
-    userInfo: {},   // 用户信息
+    userInfo: {},           // 用户信息
     hasLogin: wx.getStorageSync('loginFlag')
       ? true
-      : false,     // 是否登录，根据后台返回的skey判断
-    numApply: 0,
-    showModalStatus: false,
-    modalShow:false,
-    imageUrl:'../../images/coin.png'
+      : false,              // 是否登录，根据后台返回的skey判断
+    numApply: 0,            // TODO:显示在页面上的申请人数量
+    showModalStatus: false, // 模态弹窗
+    imageUrl:'../../images/coin.png', //未登录的头像
+    timeIDs: new Array()    // TODO:清除计时器
   },
   
   // 检查本地 storage 中是否有skey登录态标识
@@ -50,7 +49,7 @@ Page({
   doLogin: function () {
     let that = this;
     wx.showLoading({
-      title: '登录中...',
+      title: '请稍等...',
       mask: true
     });
     app.doLogin(that.getUserInfo);
@@ -98,13 +97,6 @@ Page({
     }
   },
 
-  // 未登录模态弹窗函数
-  modalConfirm:function () {
-    this.setData({
-      modalShow: false
-    })
-  },
-
   onLoad: function () {
     this.checkLoginStatus();
   },
@@ -125,7 +117,7 @@ Page({
     });
   },
 
-  // 动画1
+  // 动画
   powerDrawer: function (e) {
     var currentStatu = e.currentTarget.dataset.statu;
     this.util(currentStatu)
@@ -151,7 +143,7 @@ Page({
     })
 
     // 第5步：设置定时器到指定时候后，执行第二组动画
-    setTimeout(function () {
+    this.data.timeIDs[0] = setTimeout(function () {
       // 执行第二组动画
       animation.opacity(1).rotateX(0).step();
       // 给数据对象储存的第一组动画，更替为执行完第二组动画的动画对象
@@ -176,6 +168,16 @@ Page({
           showModalStatus: true,
         }
       );
+    }
+  },
+  onUnload: function () {
+    for (var i = 0; i < this.data.timeIDs.length; i++) {
+      clearTimeout(this.data.timeIDs[i]);
+    }
+  },
+  onHide: function () {
+    for (var i = 0; i < this.data.timeIDs.length; i++) {
+      clearTimeout(this.data.timeIDs[i]);
     }
   }
 })

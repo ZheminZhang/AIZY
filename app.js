@@ -10,33 +10,8 @@ App({
   /* 监听小程序启动或切前台
      向后台request，得到数据存入storage */
   onShow: function(options) {
-    wx.request({
-      url: api.manageUrl + "?type=authorized",
-      success: function (res) {
-        /* 读取并存储已授权列表 */
-        wx.setStorageSync('User_Data_Author', "");
-        wx.setStorageSync('User_Data_Author', res.data.authorized);
-
-        /* 读取并存储申请列表 */
-        wx.setStorageSync('User_Data_Application', "");
-        wx.setStorageSync('User_Data_Application', res.data.unauthorized);
-      },
-      fail: function (res) {
-        console.log(res)
-      }
-    })
-    // wx.showToast({
-    //   title: '数据拉取成功',
-    //   icon: 'success',
-    //   duration: 500,
-    //   success: function () {
-    //     setTimeout(function () {
-    //       wx.navigateBack({
-    //         delta: 1
-    //       })
-    //     }, 500)
-    //   }
-    // });
+    this.getPermintedList();
+    this.getApplyList();
   },
 
   // 检查本地 storage 中是否有登录态标识
@@ -120,7 +95,6 @@ App({
                 }
               });
             },
-
             fail: function (error) {
               // 获取 userInfo 失败，去检查是否未开启权限
               wx.hideLoading();
@@ -162,22 +136,38 @@ App({
     });
   },
 
-
   // 获取用户登录标示 供全局调用
   getLoginFlag: function () {
     return wx.getStorageSync('loginFlag');
   },
 
-  // TODO:获取用户的授权用户列表信息
+  // 获取用户的授权用户列表信息
   getPermintedList: function () {
-
+    wx.request({
+      url: api.manageUrl + "?type=authorized",
+      success: function (res) {
+        /* 读取并存储已授权列表 */
+        wx.setStorageSync('User_Data_Author', "");
+        wx.setStorageSync('User_Data_Author', res.data.authorized);
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    })
   },
-  // TODO:获取用户的申请列表
   getApplyList: function () {
-    
+    wx.request({
+      url: api.manageUrl + "?type=authorized",
+      success: function (res) {
+        /* 读取并存储申请列表 */
+        wx.setStorageSync('User_Data_Application', "");
+        wx.setStorageSync('User_Data_Application', res.data.unauthorized);
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    })
   },
-
-  // TODO:获取用户个人账单统计
 
   // 封装 wx.showToast 方法
   showInfo: function (info = 'error', icon = 'none') {

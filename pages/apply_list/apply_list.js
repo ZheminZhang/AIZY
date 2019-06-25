@@ -4,12 +4,9 @@ Page({
     tabitemConsume: {},
     tabitemRecharge: {},
     activeTabId: null,
-    //navbar: ['已授权', '申请'],
     currentTab: 0,
-    author: [
-    ],
-    application: [
-    ],
+    author: [],
+    application: [],
   },
   navbarTap: function (e) {
     this.setData({
@@ -19,14 +16,12 @@ Page({
 
   tabChange(e) {
     if (e.detail.source == "touch") {
-      var id = e.detail.currentItemId;
-      this.setActiveTab(id);
+      this.setActiveTab(e.detail.currentItemId);
     }
   },
 
   tabclick(e) {
-    var id = e.target.id;
-    this.setActiveTab(id);
+    this.setActiveTab(e.target.id);
   },
 
   setActiveTab(id) {
