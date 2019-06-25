@@ -1,11 +1,18 @@
 // pages/record-expend/record-expend.js
 var util = require('../../utils/util.js')
 
+// 获取全局唯一的语音识别管理器
+const plugin = requirePlugin("WechatSI")
+const manager = plugin.getRecordRecognitionManager()
+
 Page({
   data: {
     tabitemVoice: {},
     tabitemForm: {},
     activeTabId: null,
+
+    /* 语音识别信息 */
+    currentText: '',      //识别内容
 
     /* 记账相关信息 */
     classification: "",   //分类信息
@@ -41,6 +48,41 @@ Page({
     }
   },
 
+  /* 语音识别页面 */
+
+  //开始与结束识别语音
+  streamRecord: function () {
+    manager.start({
+      lang: 'zh_CN',
+    })
+  },
+  streamRecordEnd: function () {
+    manager.stop()
+  },
+
+  initRecord: function () {
+    //有新的识别内容返回，则会调用此事件
+    manager.onRecognize = (res) => {
+      let text = res.result
+      this.setData({
+        currentText: text,
+      })
+    }
+    // 识别结束事件
+    manager.onStop = (res) => {
+      let text = res.result
+      if (text == '') {
+        // 用户没有说话，可以做一下提示处理...
+        return
+      }
+      this.setData({
+        currentText: text,
+      })
+    }
+  },
+
+
+  /* 表单页面 */
   //分类信息输入
   classFunction: function (e) {
     var text = e.detail.value;
@@ -125,6 +167,7 @@ Page({
 
   onLoad: function (options) {
     // 页面加载 options为页面跳转所带来的参数
+    this.initRecord()
   },
   onReady: function () {
     /* 滑动动画相关 */
@@ -149,7 +192,6 @@ Page({
 
     this.setData({
       date: util.formatTime(new Date(), "yyyy-MM-dd"),
-      todayDate: util.formatTime(new Date(), "yyyy-MM-dd"),
     });
   },
 })

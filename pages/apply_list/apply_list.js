@@ -45,7 +45,7 @@ Page({
     var query = wx.createSelectorQuery().in(this),
       _this = this;
     _this.animation = wx.createAnimation({
-      duration: 300,  //动画持续时间
+      duration: 500,  //动画持续时间
       timingFunction: "ease",  //动画效果
     })
     query.select('#tabitemConsume').boundingClientRect(function (rect) {
