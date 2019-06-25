@@ -58,7 +58,8 @@
       </view>
     </form>
   </view>
-   <button  type="primary">Submit</button>
+   <button  class="button-BILL-1" hover-class="button-BILL-1-p"  bindtap="formSubmit">完成</button>
+   <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>
 </view>
 
 
@@ -79,7 +80,7 @@
   <view class="drawer_title">收入</view>
   <view class="sele_bill">
     <view wx:for-items="{{in_tabOut}}">
-      <view class="billType" style="{{item.done?'background-color:red':'background-color:white'}}" bindtap="click_bill_1" data-index="{{index}}">
+      <view class="billType" style="{{item.done?'background-color:rgba(96, 223, 191, 0.534)':'background-color:white'}}" bindtap="click_bill_1" data-index="{{index}}">
         <text class="text_type">{{item.text}}</text>
       </view>
     </view>

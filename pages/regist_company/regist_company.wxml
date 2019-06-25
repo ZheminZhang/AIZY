@@ -27,12 +27,9 @@
     </view>
       </view>
       <view class="button_position">
-      <view class="btn-area">
-        <button type="primary" formType="submit" >Submit</button>
-        </view>
-        <view class="btn-area">
-        <button formType="reset">Reset</button>
-      </view>
+     
+      <button  class="button-BILL-1" hover-class="button-BILL-1-p"  bindtap="getMessage" formType="submit" >Submit</button>
+        <button   class="button-BILL0" hover-class="button-BILL-1-p"   bindtap="getMessage"formType="reset">Reset</button>
       </view>
     </form>
   </view>

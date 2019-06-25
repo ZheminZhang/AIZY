@@ -1,4 +1,5 @@
 // pages/query/query.js
+const api = require('../../config/config.js');
 Page({
   data: {
     disabled_name: false,
@@ -21,8 +22,33 @@ Page({
       { 'id': 1, 'text': '股票', 'done':false},
     ],
   },
+  getPhoneNumber(e) {
+    console.log(e.detail.errMsg)
+    console.log(e.detail.iv)
+    console.log(e.detail.encryptedData)
+  },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e)
+    wx.request({
+      url: api.queryUrl,
+      data: {
+        "token": "xx",
+        "name": 1,
+        "start_date": this.data.start_date,
+        "end_date": this.data.end_date,
+        "types": JSON.stringify([1,2])
+      },
+      method: 'POST',
+      // header:{
+      //   "Content-Type":"application/json",
+      // },
+      success: function (res) {
+        console.log(res);
+      },
+      fail: function (res) {
+        console.log(res);
+      }
+    })
   },
   bindDateChange: function (e) {
     if(e.target.id == 'start_date'){
@@ -79,6 +105,7 @@ Page({
       [it]: false,
     });
   },
+
   powerDrawer: function (e) {
     var currentStatu = e.currentTarget.dataset.statu;
     this.util(currentStatu)
