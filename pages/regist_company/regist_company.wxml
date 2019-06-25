@@ -29,7 +29,6 @@
       <view class="button_position">
      
       <button  class="button-BILL-1" hover-class="button-BILL-1-p"  bindtap="getMessage" formType="submit" >Submit</button>
-        <button   class="button-BILL0" hover-class="button-BILL-1-p"   bindtap="getMessage"formType="reset">Reset</button>
       </view>
     </form>
   </view>

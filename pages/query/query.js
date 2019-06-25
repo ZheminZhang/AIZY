@@ -22,7 +22,7 @@ Page({
       { 'id': 1, 'text': '股票', 'done':false},
     ],
   },
-
+ 
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e)
     wx.request({
