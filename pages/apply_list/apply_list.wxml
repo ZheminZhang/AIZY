@@ -1,32 +1,41 @@
 <!--pages/apply_list_1/apply_list.wxml-->
-<!--导航条-->
-<view class="navbar">
-  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
+<view class='tabbar-APPL'>
+  <text id="tabitemRecharge" class='tabitem {{activeTabId=="tabitemRecharge"?"tabitem-active":""}}' bindtap='tabclick'>已授权</text>
+  <text id="tabitemConsume" class='tabitem {{activeTabId=="tabitemConsume"?"tabitem-active":""}}' bindtap='tabclick'>申请</text>
+  <view class='tabindicator' animation="{{indicatorAnim}}"></view>
 </view>
 
-<!-- 已授权 -->
-<view hidden="{{currentTab!==0}}">
-  <view class="container">
-    <view  wx:for="{{author}}">
-      <view class="client_info" bindtap='toDetail' id="{{item.id}}" data-tp="1">
-        <image src="../../images/head.png" class="userinfo-avatar" background-size="cover" ></image>
-        <view class="name">{{item.name}}</view>
-        <view class="btn_accept" hover="true" hover-class="btn_accept_hover" bindtap="agree">接受</view>
+<swiper class='scrollview-content' current-item-id='{{activeTabId}}' bindchange='tabChange'>
+  <swiper-item item-id="tabitemRecharge">
+    <scroll-view scroll-y="true" class="tab-content recharge-list">
+      <!-- 已授权 -->
+      <view hidden="{{currentTab!==0}}">
+        <view class="container">
+          <view  wx:for="{{author}}">
+            <view class="client_info" bindtap='toDetail' id="{{item.id}}" data-tp="1">
+              <image src="../../images/apply_list/author.png" class="userinfo-avatar" background-size="cover" ></image>
+              <view class="name">{{item.name}}</view>
+              <view class="btn_accept" hover="true" hover-class="btn_accept_hover" bindtap="agree">接受</view>
+            </view>
+          </view>
+        </view>
       </view>
-    </view>
-  </view>
-</view>
+    </scroll-view>
+  </swiper-item>
+  <swiper-item item-id="tabitemConsume">
+    <scroll-view scroll-y="true" class="tab-content recharge-list">
+      <!-- 申请 -->
+      <view class="container">
+        <view  wx:for="{{application}}">
+          <view class="client_info" bindtap='toDetail' id="{{item.id}}" data-tp="2">
+            <image src="../../images/apply_list/application.png" class="userinfo-avatar" background-size="cover" ></image>
+            <view class="name">{{item.name}}</view>
+            <view class="btn_accept" hover="true" hover-class="btn_accept_hover" bindtap="agree">接受</view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+</swiper>
 
 
-<!-- 申请 -->
-<view hidden="{{currentTab!==1}}">
-  <view class="container">
-  <view  wx:for="{{application}}">
-     <view class="client_info" bindtap='toDetail' id="{{item.id}}" data-tp="2">
-      <image src="../../images/head1.png" class="userinfo-avatar" background-size="cover" ></image>
-      <view class="name">{{item.name}}</view>
-      <view class="btn_accept" hover="true" hover-class="btn_accept_hover" bindtap="agree">接受</view>
-    </view>
-  </view>
- </view>
-</view>
