@@ -4,6 +4,43 @@ page{
   flex-direction: column;
   height: 100%;
 }
+
+.tabbar-APPL {
+  height: 80rpx;
+  background-color: #8992c8;
+  color: #fff;
+  font-size: 30rpx;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+.tabitem {
+  width: 120rpx;
+  text-align: center;
+  color: #e0e0e0;
+  font-weight: 400;
+}
+.tabitem-active {
+  color: #fff;
+}
+.tabindicator {
+  position: absolute;
+  width: 0rpx;
+  height: 6rpx;
+  background-color: #fff;
+  bottom: 0;
+  left: 0;
+}
+.tab-content {
+  height: 100%;
+}
+
+.scrollview-content {
+  flex: 1;
+}
+
 .navbar{
   flex: none;
   display: flex;
@@ -38,8 +75,8 @@ page{
   align-items: center;
 }
 .userinfo-avatar {
-  width: 120rpx;
-  height: 120rpx;
+  width: 70rpx;
+  height: 70rpx;
   margin-top:5rpx; 
   border-radius: 50%;
 }
@@ -68,4 +105,11 @@ page{
   vertical-align: center;
   justify-content: center;
   display: flex;
+}
+
+/* 隐藏滚动条 */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
 }
