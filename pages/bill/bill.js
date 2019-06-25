@@ -15,7 +15,7 @@ Page({
 
     navbar: ['支出', '收入'],
     currentTab: 0,
-    money: 0.00,  //金额
+    money: 0.00,    //金额
     date: "",       //日期
   },
 
@@ -43,9 +43,10 @@ Page({
   //分类信息输入
   classFunction: function (e) {
     var text = e.detail.value;
-    this.setData({
-      classification: text,
-    })
+    this.data.classification = text;
+    // this.setData({
+    //   classification: text,
+    // })
   },
   //金额，借
   borrowFunction: function(e) {

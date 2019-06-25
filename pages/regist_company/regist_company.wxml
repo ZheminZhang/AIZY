@@ -13,7 +13,14 @@
       <view class="page-section">
       <view class="page-section-title">电话</view>
             <view class="weui-cell__bd">
-              <input class="weui-input" name="contract_content" placeholder="" />
+              <input class="weui-input" name="contract_content" bindinput="getPhoneNumber" value="{{phone}}" placeholder="" />
+            </view>
+      </view>
+      <view class="page-section">
+      <view class="page-section-title">验证码</view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name="contract_content" placeholder="" bindinput="getCodeValue" value="{{code}}" />
+              <button class='codeBtn' bindtap='getVerificationCode' disabled='{{disabled}}'>{{codename}}</button>
             </view>
       </view>
       <!-- 经营范围 -->
@@ -26,11 +33,8 @@
         </radio-group>
     </view>
       </view>
-      <view class="button_position">
-     
-      <button  class="button-BILL-1" hover-class="button-BILL-1-p"  bindtap="getMessage" formType="submit" >Submit</button>
-      </view>
     </form>
   </view>
+  <button  class="button-BILL-1" hover-class="button-BILL-1-p"  bindtap="getMessage" formType="submit" >Submit</button>
 </view>
 

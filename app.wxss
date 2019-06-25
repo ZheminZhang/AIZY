@@ -203,5 +203,3 @@ flex:1;
 .hidden{
   display: none;
 }
-
-/*记账页面*/

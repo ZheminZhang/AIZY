@@ -12,7 +12,8 @@ Page({
     numApply: 0,
     showModalStatus: false,
     modalShow:false,
-    imageUrl:'../../images/coin.png'
+    imageUrl:'../../images/coin.png',
+    timeIDs: new Array()
   },
   
   // 检查本地 storage 中是否有skey登录态标识
@@ -151,7 +152,7 @@ Page({
     })
 
     // 第5步：设置定时器到指定时候后，执行第二组动画
-    setTimeout(function () {
+    this.data.timeIDs[0] = setTimeout(function () {
       // 执行第二组动画
       animation.opacity(1).rotateX(0).step();
       // 给数据对象储存的第一组动画，更替为执行完第二组动画的动画对象
@@ -176,6 +177,16 @@ Page({
           showModalStatus: true,
         }
       );
+    }
+  },
+  onUnload: function () {
+    for (var i = 0; i < timeIDs.length; i++) {
+      clearTimeout(timeIDs[i]);
+    }
+  },
+  onHide: function () {
+    for (var i = 0; i < timeIDs.length; i++) {
+      clearTimeout(timeIDs[i]);
     }
   }
 })
