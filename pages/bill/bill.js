@@ -79,6 +79,7 @@ Page({
     if (parseFloat(that.data.money_bor) <= 0 || parseFloat(that.data.money_loan) <= 0) {
       wx.showToast({
         title: '请输入金额',
+        icon:'none',
         duration: 1500
       });
       return;
