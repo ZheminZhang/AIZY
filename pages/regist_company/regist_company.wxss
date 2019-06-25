@@ -13,9 +13,12 @@ form{
   position: relative;
   right:10rpx;
 }
-.page-body{
+.page-section{
+  margin-bottom: 40rpx;
+  display: flex;
+  flex-wrap:nowrap;
   position: relative;
-  top:100rpx;
+  left:50rpx;
 }
 .select_sell{
   position: relative;

@@ -1,17 +1,17 @@
 <view class='container-BILL'>
   <view class='tabbar-BILL'>
-    <text id="tabitemRecharge" class='tabitem {{activeTabId=="tabitemRecharge"?"tabitem-active":""}}' bindtap='tabclick'>语音</text>
-    <text id="tabitemConsume" class='tabitem {{activeTabId=="tabitemConsume"?"tabitem-active":""}}' bindtap='tabclick'>表单</text>
+    <text id="tabitemVoice" class='tabitem {{activeTabId=="tabitemVoice"?"tabitem-active":""}}' bindtap='tabclick'>语音</text>
+    <text id="tabitemForm" class='tabitem {{activeTabId=="tabitemForm"?"tabitem-active":""}}' bindtap='tabclick'>表单</text>
     <view class='tabindicator' animation="{{indicatorAnim}}"></view>
   </view>
 
   <swiper class='scrollview-content' current-item-id='{{activeTabId}}' bindchange='tabChange'>
-    <swiper-item item-id="tabitemRecharge">
+    <swiper-item item-id="tabitemVoice">
       <scroll-view scroll-y="true" class="tab-content">
         <view>语音识别</view>
       </scroll-view>
     </swiper-item>
-    <swiper-item item-id="tabitemConsume">
+    <swiper-item item-id="tabitemForm">
       <scroll-view scroll-y="true" class="tab-content">
         <view class="Form">
           <view class="list-BILL-1">

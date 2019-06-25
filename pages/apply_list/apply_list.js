@@ -15,7 +15,9 @@ Page({
   },
 
   tabChange(e) {
-    this.setActiveTab(e.detail.currentItemId);
+    if (e.detail.source == "touch") {
+      this.setActiveTab(e.detail.currentItemId);
+    }
   },
 
   tabclick(e) {
