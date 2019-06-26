@@ -15,7 +15,7 @@
             <view class="client_info" bindtap='toDetail' id="{{item.id}}" data-tp="1">
               <image src="../../images/apply_list/author.png" class="userinfo-avatar" background-size="cover" ></image>
               <view class="name">{{item.name}}</view>
-              <view class="btn_accept" hover="true" hover-class="btn_accept_hover" bindtap="agree">接受</view>
+              
             </view>
           </view>
         </view>

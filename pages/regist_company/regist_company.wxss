@@ -9,7 +9,6 @@ form{
   margin-left: 200rpx;
   width: 40%;
 }
-
 .select_sell{
   position: relative;
   left:50rpx;
