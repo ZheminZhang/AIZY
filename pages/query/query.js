@@ -7,6 +7,7 @@ Page({
     end_date: '2019-06-01',
     begin: '2000-06-01',
     end: '2100-06-01',
+    name:'',
     tabOut: [
       { 'id': 0, 'text': '餐饮', 'done': false},
       { 'id': 1, 'text': '娱乐', 'done': false},
@@ -25,6 +26,8 @@ Page({
  
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e)
+    var begTime = new Date(this.data.start_date).getTime();
+    var endTime = new Date(this.data.end_date).getTime();
     wx.request({
       url: api.queryUrl,
       method: 'POST',
@@ -32,10 +35,10 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: {
-        "name": "user1",
+        "name": this.data.name,
         "querierId": "user1",
-        "start_date": 1000,//this.data.start_date,
-        "end_date": 1210//this.data.end_date,
+        "start_date": begTime,//this.data.start_date,
+        "end_date": endTime//this.data.end_date,
         //"types": JSON.stringify([1, 2])
       },
       success: function (e) {
@@ -45,6 +48,8 @@ Page({
         console.log(e);
       }
     })
+    console.log(begTime);
+    console.log(endTime);
   },
   bindDateChange: function (e) {
     if(e.target.id == 'start_date'){
@@ -57,6 +62,12 @@ Page({
         end_date: e.detail.value
       })
     }
+  },
+  getName:function(e){
+      this.setData({
+        name: e.detail.value,
+      })
+      console.log(this.data.name);
   },
   click_bill_0:function(e){
     var id = e.currentTarget.dataset.index;

@@ -82,6 +82,7 @@ Page({
   },
 
 
+
   /* 表单页面 */
   //分类信息输入
   classFunction: function (e) {

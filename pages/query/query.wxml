@@ -6,9 +6,9 @@
       <view class="page-section">
         <view class="page-section-title">查询对象</view>
         <view class="weui-cell__bd">
-          <input class="weui-input" name="name" placeholder="请输入查询对象" disabled='{{disabled_name}}' />
+          <input class="weui-input" name="name" placeholder="请输入查询对象" disabled='{{disabled_name}}' bindinput='getName'  />
         </view>
-
+        
       </view>
       <!-- 账单类型 -->
       <view class="page-section">

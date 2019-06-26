@@ -25,6 +25,7 @@ Page({
   },
   bindPhoneInput:function(e){
     var val = e.detail.value;
+    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/
     if(val[0]!='1'||val.length>11)
      {
       this.setData({
@@ -38,17 +39,17 @@ Page({
      }
      else if(val.length==11)
     {
-      this.setData({
-        phone: val
-      })
-      if (val != '') {
+      if(!myreg.test(val)){
+        wx.showToast({
+          title: '手机格式错误',
+          icon:'none'
+        })
+      }
+      else{
         this.setData({
+          phone: val,
           hidden: false,
           btnValue: '获取验证码'
-        })
-      } else {
-        this.setData({
-          hidden: true
         })
       }
     }
