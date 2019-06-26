@@ -9,6 +9,7 @@ form{
   margin-left: 200rpx;
   width: 40%;
 }
+
 .select_sell{
   position: relative;
   left:50rpx;
@@ -20,7 +21,6 @@ form{
   height: 80rpx;
   line-height: 80rpx;
   margin-left:80rpx;
-
 }
 .line-BILL{
 margin:25rpx 30rpx 25rpx 30rpx;

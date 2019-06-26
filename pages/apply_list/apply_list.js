@@ -4,12 +4,9 @@ Page({
     tabitemConsume: {},
     tabitemRecharge: {},
     activeTabId: null,
-    //navbar: ['已授权', '申请'],
     currentTab: 0,
-    author: [
-    ],
-    application: [
-    ],
+    author: [],
+    application: [],
   },
   navbarTap: function (e) {
     this.setData({
@@ -19,14 +16,12 @@ Page({
 
   tabChange(e) {
     if (e.detail.source == "touch") {
-      var id = e.detail.currentItemId;
-      this.setActiveTab(id);
+      this.setActiveTab(e.detail.currentItemId);
     }
   },
 
   tabclick(e) {
-    var id = e.target.id;
-    this.setActiveTab(id);
+    this.setActiveTab(e.target.id);
   },
 
   setActiveTab(id) {
@@ -50,7 +45,7 @@ Page({
     var query = wx.createSelectorQuery().in(this),
       _this = this;
     _this.animation = wx.createAnimation({
-      duration: 300,  //动画持续时间
+      duration: 500,  //动画持续时间
       timingFunction: "ease",  //动画效果
     })
     query.select('#tabitemConsume').boundingClientRect(function (rect) {

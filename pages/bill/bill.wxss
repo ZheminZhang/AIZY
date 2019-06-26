@@ -18,6 +18,44 @@ page {
   box-sizing: border-box;
 }
 
+.section-body{
+  word-wrap: break-word;
+  position: relative;
+  background: #FFFFFF;
+  box-shadow: 0 2px 16px 2px rgba(0,0,0,0.03);
+  padding:50rpx 60rpx;
+  box-sizing: border-box;
+  min-height: 260rpx;
+  margin: 40rpx;
+}
+.message {
+  position: relative;
+  padding: 0 2px;
+}
+
+
+.text-SR-2  {
+  width:200rpx;
+  height:80rpx;
+  font-size:32rpx;
+  margin-left:90rpx;
+  }
+
+.view-SR-1 {
+  margin: 450rpx 0rpx 0rpx 225rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  bottom: 50rpx;
+}
+.view-SR-2 {
+}
+.icon-SR {
+  height: 90rpx;
+  width: 90rpx;
+}
+
 .tabbar-BILL {
   height: 80rpx;
   background-color: #8992c8;
@@ -34,46 +72,6 @@ page {
   display: flex;
   flex-direction: column;
 }
-
-.flex-row {
-  display: flex;
-  flex-direction: row;
-}
-
-.flex-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.list-item {
-  height: 120rpx;
-  line-height: 120rpx;
-  align-items: center;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.list-item-l {
-  flex: 1;
-  align-items: center;
-}
-
-.list-item-r {
-  margin-left: auto;
-  padding: 0 10rpx;
-}
-
-.list-item-r .icon-left1 {
-  color: #90aac8;
-}
-
-.border-radius {
-  border-radius: 20rpx;
-}
-
-page, .container {
-  height: 100%;
-}
-
 
 .tabitem {
   width: 120rpx;
@@ -120,6 +118,7 @@ page, .container {
   background-color:white;
   position:absolute;
   left:165rpx;
+  box-shadow: 0 2px 16px 2px rgba(0,0,0,0.03);
 }
 .weui-input_BILL_2 {
   height:80rpx;
@@ -129,6 +128,7 @@ page, .container {
   background-color:white;
   position:absolute;
   left:165rpx;
+  box-shadow: 0 2px 16px 2px rgba(0,0,0,0.03);
 }
 .weui-input_BILL_3 {
   height:80rpx;
@@ -138,6 +138,7 @@ page, .container {
   background-color:white;
   position:absolute;
   left:165rpx;
+  box-shadow: 0 2px 16px 2px rgba(0,0,0,0.03);
 }
 
 .line-BILL-1 {
@@ -159,11 +160,6 @@ page, .container {
   margin:-5rpx 30rpx 10rpx 30rpx;
   height:2rpx;
   background: rgba(177,182,177,0.603);
-}
-
-.flex-wrp {
-  height: 100rpx;
-  display: flex;
 }
 
 .list-BILL-1 {
@@ -212,134 +208,6 @@ page, .container {
   flex: 1;
   text-align: end;
   margin-right: 36rpx;
-}
-
-.category {
-  text-align: center;
-}
- 
-/*mask*/
-.drawer_screen {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  background: #000;
-  opacity: 0.5;
-  overflow: hidden;
-}
- 
-/*content*/
-.drawer_box {
-  width: 650rpx;
-  height: 800rpx;
-  /*overflow: auto;*/
-  position: fixed;
-  top: 50%;
-  left: 0;
-  z-index: 1001;
-  background: #FAFAFA;
-  margin: -150px 50rpx 0 50rpx;
-  border-radius: 3px;
-}
-
-.drawer_title{
-  padding:15px;
-  font: 20px "microsoft yahei";
-  text-align: center;
-}
-.drawer_content {
-  height: 680rpx;
-  overflow-y: scroll; /*超出父盒子高度可滚动*/
-}
-
-.list_style {
-  display: flex;
-  flex-direction: row;
-  flex-wrap:wrap;
-}
-
-.content_list{
-  width:28%;
-  margin-right:2%;
-  margin-left:3%;
-  margin-bottom:15rpx;
-}
-
-.category_ok{
-  padding: 10px;
-  height: 70rpx;
-  font: 15px "microsoft yahei";
-  text-align: center;
-  /*border-top: 1px solid #E8E8EA;*/
-  color: #3CC51F;
-}
- 
-.top{
-	padding-top:8px;
-}
-.bottom {
-	padding-bottom:8px;
-}
-.title {
-	height: 30px;
-	line-height: 30px;
-	width: 160rpx;
-	text-align: center;
-	display: flex;
-  flex-direction: column;
-	font: 300 28rpx/30px "microsoft yahei";
-}
- 
-.input_base {
-	border: 2rpx solid #ccc;
-	padding-left: 10rpx;
-	margin-right: 50rpx;
-}
-.input_h30{
-	height: 30px;
-	line-height: 30px;
-}
-.input_h60{
-	height: 60px;
-}
-.input_view{
-	font: 12px "microsoft yahei";
-	background: #fff;
-	color:#000;
-	line-height: 30px;
-}
-
-.input {
-  height: 100rpx;
-	font: 12px "microsoft yahei";
-	background: #fff;
-	color:#000 ;
-}
-.input-box {
-  border-width: 2rpx;
-  border-color: black;
-  border-style: solid;
-  height:70rpx;
-  width: 300rpx;
-  margin-top: 20rpx;
-  margin-right: 30rpx;
-}
-.input-box-2 {
-  border-width: 2rpx;
-  border-color: black;
-  border-style: solid;
-  height:70rpx;
-  width: 300rpx;
-  margin-right: 30rpx;
-}
-
-.grid { display: -webkit-box; display: flex; flex-direction: column;}
-.font-size {-webkit-box-flex:0;box-flex:0;font-size:30rpx;}
-.category-bt::after {
-  border: none;
 }
 
 .button-BILL-1{
