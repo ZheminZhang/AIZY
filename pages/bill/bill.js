@@ -1,17 +1,27 @@
 // pages/record-expend/record-expend.js
 var util = require('../../utils/util.js')
 
+// 获取全局唯一的语音识别管理器
+const plugin = requirePlugin("WechatSI")
+const manager = plugin.getRecordRecognitionManager()
+
 Page({
   data: {
     tabitemVoice: {},
     tabitemForm: {},
     activeTabId: null,
 
+    /* 语音识别信息 */
+    currentText: '',      //识别内容
+
     /* 记账相关信息 */
     classification: "",   //分类信息
     money_bor: 0.00,      //借
     money_loan: 0.00,     //贷
     remarksText: "",      //备注
+    navbar: ['支出', '收入'],
+    currentTab: 0,
+    money: 0.00,    //金额
     date: "",       //日期
   },
 
@@ -38,12 +48,48 @@ Page({
     }
   },
 
+  /* 语音识别页面 */
+
+  //开始与结束识别语音
+  streamRecord: function () {
+    manager.start({
+      lang: 'zh_CN',
+    })
+  },
+  streamRecordEnd: function () {
+    manager.stop()
+  },
+
+  initRecord: function () {
+    //有新的识别内容返回，则会调用此事件
+    manager.onRecognize = (res) => {
+      let text = res.result
+      this.setData({
+        currentText: text,
+      })
+    }
+    // 识别结束事件
+    manager.onStop = (res) => {
+      let text = res.result
+      if (text == '') {
+        // 用户没有说话，可以做一下提示处理...
+        return
+      }
+      this.setData({
+        currentText: text,
+      })
+    }
+  },
+
+
+  /* 表单页面 */
   //分类信息输入
   classFunction: function (e) {
     var text = e.detail.value;
-    this.setData({
-      classification: text,
-    })
+    this.data.classification = text;
+    // this.setData({
+    //   classification: text,
+    // })
   },
   //金额，借
   borrowFunction: function(e) {
@@ -83,28 +129,28 @@ Page({
       return;
     }
 
-  //记录
-    let value = [];
-    try {
-      value = wx.getStorageSync('Bill')
-    } catch (e) {
-    }
-    if (value == "") {
-      value = [];
-    }
-    let json =
-    {
-      classification: that.data.classification,
-      money_bor: that.data.money_bor,
-      money_loan: that.data.money_loan,
-      date: that.data.date,
-      remarks: that.data.remarksText,
-    };
-    value.push(json);
-    try {
-      wx.setStorageSync('Bill', value)
-    } catch (e) {
-    }
+    //记录
+    // let value = [];
+    // try {
+    //   value = wx.getStorageSync('Bill')
+    // } catch (e) {
+    // }
+    // if (value == "") {
+    //   value = [];
+    // }
+    // let json =
+    // {
+    //   classification: that.data.classification,
+    //   money_bor: that.data.money_bor,
+    //   money_loan: that.data.money_loan,
+    //   date: that.data.date,
+    //   remarks: that.data.remarksText,
+    // };
+    // value.push(json);
+    // try {
+    //   wx.setStorageSync('Bill', value)
+    // } catch (e) {
+    // }
     wx.showToast({
       title: '记账成功',
       icon: 'success',
@@ -121,10 +167,9 @@ Page({
 
   onLoad: function (options) {
     // 页面加载 options为页面跳转所带来的参数
+    this.initRecord()
   },
   onReady: function () {
-    // 页面初次渲染完成
-
     /* 滑动动画相关 */
     var query = wx.createSelectorQuery().in(this),
       _this = this;
@@ -147,38 +192,6 @@ Page({
 
     this.setData({
       date: util.formatTime(new Date(), "yyyy-MM-dd"),
-      todayDate: util.formatTime(new Date(), "yyyy-MM-dd"),
     });
   },
-  onShow: function () {
-    // 页面显示
-  },
-  onHide: function () {
-    // 页面隐藏
-  },
-  onUnload: function () {
-    // 页面卸载
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
-

@@ -1189,6 +1189,7 @@ text-align: center
 .drawer_content {
   height: 210px;
   overflow-y: scroll; /*超出父盒子高度可滚动*/
+  -webkit-overflow-scrolling: touch;
 }
 .btn_ok{
   padding: 10px;

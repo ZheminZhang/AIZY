@@ -20,7 +20,6 @@ form{
   height: 80rpx;
   line-height: 80rpx;
   margin-left:80rpx;
-
 }
 .line-BILL{
 margin:25rpx 30rpx 25rpx 30rpx;

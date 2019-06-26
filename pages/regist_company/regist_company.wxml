@@ -22,6 +22,7 @@
             <view class="weui-cell__bd">
               <input class="weui-input_min" bindinput='bindCodeInput' value="{{code}}" name="contract_content" placeholder="" />
               <button class="codeBtn" bindtap='getCode' hidden='{{hidden}}' disabled='{{btnDisabled}}' >{{btnValue}}</button>
+
             </view>
       </view>
       <!-- 经营范围 -->

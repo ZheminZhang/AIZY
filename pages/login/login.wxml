@@ -1,8 +1,6 @@
 <!--index.wxml-->
 <view class="user-container bg-white">
-    
     <view class="userinfo">
-        
         <block wx:if="{{!hasLogin}}">
             <image class="userinfo-avatar" src="../../images/login1.png" background-size="cover" catchtap="doLogin">
             </image>
