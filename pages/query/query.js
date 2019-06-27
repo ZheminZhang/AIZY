@@ -27,12 +27,14 @@ Page({
     console.log('form发生了submit事件，携带数据为：', e)
     wx.request({
       url: api.queryUrl,
+      //url: 'http://127.0.0.1:80/api/analysis/analysis',
       data: {
         "token": "xx",
         "name": 1,
         "start_date": this.data.start_date,
         "end_date": this.data.end_date,
-        "types": JSON.stringify([1,2])
+        "types": JSON.stringify([1,2]),
+        'text': '购买书籍100'
       },
       method: 'POST',
       // header:{
@@ -46,6 +48,7 @@ Page({
       }
     })
   },
+
   bindDateChange: function (e) {
     if(e.target.id == 'start_date'){
       this.setData({
