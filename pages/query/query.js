@@ -27,22 +27,22 @@ Page({
     console.log('form发生了submit事件，携带数据为：', e)
     wx.request({
       url: api.queryUrl,
-      data: {
-        "token": "xx",
-        "name": 1,
-        "start_date": this.data.start_date,
-        "end_date": this.data.end_date,
-        "types": JSON.stringify([1,2])
-      },
       method: 'POST',
-      // header:{
-      //   "Content-Type":"application/json",
-      // },
-      success: function (res) {
-        console.log(res);
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
       },
-      fail: function (res) {
-        console.log(res);
+      data: {
+        "name": "user1",
+        "querierId": "user1",
+        "start_date": 1000,//this.data.start_date,
+        "end_date": 1210//this.data.end_date,
+        //"types": JSON.stringify([1, 2])
+      },
+      success: function (e) {
+        console.log(e);
+      },
+      fail: function (e) {
+        console.log(e);
       }
     })
   },
