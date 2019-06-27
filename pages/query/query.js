@@ -36,15 +36,11 @@ Page({
         "types": JSON.stringify([1,2]),
         'text': '购买书籍100'
       },
-      method: 'POST',
-      // header:{
-      //   "Content-Type":"application/json",
-      // },
-      success: function (res) {
-        console.log(res);
+      success: function (e) {
+        console.log(e);
       },
-      fail: function (res) {
-        console.log(res);
+      fail: function (e) {
+        console.log(e);
       }
     })
   },

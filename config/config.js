@@ -4,10 +4,10 @@ const testUrl = 'http://192.168.1.10:8848/';
 // 登录接口
 const loginUrl = baseUrl + 'login';
 // 授权列表查询接口
-const manageUrl = testUrl + 'manage';
+const manageUrl = testUrl_1 + 'manage';
 // 查询接口
 const queryUrl = testUrl + 'query';
-//记账接口
+// 记账接口
 const insertUrl = baseUrl + 'insert';
 
 module.exports = {

@@ -1,3 +1,4 @@
+const api = require('../../config/config.js');
 Page({
   data: {
     disabled_name: true,
@@ -24,6 +25,29 @@ Page({
         end_date: e.detail.value
       })
     }
+  },
+  //请求
+  getMessage: function () {
+    wx.request({
+      url: api.authorizedUrl,
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        "gantor": "user2",    // 授予他人的请求
+        "gantee": "user1",    // 授权发起者，即被授予者
+        "start_date": 1000,//this.data.start_date,
+        "end_date": 1210//this.data.end_date,
+        //"types": JSON.stringify([1, 2])
+      },
+      success: function(e) {
+        console.log(e);
+      },
+      fail: function(e) {
+        console.log(e);
+      }
+    })
   },
   // 加载url中的参数
   onLoad: function (options) {
