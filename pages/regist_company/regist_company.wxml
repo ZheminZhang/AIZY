@@ -11,7 +11,7 @@
       </view>
       <!-- 联系方式 -->
       <view class="page-section">
-      <view class="page-section-title">电话</view>
+      <view class="page-section-title">手机号码</view>
             <view class="weui-cell__bd">
               <input class="weui-input" type='number' bindinput='bindPhoneInput'  name="contract_content" placeholder=""  value="{{phone}}"/>
             </view>
@@ -22,6 +22,7 @@
             <view class="weui-cell__bd">
               <input class="weui-input_min" bindinput='bindCodeInput' value="{{code}}" name="contract_content" placeholder="" />
               <button class="codeBtn" bindtap='getCode' hidden='{{hidden}}' disabled='{{btnDisabled}}' >{{btnValue}}</button>
+
             </view>
       </view>
       <!-- 经营范围 -->

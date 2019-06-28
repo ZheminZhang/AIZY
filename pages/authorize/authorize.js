@@ -1,11 +1,16 @@
 const api = require('../../config/config.js');
+var util = require('../../utils/util.js');
+var config = require('../../config/config.js');
+
 Page({
   data: {
     disabled_name: true,
     name: "",
     id:-1,
-    start_date: '2019-06-01',
-    end_date: '2019-06-01',
+    authStartTime: '',  //授权开始时间
+    authEndTime: '',    //授权结束时间
+    recordStartTime: '',//可查询记录开始时间
+    recordEndTime: '',//可查询记录结束时间
     begin: '2000-06-01',
     end: '2100-06-01',
     type:[]
@@ -15,19 +20,37 @@ Page({
     console.log('form发生了submit事件，携带数据为：', e)
   },
   bindDateChange: function (e) {
-    if (e.target.id == 'start_date') {
+    if (e.target.id == 'authStartTime') {
       this.setData({
-        start_date: e.detail.value
+        authStartTime: e.detail.value,
+        authEndTime: e.detail.value
       })
     }
-    else if (e.target.id == 'end_date') {
+    else if (e.target.id == 'authEndTime') {
       this.setData({
-        end_date: e.detail.value
+        authEndTime: e.detail.value
+      })
+    }
+    else if (e.target.id == 'recordStartTime') {
+      this.setData({
+        recordStartTime: e.detail.value,
+        recordEndTime: e.detail.value
+      })
+    }
+    else if (e.target.id == 'recordEndTime') {
+      this.setData({
+        recordEndTime: e.detail.value
       })
     }
   },
   //请求
   getMessage: function () {
+    //转为unix时间
+    var authST = util.formatToDate(that.data.authStartTime) / 1000 + 14400;
+    var authET = util.formatToDate(that.data.authEndTime) / 1000 + 14400;
+    var recordST = util.formatToDate(that.data.recordStartTime) / 1000 + 14400;
+    var recordET = util.formatToDate(that.data.recordEndTime) / 1000 + 14400;
+
     wx.request({
       url: api.authorizedUrl,
       method: 'POST',
@@ -35,11 +58,12 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: {
-        "gantor": "user2",    // 授予他人的请求
-        "gantee": "user1",    // 授权发起者，即被授予者
-        "start_date": 1000,//this.data.start_date,
-        "end_date": 1210//this.data.end_date,
-        //"types": JSON.stringify([1, 2])
+        "grantorId": wx.getStorageSync('loginFlag'),    // 授予者
+        "granteeId": this.data.name,                    // 授权发起者，即被授予者
+        "authStartTime": authST,
+        "authEndTime": authET,
+        "recordStartTime": recordST,
+        "recordEndTime": recordET,
       },
       success: function(e) {
         console.log(e);
@@ -53,10 +77,12 @@ Page({
   onLoad: function (options) {
     this.setData({
       name: options.name,
-      start_date: options.start_date,
-      end_date: options.end_date,
-      type: options.type
+      id: options.id,
+      authStartTime: options.authStartTime,
+      authEndTime: options.authEndTime,
+      recordStartTime: options.recordStartTime,
+      recordEndTime: options.recordEndTime,
+      type: options.type,
     })
   }
-  
 })

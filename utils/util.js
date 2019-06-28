@@ -144,11 +144,11 @@ const formatNumber = n => {
 
 
 /**
- * 时间字符串转时间戳
+ * 时间字符串转unix时间戳
  */
 function formatToDate(dateString) {
   var timestamp2 = Date.parse(new Date(dateString));
-  console.log(dateString + "的时间戳为：" + timestamp2);
+  //console.log(dateString + "的时间戳为：" + timestamp2);
   return timestamp2;
 
 }
