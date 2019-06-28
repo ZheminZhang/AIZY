@@ -3,6 +3,7 @@ const api = require('../../config/config.js');
 Page({
   data: {
     disabled_name: false,
+    companyName: '',
     start_date: '2019-06-01',
     end_date: '2019-06-01',
     begin: '2000-06-01',
@@ -23,13 +24,17 @@ Page({
     ],
   },
  
+  inputComName: function(e) {
+    this.setData({
+      companyName: e.detail.value,
+    })
+  },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e)
     wx.request({
       url: api.queryUrl,
       //url: 'http://127.0.0.1:80/api/analysis/analysis',
       data: {
-        "token": "xx",
         "name": 1,
         "start_date": this.data.start_date,
         "end_date": this.data.end_date,

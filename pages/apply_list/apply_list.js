@@ -72,21 +72,27 @@ Page({
   },
 
   toDetail: function (e) {
-    let id = e.target.id
+    let index = e.currentTarget.id;
     let url_ = '../authorize/authorize?' + 'tp=' + e.target.dataset["tp"]
     if (e.target.dataset["tp"] == '1') {
       url_ = url_ + 
-        "&name=" + this.data.author[id].name +
-        "&start_date=" + this.data.author[id].start_date +
-        "&end_date=" + this.data.author[id].end_date +
-        "&type=" + this.data.author[id].type
+        "&name=" + this.data.author[index].name +
+        "&id=" + this.data.author[index].id +
+        "&authStartTime=" + this.data.author[index].authStartTime +
+        "&authEndTime=" + this.data.author[index].authEndTime +
+        "&recordStartTime=" + this.data.author[index].recordStartTime +
+        "&recordEndTime=" + this.data.author[index].recordEndTime +
+        "&type=" + this.data.author[index].type
     }
     else if (e.target.dataset["tp"] == '2') {
       url_ = url_ +
-        "&name=" + this.data.application[id].name +
-        "&start_date=" + this.data.application[id].start_date +
-        "&end_date=" + this.data.application[id].end_date +
-        "&type=" + this.data.application[id].type
+        "&name=" + this.data.application[index].name +
+        "&id=" + this.data.application[index].id +
+        "&authStartTime=" + this.data.application[index].authStartTime +
+        "&authEndTime=" + this.data.application[index].authEndTime +
+        "&recordStartTime=" + this.data.application[index].recordStartTime +
+        "&recordEndTime=" + this.data.application[index].recordEndTime +
+        "&type=" + this.data.application[index].type
     }
     wx.navigateTo({
       url: url_,

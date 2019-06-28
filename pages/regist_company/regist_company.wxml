@@ -6,20 +6,20 @@
       <view class="page-section">
         <view class="page-section-title">公司名称</view>
             <view class="weui-cell__bd">
-              <input  class="weui-input"  name="name" placeholder="" />
+              <input  class="weui-input"  name="name" value="{{companyName}}" bindblur="getCompanyName"/>
         </view>
       </view>
       <!-- 联系方式 -->
       <view class="page-section">
-      <view class="page-section-title">电话</view>
+      <view class="page-section-title">手机号码</view>
             <view class="weui-cell__bd">
-              <input class="weui-input" name="contract_content" bindinput="getPhoneNumber" value="{{phone}}" placeholder="" />
+              <input class="weui-input" name="contract_content" bindinput="getPhoneValue" value="{{phone}}"/>
             </view>
       </view>
       <view class="page-section">
       <view class="page-section-title">验证码</view>
             <view class="weui-cell__bd">
-              <input class="weui-input" name="contract_content" placeholder="" bindinput="getCodeValue" value="{{code}}" />
+              <input class="weui-input" name="contract_content" bindinput="getCodeValue" value="{{code}}" />
               <button class='codeBtn' bindtap='getVerificationCode' disabled='{{disabled}}'>{{codename}}</button>
             </view>
       </view>

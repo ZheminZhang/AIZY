@@ -8,7 +8,7 @@ App({
   },
 
   /* 监听小程序启动或切前台
-     向后台request，得到数据存入storage */
+     向后台request已授权与申请信息，得到数据存入storage */
   onShow: function(options) {
     this.getPermintedList();
     this.getApplyList();
@@ -147,6 +147,10 @@ App({
       success: function (res) {
         /* 读取并存储已授权列表 */
         wx.setStorageSync('User_Data_Author', "");
+        // var a = {
+        //   'zhanglang': [{ }]
+        // }
+        // { res.data.authorized[1]: res.data.authorized;}
         wx.setStorageSync('User_Data_Author', res.data.authorized);
       },
       fail: function (res) {
@@ -160,7 +164,7 @@ App({
       success: function (res) {
         /* 读取并存储申请列表 */
         wx.setStorageSync('User_Data_Application', "");
-        wx.setStorageSync('User_Data_Application', res.data.unauthorized);
+        wx.setStorageSync('User_Data_Application', res.data.application);
       },
       fail: function (res) {
         console.log(res)

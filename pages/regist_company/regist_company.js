@@ -1,31 +1,28 @@
-// pages/resign_company.js
+var config = require('../../config/config.js')
 Page({
   data: {
+    companyName: '',
     phone:'',
     code:'',
     codename:'',
-    isCode:'',
   },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
   },
-  formReset: function (e) {
-    console.log('form发生了reset事件，携带数据为：', e.detail.value)
+  getCompanyName: function(e) {
     this.setData({
-      chosen: ''
+      companyName: e.detail.value
     })
   },
   getPhoneValue: function (e) {
     this.setData({
       phone: e.detail.value
     })
-    console.log(phone);
   },
   getCodeValue: function (e) {
     this.setData({
       code: e.detail.value
     })
-    console.log(code);
   },
   getCode: function () {
     var a = this.data.phone;
@@ -69,6 +66,27 @@ Page({
     var _this = this
     _this.setData({
       disabled: true
+    })
+  },
+
+  /* 提交注册信息 */
+  getMessage() {
+    wx.request({
+      url: config.registUrl,
+      data: {
+        'loginFlag': wx.getStorageSync('loginFlag'),
+        'companyName': this.data.companyName,
+        'phonenumber': this.data.phone,
+        'code': this.data.code,
+      },
+      method: 'POST',
+      success: function(res) {
+        console.log(res)
+      },
+      fail: function(res) {
+        console.log(res)
+      }
+
     })
   },
 })

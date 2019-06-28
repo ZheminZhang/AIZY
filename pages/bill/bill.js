@@ -155,7 +155,7 @@ Page({
     });
   },
 
-  //点击完成,将结果存入storage
+  //点击完成,将结果发给服务器
   confirmData: function () {
     var that = this;
     if (parseFloat(that.data.debitAmount) <= 0 || parseFloat(that.data.creditAmount) <= 0) {
