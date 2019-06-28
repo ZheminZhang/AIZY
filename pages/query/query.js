@@ -3,6 +3,7 @@ const api = require('../../config/config.js');
 Page({
   data: {
     disabled_name: false,
+    companyName: '',
     start_date: '2019-06-01',
     end_date: '2019-06-01',
     begin: '2000-06-01',
@@ -24,16 +25,18 @@ Page({
     ],
   },
  
+  inputComName: function(e) {
+    this.setData({
+      companyName: e.detail.value,
+    })
+  },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e)
     var begTime = new Date(this.data.start_date).getTime();
     var endTime = new Date(this.data.end_date).getTime();
     wx.request({
       url: api.queryUrl,
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
+      //url: 'http://127.0.0.1:80/api/analysis/analysis',
       data: {
         "name": this.data.name,
         "querierId": "user1",
@@ -51,6 +54,7 @@ Page({
     console.log(begTime);
     console.log(endTime);
   },
+
   bindDateChange: function (e) {
     if(e.target.id == 'start_date'){
       this.setData({

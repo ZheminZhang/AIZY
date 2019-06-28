@@ -1,5 +1,5 @@
-// pages/record-expend/record-expend.js
 var util = require('../../utils/util.js')
+var config = require('../../config/config.js')
 
 // 获取全局唯一的语音识别管理器
 const plugin = requirePlugin("WechatSI")
@@ -12,16 +12,14 @@ Page({
     activeTabId: null,
 
     /* 语音识别信息 */
-    currentText: '',      //识别内容
+    currentText: "",      //识别内容
 
     /* 记账相关信息 */
-    classification: "",   //分类信息
-    money_bor: 0.00,      //借
-    money_loan: 0.00,     //贷
-    remarksText: "",      //备注
-    navbar: ['支出', '收入'],
-    currentTab: 0,
-    money: 0.00,    //金额
+    summary: "无",   //分类信息
+    debit: "",            //借方科目
+    debitAmount: 0.00,    //借方金额
+    credit: "",           //贷方科目
+    creditAmount: 0.00,   //贷方金额
     date: "",       //日期
   },
 
@@ -49,8 +47,14 @@ Page({
   },
 
   /* 语音识别页面 */
+  //记账信息
+  vtextAreaBlur: function (e) {
+    this.setData({
+      currentText: e.detail.value,
+    })
+  },
 
-  //开始与结束识别语音
+  //开始与结束录音
   streamRecord: function () {
     manager.start({
       lang: 'zh_CN',
@@ -80,28 +84,69 @@ Page({
       })
     }
   },
+  sendData: function () {
+    var that = this;
+    /* 得到完整识别内容发给语音服务器处理 */
+    //console.log("给服务器发送文本：", this.data.currentText)
+    wx.request({
+      url: 'http://192.168.1.2:80/api/analysis/analysis',
+      data: {
+        //"text": this.data.currentText,
+        "text": "买20元可乐",
+      },
+      method: 'POST',
+      success: function (res) {
+        //服务器分录结果返回
+        console.log(res.data.data[0]);
+        that.setData({
+          summary: res.data.data[0].summary,
+          debit: res.data.data[0].debit,
+          debitAmount: parseFloat(res.data.data[0].debit_amount),
+          credit: res.data.data[0].credit,
+          creditAmount: parseFloat(res.data.data[0].credit_amount),
+        })
+        
+        that.setActiveTab('tabitemForm');
+      },
+      fail: function (res) {
+        console.log(res);
+      }
+    })
+  },
 
 
 
   /* 表单页面 */
-  //分类信息输入
-  classFunction: function (e) {
+  //摘要信息输入
+  summaryFunction: function (e) {
     var text = e.detail.value;
-    this.data.classification = text;
-    // this.setData({
-    //   classification: text,
-    // })
-  },
-  //金额，借
-  borrowFunction: function(e) {
+    //this.data.summary = text;
     this.setData({
-      money_bor: e.detail.value,
+      summary: text,
     })
   },
-  //金额，贷
-  loanFunction: function (e) {
+  //借方科目
+  debitFunction: function (e) {
     this.setData({
-      money_loan: e.detail.value,
+      debit: e.detail.value,
+    })
+  },
+  //借方金额
+  debitAmFunction: function(e) {
+    this.setData({
+      debitAmount: e.detail.value,
+    })
+  },
+  //贷方科目
+  debitFunction: function (e) {
+    this.setData({
+      credit: e.detail.value,
+    })
+  },
+  //贷方金额
+  creditAmFunction: function (e) {
+    this.setData({
+      creditAmount: e.detail.value,
     })
   },
   //选择时间
@@ -110,18 +155,11 @@ Page({
       date: e.detail.value,
     });
   },
-  //备注
-  onInputRemarks: function (e) {
-    var text = e.detail.value;
-    this.setData({
-      remarksText: text,
-    });
-  },
 
-  //点击完成,将结果存入storage
+  //点击完成,将结果发给服务器
   confirmData: function () {
     var that = this;
-    if (parseFloat(that.data.money_bor) <= 0 || parseFloat(that.data.money_loan) <= 0) {
+    if (parseFloat(that.data.debitAmount) <= 0 || parseFloat(that.data.creditAmount) <= 0) {
       wx.showToast({
         title: '请输入金额',
         icon:'none',
@@ -130,38 +168,38 @@ Page({
       return;
     }
 
-    //记录
-    // let value = [];
-    // try {
-    //   value = wx.getStorageSync('Bill')
-    // } catch (e) {
-    // }
-    // if (value == "") {
-    //   value = [];
-    // }
-    // let json =
-    // {
-    //   classification: that.data.classification,
-    //   money_bor: that.data.money_bor,
-    //   money_loan: that.data.money_loan,
-    //   date: that.data.date,
-    //   remarks: that.data.remarksText,
-    // };
-    // value.push(json);
-    // try {
-    //   wx.setStorageSync('Bill', value)
-    // } catch (e) {
-    // }
-    wx.showToast({
-      title: '记账成功',
-      icon: 'success',
-      duration: 500,
-      success: function () {
-        setTimeout(function () {
-          wx.navigateBack({
-            delta: 1
-          })
-        }, 500)
+    //精确到秒，定位为当天12点
+    var unixtime = util.formatToDate(that.data.date)/1000 + 14400;
+
+    wx.request({
+      url: config.insertUrl,
+      data: {
+        'loginFlag': wx.getStorageSync('loginFlag'),
+        'summary': that.data.summary,
+        'debit': that.data.debit,
+        'debitAmount': that.data.debitAmount,
+        'credit': that.data.credit,
+        'creditAmount': that.data.creditAmount,
+        'time': unixtime,
+      },
+      method: 'POST',
+      success: function(res) {
+        console.log(res)
+        wx.showToast({
+          title: '记账成功',
+          icon: 'success',
+          duration: 500,
+          success: function () {
+            setTimeout(function () {
+              wx.navigateBack({
+                delta: 1
+              })
+            }, 500)
+          }
+        })
+      },
+      fail: function(res) {
+        console.log(res)
       }
     })
   },

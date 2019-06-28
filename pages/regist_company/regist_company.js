@@ -1,4 +1,4 @@
-// pages/resign_company.js
+var config = require('../../config/config.js')
 Page({
   data: {
     hidden: true,
@@ -7,15 +7,14 @@ Page({
     name: '',
     phone: '',
     code: '',
-    second: 60
+    second: 60,
   },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
   },
-  formReset: function (e) {
-    console.log('form发生了reset事件，携带数据为：', e.detail.value)
+  getCompanyName: function(e) {
     this.setData({
-      chosen: ''
+      companyName: e.detail.value
     })
   },
   bindNameInput:function(e){
@@ -63,7 +62,6 @@ Page({
     console.log('获取验证码');
     //这里获得验证码
 
-
     this.timer();
   },
   timer: function () {
@@ -91,11 +89,29 @@ Page({
       clearInterval(setTimer)
     })
   },
+  //获得信息，1234是发起请求，服务返回是预期的验证码
   getMessage:function(){
     if(this.data.code=="1234"&&this.data.name!=''){
       wx.showToast({
         title: '注册成功',
         icon:'success',
+      })
+      wx.request({
+        url: config.registUrl,
+        data: {
+          'loginFlag': wx.getStorageSync('loginFlag'),
+          'companyName': this.data.companyName,
+          'phonenumber': this.data.phone,
+          'code': this.data.code,
+        },
+        method: 'POST',
+        success: function (res) {
+          console.log(res)
+        },
+        fail: function (res) {
+          console.log(res)
+        }
+
       })
       console.log(this.data);
     }
