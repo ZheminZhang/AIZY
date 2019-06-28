@@ -19,6 +19,8 @@ const insertUrl = baseUrl + 'insert';
 
 const registUrl = baseUrl + 'regist';
 
+const authorizedUrl = baseUrl + 'requestAutho'
+
 module.exports = {
   loginUrl: loginUrl,
   registUrl: registUrl,
@@ -27,5 +29,6 @@ module.exports = {
   grantorUnauthoUrl: grantorUnauthoUrl,
   grantorAuthoUrl: grantorAuthoUrl,
   queryUrl: queryUrl,
-  insertUrl: insertUrl
+  insertUrl: insertUrl,
+  authorizedUrl: authorizedUrl,
 };
