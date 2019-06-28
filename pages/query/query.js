@@ -1,5 +1,6 @@
 // pages/query/query.js
 const api = require('../../config/config.js');
+var util = require('../../utils/util.js')
 Page({
   data: {
     disabled_name: false,
@@ -11,20 +12,6 @@ Page({
     begin: '2000-06-01',
     end: '2100-06-01',
     name:'',
-    tabOut: [
-      { 'id': 0, 'text': '餐饮', 'done': false},
-      { 'id': 1, 'text': '娱乐', 'done': false},
-      { 'id': 2, 'text': '转账', 'done': false},
-      { 'id': 3, 'text': '购物', 'done': false},
-      { 'id': 4, 'text': '电影', 'done': false},
-      { 'id': 5, 'text': '出行', 'done': false},
-      { 'id': 6, 'text': '理发', 'done': false},
-      { 'id': 7, 'text': '红包', 'done': false}
-    ],
-    in_tabOut: [
-      { 'id': 0, 'text': '基金', 'done':false},
-      { 'id': 1, 'text': '股票', 'done':false},
-    ],
   },
  
   inputComName: function(e) {
@@ -57,8 +44,6 @@ Page({
         console.log(e);
       }
     })
-    console.log(begTime);
-    console.log(endTime);
   },
 
   bindDateChange: function (e) {
