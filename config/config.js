@@ -13,10 +13,13 @@ const insertUrl = baseUrl + 'insert';
 
 const registUrl = baseUrl + 'regist';
 
+const authorizedUrl = baseUrl + 'requestAutho'
+
 module.exports = {
   loginUrl: loginUrl,
   registUrl: registUrl,
   manageUrl: manageUrl,
   queryUrl: queryUrl,
-  insertUrl: insertUrl
+  insertUrl: insertUrl,
+  authorizedUrl: authorizedUrl,
 };

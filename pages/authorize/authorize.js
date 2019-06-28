@@ -1,4 +1,3 @@
-const api = require('../../config/config.js');
 var util = require('../../utils/util.js');
 var config = require('../../config/config.js');
 
@@ -46,20 +45,20 @@ Page({
   //请求
   getMessage: function () {
     //转为unix时间
-    var authST = util.formatToDate(that.data.authStartTime) / 1000 + 14400;
-    var authET = util.formatToDate(that.data.authEndTime) / 1000 + 14400;
-    var recordST = util.formatToDate(that.data.recordStartTime) / 1000 + 14400;
-    var recordET = util.formatToDate(that.data.recordEndTime) / 1000 + 14400;
+    var authST = util.formatToDate(this.data.authStartTime) / 1000 + 14400;
+    var authET = util.formatToDate(this.data.authEndTime) / 1000 + 14400;
+    var recordST = util.formatToDate(this.data.recordStartTime) / 1000 + 14400;
+    var recordET = util.formatToDate(this.data.recordEndTime) / 1000 + 14400;
 
     wx.request({
-      url: api.authorizedUrl,
+      url: config.authorizedUrl,
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: {
-        "grantorId": wx.getStorageSync('loginFlag'),    // 授予者
-        "granteeId": this.data.name,                    // 授权发起者，即被授予者
+        "grantorId": this.data.name,                    // 授予者
+        "granteeId": wx.getStorageSync('loginFlag'),    // 授权发起者，即被授予者
         "authStartTime": authST,
         "authEndTime": authET,
         "recordStartTime": recordST,

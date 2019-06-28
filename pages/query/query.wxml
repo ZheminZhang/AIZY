@@ -8,50 +8,44 @@
         <view class="weui-cell__bd">
           <input class="weui-input" name="name" value="{{companyName}}" disabled='{{disabled_name}}' bindinput="inputComName"/>
         </view>
-
-      </view>
-      <!-- 账单类型 -->
-      <view class="page-section">
-        <view class="page-section-title">账单类型</view>
-        <!-- TODO:账单类型的下拉列表 -->
-        <view class="us">
-          <view class="sele_bill">
-            <view class="billType" catchtap="powerDrawer" data-statu="open">
-              <text class="text_type">新建</text>
-            </view>
-            <view class="sele_bill" wx:for-items="{{tabOut}}">
-              <view class="billType" wx:if="{{item.done}}" bindtap="click_cancel0" data-index="{{index}}">
-                <text class="text_type">{{item.text}}</text>
-              </view>
-            </view>
-            <view class="sele_bill" wx:for-items="{{in_tabOut}}">
-              <view class="billType" wx:if="{{item.done}}" bindtap="click_cancel1" data-index="{{index}}" >
-                <text class="text_type">{{item.text}}</text>
-              </view>
-            </view>
-          </view>
-        </view>
       </view>
 
-      <!-- 时间范围 -->
       <view class="time_selection">
-        <!-- 时间选择器 -->
-
         <view class="page-section-title">
-          时间选择
+          授权时间选择
         </view>
-
         <view class="time-choose">
           <!-- 开始时间 -->
-          <picker mode="date" value="{{start_date}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='start_date'>
+          <picker mode="date" value="{{authStartTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='authStartTime'>
             <view class="picker">
-              {{start_date}}
+              {{authStartTime}}
             </view>
           </picker>
           <!-- 结束时间 -->
-          <picker mode="date" value="{{start_date}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='end_date'>
+          <picker mode="date" value="{{authEndTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='authEndTime'>
             <view class="picker">
-              {{end_date}}
+              {{authEndTime}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="time_selection">
+        <!-- 时间选择器 -->
+        <view class="page-section-title">
+          记录时间选择
+        </view>
+        <view class="time-choose">
+          <!-- 开始时间 -->
+          <picker mode="date" value="{{recordStartTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='recordStartTime'>
+            <view class="picker">
+              {{recordStartTime}}
+            </view>
+          </picker>
+          <!-- 结束时间 -->
+          <picker mode="date" value="{{recordEndTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='recordEndTime'>
+            <view class="picker">
+              {{recordEndTime}}
             </view>
           </picker>
         </view>
@@ -59,41 +53,4 @@
     </form>
   </view>
    <button  class="button-BILL-1" hover-class="button-BILL-1-p"  bindtap="formSubmit">完成</button>
-</view>
-
-<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
-<!--content-->
-<!--使用animation属性指定需要执行的动画-->
-<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
-
-  <!--drawer content-->
-  <view class="drawer_title">支出</view>
-  <view class="sele_bill">
-    <view wx:for-items="{{tabOut}}">
-      <view class="billType" style="{{item.done?'background-color:rgba(96, 223, 191, 0.534)':'background-color:white'}}" bindtap="click_bill_0" data-index="{{index}}">
-        <text class="text_type">{{item.text}}</text>
-      </view>
-    </view>
-  </view>
-  <view class="drawer_title">收入</view>
-  <view class="sele_bill">
-    <view wx:for-items="{{in_tabOut}}">
-      <view class="billType" style="{{item.done?'background-color:rgba(96, 223, 191, 0.534)':'background-color:white'}}" bindtap="click_bill_1" data-index="{{index}}">
-        <text class="text_type">{{item.text}}</text>
-      </view>
-    </view>
-  </view>
-  <view class="drawer_title">汇总查询</view>
-  <view class="sele_bill">
-    <view class="billType">
-      <text class="text_type">总收入</text>
-    </view>
-    <view class="billType">
-      <text class="text_type"> 总支出 </text>
-    </view>
-    <view class="billType">
-      <text class="text_type">总收支</text>
-    </view>
-  </view>
-  <view class="btn_ok" bindtap="powerDrawer" data-statu="close">确定</view>
 </view>

@@ -1,6 +1,6 @@
 <!--pages/apply_list_1/apply_list.wxml-->
 <view class='tabbar-APPL'>
-  <text id="tabitemRecharge" class='tabitem {{activeTabId=="tabitemRecharge"?"tabitem-active":""}}' bindtap='tabclick'>已授权</text>
+  <text id="tabitemRecharge" class='tabitem {{activeTabId=="tabitemRecharge"?"tabitem-active":""}}' bindtap='tabclick'>待接收</text>
   <text id="tabitemConsume" class='tabitem {{activeTabId=="tabitemConsume"?"tabitem-active":""}}' bindtap='tabclick'>申请</text>
   <view class='tabindicator' animation="{{indicatorAnim}}"></view>
 </view>
