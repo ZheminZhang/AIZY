@@ -11,7 +11,7 @@ App({
 
      向后台request已授权与申请信息，得到数据存入storage */
   onShow: function(options) {
-    this.getPermintedList();
+    this.getAuthoList();
     this.getApplyList();
   },
 
@@ -144,32 +144,70 @@ App({
     return wx.getStorageSync('loginFlag');
   },
 
-  // TODO:获取用户的授权用户列表信息
-  getPermintedList: function () {
+  // 获取申请列表信息
+  getAuthoList: function () {
+    //未接受列表
     wx.request({
-      url: api.manageUrl + "?type=authorized",
+      url: api.granteeUnauthoUrl,
+      data:{
+        'loginFlag': wx.getStorageSync('loginFlag'),
+      },
+      method: 'POST',
       success: function (res) {
-        /* 读取并存储已授权列表 */
-        wx.setStorageSync('User_Data_Author', "");
-        // var a = {
-        //   'zhanglang': [{ }]
-        // }
-        // { res.data.authorized[1]: res.data.authorized;}
-        wx.setStorageSync('User_Data_Author', res.data.authorized);
+        console.log(res);
+        wx.setStorageSync('granteeUnautho', "");
+        wx.setStorageSync('granteeUnautho', res.data);
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    })
+    //已接受列表
+    wx.request({
+      url: api.granteeAuthoUrl,
+      data: {
+        'loginFlag': wx.getStorageSync('loginFlag'),
+      },
+      method: 'POST',
+      success: function (res) {
+        console.log(res);
+        wx.setStorageSync('granteeAutho', "");
+        wx.setStorageSync('granteeAutho', res.data);
       },
       fail: function (res) {
         console.log(res)
       }
     })
   },
-  // TODO:获取用户的申请列表
+  // 获取授权列表信息
   getApplyList: function () {
+    //未授权列表
     wx.request({
-      url: api.manageUrl + "?type=authorized",
+      url: api.grantorUnauthoUrl,
+      data: {
+        'loginFlag': wx.getStorageSync('loginFlag'),
+      },
+      method: 'POST',
       success: function (res) {
-        /* 读取并存储申请列表 */
-        wx.setStorageSync('User_Data_Application', "");
-        wx.setStorageSync('User_Data_Application', res.data.application);
+        console.log(res);
+        wx.setStorageSync('grantorUnautho', "");
+        wx.setStorageSync('grantorUnautho', res.data);
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    })
+    //已授权列表
+    wx.request({
+      url: api.grantorAuthoUrl,
+      data: {
+        'loginFlag': wx.getStorageSync('loginFlag'),
+      },
+      method: 'POST',
+      success: function (res) {
+        console.log(res);
+        wx.setStorageSync('grantorAutho', "");
+        wx.setStorageSync('grantorAutho', res.data);
       },
       fail: function (res) {
         console.log(res)

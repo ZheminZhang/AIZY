@@ -4,10 +4,11 @@ Page({
     hidden: true,
     btnValue: '',
     btnDisabled: false,
-    name: '',
+    companyName: '',
     phone: '',
     code: '',
     second: 60,
+    isCode:'',
   },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
@@ -19,15 +20,16 @@ Page({
   },
   bindNameInput:function(e){
     this.setData({
-      name: e.detail.value
+      companyName: e.detail.value
     })
   },
   bindPhoneInput:function(e){
     var val = e.detail.value;
+    var _this=this;
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/
     if(val[0]!='1'||val.length>11)
      {
-      this.setData({
+      _this.setData({
         hidden: true,
         btnValue: ''
       })
@@ -45,7 +47,7 @@ Page({
         })
       }
       else{
-        this.setData({
+        _this.setData({
           phone: val,
           hidden: false,
           btnValue: '获取验证码'
@@ -61,7 +63,25 @@ Page({
   getCode:function(){
     console.log('获取验证码');
     //这里获得验证码
-
+    var _this=this;
+    wx.request({
+      url: 'http://127.0.0.1:8080/',
+      header:{
+        "Content-Type":"application/json"
+      },
+      method:'POST',
+      data:{
+        token:wx.getStorageSync("token"),
+        phone:this.data.phone,
+      },
+      success(res){
+        console.log(res);
+        _this.setData({
+          isCode:res.data
+        })
+        console.log(_this.data.isCode);
+      }
+    })
     this.timer();
   },
   timer: function () {
@@ -91,7 +111,7 @@ Page({
   },
   //获得信息，1234是发起请求，服务返回是预期的验证码
   getMessage:function(){
-    if(this.data.code=="1234"&&this.data.name!=''){
+    if(this.data.code=="1234"&&this.data.companyName!=''){
       wx.showToast({
         title: '注册成功',
         icon:'success',
@@ -117,7 +137,7 @@ Page({
     }
     else{
       wx.showToast({
-        title: '注册失败',
+        title: '验证码或手机号错误',
         icon:'none',
       })
     }

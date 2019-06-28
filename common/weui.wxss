@@ -1064,6 +1064,7 @@ icon {
   background-color: rgb(96, 223, 191);
   color: white;
   width:500rpx;
+  border-radius: 50rpx;
 }
 .button-BILL-1-p{
   margin: 200rpx 100rpx 0 150rpx;

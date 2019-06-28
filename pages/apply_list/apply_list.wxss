@@ -65,9 +65,17 @@ page{
   height: 4rpx;
   background: #FFCC00;
 }
-.client_info{
+.client_info_deal{
   margin-top:10rpx;
   background-color: #fff;
+  height: 130rpx; 
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.client_info_undeal{
+  margin-top:10rpx;
+  background-color: #ddd;
   height: 130rpx;
   width:750rpx; 
   display: flex;
@@ -82,25 +90,26 @@ page{
 }
 .name{
   line-height: 130rpx;
+  width:150rpx;
 }
 .btn_accept{
-  background-color: darkgray;
   height: 60rpx;
-  width: 100rpx;
-  border-radius: 5rpx;
-  margin-left:400rpx;
+  width: 150rpx;
+  border-radius: 25rpx;
+  margin-left:300rpx;
   align-items: center;
   vertical-align: center;
   justify-content: center;
   display: flex;
+  background-color:#ddd;
 }
 
 .btn_accept_hover{
   background-color: #fff;
   height: 60rpx;
-  width: 100rpx;
-  border-radius: 5rpx;
-  margin-left:400rpx;
+  width: 150rpx;
+  border-radius:25rpx;
+  margin-left:300rpx;
   align-items: center;
   vertical-align: center;
   justify-content: center;

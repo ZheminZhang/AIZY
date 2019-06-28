@@ -27,6 +27,7 @@ page {
   box-sizing: border-box;
   min-height: 260rpx;
   margin: 40rpx;
+  border-radius:40rpx;
 }
 .message {
   position: relative;
