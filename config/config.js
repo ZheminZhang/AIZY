@@ -1,7 +1,7 @@
 // 服务器域名
-const baseUrl = 'http://192.168.1.4:3003/';
-const testUrl_1 = 'http://192.168.1.4:7500/';
-const testUrl_2 = 'http://192.168.1.10:8848/';
+const baseUrl = 'http://192.168.1.13:3003/';
+const testUrl_1 = 'http://192.168.1.13:7500/';
+const testUrl_2 = 'http://192.168.1.13:8848/';
 // 登录接口
 const loginUrl = baseUrl + 'login';
 // 授权列表查询接口
