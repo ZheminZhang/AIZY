@@ -10,6 +10,7 @@ Page({
     recordEndTime: '2019-06-01',
     begin: '2000-06-01',
     end: '2100-06-01',
+    name:'',
     tabOut: [
       { 'id': 0, 'text': '餐饮', 'done': false},
       { 'id': 1, 'text': '娱乐', 'done': false},
@@ -48,7 +49,6 @@ Page({
         "authEndTime": authET,
         "recordStartTime": recordST,
         "recordEndTime": recordET,
-
       },
       success: function (e) {
         console.log(e);
@@ -57,6 +57,8 @@ Page({
         console.log(e);
       }
     })
+    console.log(begTime);
+    console.log(endTime);
   },
 
   bindDateChange: function (e) {
@@ -71,6 +73,7 @@ Page({
         authEndTime: e.detail.value
       })
     }
+
     else if(e.target.id == 'recordStartTime'){
       this.setData({
         recordStartTime: e.detail.value,

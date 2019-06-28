@@ -18,7 +18,6 @@ Page({
   checkLoginStatus: function () {
     let that = this;
     let loginFlag = wx.getStorageSync('loginFlag');
-
     if (loginFlag) {
       // 检查 session_key 是否过期
       wx.checkSession({
@@ -27,7 +26,6 @@ Page({
           // 获取用户头像/昵称等信息
           that.getUserInfo();
         },
-
         // session_key 已过期
         fail: function () {
           that.setData({

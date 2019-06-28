@@ -115,6 +115,7 @@ Page({
   },
 
 
+
   /* 表单页面 */
   //摘要信息输入
   summaryFunction: function (e) {

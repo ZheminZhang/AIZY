@@ -8,9 +8,10 @@ App({
   },
 
   /* 监听小程序启动或切前台
+
      向后台request已授权与申请信息，得到数据存入storage */
   onShow: function(options) {
-    this.getPermintedList();
+    this.getAuthoList();
     this.getApplyList();
   },
 
@@ -31,6 +32,7 @@ App({
             that.showInfo('缓存信息缺失');
             console.error('登录成功后将用户信息存在Storage的userStorageInfo字段中，该字段丢失');
           }
+
         },
         // session_key 过期
         fail: function () {
@@ -94,6 +96,7 @@ App({
                 }
               });
             },
+
             fail: function (error) {
               // 获取 userInfo 失败，去检查是否未开启权限
               wx.hideLoading();
@@ -135,42 +138,84 @@ App({
     });
   },
 
+
   // 获取用户登录标示 供全局调用
   getLoginFlag: function () {
     return wx.getStorageSync('loginFlag');
   },
 
-  // 获取用户的授权用户列表信息
-  getPermintedList: function () {
+  // 获取申请列表信息
+  getAuthoList: function () {
+    //未接受列表
     wx.request({
-      url: api.manageUrl + "?type=authorized",
+      url: api.granteeUnauthoUrl,
+      data:{
+        'loginFlag': wx.getStorageSync('loginFlag'),
+      },
+      method: 'POST',
       success: function (res) {
-        /* 读取并存储已授权列表 */
-        wx.setStorageSync('User_Data_Author', "");
-        // var a = {
-        //   'zhanglang': [{ }]
-        // }
-        // { res.data.authorized[1]: res.data.authorized;}
-        wx.setStorageSync('User_Data_Author', res.data.authorized);
+        console.log(res);
+        wx.setStorageSync('granteeUnautho', "");
+        wx.setStorageSync('granteeUnautho', res.data);
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    })
+    //已接受列表
+    wx.request({
+      url: api.granteeAuthoUrl,
+      data: {
+        'loginFlag': wx.getStorageSync('loginFlag'),
+      },
+      method: 'POST',
+      success: function (res) {
+        console.log(res);
+        wx.setStorageSync('granteeAutho', "");
+        wx.setStorageSync('granteeAutho', res.data);
       },
       fail: function (res) {
         console.log(res)
       }
     })
   },
+  // 获取授权列表信息
   getApplyList: function () {
+    //未授权列表
     wx.request({
-      url: api.manageUrl + "?type=authorized",
+      url: api.grantorUnauthoUrl,
+      data: {
+        'loginFlag': wx.getStorageSync('loginFlag'),
+      },
+      method: 'POST',
       success: function (res) {
-        /* 读取并存储申请列表 */
-        wx.setStorageSync('User_Data_Application', "");
-        wx.setStorageSync('User_Data_Application', res.data.application);
+        console.log(res);
+        wx.setStorageSync('grantorUnautho', "");
+        wx.setStorageSync('grantorUnautho', res.data);
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    })
+    //已授权列表
+    wx.request({
+      url: api.grantorAuthoUrl,
+      data: {
+        'loginFlag': wx.getStorageSync('loginFlag'),
+      },
+      method: 'POST',
+      success: function (res) {
+        console.log(res);
+        wx.setStorageSync('grantorAutho', "");
+        wx.setStorageSync('grantorAutho', res.data);
       },
       fail: function (res) {
         console.log(res)
       }
     })
   },
+
+  // TODO:获取用户个人账单统计
 
   // 封装 wx.showToast 方法
   showInfo: function (info = 'error', icon = 'none') {

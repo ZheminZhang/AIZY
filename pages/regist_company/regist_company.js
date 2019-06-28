@@ -1,10 +1,14 @@
 var config = require('../../config/config.js')
 Page({
   data: {
+    hidden: true,
+    btnValue: '',
+    btnDisabled: false,
     companyName: '',
-    phone:'',
-    code:'',
-    codename:'',
+    phone: '',
+    code: '',
+    second: 60,
+    isCode:'',
   },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
@@ -14,79 +18,130 @@ Page({
       companyName: e.detail.value
     })
   },
-  getPhoneValue: function (e) {
+  bindNameInput:function(e){
     this.setData({
-      phone: e.detail.value
+      companyName: e.detail.value
     })
   },
-  getCodeValue: function (e) {
+  bindPhoneInput:function(e){
+    var val = e.detail.value;
+    var _this=this;
+    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/
+    if(val[0]!='1'||val.length>11)
+     {
+      _this.setData({
+        hidden: true,
+        btnValue: ''
+      })
+       wx.showToast({
+         title: '手机格式不正确',
+         icon:'none',
+       })
+     }
+     else if(val.length==11)
+    {
+      if(!myreg.test(val)){
+        wx.showToast({
+          title: '手机格式错误',
+          icon:'none'
+        })
+      }
+      else{
+        _this.setData({
+          phone: val,
+          hidden: false,
+          btnValue: '获取验证码'
+        })
+      }
+    }
+  },
+  bindCodeInput:function(e){
     this.setData({
       code: e.detail.value
     })
   },
-  getCode: function () {
-    var a = this.data.phone;
-    var _this = this;
-    var myreg = /^(14[0-9]|13[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$$/;
-    if (this.data.phone == "") {
-      wx.showToast({
-        title: '手机号不能为空',
-        icon: 'none',
-        duration: 1000
-      })
-      return false;
-    } else if (!myreg.test(this.data.phone)) {
-      wx.showToast({
-        title: '请输入正确的手机号',
-        icon: 'none',
-        duration: 1000
-      })
-      return false;
-    } else {
-      var num = 61;
-      var timer = setInterval(function () {
-        num--;
-        if (num <= 0) {
-          clearInterval(timer);
-          _this.setData({
-            codename: '重新发送',
-            disabled: false
-          })
-        } else {
-          _this.setData({
-            codename: num + "s"
-          })
-        }
-      }, 1000);
-    }
-  },
-  //获取验证码
-  getVerificationCode() {
-    this.getCode();
-    var _this = this
-    _this.setData({
-      disabled: true
-    })
-  },
-
-  /* 提交注册信息 */
-  getMessage() {
+  getCode:function(){
+    console.log('获取验证码');
+    //这里获得验证码
+    var _this=this;
     wx.request({
-      url: config.registUrl,
-      data: {
-        'loginFlag': wx.getStorageSync('loginFlag'),
-        'companyName': this.data.companyName,
-        'phonenumber': this.data.phone,
-        'code': this.data.code,
+      url: 'http://127.0.0.1:8080/',
+      header:{
+        "Content-Type":"application/json"
       },
-      method: 'POST',
-      success: function(res) {
-        console.log(res)
+      method:'POST',
+      data:{
+        token:wx.getStorageSync("token"),
+        phone:this.data.phone,
       },
-      fail: function(res) {
-        console.log(res)
+      success(res){
+        console.log(res);
+        _this.setData({
+          isCode:res.data
+        })
+        console.log(_this.data.isCode);
       }
-
+    })
+    this.timer();
+  },
+  timer: function () {
+    let promise = new Promise((resolve, reject) => {
+      let setTimer = setInterval(
+        () => {
+          var second = this.data.second - 1;
+          this.setData({
+            second: second,
+            btnValue: "还有"+second + '秒',
+            btnDisabled: true
+          })
+          if (this.data.second <= 0) {
+            this.setData({
+              second: 60,
+              btnValue: '获取验证码',
+              btnDisabled: false
+            })
+            resolve(setTimer)
+          }
+        }
+        , 1000)
+    })
+    promise.then((setTimer) => {
+      clearInterval(setTimer)
     })
   },
+  //获得信息，1234是发起请求，服务返回是预期的验证码
+  getMessage:function(){
+    if(this.data.code=="1234"&&this.data.companyName!=''){
+      wx.showToast({
+        title: '注册成功',
+        icon:'success',
+      })
+      wx.request({
+        url: config.registUrl,
+        data: {
+          'loginFlag': wx.getStorageSync('loginFlag'),
+          'companyName': this.data.companyName,
+          'phonenumber': this.data.phone,
+          'code': this.data.code,
+        },
+        method: 'POST',
+        success: function (res) {
+          console.log(res)
+        },
+        fail: function (res) {
+          console.log(res)
+        }
+
+      })
+      console.log(this.data);
+    }
+    else{
+      wx.showToast({
+        title: '验证码或手机号错误',
+        icon:'none',
+      })
+    }
+  }
+  //保存
+  
 })

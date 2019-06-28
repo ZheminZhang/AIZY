@@ -6,7 +6,7 @@ Page({
     activeTabId: null,
     currentTab: 0,
     author: [],
-    application: [],
+    unauthor: [],
   },
   navbarTap: function (e) {
     this.setData({
@@ -67,7 +67,7 @@ Page({
   onLoad: function () {
     this.setData({
       author: wx.getStorageSync('User_Data_Author'),
-      application: wx.getStorageSync('User_Data_Application')
+      unauthor: wx.getStorageSync('User_Data_Unauthor')
     })
   },
 
@@ -86,13 +86,13 @@ Page({
     }
     else if (e.target.dataset["tp"] == '2') {
       url_ = url_ +
-        "&name=" + this.data.application[index].name +
-        "&id=" + this.data.application[index].id +
-        "&authStartTime=" + this.data.application[index].authStartTime +
-        "&authEndTime=" + this.data.application[index].authEndTime +
-        "&recordStartTime=" + this.data.application[index].recordStartTime +
-        "&recordEndTime=" + this.data.application[index].recordEndTime +
-        "&type=" + this.data.application[index].type
+        "&name=" + this.data.unauthor[index].name +
+        "&id=" + this.data.unauthor[index].id +
+        "&authStartTime=" + this.data.unauthor[index].authStartTime +
+        "&authEndTime=" + this.data.unauthor[index].authEndTime +
+        "&recordStartTime=" + this.data.unauthor[index].recordStartTime +
+        "&recordEndTime=" + this.data.unauthor[index].recordEndTime +
+        "&type=" + this.data.unauthor[index].type
     }
     wx.navigateTo({
       url: url_,
