@@ -234,6 +234,6 @@ page {
 }
 .button-BILL-1-p{
   margin: 150rpx 100rpx 0 100rpx;
-  background-color: #87a7d6;
+  background-color: #a3b4cc;
   color: white;
 }

@@ -89,7 +89,7 @@ Page({
     /* 得到完整识别内容发给语音服务器处理 */
     //console.log("给服务器发送文本：", this.data.currentText)
     wx.request({
-      url: 'http://192.168.1.2:80/api/analysis/analysis',
+      url: 'http://192.168.1.5:80/api/analysis/analysis',
       data: {
         //"text": this.data.currentText,
         "text": "买20元可乐",
@@ -170,7 +170,7 @@ Page({
 
     //精确到秒，定位为当天12点
     var unixtime = util.formatToDate(that.data.date)/1000 + 14400;
-
+    
     wx.request({
       url: config.insertUrl,
       data: {

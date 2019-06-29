@@ -66,21 +66,23 @@ page{
   background: #FFCC00;
 }
 .client_info_deal{
-  margin-top:10rpx;
   background-color: #fff;
   height: 130rpx; 
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+  border:3rpx solid blanchedalmond;
+
 }
 .client_info_undeal{
-  margin-top:10rpx;
   background-color: #ddd;
   height: 130rpx;
   width:750rpx; 
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+  border:3rpx solid blanchedalmond;
+
 }
 .userinfo-avatar {
   width: 70rpx;
