@@ -43,24 +43,28 @@ Page({
     var recordST = util.formatToDate(this.data.recordStartTime) / 1000 + 14400;
     var recordET = util.formatToDate(this.data.recordEndTime) / 1000 + 14400;
     wx.request({
-      url: api.queryUrl,
+      url: api.requestAuthoUrl,
       //url: 'http://127.0.0.1:80/api/analysis/analysis',
       data: {
-        "name": this.data.companyName,
+        "companyName": this.data.companyName,
+        "loginFlag": wx.getStorageSync('loginFlag'),
         "authStartTime": authST,
         "authEndTime": authET,
         "recordStartTime": recordST,
         "recordEndTime": recordET,
+        "timeStamp": "1123456789" // TODO: 发起请求的时间，unix时间戳
       },
+      method: 'POST',
       success: function (e) {
+        // TODO: 成功也请提示用户
+        // TODO: 出错会有错误信息，请用弹窗等提示用户
         console.log(e);
       },
       fail: function (e) {
+        // TODO: 请求出错，请用弹窗等提示用户
         console.log(e);
       }
     })
-    console.log(begTime);
-    console.log(endTime);
   },
 
   bindDateChange: function (e) {
