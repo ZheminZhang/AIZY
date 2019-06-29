@@ -155,6 +155,7 @@ App({
       method: 'POST',
       success: function (res) {
         console.log(res);
+        console.log('成功读取申请列表');
         wx.setStorageSync('granteeUnautho', "");
         wx.setStorageSync('granteeUnautho', res.data);
       },
@@ -178,6 +179,22 @@ App({
         console.log(res)
       }
     })
+    //拒绝列表
+    wx.request({
+      url: api.granteeUnauthoRefuseUrl,
+      data: {
+        'loginFlag': wx.getStorageSync('loginFlag'),
+      },
+      method: 'POST',
+      success: function (res) {
+        console.log(res);
+        wx.setStorageSync('granteeUnauthoRefuse', "");
+        wx.setStorageSync('granteeUnauthoRefuse', res.data);
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    })
   },
   // 获取授权列表信息
   getApplyList: function () {
@@ -189,7 +206,7 @@ App({
       },
       method: 'POST',
       success: function (res) {
-        console.log("未授权列表：")
+        console.log('成功读授权列表');
         console.log(res);
         wx.setStorageSync('grantorUnautho', "");
         wx.setStorageSync('grantorUnautho', res.data);
@@ -210,6 +227,23 @@ App({
         console.log(res);
         wx.setStorageSync('grantorAutho', "");
         wx.setStorageSync('grantorAutho', res.data);
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    })
+    //拒绝列表
+    wx.request({
+      url: api.grantorUnauthoRefuseUrl,
+      data: {
+        'loginFlag': wx.getStorageSync('loginFlag'),
+      },
+      method: 'POST',
+      success: function (res) {
+        console.log("拒绝列表：")
+        console.log(res);
+        wx.setStorageSync('grantorUnauthoRefuse', "");
+        wx.setStorageSync('grantorUnauthoRefuse', res.data);
       },
       fail: function (res) {
         console.log(res)

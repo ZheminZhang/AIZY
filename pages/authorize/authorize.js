@@ -43,12 +43,14 @@ Page({
     }
   },
   //请求
-  getMessage: function () {
+  submitForm: function (e) {
     //转为unix时间
     var authST = util.formatToDate(this.data.authStartTime) / 1000 + 14400;
     var authET = util.formatToDate(this.data.authEndTime) / 1000 + 14400;
     var recordST = util.formatToDate(this.data.recordStartTime) / 1000 + 14400;
     var recordET = util.formatToDate(this.data.recordEndTime) / 1000 + 14400;
+    var tag = "disagree"
+    console.log(e);
     wx.request({
       url: config.authorizedUrl,
       method: 'POST',
@@ -61,7 +63,8 @@ Page({
         "authStartTime": authST,
         "authEndTime": authET,
         "recordStartTime": recordST,
-        "recordEndTime": recordET
+        "recordEndTime": recordET,
+        "tag": tag
       },
       success: function(e) {
         console.log(e);
@@ -71,7 +74,11 @@ Page({
       }
     })
   },
-  
+  goTable:function(){
+     wx.navigateTo({
+       url: '../table/table',
+     })
+  },
   // 加载url中的参数,同时完成unix转普通时间
   onLoad: function (options) {
     console.log(options.authStartTime);
