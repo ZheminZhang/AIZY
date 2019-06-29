@@ -49,7 +49,6 @@ Page({
     var authET = util.formatToDate(this.data.authEndTime) / 1000 + 14400;
     var recordST = util.formatToDate(this.data.recordStartTime) / 1000 + 14400;
     var recordET = util.formatToDate(this.data.recordEndTime) / 1000 + 14400;
-
     wx.request({
       url: config.authorizedUrl,
       method: 'POST',
@@ -72,15 +71,17 @@ Page({
       }
     })
   },
-  // 加载url中的参数
+  
+  // 加载url中的参数,同时完成unix转普通时间
   onLoad: function (options) {
+    console.log(options.authStartTime);
     this.setData({
       companyName: options.companyName,
       id: options.id,
       authStartTime: options.authStartTime,
       authEndTime: options.authEndTime,
       recordStartTime: options.recordStartTime,
-      recordEndTime: options.recordEndTime,
+      recordEndTime:options.recordEndTime,
       type: options.type,
     })
   }

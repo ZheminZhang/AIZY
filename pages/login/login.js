@@ -115,7 +115,15 @@ Page({
     });
   },
 
-  // 动画
+  applyInitiate: function(){
+     wx.navigateTo({
+       url: '../apply/apply',
+       fail: function (e) {
+         console.log(e);
+       }
+     });
+  },
+  
   powerDrawer: function (e) {
     var currentStatu = e.currentTarget.dataset.statu;
     this.util(currentStatu)

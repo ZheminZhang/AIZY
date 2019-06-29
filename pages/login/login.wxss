@@ -29,12 +29,13 @@
 }
 
 .tab-item {
-	padding: 20rpx 30rpx;
-  height: 70rpx;
+	
+  height: 110rpx;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+  border:4rpx solid #ddd;
 }
 
 .tab-item-hover {

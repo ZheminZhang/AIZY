@@ -1,0 +1,7 @@
+/* pages/query/query.wxss */
+@import "../../common/weui.wxss";
+.line-BILL{
+  margin:10rpx 30rpx 25rpx 30rpx;
+  height:2rpx;
+  background: rgba(177,182,177,0.603);
+}
