@@ -5,8 +5,10 @@ Page({
     tabitemRecharge: {},
     activeTabId: null,
     currentTab: 0,
-    author: [],
-    unauthor: [],
+    granteeUnautho: {},
+    granteeAutho: {},
+    grantorAutho: {},
+    grantorUnautho: {},
   },
   navbarTap: function (e) {
     this.setData({
@@ -66,8 +68,10 @@ Page({
   /* 加载页面 */
   onLoad: function () {
     this.setData({
-      author: wx.getStorageSync('User_Data_Author'),
-      unauthor: wx.getStorageSync('User_Data_Unauthor')
+      granteeUnautho: wx.getStorageSync('granteeUnautho'),
+      granteeAutho: wx.getStorageSync('granteeAutho'),
+      grantorAutho: wx.getStorageSync('grantorAutho'),
+      grantorUnautho: wx.getStorageSync('grantorUnautho'),
     })
   },
 
@@ -76,23 +80,43 @@ Page({
     let url_ = '../authorize/authorize?' + 'tp=' + e.target.dataset["tp"]
     if (e.target.dataset["tp"] == '1') {
       url_ = url_ + 
-        "&name=" + this.data.author[index].name +
-        "&id=" + this.data.author[index].id +
-        "&authStartTime=" + this.data.author[index].authStartTime +
-        "&authEndTime=" + this.data.author[index].authEndTime +
-        "&recordStartTime=" + this.data.author[index].recordStartTime +
-        "&recordEndTime=" + this.data.author[index].recordEndTime +
-        "&type=" + this.data.author[index].type
+        "&companyName=" + this.data.grantorUnautho[index].user +
+        "&id=" + this.data.grantorUnautho[index].id +
+        "&authStartTime=" + this.data.grantorUnautho[index].authStartTime +
+        "&authEndTime=" + this.data.grantorUnautho[index].authEndTime +
+        "&recordStartTime=" + this.data.grantorUnautho[index].recordStartTime +
+        "&recordEndTime=" + this.data.grantorUnautho[index].recordEndTime +
+        "&type=" + this.data.grantorUnautho[index].type
     }
     else if (e.target.dataset["tp"] == '2') {
       url_ = url_ +
-        "&name=" + this.data.unauthor[index].name +
-        "&id=" + this.data.unauthor[index].id +
-        "&authStartTime=" + this.data.unauthor[index].authStartTime +
-        "&authEndTime=" + this.data.unauthor[index].authEndTime +
-        "&recordStartTime=" + this.data.unauthor[index].recordStartTime +
-        "&recordEndTime=" + this.data.unauthor[index].recordEndTime +
-        "&type=" + this.data.unauthor[index].type
+        "&companyName=" + this.data.grantorAutho[index].name +
+        "&id=" + this.data.grantorAutho[index].id +
+        "&authStartTime=" + this.data.grantorAutho[index].authStartTime +
+        "&authEndTime=" + this.data.grantorAutho[index].authEndTime +
+        "&recordStartTime=" + this.data.grantorAutho[index].recordStartTime +
+        "&recordEndTime=" + this.data.grantorAutho[index].recordEndTime +
+        "&type=" + this.data.grantorAutho[index].type
+    }
+    else if (e.target.dataset["tp"] == '3') {
+      url_ = url_ +
+        "&companyName=" + this.data.granteeUnautho[index].name +
+        "&id=" + this.data.granteeUnautho[index].id +
+        "&authStartTime=" + this.data.granteeUnautho[index].authStartTime +
+        "&authEndTime=" + this.data.granteeUnautho[index].authEndTime +
+        "&recordStartTime=" + this.data.granteeUnautho[index].recordStartTime +
+        "&recordEndTime=" + this.data.granteeUnautho[index].recordEndTime +
+        "&type=" + this.data.granteeUnautho[index].type
+    }
+    else if (e.target.dataset["tp"] == '3') {
+      url_ = url_ +
+        "&companyName=" + this.data.granteeAutho[index].name +
+        "&id=" + this.data.granteeAutho[index].id +
+        "&authStartTime=" + this.data.granteeAutho[index].authStartTime +
+        "&authEndTime=" + this.data.granteeAutho[index].authEndTime +
+        "&recordStartTime=" + this.data.granteeAutho[index].recordStartTime +
+        "&recordEndTime=" + this.data.granteeAutho[index].recordEndTime +
+        "&type=" + this.data.granteeAutho[index].type
     }
     wx.navigateTo({
       url: url_,

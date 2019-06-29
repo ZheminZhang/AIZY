@@ -1,5 +1,7 @@
 // pages/query/query.js
 const api = require('../../config/config.js');
+var util = require('../../utils/util.js');
+
 Page({
   data: {
     disabled_name: false,
