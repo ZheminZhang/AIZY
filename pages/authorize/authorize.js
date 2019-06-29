@@ -4,7 +4,7 @@ var config = require('../../config/config.js');
 Page({
   data: {
     disabled_name: true,
-    name: "",
+    companyName: "",
     id:-1,
     authStartTime: '',  //授权开始时间
     authEndTime: '',    //授权结束时间
@@ -57,7 +57,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: {
-        "grantorId": this.data.name,                    // 授予者
+        "grantorId": this.data.companyName,                    // 授予者
         "granteeId": wx.getStorageSync('loginFlag'),    // 授权发起者，即被授予者
         "authStartTime": authST,
         "authEndTime": authET,
@@ -75,7 +75,7 @@ Page({
   // 加载url中的参数
   onLoad: function (options) {
     this.setData({
-      name: options.name,
+      companyName: options.companyName,
       id: options.id,
       authStartTime: options.authStartTime,
       authEndTime: options.authEndTime,

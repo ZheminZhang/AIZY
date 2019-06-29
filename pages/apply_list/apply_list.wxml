@@ -6,35 +6,50 @@
 </view>
 
 <swiper class='scrollview-content' current-item-id='{{activeTabId}}' bindchange='tabChange'>
+  <!--授权-->
   <swiper-item item-id="tabitemRecharge">
     <scroll-view scroll-y="true" class="tab-content recharge-list">
-      <!-- 已授权 -->
       <view hidden="{{currentTab!==0}}">
         <view class="container">
-          
+          <view  wx:for="{{grantorUnautho}}">
+            <view class="client_info_deal">
+              <image src="../../images/apply_list/author.png" class="userinfo-avatar" background-size="cover" ></image>
+              <view class="name">{{item.user}}</view>
+              <view class="btn_accept" hover="true" hover-class="btn_accept_hover" bindtap='toDetail' id="{{index}}"data-tp="1">待接受</view>
+            </view>
+          </view>
+          <view  wx:for="{{grantorAutho}}">
+            <view class="client_info_undeal" >
+              <image src="../../images/apply_list/author.png" class="userinfo-avatar" background-size="cover" ></image>
+              <view class="name">{{item.user}}</view>
+              <view class="btn_accept">已接受</view>
+              <image src="../../images/apply_list/arrow.png" class="userinfo-avatar" background-size="cover"  bindtap='toDetail' id="{{index}}" data-tp="2"></image>
+            </view>
+          </view>
         </view>
       </view>
     </scroll-view>
   </swiper-item>
+
+  <!--申请-->
   <swiper-item item-id="tabitemConsume">
     <scroll-view scroll-y="true" class="tab-content recharge-list">
-      <!-- 申请 -->
       <view class="container">
-        <view  wx:for="{{unauthor}}">
+        <view  wx:for="{{granteeUnautho}}">
           <view class="client_info_deal">
-            <image src="../../images/apply_list/unauthor.png" class="userinfo-avatar" background-size="cover" ></image>
-            <view class="name">{{item.name}}</view>
-            <view class="btn_accept" hover="true" hover-class="btn_accept_hover" bindtap='toDetail' id="{{index}}"data-tp="2">待接受</view>
+            <image src="../../images/apply_list/author.png" class="userinfo-avatar" background-size="cover" ></image>
+            <view class="name">{{item.user}}</view>
+            <view class="btn_accept" hover="true" hover-class="btn_accept_hover" bindtap='toDetail' id="{{index}}"data-tp="3">待接受</view>
           </view>
         </view>
-        <view  wx:for="{{author}}">
-            <view class="client_info_undeal" >
-              <image src="../../images/apply_list/author.png" class="userinfo-avatar" background-size="cover" ></image>
-              <view class="name">{{item.name}}</view>
-              <view class="btn_accept">已接受</view>
-              <image src="../../images/apply_list/arrow.png" class="userinfo-avatar" background-size="cover"  bindtap='toDetail' id="{{index}}" data-tp="1"></image>
-            </view>
+        <view  wx:for="{{granteeAutho}}">
+          <view class="client_info_undeal" >
+            <image src="../../images/apply_list/author.png" class="userinfo-avatar" background-size="cover" ></image>
+            <view class="name">{{item.user}}</view>
+            <view class="btn_accept">已接受</view>
+            <image src="../../images/apply_list/arrow.png" class="userinfo-avatar" background-size="cover"  bindtap='toDetail' id="{{index}}" data-tp="4"></image>
           </view>
+        </view>
       </view>
     </scroll-view>
   </swiper-item>

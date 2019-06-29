@@ -189,6 +189,7 @@ App({
       },
       method: 'POST',
       success: function (res) {
+        console.log("未授权列表：")
         console.log(res);
         wx.setStorageSync('grantorUnautho', "");
         wx.setStorageSync('grantorUnautho', res.data);
@@ -205,6 +206,7 @@ App({
       },
       method: 'POST',
       success: function (res) {
+        console.log("已授权列表：")
         console.log(res);
         wx.setStorageSync('grantorAutho', "");
         wx.setStorageSync('grantorAutho', res.data);
