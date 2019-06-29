@@ -107,7 +107,7 @@ Page({
   },
   // 加载url中的参数,同时完成unix转普通时间
   onLoad: function (options) {
-    console.log(this.msToDate(options.authStartTime).withoutTime);
+    console.log(msToDate(options.authStartTime).withoutTime);
     this.setData({
       companyName: options.companyName,
       id: options.id,
