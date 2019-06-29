@@ -228,7 +228,7 @@ page {
 .button-SR-1 {
 }
 .button-BILL-1{
-  margin: 100rpx 100rpx 0 130rpx;
+  margin: 150rpx 100rpx 0 100rpx;
   background-color: #87a7d6;
   color: white;
 }

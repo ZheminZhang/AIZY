@@ -5,7 +5,8 @@
     "pages/apply_list/apply_list",
     "pages/query/query",
     "pages/authorize/authorize",
-    "pages/bill/bill"
+    "pages/bill/bill",
+    "pages/apply/apply"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -34,7 +35,6 @@
         "iconPath": "images/search.png",
         "selectedIconPath": "images/searchSelected.png"
       }
-      
     ],
     "color": "#bfbfbf",
     "selectedColor": "#1AAD19"
