@@ -170,7 +170,7 @@ Page({
 
     //精确到秒，定位为当天12点
     var unixtime = util.formatToDate(that.data.date)/1000 + 14400;
-    
+  
     wx.request({
       url: config.insertUrl,
       data: {

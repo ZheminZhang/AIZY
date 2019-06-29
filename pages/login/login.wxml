@@ -35,7 +35,7 @@
     <view class="tab-item border-bottom"  hover-class="tab-item-hover"catchtap="goApply">
         <view>
             <image src="../../images/manage.png" mode="aspectFit" class="tab-icon"></image>
-            <text class="tab-text">申请管理</text>
+            <text class="tab-text">申请</text>
         </view>
         
         <text class="tab-text" wx:if="{{hasLogin}}">{{numApply}}</text>
@@ -43,30 +43,17 @@
     </view>
 
     <!-- 公司 个人私钥 -->
-    <view class="tab-item" hover-class="tab-item-hover" catchtap="powerDrawer" data-statu="open">
+    <view class="tab-item" hover-class="tab-item-hover" catchtap="applyInitiate" data-statu="open">
         <view>
             <image src="../../images/coin.png" mode="aspectFit" class="tab-icon"></image>
-            <text class="tab-text">TOOL</text>
+            <text class="tab-text">授权</text>
         </view>
     </view>
-    <view class="tab-item border-bottom"  hover-class="tab-item-hover" catchtap="applyInitiate">
+    <view class="tab-item border-bottom"  hover-class="tab-item-hover" catchtap="toComReg">
         <view>
             <image src="../../images/my.png" mode="aspectFit" class="tab-icon"></image>
-            <text class="tab-text">申请查询</text>
+            <text class="tab-text">注册</text>
         </view>
     </view>
-</view>
-<!--mask-->
-<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
-<!--content-->
-<!--使用animation属性指定需要执行的动画-->
-<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
- 
-  <!--drawer content-->
-  <view class="drawer_title">TOOL</view>
-  <view class="drawer_content">
-    <button bindtap='toComReg'>公司注册</button>
-    <button>私钥获取</button>
-  </view>
-  <view class="btn_ok" bindtap="powerDrawer" data-statu="close">确定</view>
+    
 </view>

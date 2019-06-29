@@ -1,12 +1,13 @@
 {
   "pages": [
+    "pages/bill/bill",
     "pages/login/login",
     "pages/regist_company/regist_company",
     "pages/apply_list/apply_list",
     "pages/query/query",
     "pages/authorize/authorize",
-    "pages/bill/bill",
-    "pages/apply/apply"
+    "pages/apply/apply",
+    "pages/Autho_other/Autho_other"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -18,22 +19,22 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/login/login",
-        "text": "MY",
-        "iconPath": "images/my.png",
-        "selectedIconPath": "images/mySelected.png"
-      },
-      {
         "pagePath": "pages/bill/bill",
-        "text": "BILL",
+        "text": "记账",
         "iconPath": "images/bill.png",
         "selectedIconPath": "images/billSelected.png"
       },
       {
         "pagePath": "pages/query/query",
-        "text": "SEARCH",
-        "iconPath": "images/search.png",
-        "selectedIconPath": "images/searchSelected.png"
+        "text": "申请",
+        "iconPath": "images/bill.png",
+        "selectedIconPath": "images/billSelected.png"
+      },
+      {
+        "pagePath": "pages/login/login",
+        "text": "我",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/mySelected.png"
       }
     ],
     "color": "#bfbfbf",
