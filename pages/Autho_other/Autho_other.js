@@ -70,7 +70,7 @@ Page({
     this.setData({
       grantorUnautho: wx.getStorageSync('grantorUnautho'),
       grantorAutho: wx.getStorageSync('grantorAutho'),
-      grantorUnauthoRefuse: wx.getStorageSync('grantorAuthoRefuse')
+      grantorUnauthoRefuse: wx.getStorageSync('grantorUnauthoRefuse')
     })
     console.log(grantorUnauthoRefuse);
   },
@@ -110,8 +110,6 @@ Page({
   toDetail: function (e) {
     let index = e.currentTarget.id;
     let url_ = '../authorize/authorize?' + 'tp=' + e.target.dataset["tp"]
-    console.log(this.data.grantorUnautho[index].authStartTime);
-    console.log(this.msToDate(this.data.grantorUnautho[index].authStartTime))
     if (e.target.dataset["tp"] == '1') {
       url_ = url_ +
         "&companyName=" + this.data.grantorUnautho[index].user +
@@ -120,7 +118,7 @@ Page({
         "&authEndTime=" + this.msToDate(this.data.grantorUnautho[index].authEndTime).withoutTime +
         "&recordStartTime=" + this.msToDate(this.data.grantorUnautho[index].recordStartTime).withoutTime +
         "&recordEndTime=" + this.msToDate(this.data.grantorUnautho[index].recordEndTime).withoutTime +
-        "&type=" + this.data.grantorUnautho[index].type
+        "&type=" + this.data.grantorUnautho[index].type + "&recordId=" + this.data.grantorUnautho[index].recordId;
     }
     else if (e.target.dataset["tp"] == '2') {
       url_ = url_ +
@@ -130,7 +128,7 @@ Page({
         "&authEndTime=" + this.msToDate(this.data.grantorAutho[index].authEndTime).withoutTime +
         "&recordStartTime=" + this.msToDate(this.data.grantorAutho[index].recordStartTime).withoutTime +
         "&recordEndTime=" + this.msToDate(this.data.grantorAutho[index].recordEndTime).withoutTime +
-        "&type=" + this.data.grantorAutho[index].type
+        "&type=" + this.data.grantorAutho[index].type + "&recordId=" + this.data.grantorAutho[index].recordId;
     }
     else if (e.target.dataset["tp"] == '3') {
       url_ = url_ +
@@ -140,7 +138,7 @@ Page({
         "&authEndTime=" + this.msToDate(this.data.grantorUnauthoRefuse[index].authEndTime).withoutTime +
         "&recordStartTime=" + this.msToDate(this.data.grantorUnauthoRefuse[index].recordStartTime).withoutTime +
         "&recordEndTime=" + this.msToDate(this.data.grantorUnauthoRefuse[index].recordEndTime).withoutTime +
-        "&type=" + this.data.grantorUnauthoRefuse[index].type
+        "&type=" + this.data.grantorUnauthoRefuse[index].type + "&recordId=" + this.data.grantorUnauthoRefuse[index].recordId;
     }
    
     console.log("这里开始");

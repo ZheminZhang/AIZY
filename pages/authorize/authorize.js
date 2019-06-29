@@ -12,7 +12,8 @@ Page({
     recordEndTime: '',//可查询记录结束时间
     begin: '2000-06-01',
     end: '2100-06-01',
-    type:[]
+    type:[],
+    recordId:'',
   },
   // TODO: 
   formSubmit: function (e) {
@@ -50,7 +51,9 @@ Page({
     var recordST = util.formatToDate(this.data.recordStartTime) / 1000 + 14400;
     var recordET = util.formatToDate(this.data.recordEndTime) / 1000 + 14400;
     var tag = "disagree"
-    console.log(e);
+    if(e.target.dataset["type"]=="agree"){
+      tag="agree";
+    }
     wx.request({
       url: config.authorizedUrl,
       method: 'POST',
@@ -64,7 +67,8 @@ Page({
         "authEndTime": authET,
         "recordStartTime": recordST,
         "recordEndTime": recordET,
-        "tag": tag
+        "tag": tag,
+        "recordId":this.data.recordId,
       },
       success: function(e) {
         console.log(e);
@@ -74,11 +78,7 @@ Page({
       }
     })
   },
-  goTable:function(){
-     wx.navigateTo({
-       url: '../table/table',
-     })
-  },
+
   // 加载url中的参数,同时完成unix转普通时间
   onLoad: function (options) {
     console.log(options.authStartTime);
@@ -90,6 +90,7 @@ Page({
       recordStartTime: options.recordStartTime,
       recordEndTime:options.recordEndTime,
       type: options.type,
+      recordId:options.recordId,
     })
   }
 })

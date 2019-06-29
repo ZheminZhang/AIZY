@@ -7,10 +7,7 @@ Page({
     currentTab: 0,
     granteeUnautho: {},
     granteeAutho: {},
-    grantorAutho: {},
-    grantorUnautho: {},
     granteeUnauthoRefuse:{},
-    grantorUnauthoRefuse:{},
   },
   navbarTap: function (e) {
     this.setData({
@@ -23,7 +20,11 @@ Page({
       this.setActiveTab(e.detail.currentItemId);
     }
   },
-
+  goApply:function(){
+    wx.navigateTo({
+      url: '../apply/apply',
+    })
+  },
   tabclick(e) {
     this.setActiveTab(e.target.id);
   },
@@ -72,8 +73,7 @@ Page({
     this.setData({
       granteeUnautho: wx.getStorageSync('granteeUnautho'),
       granteeAutho: wx.getStorageSync('granteeAutho'),
-      grantorAutho: wx.getStorageSync('grantorAutho'),
-      grantorUnautho: wx.getStorageSync('grantorUnautho'),
+      granteeUnauthoRefuse: wx.getStorageSync('granteeUnauthoRefuse'),
     })
   },
   msToDate: function (msec) {
@@ -121,7 +121,7 @@ Page({
         "&authEndTime=" + this.msToDate(this.data.granteeUnautho[index].authEndTime).withoutTime +
         "&recordStartTime=" + this.msToDate(this.data.granteeUnautho[index].recordStartTime).withoutTime +
         "&recordEndTime=" + this.msToDate(this.data.granteeUnautho[index].recordEndTime).withoutTime +
-        "&type=" + this.data.granteeUnautho[index].type
+        "&type=" + this.data.granteeUnautho[index].type + "&recordId=" + this.data.granteeUnautho[index].recordId;
     }
     else if (e.target.dataset["tp"] == '5') {
       url_ = url_ +
@@ -131,7 +131,7 @@ Page({
         "&authEndTime=" + this.msToDate(this.data.granteeAutho[index].authEndTime).withoutTime +
         "&recordStartTime=" + this.msToDate(this.data.granteeAutho[index].recordStartTime).withoutTime +
         "&recordEndTime=" + this.msToDate(this.data.granteeAutho[index].recordEndTime).withoutTime +
-        "&type=" + this.data.granteeAutho[index].type
+        "&type=" + this.data.granteeAutho[index].type + this.data.granteeAutho[index].type + "&recordId=" + this.data.granteeAutho[index].recordId;
     }
     else if (e.target.dataset["tp"] == '6') {
       url_ = url_ +
@@ -141,7 +141,7 @@ Page({
         "&authEndTime=" + this.msToDate(this.data.granteeUnauthoRefuse[index].authEndTime).withoutTime +
         "&recordStartTime=" + this.msToDate(this.data.granteeUnauthoRefuse[index].recordStartTime).withoutTime +
         "&recordEndTime=" + this.msToDate(this.data.granteeUnauthoRefuse[index].recordEndTime).withoutTime +
-        "&type=" + this.data.granteeUnauthoRefuse[index].type
+        "&type=" + this.data.granteeUnauthoRefuse[index].type + this.data.granteeUnauthoRefuse[index].type + "&recordId=" + this.data.granteeUnauthoRefuse[index].recordId;
     }
     wx.navigateTo({
       url: url_,

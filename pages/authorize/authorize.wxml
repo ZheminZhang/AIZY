@@ -55,7 +55,6 @@
       </view>
     </form>
   </view>
-  <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap='goTable'>生成报表</button>
   <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="submitForm" data-type="agree">完成</button>
    <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="submitForm" data-type="refuse">拒绝申请</button>
 </view>

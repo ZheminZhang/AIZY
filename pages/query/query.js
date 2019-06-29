@@ -86,4 +86,9 @@ Page({
       })
     }
   },
+  goTable: function () {
+    wx.navigateTo({
+      url: '../table/table',
+    })
+  },
 })

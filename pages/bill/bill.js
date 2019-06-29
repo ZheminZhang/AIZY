@@ -135,10 +135,11 @@ Page({
   debitAmFunction: function(e) {
     this.setData({
       debitAmount: e.detail.value,
+      creditAmount: e.detail.value,
     })
   },
   //贷方科目
-  debitFunction: function (e) {
+  creditFunction: function (e) {
     this.setData({
       credit: e.detail.value,
     })
@@ -147,6 +148,7 @@ Page({
   creditAmFunction: function (e) {
     this.setData({
       creditAmount: e.detail.value,
+      debitAmount:e.detail.value,
     })
   },
   //选择时间
