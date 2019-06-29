@@ -57,12 +57,12 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: {
-        "grantorId": this.data.companyName,                    // 授予者
-        "granteeId": wx.getStorageSync('loginFlag'),    // 授权发起者，即被授予者
+        "companyName": this.data.companyName,                    // 授予者
+        "loginFlag": wx.getStorageSync('loginFlag'),    // 授权发起者，即被授予者
         "authStartTime": authST,
         "authEndTime": authET,
         "recordStartTime": recordST,
-        "recordEndTime": recordET,
+        "recordEndTime": recordET
       },
       success: function(e) {
         console.log(e);

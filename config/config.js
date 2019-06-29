@@ -16,10 +16,12 @@ const grantorAuthoUrl = baseUrl + 'grantorAutho';
 const queryUrl = testUrl + 'query';
 // 记账接口
 const insertUrl = baseUrl + 'insert';
-
+// TODO: 注释
 const registUrl = baseUrl + 'regist';
 
-const authorizedUrl = baseUrl + 'requestAutho'
+const authorizedUrl = baseUrl + 'authorize'
+
+const requestAuthoUrl = baseUrl + 'requestAutho'
 
 module.exports = {
   loginUrl: loginUrl,
@@ -31,4 +33,5 @@ module.exports = {
   queryUrl: queryUrl,
   insertUrl: insertUrl,
   authorizedUrl: authorizedUrl,
+  requestAuthoUrl: requestAuthoUrl
 };
