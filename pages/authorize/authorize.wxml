@@ -6,7 +6,7 @@
       <view class="page-section">
         <view class="page-section-title">查询对象</view>
         <view class="weui-cell__bd">
-          <input class="weui-input" name="name" placeholder="{{name}}" disabled='{{disabled_name}}' />
+          <input class="weui-input" name="name" placeholder="{{companyName}}" disabled='{{disabled_name}}' />
         </view>
 
       </view>
@@ -36,26 +36,45 @@
       <!-- 时间范围 -->
       <view class="time_selection">
         <!-- 时间选择器 -->
-
         <view class="page-section-title">
-          时间选择
+          授权时间选择
         </view>
-
         <view class="time-choose">
           <!-- 开始时间 -->
-          <picker mode="date" value="{{start_date}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='start_date'>
+          <picker mode="date" value="{{authStartTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='authStartTime'>
             <view class="picker">
-              {{start_date}}
+              {{authStartTime}}
             </view>
           </picker>
           <!-- 结束时间 -->
-          <picker mode="date" value="{{start_date}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='end_date'>
+          <picker mode="date" value="{{authEndTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='authEndTime'>
             <view class="picker">
-              {{end_date}}
+              {{authEndTime}}
             </view>
           </picker>
         </view>
       </view>
+
+      <view class="time_selection">
+        <view class="page-section-title">
+          可查询记录时间
+        </view>
+        <view class="time-choose">
+          <!-- 开始时间 -->
+          <picker mode="date" value="{{recordStartTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='recordStartTime'>
+            <view class="picker">
+              {{recordStartTime}}
+            </view>
+          </picker>
+          <!-- 结束时间 -->
+          <picker mode="date" value="{{recordEndTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='recordEndTime'>
+            <view class="picker">
+              {{recordEndTime}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
     </form>
   </view>
    <button  class="button-BILL-1" hover-class="button-BILL-1-p"  bindtap="getMessage">完成</button>

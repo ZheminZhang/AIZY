@@ -9,11 +9,15 @@
     <swiper-item item-id="tabitemVoice">
       <scroll-view class="tab-content">
         <view class="section-body">
-          <view class="message">内容：{{currentText}}</view>
+          <textarea class="message" auto-height value="{{currentText}}" placeholder="请输入记账信息.." bindinput="vtextAreaBlur">
+          </textarea>
+        </view>
+        <view class="send-SR">
+          <image class="icon-SR-1" src="../../images/BILL/Send.png"  bindtap="sendData"></image>
         </view>
         <view class="view-SR-1">
           <view class="view-SR-2" catchtouchstart="streamRecord" catchtouchend="streamRecordEnd">
-            <image class="icon-SR" src="../../images/BILL/microphone.png"></image>
+            <image class="icon-SR-2" src="../../images/BILL/microphone.png"></image>
           </view>
           <text class="text-SR-2" >按住说话</text>
         </view>
@@ -24,37 +28,51 @@
         <view class="Form">
           <view class="list-BILL-1">
             <image class="icon-BILL-1" src="../../images/down-circle.png"></image>
-            <text>分类:</text>
-            <input class="weui-input_BILL_1" bindinput="classFunction" type="text"/>
+            <text class="text-BILL-1">摘要:</text>
+            <input class="weui-input_BILL_1" bindinput="summaryFunction" value="{{summary}}"/>
           </view>
 
           <view class="line-BILL-1"/>
 
-          <view class="list-BIll-2">
-            <view class="text-BILL-1">
-              <image class="icon-BILL-2" 
-              src="../../images/BILL/YUAN.png"></image>
-              <text>借:</text>
-            </view>
-            <input class="weui-input_BILL_2" type="digit" vaule='' bindinput = "borrowFunction"/>
-            <text class="text-BILL-2">元</text>
+          <view class="list-BILL-2">
+            <image class="icon-BILL-1" src="../../images/down-circle.png"></image>
+            <text class="text-BILL-2">借方科目:</text>
+            <input class="weui-input_BILL_2" bindinput="debitFunction" value="{{debit}}"/>
           </view>
 
           <view class="line-BILL-2"/>
 
-          <view class="list-BIll-2">
-            <view class="text-BILL-1">
+          <view class="list-BIll-3">
+            <view class="view-BILL-1">
               <image class="icon-BILL-2" 
               src="../../images/BILL/YUAN.png"></image>
-              <text>贷:</text>
+              <text class="text-BILL-2">借方金额(元):</text>
             </view>
-            <input class="weui-input_BILL_2" type="digit" vaule='' bindinput = "loanFunction"/>
-            <text class="text-BILL-2">元</text>
+            <input class="weui-input_BILL_3" type="digit" value="{{debitAmount}}" bindinput = "debitAmFunction"/>
           </view>
 
           <view class="line-BILL-3"/>
 
-          <view class="list-BILL-3">
+          <view class="list-BILL-2">
+            <image class="icon-BILL-1" src="../../images/down-circle.png"></image>
+            <text class="text-BILL-2">贷方科目:</text>
+            <input class="weui-input_BILL_2" bindinput="creditFunction" value="{{credit}}"/>
+          </view>
+
+          <view class="line-BILL-4"/>
+
+          <view class="list-BIll-3">
+            <view class="view-BILL-1">
+              <image class="icon-BILL-2" 
+              src="../../images/BILL/YUAN.png"></image>
+              <text class="text-BILL-2">贷方金额(元):</text>
+            </view>
+            <input class="weui-input_BILL_3" type="digit" value="{{creditAmount}}" bindinput = "creditAmFunction"/>
+          </view>
+
+          <view class="line-BILL-5"/>
+
+          <view class="list-BILL-4">
             <image class="icon-BILL-3" src="../../images/down-circle.png"></image>
             <text class="text-BILL-3">日期:</text>
             <picker class="date-text" mode="date" value="{{date}}" bindchange="onDateChange">
@@ -63,13 +81,7 @@
             </picker>
           </view>
 
-          <view class="line-BILL-4"/>
-
-          <view class="list-BILL-4">
-            <image class="icon-BILL-3" src="../../images/down-circle.png"></image>
-            <text>备注:</text>
-            <input class="weui-input_BILL_3" bindinput="onInputRemarks" type="text"/>
-          </view>
+          <view class="line-BILL-6"/>
 
           <!--完成按钮-->
           <button class="button-BILL-1" hover-class="button-BILL-1-p"  bindtap="confirmData">完成</button>

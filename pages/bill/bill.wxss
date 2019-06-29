@@ -26,7 +26,7 @@ page {
   padding:50rpx 60rpx;
   box-sizing: border-box;
   min-height: 260rpx;
-  margin: 40rpx;
+  margin: 40rpx 40rpx 20rpx 40rpx;
 }
 .message {
   position: relative;
@@ -51,7 +51,16 @@ page {
 }
 .view-SR-2 {
 }
-.icon-SR {
+.send-SR {
+
+}
+
+.icon-SR-1 {
+  height: 60rpx;
+  width: 60rpx;
+  margin-left:650rpx;
+}
+.icon-SR-2 {
   height: 90rpx;
   width: 90rpx;
 }
@@ -104,7 +113,7 @@ page {
   align-items: center;
 }
 .text-BILL-2 {
-  margin: 15rpx 20rpx 0 200rpx;
+  margin: 0rpx 10rpx 0 10rpx;
 }
 .text-BILL-3 {
   width:400rpx;
@@ -117,27 +126,27 @@ page {
   border:1px solid #FFFFFF;
   background-color:white;
   position:absolute;
-  left:165rpx;
+  left:180rpx;
   box-shadow: 0 2px 16px 2px rgba(0,0,0,0.03);
 }
 .weui-input_BILL_2 {
   height:80rpx;
-  width:200rpx;
+  width:380rpx;
   border-radius:25rpx;
   border:1px solid #FFFFFF;
   background-color:white;
   position:absolute;
-  left:165rpx;
+  left:256rpx;
   box-shadow: 0 2px 16px 2px rgba(0,0,0,0.03);
 }
 .weui-input_BILL_3 {
   height:80rpx;
+  width:320rpx;
   border-radius:25rpx;
-  width:520rpx;
   border:1px solid #FFFFFF;
   background-color:white;
   position:absolute;
-  left:165rpx;
+  left:316rpx;
   box-shadow: 0 2px 16px 2px rgba(0,0,0,0.03);
 }
 
@@ -195,12 +204,17 @@ page {
 .icon-BILL-2 {
   width: 39rpx;
   height: 39rpx;
-  margin:0rpx 50rpx 0 10rpx;
+  margin:0rpx 15rpx 0 20rpx;
 }
 .icon-BILL-3 {
   width: 39rpx;
   height: 39rpx;
   margin:0rpx 15rpx 0 10rpx;
+}
+
+.view-BILL-1 {
+  height:80rpx;
+  align-items:center;
 }
 
 .date-text {
@@ -210,6 +224,9 @@ page {
   margin-right: 36rpx;
 }
 
+
+.button-SR-1 {
+}
 .button-BILL-1{
   margin: 150rpx 100rpx 0 100rpx;
   background-color: #87a7d6;

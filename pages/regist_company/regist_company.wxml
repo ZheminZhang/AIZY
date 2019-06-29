@@ -6,21 +6,23 @@
       <view class="page-section">
         <view class="page-section-title">公司名称</view>
             <view class="weui-cell__bd">
-              <input  class="weui-input"  name="name" placeholder="" />
+              <input  class="weui-input" bindinput='bindNameInput' name="name" value="{{name}}" placeholder="" />
         </view>
       </view>
       <!-- 联系方式 -->
       <view class="page-section">
-      <view class="page-section-title">电话</view>
+      <view class="page-section-title">手机号码</view>
             <view class="weui-cell__bd">
-              <input class="weui-input" name="contract_content" bindinput="getPhoneNumber" value="{{phone}}" placeholder="" />
+              <input class="weui-input" type='number' bindinput='bindPhoneInput'  name="contract_content" placeholder=""  value="{{phone}}"/>
             </view>
       </view>
+      <!--验证码-->
       <view class="page-section">
       <view class="page-section-title">验证码</view>
             <view class="weui-cell__bd">
-              <input class="weui-input" name="contract_content" placeholder="" bindinput="getCodeValue" value="{{code}}" />
-              <button class='codeBtn' bindtap='getVerificationCode' disabled='{{disabled}}'>{{codename}}</button>
+              <input class="weui-input_min" bindinput='bindCodeInput' value="{{code}}" name="contract_content" placeholder="" />
+              <button class="codeBtn" bindtap='getCode' hidden='{{hidden}}' disabled='{{btnDisabled}}' >{{btnValue}}</button>
+
             </view>
       </view>
       <!-- 经营范围 -->
@@ -35,6 +37,6 @@
       </view>
     </form>
   </view>
-  <button  class="button-BILL-1" hover-class="button-BILL-1-p"  bindtap="getMessage" formType="submit" >Submit</button>
+   <button  class="button-BILL-1" hover-class="button-BILL-1-p"  bindtap="getMessage" formType="submit" >Submit</button>
 </view>
 
