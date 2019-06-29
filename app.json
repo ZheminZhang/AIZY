@@ -7,7 +7,8 @@
     "pages/query/query",
     "pages/authorize/authorize",
     "pages/apply/apply",
-    "pages/Autho_other/Autho_other"
+    "pages/Autho_other/Autho_other",
+    "pages/table/table"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -27,8 +28,8 @@
       {
         "pagePath": "pages/query/query",
         "text": "申请",
-        "iconPath": "images/bill.png",
-        "selectedIconPath": "images/billSelected.png"
+        "iconPath": "images/Apply.png",
+        "selectedIconPath": "images/ApplySelected.png"
       },
       {
         "pagePath": "pages/login/login",
