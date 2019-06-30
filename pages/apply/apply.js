@@ -33,7 +33,6 @@ Page({
     date = util.formatToDate(date) / 1000 + 14400;
     wx.request({
       url: api.requestAuthoUrl,
-      //url: 'http://127.0.0.1:80/api/analysis/analysis',
       data: {
         "companyName": this.data.companyName,
         "loginFlag": wx.getStorageSync('loginFlag'),
@@ -41,7 +40,7 @@ Page({
         "authEndTime": authET,
         "recordStartTime": recordST,
         "recordEndTime": recordET,
-        "timeStamp": date // TODO: 发起请求的时间，unix时间戳
+        "timeStamp": date
       },
       method: 'POST',
       success: function (e) {

@@ -68,8 +68,7 @@ Page({
 
   },
 
-  /* 加载页面 */
-  onLoad: function () {
+  onShow: function () {
     this.setData({
       granteeUnautho: wx.getStorageSync('granteeUnautho'),
       granteeAutho: wx.getStorageSync('granteeAutho'),
