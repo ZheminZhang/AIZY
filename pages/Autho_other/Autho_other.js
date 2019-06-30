@@ -71,7 +71,6 @@ Page({
       grantorAutho: wx.getStorageSync('grantorAutho'),
       grantorUnauthoRefuse: wx.getStorageSync('grantorUnauthoRefuse')
     })
-    console.log(grantorUnauthoRefuse);
   },
   
   msToDate: function (msec) {
@@ -140,9 +139,6 @@ Page({
         "&recordEndTime=" + this.msToDate(this.data.grantorUnauthoRefuse[index].recordEndTime).withoutTime +
         "&type=" + this.data.grantorUnauthoRefuse[index].type + "&recordId=" + this.data.grantorUnauthoRefuse[index].recordId+"&t="+e.target.dataset["tp"];
     }
-   
-    console.log("这里开始");
-    console.log(this.data.grantorUnautho);
     wx.navigateTo({
       url: url_,
       fail: function (e) {
