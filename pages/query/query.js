@@ -7,9 +7,7 @@ Page({
   data: {
     disabled_name: false,
     companyName: '',
-    // authStartTime: '2019-06-01',
-    // authEndTime: '2019-07-01',
-    recordStartTime: '2019-03-01',
+  recordStartTime: '2019-03-01',
     recordEndTime: '2019-06-01',
     begin: '2000-06-01',
     end: '2100-06-01',

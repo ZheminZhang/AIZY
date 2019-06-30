@@ -96,8 +96,6 @@ Page({
       },
       method: 'POST',
       success: function (res) {
-        //服务器分录结果返回
-        console.log(res.data.data[0]);
         that.setData({
           summary: res.data.data[0].summary,
           debit: res.data.data[0].debit,
@@ -113,8 +111,6 @@ Page({
       }
     })
   },
-
-
 
   /* 表单页面 */
   //摘要信息输入
@@ -163,7 +159,7 @@ Page({
     var that = this;
     if (parseFloat(that.data.debitAmount) <= 0 || parseFloat(that.data.creditAmount) <= 0) {
       wx.showToast({
-        title: '请输入金额',
+        title: '金额不能为0',
         icon:'none',
         duration: 1500
       });
@@ -186,21 +182,37 @@ Page({
       },
       method: 'POST',
       success: function(res) {
-        console.log(res)
-        wx.showToast({
-          title: '记账成功',
-          icon: 'success',
-          duration: 500,
-          success: function () {
-            setTimeout(function () {
-              wx.navigateBack({
-                delta: 1
-              })
-            }, 500)
-          }
-        })
+        // TODO:应该使用返回的数据进行判断
+        if(res.statusCode == 200){
+          wx.showToast({
+            title: '记账成功',
+            icon: 'success',
+            duration: 500,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateBack({
+                  delta: 1
+                })
+              }, 500)
+            }
+          })
+        }else if(res.statusCode == 400){
+          wx.showToast({
+            title: res.data,
+            icon: 'fail',
+            duration: 500,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateBack({
+                  delta: 1
+                })
+              }, 500)
+            }
+          })
+        }
       },
       fail: function(res) {
+        // 网络请求失败
         console.log(res)
       }
     })

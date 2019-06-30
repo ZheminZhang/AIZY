@@ -15,10 +15,6 @@ Page({
     type:[],
     recordId:'',
   },
-  // TODO: 
-  formSubmit: function (e) {
-    console.log('form发生了submit事件，携带数据为：', e)
-  },
   bindDateChange: function (e) {
     if (e.target.id == 'authStartTime') {
       this.setData({
@@ -81,7 +77,6 @@ Page({
 
   // 加载url中的参数,同时完成unix转普通时间
   onLoad: function (options) {
-    console.log(options.authStartTime);
     this.setData({
       companyName: options.companyName,
       id: options.id,

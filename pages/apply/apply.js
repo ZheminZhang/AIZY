@@ -22,8 +22,6 @@ Page({
     })
   },
   formSubmit: function (e) {
-    console.log('form发生了submit事件，携带数据为：', e)
-    console.log(date);
     //转为unix时间
     var authST = util.formatToDate(this.data.authStartTime) / 1000 + 14400;
     var authET = util.formatToDate(this.data.authEndTime) / 1000 + 14400;
@@ -48,14 +46,12 @@ Page({
           title: '发送成功',
           icon: 'success'
         })
-        console.log(e);
       },
       fail: function (e) {
         wx.showToast({
           title: '发送失败',
           icon: 'none',
         })
-        console.log(e);
       }
     })
   },

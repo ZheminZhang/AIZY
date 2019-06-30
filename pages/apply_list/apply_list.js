@@ -111,7 +111,6 @@ Page({
   toDetail: function (e) {
     let index = e.currentTarget.id;
     let url_ = '../authorize/authorize?' + 'tp=' + e.target.dataset["tp"]
-    console.log(url);
     if (e.target.dataset["tp"] == '4') {
       url_ = url_ +
         "&companyName=" + this.data.granteeUnautho[index].user +
