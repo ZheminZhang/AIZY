@@ -1,4 +1,5 @@
 // pages/apply_list_1/apply_list.js
+const app = require("../../app.js")
 Page({
   data: {
     tabitemConsume: {},
@@ -76,11 +77,7 @@ Page({
     })
   },
   onShow:function(){
-    this.setData({
-      granteeUnautho: wx.getStorageSync('granteeUnautho'),
-      granteeAutho: wx.getStorageSync('granteeAutho'),
-      granteeUnauthoRefuse: wx.getStorageSync('granteeUnauthoRefuse'),
-    })
+    
   },
   msToDate: function (msec) {
     let datetime = new Date(msec*1000);
@@ -116,6 +113,8 @@ Page({
     return result;
   },
   toDetail: function (e) {
+    console.log('申请列表点击事件');
+    console.log(e);
     let index = e.currentTarget.id;
     let url_ = '../authorize/authorize?' + 'tp=' + e.target.dataset["tp"]
     if (e.target.dataset["tp"] == '4') {

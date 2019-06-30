@@ -61,7 +61,7 @@ Page({
 
     let userInfo = app.globalData.userInfo;
 
-    console.info('userInfo is:', userInfo);
+   // console.info('userInfo is:', userInfo);
 
     if (userInfo) {
       that.setData({
@@ -71,6 +71,7 @@ Page({
       wx.hideLoading();
     } else {
       console.log('globalData中userInfo为空');
+      
     }
   },
 

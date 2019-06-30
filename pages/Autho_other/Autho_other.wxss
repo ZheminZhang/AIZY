@@ -75,7 +75,7 @@ page{
   
 }
 .client_info_Refuse{
-  background-color:red;
+  background-color:#96514d;
   height: 130rpx; 
   display: flex;
   flex-wrap: nowrap;
@@ -136,10 +136,10 @@ page{
   vertical-align: center;
   justify-content: center;
   display: flex;
-  background-color:red;
+  background-color:#96514d;
 }
 .btn_accept_hover{
-  background-color: red;
+  background-color: #96514d;
   height: 60rpx;
   width: 150rpx;
   border-radius:25rpx;

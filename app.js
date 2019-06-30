@@ -38,6 +38,8 @@ App({
         fail: function () {
           // session_key过期
           console.log("需求登录")
+          wx.setStorageSync('userInfo','');
+          wx.setStorageSync('loginFlag','');
         }
       });
     } else {

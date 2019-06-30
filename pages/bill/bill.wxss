@@ -69,7 +69,7 @@ page {
 
 .tabbar-BILL {
   height: 80rpx;
-  background-color: #8992c8;
+  background-color: #bce2e8;
   color: #fff;
   font-size: 30rpx;
   align-items: center;
@@ -89,6 +89,7 @@ page {
   text-align: center;
   color: #e0e0e0;
   font-weight: 400;
+  font-size:5vw;
 }
 .tabitem-active {
   color: #fff;
@@ -128,7 +129,7 @@ page {
   border:1px solid #FFFFFF;
   background-color:white;
   position:absolute;
-  left:180rpx;
+  right:80rpx;
   box-shadow: 0 2px 16px 2px rgba(0,0,0,0.03);
 }
 .weui-input_BILL_2 {
@@ -138,7 +139,7 @@ page {
   border:1px solid #FFFFFF;
   background-color:white;
   position:absolute;
-  left:256rpx;
+  right:80rpx;
   box-shadow: 0 2px 16px 2px rgba(0,0,0,0.03);
 }
 .weui-input_BILL_3 {
@@ -148,7 +149,7 @@ page {
   border:1px solid #FFFFFF;
   background-color:white;
   position:absolute;
-  left:316rpx;
+  right:80rpx;
   box-shadow: 0 2px 16px 2px rgba(0,0,0,0.03);
 }
 
@@ -232,11 +233,11 @@ page {
 }
 .button-BILL-1{
   margin: 150rpx 100rpx 0 100rpx;
-  background-color: #87a7d6;
+  background-color:#bce2e8;
   color: white;
 }
 .button-BILL-1-p{
   margin: 150rpx 100rpx 0 100rpx;
-  background-color: #87a7d6;
+  background-color: #bce2e8;
   color: white;
 }
