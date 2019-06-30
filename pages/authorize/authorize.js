@@ -17,8 +17,9 @@ Page({
   },
   // TODO: 
   formSubmit: function (e) {
-    console.log('form发生了submit事件，携带数据为：', e)
+    console.log('form发生了submit事件，携带数据为：', e);
   },
+
   bindDateChange: function (e) {
     if (e.target.id == 'authStartTime') {
       this.setData({
@@ -43,6 +44,7 @@ Page({
       })
     }
   },
+  
   //请求
   submitForm: function (e) {
     //转为unix时间
@@ -61,8 +63,8 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: {
-        "companyName": this.data.companyName,                    // 授予者
-        "loginFlag": wx.getStorageSync('loginFlag'),    // 授权发起者，即被授予者
+        "companyName": this.data.companyName,
+        "loginFlag": wx.getStorageSync('loginFlag'),
         "authStartTime": authST,
         "authEndTime": authET,
         "recordStartTime": recordST,
@@ -77,6 +79,22 @@ Page({
         console.log(e);
       }
     })
+    // TODO: 目前submit后会更新申请与授权，后期应根据form不同更新不同数据
+    util.getApplyList();
+    util.getAuthoList();
+    //更新红点
+    var numApply = wx.getStorageSync('granteeUnautho').length;
+    var numAutho = wx.getStorageSync('grantorUnautho').length;
+    if (numApply <= 0 && numAutho <= 0) {
+      wx.hideTabBarRedDot({
+        index: 2,
+      })
+    }
+    else {
+      wx.showTabBarRedDot({
+        index: 2,
+      })
+    }
   },
 
   // 加载url中的参数,同时完成unix转普通时间
