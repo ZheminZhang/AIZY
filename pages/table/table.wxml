@@ -1,0 +1,94 @@
+
+
+<view class='container-BILL'>
+  <view class='tabbar-BILL'>
+    <text id="tabitemProfit" class='tabitem {{activeTabId=="tabitemProfit"?"tabitem-active":""}}' bindtap='tabclick'>利润表</text>
+    <text id="tabitemDebit" class='tabitem {{activeTabId=="tabitemDebit"?"tabitem-active":""}}' bindtap='tabclick'>资产负载表</text>
+    <text id="tabitemCash" class='tabitem {{activeTabId=="tabitemCash"?"tabitem-active":""}}' bindtap='tabclick'>现金流量表</text>
+    <view class='tabindicator' animation="{{indicatorAnim}}"></view>
+  </view>
+
+  <swiper current-item-id='{{activeTabId}}' bindchange='tabChange'>
+    <swiper-item item-id="tabitemProfit">
+      <scroll-view class="table"  scroll-y="true">
+  <view class="tr bg-w">
+    
+    <view class="th">报表项目</view>
+    <view class="th_">金额(元)</view>
+  </view>
+  <block wx:for="{{incomeData}}">
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+      <view class="td">
+        <text class="name">{{item.text}}</text>
+      </view>
+      <view class="td_">
+        <text class="name">{{item.money}}</text>
+      </view>
+    </view>
+    <view class="tr" wx:else>
+      <view class="td">
+        <text class="name">{{item.text}}</text>
+      </view>
+      <view class="td_">
+        <text class="name">{{item.money}}</text>
+      </view>
+    </view>
+  </block>
+</scroll-view>
+    </swiper-item>
+    <swiper-item item-id="tabitemDebit">
+      <scroll-view class="table" scroll-x="true" scroll-y="true">
+  <view class="tr bg-w">
+    <view class="th">报表项目</view>
+    <view class="th_">金额(元)</view>
+  </view>
+  <block wx:for="{{incomeData}}">
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+      <view class="td">
+        <text class="name">{{item.text}}</text>
+      </view>
+      <view class="td_">
+        <text class="name">{{item.money}}</text>
+      </view>
+    </view>
+    <view class="tr" wx:else>
+      <view class="td">
+        <text class="name">{{item.text}}</text>
+      </view>
+      <view class="td_">
+        <text class="name">{{item.money}}</text>
+      </view>
+    </view>
+  </block>
+</scroll-view>
+    </swiper-item>
+    <swiper-item item-id="tabitemCash">
+      <scroll-view class="table" scroll-x="true" scroll-y="true">
+  <view class="tr bg-w">
+    <view class="th">报表项目</view>
+    <view class="th_">金额(元)</view>
+  </view>
+  <block wx:for="{{incomeData}}">
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+      <view class="td">
+        <text class="name">{{item.text}}</text>
+      </view>
+      <view class="td_">
+        <text class="name">{{item.money}}</text>
+      </view>
+    </view>
+    <view class="tr" wx:else>
+      <view class="td">
+        <text class="name">{{item.text}}</text>
+      </view>
+      <view class="td_">
+        <text class="name">{{item.money}}</text>
+      </view>
+    </view>
+  </block>
+</scroll-view>
+    </swiper-item>
+  </swiper>
+</view>
+
+

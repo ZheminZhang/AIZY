@@ -117,7 +117,7 @@ Page({
 
   applyInitiate: function(){
      wx.navigateTo({
-       url: '../apply/apply',
+       url: '../Autho_other/Autho_other',
        fail: function (e) {
          console.log(e);
        }

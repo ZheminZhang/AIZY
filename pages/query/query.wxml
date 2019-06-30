@@ -35,4 +35,5 @@
     </form>
   </view>
    <button  class="button-BILL-1" hover-class="button-BILL-1-p"  bindtap="formSubmit">完成</button>
+     <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap='goTable' wx:if="{{isClick_}}">生成报表</button>
 </view>

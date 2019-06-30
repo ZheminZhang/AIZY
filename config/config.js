@@ -8,10 +8,11 @@ const loginUrl = baseUrl + 'login';
 // 申请列表查询接口
 const granteeUnauthoUrl = baseUrl + 'granteeUnautho';
 const granteeAuthoUrl = baseUrl + 'granteeAutho';
+const granteeUnauthoRefuseUrl = baseUrl + 'granteeUnauthoRefuse';
 // 授权列表查询接口
 const grantorUnauthoUrl = baseUrl + 'grantorUnautho';
 const grantorAuthoUrl = baseUrl + 'grantorAutho';
-
+const grantorUnauthoRefuseUrl = baseUrl + 'grantorUnauthoRefuse';
 // 查询接口
 const queryUrl = testUrl + 'query';
 // 记账接口
@@ -30,6 +31,8 @@ module.exports = {
   granteeAuthoUrl: granteeAuthoUrl,
   grantorUnauthoUrl: grantorUnauthoUrl,
   grantorAuthoUrl: grantorAuthoUrl,
+  granteeUnauthoRefuseUrl: granteeUnauthoRefuseUrl,
+  grantorUnauthoRefuseUrl: grantorUnauthoRefuseUrl,
   queryUrl: queryUrl,
   insertUrl: insertUrl,
   authorizedUrl: authorizedUrl,
