@@ -157,6 +157,7 @@ App({
         console.log(res);
         console.log('成功读取申请列表');
         wx.setStorageSync('granteeUnautho', "");
+        if(res.statusCode==200)
         wx.setStorageSync('granteeUnautho', res.data);
       },
       fail: function (res) {
@@ -171,8 +172,8 @@ App({
       },
       method: 'POST',
       success: function (res) {
-        console.log(res);
         wx.setStorageSync('granteeAutho', "");
+        if(res.statusCode==200)
         wx.setStorageSync('granteeAutho', res.data);
       },
       fail: function (res) {
@@ -187,9 +188,11 @@ App({
       },
       method: 'POST',
       success: function (res) {
-        console.log(res);
         wx.setStorageSync('granteeUnauthoRefuse', "");
-        wx.setStorageSync('granteeUnauthoRefuse', res.data);
+        if(res.statusCode==200)
+        {
+          wx.setStorageSync('granteeUnauthoRefuse', res.data);
+        }
       },
       fail: function (res) {
         console.log(res)
@@ -207,8 +210,8 @@ App({
       method: 'POST',
       success: function (res) {
         console.log('成功读授权列表');
-        console.log(res);
         wx.setStorageSync('grantorUnautho', "");
+        if(res.statusCode==200)
         wx.setStorageSync('grantorUnautho', res.data);
       },
       fail: function (res) {
@@ -226,6 +229,7 @@ App({
         console.log("已授权列表：")
         console.log(res);
         wx.setStorageSync('grantorAutho', "");
+        if(res.statusCode==200)
         wx.setStorageSync('grantorAutho', res.data);
       },
       fail: function (res) {
@@ -243,6 +247,7 @@ App({
         console.log("拒绝列表：")
         console.log(res);
         wx.setStorageSync('grantorUnauthoRefuse', "");
+        if(res.statusCode==200)
         wx.setStorageSync('grantorUnauthoRefuse', res.data);
       },
       fail: function (res) {

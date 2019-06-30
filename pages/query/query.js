@@ -48,15 +48,11 @@ Page({
       },
       method: 'POST',
       success: function (e) {
-        wx.showToast({
-          title: '发送成功',
-          icon:'success'
-        })
-        _this.setData({
-          isClick_:true,
-        });
         console.log(e);
-        
+        wx.setStorageSync('table', e.data);
+        wx.navigateTo({
+          url: '../table/table',
+        });
       },
       fail: function (e) {
         wx.showToast({
@@ -67,6 +63,7 @@ Page({
 
       }
     })
+    
   },
 
   bindDateChange: function (e) {
@@ -94,9 +91,5 @@ Page({
       })
     }
   },
-  goTable: function () {
-    wx.navigateTo({
-      url: '../table/table',
-    })
-  },
+
 })

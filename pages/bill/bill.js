@@ -169,6 +169,14 @@ Page({
       });
       return;
     }
+    else if (that.data.debit==''||that.data.credit=='') {
+      wx.showToast({
+        title: '请输入科目',
+        icon: 'none',
+        duration: 1500
+      });
+      return;
+    }
 
     //精确到秒，定位为当天12点
     var unixtime = util.formatToDate(that.data.date)/1000 + 14400;

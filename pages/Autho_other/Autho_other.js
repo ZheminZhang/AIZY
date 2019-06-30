@@ -8,7 +8,6 @@ Page({
     grantorAutho: {},
     grantorUnautho: {},
     grantorUnauthoRefuse: {},
-
   },
   navbarTap: function (e) {
     this.setData({
@@ -74,6 +73,7 @@ Page({
     })
     console.log(grantorUnauthoRefuse);
   },
+  
   msToDate: function (msec) {
     let datetime = new Date(msec * 1000);
     let year = datetime.getFullYear();
@@ -118,7 +118,7 @@ Page({
         "&authEndTime=" + this.msToDate(this.data.grantorUnautho[index].authEndTime).withoutTime +
         "&recordStartTime=" + this.msToDate(this.data.grantorUnautho[index].recordStartTime).withoutTime +
         "&recordEndTime=" + this.msToDate(this.data.grantorUnautho[index].recordEndTime).withoutTime +
-        "&type=" + this.data.grantorUnautho[index].type + "&recordId=" + this.data.grantorUnautho[index].recordId;
+        "&type=" + this.data.grantorUnautho[index].type + "&recordId=" + this.data.grantorUnautho[index].recordId+"&t="+e.target.dataset["tp"];
     }
     else if (e.target.dataset["tp"] == '2') {
       url_ = url_ +
@@ -128,7 +128,7 @@ Page({
         "&authEndTime=" + this.msToDate(this.data.grantorAutho[index].authEndTime).withoutTime +
         "&recordStartTime=" + this.msToDate(this.data.grantorAutho[index].recordStartTime).withoutTime +
         "&recordEndTime=" + this.msToDate(this.data.grantorAutho[index].recordEndTime).withoutTime +
-        "&type=" + this.data.grantorAutho[index].type + "&recordId=" + this.data.grantorAutho[index].recordId;
+        "&type=" + this.data.grantorAutho[index].type + "&recordId=" + this.data.grantorAutho[index].recordId+"&t="+e.target.dataset["tp"];
     }
     else if (e.target.dataset["tp"] == '3') {
       url_ = url_ +
@@ -138,7 +138,7 @@ Page({
         "&authEndTime=" + this.msToDate(this.data.grantorUnauthoRefuse[index].authEndTime).withoutTime +
         "&recordStartTime=" + this.msToDate(this.data.grantorUnauthoRefuse[index].recordStartTime).withoutTime +
         "&recordEndTime=" + this.msToDate(this.data.grantorUnauthoRefuse[index].recordEndTime).withoutTime +
-        "&type=" + this.data.grantorUnauthoRefuse[index].type + "&recordId=" + this.data.grantorUnauthoRefuse[index].recordId;
+        "&type=" + this.data.grantorUnauthoRefuse[index].type + "&recordId=" + this.data.grantorUnauthoRefuse[index].recordId+"&t="+e.target.dataset["tp"];
     }
    
     console.log("这里开始");

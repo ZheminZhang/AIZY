@@ -21,7 +21,7 @@
             <view class="client_info_Refuse">
               <image src="../../images/apply_list/author.png" class="userinfo-avatar" background-size="cover"></image>
               <view class="name">{{item.user}}</view>
-              <view class="btn_accept">已拒绝</view>
+              <view class="btn_accept_r">已拒绝</view>
               <image src="../../images/apply_list/arrow.png" class="userinfo-avatar" background-size="cover" bindtap='toDetail' id="{{index}}" data-tp="3"></image>
             </view>
           </view>

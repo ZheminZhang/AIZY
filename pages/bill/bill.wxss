@@ -18,6 +18,7 @@ page {
   box-sizing: border-box;
 }
 
+
 .section-body{
   word-wrap: break-word;
   position: relative;
@@ -31,6 +32,7 @@ page {
 .message {
   position: relative;
   padding: 0 2px;
+  height: 200rpx;
 }
 
 

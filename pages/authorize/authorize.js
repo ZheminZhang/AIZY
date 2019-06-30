@@ -14,6 +14,7 @@ Page({
     end: '2100-06-01',
     type:[],
     recordId:'',
+    tp:'',
   },
   // TODO: 
   formSubmit: function (e) {
@@ -91,6 +92,9 @@ Page({
       recordEndTime:options.recordEndTime,
       type: options.type,
       recordId:options.recordId,
+      tp:options.t,
     })
+     console.log("这tp值为")
+     console.log(this.data.tp);
   }
 })
