@@ -7,8 +7,7 @@ Page({
     currentTab: 0,
     granteeUnautho: {},
     granteeAutho: {},
-    grantorAutho: {},
-    grantorUnautho: {},
+    granteeUnauthoRefuse:{},
   },
   navbarTap: function (e) {
     this.setData({
@@ -21,7 +20,11 @@ Page({
       this.setActiveTab(e.detail.currentItemId);
     }
   },
-
+  goApply:function(){
+    wx.navigateTo({
+      url: '../apply/apply',
+    })
+  },
   tabclick(e) {
     this.setActiveTab(e.target.id);
   },
@@ -70,53 +73,75 @@ Page({
     this.setData({
       granteeUnautho: wx.getStorageSync('granteeUnautho'),
       granteeAutho: wx.getStorageSync('granteeAutho'),
-      grantorAutho: wx.getStorageSync('grantorAutho'),
-      grantorUnautho: wx.getStorageSync('grantorUnautho'),
+      granteeUnauthoRefuse: wx.getStorageSync('granteeUnauthoRefuse'),
     })
   },
+  msToDate: function (msec) {
+    let datetime = new Date(msec*1000);
+    let year = datetime.getFullYear();
+    let month = datetime.getMonth();
+    let date = datetime.getDate();
+    let hour = datetime.getHours();
+    let minute = datetime.getMinutes();
+    let second = datetime.getSeconds();
 
+    let result1 = year +
+      '-' +
+      ((month + 1) >= 10 ? (month + 1) : '0' + (month + 1)) +
+      '-' +
+      ((date + 1) < 10 ? '0' + date : date) +
+      ' ' +
+      ((hour + 1) < 10 ? '0' + hour : hour) +
+      ':' +
+      ((minute + 1) < 10 ? '0' + minute : minute) +
+      ':' +
+      ((second + 1) < 10 ? '0' + second : second);
+
+    let result2 = year +
+      '-' +
+      ((month + 1) >= 10 ? (month + 1) : '0' + (month + 1)) +
+      '-' +
+      ((date + 1) < 10 ? '0' + date : date);
+
+    let result = {
+      hasTime: result1,
+      withoutTime: result2
+    };
+    return result;
+  },
   toDetail: function (e) {
     let index = e.currentTarget.id;
     let url_ = '../authorize/authorize?' + 'tp=' + e.target.dataset["tp"]
-    if (e.target.dataset["tp"] == '1') {
-      url_ = url_ + 
-        "&companyName=" + this.data.grantorUnautho[index].user +
-        "&id=" + this.data.grantorUnautho[index].id +
-        "&authStartTime=" + this.data.grantorUnautho[index].authStartTime +
-        "&authEndTime=" + this.data.grantorUnautho[index].authEndTime +
-        "&recordStartTime=" + this.data.grantorUnautho[index].recordStartTime +
-        "&recordEndTime=" + this.data.grantorUnautho[index].recordEndTime +
-        "&type=" + this.data.grantorUnautho[index].type
-    }
-    else if (e.target.dataset["tp"] == '2') {
+    console.log(url);
+    if (e.target.dataset["tp"] == '4') {
       url_ = url_ +
-        "&companyName=" + this.data.grantorAutho[index].name +
-        "&id=" + this.data.grantorAutho[index].id +
-        "&authStartTime=" + this.data.grantorAutho[index].authStartTime +
-        "&authEndTime=" + this.data.grantorAutho[index].authEndTime +
-        "&recordStartTime=" + this.data.grantorAutho[index].recordStartTime +
-        "&recordEndTime=" + this.data.grantorAutho[index].recordEndTime +
-        "&type=" + this.data.grantorAutho[index].type
-    }
-    else if (e.target.dataset["tp"] == '3') {
-      url_ = url_ +
-        "&companyName=" + this.data.granteeUnautho[index].name +
+        "&companyName=" + this.data.granteeUnautho[index].user +
         "&id=" + this.data.granteeUnautho[index].id +
-        "&authStartTime=" + this.data.granteeUnautho[index].authStartTime +
-        "&authEndTime=" + this.data.granteeUnautho[index].authEndTime +
-        "&recordStartTime=" + this.data.granteeUnautho[index].recordStartTime +
-        "&recordEndTime=" + this.data.granteeUnautho[index].recordEndTime +
-        "&type=" + this.data.granteeUnautho[index].type
+        "&authStartTime=" + this.msToDate(this.data.granteeUnautho[index].authStartTime).withoutTime +
+        "&authEndTime=" + this.msToDate(this.data.granteeUnautho[index].authEndTime).withoutTime +
+        "&recordStartTime=" + this.msToDate(this.data.granteeUnautho[index].recordStartTime).withoutTime +
+        "&recordEndTime=" + this.msToDate(this.data.granteeUnautho[index].recordEndTime).withoutTime +
+        "&type=" + this.data.granteeUnautho[index].type + "&recordId=" + this.data.granteeUnautho[index].recordId;
     }
-    else if (e.target.dataset["tp"] == '3') {
+    else if (e.target.dataset["tp"] == '5') {
       url_ = url_ +
-        "&companyName=" + this.data.granteeAutho[index].name +
+        "&companyName=" + this.data.granteeAutho[index].user +
         "&id=" + this.data.granteeAutho[index].id +
-        "&authStartTime=" + this.data.granteeAutho[index].authStartTime +
-        "&authEndTime=" + this.data.granteeAutho[index].authEndTime +
-        "&recordStartTime=" + this.data.granteeAutho[index].recordStartTime +
-        "&recordEndTime=" + this.data.granteeAutho[index].recordEndTime +
-        "&type=" + this.data.granteeAutho[index].type
+        "&authStartTime=" + this.msToDate(this.data.granteeAutho[index].authStartTime).withoutTime +
+        "&authEndTime=" + this.msToDate(this.data.granteeAutho[index].authEndTime).withoutTime +
+        "&recordStartTime=" + this.msToDate(this.data.granteeAutho[index].recordStartTime).withoutTime +
+        "&recordEndTime=" + this.msToDate(this.data.granteeAutho[index].recordEndTime).withoutTime +
+        "&type=" + this.data.granteeAutho[index].type + this.data.granteeAutho[index].type + "&recordId=" + this.data.granteeAutho[index].recordId;
+    }
+    else if (e.target.dataset["tp"] == '6') {
+      url_ = url_ +
+        "&companyName=" + this.data.granteeUnauthoRefuse[index].user +
+        "&id=" + this.data.granteeUnauthoRefuse[index].id +
+        "&authStartTime=" + this.msToDate(this.data.granteeUnauthoRefuse[index].authStartTime).withoutTime +
+        "&authEndTime=" + this.msToDate(this.data.granteeUnauthoRefuse[index].authEndTime).withoutTime +
+        "&recordStartTime=" + this.msToDate(this.data.granteeUnauthoRefuse[index].recordStartTime).withoutTime +
+        "&recordEndTime=" + this.msToDate(this.data.granteeUnauthoRefuse[index].recordEndTime).withoutTime +
+        "&type=" + this.data.granteeUnauthoRefuse[index].type + this.data.granteeUnauthoRefuse[index].type + "&recordId=" + this.data.granteeUnauthoRefuse[index].recordId;
     }
     wx.navigateTo({
       url: url_,
@@ -125,4 +150,12 @@ Page({
       }
     })
   },
+  addNewClient:function(){
+    wx.navigateTo({
+      url: '../query/query',
+      fail: function (e) {
+        console.log(e)
+      }
+    })
+  }
 })

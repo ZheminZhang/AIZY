@@ -115,7 +115,15 @@ Page({
     });
   },
 
-  // 动画
+  applyInitiate: function(){
+     wx.navigateTo({
+       url: '../Autho_other/Autho_other',
+       fail: function (e) {
+         console.log(e);
+       }
+     });
+  },
+  
   powerDrawer: function (e) {
     var currentStatu = e.currentTarget.dataset.statu;
     this.util(currentStatu)

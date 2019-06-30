@@ -72,6 +72,7 @@ page{
   flex-wrap: nowrap;
   align-items: center;
   border:3rpx solid blanchedalmond;
+
 }
 .client_info_Refuse{
   background-color:red;
@@ -96,13 +97,6 @@ page{
   height: 70rpx;
   margin-top:5rpx; 
   border-radius: 50%;
-}
-.userinfo-avatar_add {
-  width: 70rpx;
-  height: 70rpx;
-  margin-top:5rpx; 
-  border-radius: 50%;
-  margin-left:370rpx
 }
 .name{
   line-height: 130rpx;
