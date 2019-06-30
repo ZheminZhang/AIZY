@@ -14,16 +14,19 @@ Page({
     begin: '2000-06-01',
     end: '2100-06-01',
     name:'',
+    isClick_: false,
   },
  
   inputComName: function(e) {
-    this.setData({
+    var _this=this;
+    _this.setData({
       companyName: e.detail.value,
     })
   },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e)
     console.log(date);
+    var _this=this;
     //转为unix时间
     // var authST = util.formatToDate(this.data.authStartTime) / 1000 + 14400;
     // var authET = util.formatToDate(this.data.authEndTime) / 1000 + 14400;
@@ -49,7 +52,11 @@ Page({
           title: '发送成功',
           icon:'success'
         })
+        _this.setData({
+          isClick_:true,
+        });
         console.log(e);
+        
       },
       fail: function (e) {
         wx.showToast({
@@ -57,6 +64,7 @@ Page({
           icon:'none',
         })
         console.log(e);
+
       }
     })
   },
