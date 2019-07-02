@@ -10,8 +10,6 @@
         </view>
       </view>
 
-      
-
       <view class="time_selection">
         <!-- 时间选择器 -->
         <view class="page-section-title">
