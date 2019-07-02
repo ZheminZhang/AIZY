@@ -1,14 +1,15 @@
 /** index.js **/
 //获取app实例
 const app = getApp();
-
+var util=require("../../utils/util");
 Page({
   data: {
     userInfo: {},           // 用户信息
     hasLogin: wx.getStorageSync('loginFlag')
       ? true
       : false,              // 是否登录，根据后台返回的skey判断
-    numApply: 0,            // TODO:显示在页面上的申请人数量
+    numApply: 0,            // TODO:未接受申请数量
+    numAutho: 0,            // TODO:未授权授权数量
     showModalStatus: false, // 模态弹窗
     imageUrl:'../../images/coin.png', //未登录的头像
     timeIDs: new Array()    // TODO:清除计时器
@@ -25,6 +26,7 @@ Page({
         success: function () {
           // 获取用户头像/昵称等信息
           that.getUserInfo();
+
         },
         // session_key 已过期
         fail: function () {
@@ -50,7 +52,25 @@ Page({
       title: '请稍等...',
       mask: true
     });
-    app.doLogin(that.getUserInfo);
+    app.doLogin(()=>{
+      that.getUserInfo();
+      util.getApplyList(() => {
+        that.setData({
+          numApply: wx.getStorageSync('granteeUnautho').length,
+          // numAutho: wx.getStorageSync('grantorUnautho').length,
+        });
+      });
+      util.getAuthoList(()=>{
+        that.setData({
+          // numApply: wx.getStorageSync('granteeUnautho').length,
+          numAutho: wx.getStorageSync('grantorUnautho').length,
+        });
+      });
+      // console.log(that.data.numApply);
+      
+      // console.log(wx.getStorageSync('granteeUnautho').length);
+    });
+    
   },
 
   /**
@@ -61,7 +81,7 @@ Page({
 
     let userInfo = app.globalData.userInfo;
 
-    console.info('userInfo is:', userInfo);
+   // console.info('userInfo is:', userInfo);
 
     if (userInfo) {
       that.setData({
@@ -71,6 +91,7 @@ Page({
       wx.hideLoading();
     } else {
       console.log('globalData中userInfo为空');
+      
     }
   },
 
@@ -80,6 +101,8 @@ Page({
 
   goApply: function () {
     let loginFlag = wx.getStorageSync('loginFlag');
+    util.getAuthoList();
+    util.getApplyList();
     if (loginFlag) {
       wx.navigateTo({
         url: '../apply_list/apply_list',
@@ -98,11 +121,13 @@ Page({
   onLoad: function () {
     this.checkLoginStatus();
   },
-
   onShow: function () {
     let that = this;
+    //设置用户登录信息；根据未接受申请和未同意授权，更新
     that.setData({
-      userInfo: app.globalData.userInfo
+      userInfo: app.globalData.userInfo,
+      numApply: wx.getStorageSync('granteeUnautho').length,
+      numAutho: wx.getStorageSync('grantorUnautho').length,
     });
   },
 

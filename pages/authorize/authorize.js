@@ -1,6 +1,5 @@
 var util = require('../../utils/util.js');
 var config = require('../../config/config.js');
-
 Page({
   data: {
     disabled_name: true,
@@ -14,7 +13,13 @@ Page({
     end: '2100-06-01',
     type:[],
     recordId:'',
+    tp:'',
   },
+  // TODO: 
+  formSubmit: function (e) {
+    console.log('form发生了submit事件，携带数据为：', e);
+  },
+
   bindDateChange: function (e) {
     if (e.target.id == 'authStartTime') {
       this.setData({
@@ -39,6 +44,7 @@ Page({
       })
     }
   },
+  
   //请求
   submitForm: function (e) {
     //转为unix时间
@@ -47,8 +53,12 @@ Page({
     var recordST = util.formatToDate(this.data.recordStartTime) / 1000 + 14400;
     var recordET = util.formatToDate(this.data.recordEndTime) / 1000 + 14400;
     var tag = "disagree"
+    util._getUnAuthoList();
     if(e.target.dataset["type"]=="agree"){
-      tag="agree";
+      tag = "agree"; util._getAuthoList();
+    }
+     else{
+      util._getUnAuthoRefuseList();
     }
     wx.request({
       url: config.authorizedUrl,
@@ -57,8 +67,8 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: {
-        "companyName": this.data.companyName,                    // 授予者
-        "loginFlag": wx.getStorageSync('loginFlag'),    // 授权发起者，即被授予者
+        "companyName": this.data.companyName,
+        "loginFlag": wx.getStorageSync('loginFlag'),
         "authStartTime": authST,
         "authEndTime": authET,
         "recordStartTime": recordST,
@@ -67,12 +77,37 @@ Page({
         "recordId":this.data.recordId,
       },
       success: function(e) {
-        console.log(e);
+       wx.showToast({
+         title: '成功',
+         icon:'success',
+       })
+        setTimeout(function () {
+          wx.navigateBack({
+            delta: 1,
+          })},1000);//设置延时，确认让用户知道登陆成功
       },
       fail: function(e) {
-        console.log(e);
+        wx.showToast({
+          title: '请求发送失败',
+          icon:'none',
+        })
       }
     })
+    // TODO: 目前submit后会更新申请与授权，后期应根据form不同更新不同数据
+    
+    //更新红点
+    var numApply = wx.getStorageSync('granteeUnautho').length;
+    var numAutho = wx.getStorageSync('grantorUnautho').length;
+    if (numApply <= 0 && numAutho <= 0) {
+      wx.hideTabBarRedDot({
+        index: 2,
+      })
+    }
+    else {
+      wx.showTabBarRedDot({
+        index: 2,
+      })
+    }
   },
 
   // 加载url中的参数,同时完成unix转普通时间
@@ -86,6 +121,7 @@ Page({
       recordEndTime:options.recordEndTime,
       type: options.type,
       recordId:options.recordId,
+      tp:options.t,//记录的是申请或授权状态
     })
   }
 })

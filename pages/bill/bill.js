@@ -87,15 +87,14 @@ Page({
   sendData: function () {
     var that = this;
     /* 得到完整识别内容发给语音服务器处理 */
-    //console.log("给服务器发送文本：", this.data.currentText)
     wx.request({
-      url: 'http://192.168.1.5:80/api/analysis/analysis',
+      url: 'http://192.168.1.2:80/api/analysis/analysis',
       data: {
-        //"text": this.data.currentText,
-        "text": "买20元可乐",
+        "text": this.data.currentText,
       },
       method: 'POST',
       success: function (res) {
+        console.log(res)
         that.setData({
           summary: res.data.data[0].summary,
           debit: res.data.data[0].debit,
@@ -103,7 +102,6 @@ Page({
           credit: res.data.data[0].credit,
           creditAmount: parseFloat(res.data.data[0].credit_amount),
         })
-        
         that.setActiveTab('tabitemForm');
       },
       fail: function (res) {
@@ -131,7 +129,6 @@ Page({
   debitAmFunction: function(e) {
     this.setData({
       debitAmount: e.detail.value,
-      creditAmount: e.detail.value,
     })
   },
   //贷方科目
@@ -144,7 +141,6 @@ Page({
   creditAmFunction: function (e) {
     this.setData({
       creditAmount: e.detail.value,
-      debitAmount:e.detail.value,
     })
   },
   //选择时间
@@ -161,6 +157,14 @@ Page({
       wx.showToast({
         title: '金额不能为0',
         icon:'none',
+        duration: 1500
+      });
+      return;
+    }
+    else if (that.data.debit==''||that.data.credit=='') {
+      wx.showToast({
+        title: '请输入科目',
+        icon: 'none',
         duration: 1500
       });
       return;

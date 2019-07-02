@@ -2,7 +2,6 @@
 const api = require('../../config/config.js');
 var util = require('../../utils/util.js');
 
-
 Page({
   data: {
     disabled_name: false,
@@ -42,10 +41,23 @@ Page({
       },
       method: 'POST',
       success: function (e) {
-        wx.showToast({
-          title: '发送成功',
-          icon: 'success'
-        })
+        if(e.statusCode==200)
+        {
+          wx.showToast({
+            title: '发送成功',
+            icon: 'success',
+          })
+          util._getUnApplyList();
+          setTimeout(function(){wx.navigateBack({
+            delta: 1,
+          })}, 1000);
+        }
+        else{
+          wx.showToast({
+            title: '公司名不存在',
+            icon: 'none',
+          })
+        }
       },
       fail: function (e) {
         wx.showToast({

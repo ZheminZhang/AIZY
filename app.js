@@ -1,5 +1,6 @@
-//app.js
 const api = require('./config/config.js');
+const util = require('./utils/util.js');
+
 App({
   onLaunch: function () {
     let that = this;
@@ -8,11 +9,25 @@ App({
   },
 
   /* 监听小程序启动或切前台
-
-     向后台request已授权与申请信息，得到数据存入storage */
+     向后台request授权与申请信息，得到数据存入storage */
   onShow: function(options) {
-    this.getAuthoList();
-    this.getApplyList();
+    util.getAuthoList();
+    util.getApplyList();
+    
+    var numApply = wx.getStorageSync('granteeUnautho').length;
+    var numAutho = wx.getStorageSync('grantorUnautho').length;
+    if(numApply<=0 && numAutho<=0)
+    {
+      wx.hideTabBarRedDot({
+        index: 2,
+      })
+    }
+    else
+    {
+      wx.showTabBarRedDot({
+        index: 2,
+      })
+    }
   },
 
   // 检查本地 storage 中是否有登录态标识
@@ -32,12 +47,13 @@ App({
             that.showInfo('缓存信息缺失');
             console.error('登录成功后将用户信息存在Storage的userStorageInfo字段中，该字段丢失');
           }
-
         },
         // session_key 过期
         fail: function () {
           // session_key过期
           console.log("需求登录")
+          wx.setStorageSync('userInfo','');
+          wx.setStorageSync('loginFlag','');
         }
       });
     } else {
@@ -143,115 +159,6 @@ App({
   getLoginFlag: function () {
     return wx.getStorageSync('loginFlag');
   },
-
-  // 获取申请列表信息
-  getAuthoList: function () {
-    //未接受列表
-    wx.request({
-      url: api.granteeUnauthoUrl,
-      data:{
-        'loginFlag': wx.getStorageSync('loginFlag'),
-      },
-      method: 'POST',
-      success: function (res) {
-        console.log(res);
-        console.log('成功读取申请列表');
-        wx.setStorageSync('granteeUnautho', "");
-        wx.setStorageSync('granteeUnautho', res.data);
-      },
-      fail: function (res) {
-        console.log(res)
-      }
-    })
-    //已接受列表
-    wx.request({
-      url: api.granteeAuthoUrl,
-      data: {
-        'loginFlag': wx.getStorageSync('loginFlag'),
-      },
-      method: 'POST',
-      success: function (res) {
-        console.log(res);
-        wx.setStorageSync('granteeAutho', "");
-        wx.setStorageSync('granteeAutho', res.data);
-      },
-      fail: function (res) {
-        console.log(res)
-      }
-    })
-    //拒绝列表
-    wx.request({
-      url: api.granteeUnauthoRefuseUrl,
-      data: {
-        'loginFlag': wx.getStorageSync('loginFlag'),
-      },
-      method: 'POST',
-      success: function (res) {
-        console.log(res);
-        wx.setStorageSync('granteeUnauthoRefuse', "");
-        wx.setStorageSync('granteeUnauthoRefuse', res.data);
-      },
-      fail: function (res) {
-        console.log(res)
-      }
-    })
-  },
-  // 获取授权列表信息
-  getApplyList: function () {
-    //未授权列表
-    wx.request({
-      url: api.grantorUnauthoUrl,
-      data: {
-        'loginFlag': wx.getStorageSync('loginFlag'),
-      },
-      method: 'POST',
-      success: function (res) {
-        console.log('成功读授权列表');
-        console.log(res);
-        wx.setStorageSync('grantorUnautho', "");
-        wx.setStorageSync('grantorUnautho', res.data);
-      },
-      fail: function (res) {
-        console.log(res)
-      }
-    })
-    //已授权列表
-    wx.request({
-      url: api.grantorAuthoUrl,
-      data: {
-        'loginFlag': wx.getStorageSync('loginFlag'),
-      },
-      method: 'POST',
-      success: function (res) {
-        console.log("已授权列表：")
-        console.log(res);
-        wx.setStorageSync('grantorAutho', "");
-        wx.setStorageSync('grantorAutho', res.data);
-      },
-      fail: function (res) {
-        console.log(res)
-      }
-    })
-    //拒绝列表
-    wx.request({
-      url: api.grantorUnauthoRefuseUrl,
-      data: {
-        'loginFlag': wx.getStorageSync('loginFlag'),
-      },
-      method: 'POST',
-      success: function (res) {
-        console.log("拒绝列表：")
-        console.log(res);
-        wx.setStorageSync('grantorUnauthoRefuse', "");
-        wx.setStorageSync('grantorUnauthoRefuse', res.data);
-      },
-      fail: function (res) {
-        console.log(res)
-      }
-    })
-  },
-
-  // TODO:获取用户个人账单统计
 
   // 封装 wx.showToast 方法
   showInfo: function (info = 'error', icon = 'none') {

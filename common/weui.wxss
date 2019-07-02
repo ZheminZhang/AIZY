@@ -1055,20 +1055,20 @@ icon {
 }
 .button-BILL0{
   margin: 50rpx 100rpx 0 100rpx;
-  background-color: rgb(96, 223, 191);
+  background-color: #17abe3;
   color: white;
   width:500rpx;
 }
 .button-BILL-1{
   margin: 100rpx 100rpx 0 150rpx;
-  background-color: rgb(96, 223, 191);
+  background-color: #87a7d6;
   color: white;
   width:500rpx;
   border-radius: 50rpx;
 }
 .button-BILL-1-p{
   margin: 100rpx 100rpx 0 150rpx;
-  background-color: rgb(38, 143, 117);
+  background-color: #6985af;
   color: white;
   width:500rpx
 }
@@ -1104,6 +1104,10 @@ form{
 .page-section-title{
   position: relative;
   width:160rpx;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }
 .time_selection{
   margin-bottom: 40rpx;
@@ -1227,5 +1231,8 @@ position:relative;
 bottom:23rpx;
 left:12rpx;
 font-size:28rpx;
-
+}
+.width-line {
+  height: 1rpx;
+  color: black;
 }

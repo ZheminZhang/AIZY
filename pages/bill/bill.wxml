@@ -5,11 +5,11 @@
     <view class='tabindicator' animation="{{indicatorAnim}}"></view>
   </view>
 
-  <swiper class='scrollview-content' current-item-id='{{activeTabId}}' bindchange='tabChange'>
+  <swiper class='scrollview-content' duration="200" circular="true" easing-function="easeInOutCubic" current-item-id='{{activeTabId}}' bindchange='tabChange'>
     <swiper-item item-id="tabitemVoice">
       <scroll-view class="tab-content">
         <view class="section-body">
-          <textarea class="message" auto-height value="{{currentText}}" placeholder="请选择语音或者手动输入，输入完成点击下方图标跳转" bindinput="vtextAreaBlur">
+          <textarea class="message"  value="{{currentText}}" placeholder="选择语音或者手动输入，完成后点击下方图标跳转" bindinput="vtextAreaBlur">
           </textarea>
         </view>
         <view class="send-SR">

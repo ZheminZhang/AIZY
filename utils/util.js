@@ -1,5 +1,7 @@
+var api = require('../config/config.js');
+
 /**
- * 发送网络请求
+ * 发送网络请求GET
  */
 function HttpGet(url, parm, response) {
   wx.request({
@@ -18,7 +20,7 @@ function HttpGet(url, parm, response) {
 }
 
 /**
- * 发送网络请求
+ * 发送网络请求POST
  */
 function HttpPost(url, parm, response) {
   wx.request({
@@ -150,7 +152,41 @@ function formatToDate(dateString) {
   var timestamp2 = Date.parse(new Date(dateString));
   //console.log(dateString + "的时间戳为：" + timestamp2);
   return timestamp2;
+}
 
+/* unix时间戳转时间字符串 */
+function msToDate(msec) {
+  let datetime = new Date(msec * 1000);
+  let year = datetime.getFullYear();
+  let month = datetime.getMonth();
+  let date = datetime.getDate();
+  let hour = datetime.getHours();
+  let minute = datetime.getMinutes();
+  let second = datetime.getSeconds();
+
+  let result1 = year +
+    '-' +
+    ((month + 1) >= 10 ? (month + 1) : '0' + (month + 1)) +
+    '-' +
+    ((date + 1) < 10 ? '0' + date : date) +
+    ' ' +
+    ((hour + 1) < 10 ? '0' + hour : hour) +
+    ':' +
+    ((minute + 1) < 10 ? '0' + minute : minute) +
+    ':' +
+    ((second + 1) < 10 ? '0' + second : second);
+
+  let result2 = year +
+    '-' +
+    ((month + 1) >= 10 ? (month + 1) : '0' + (month + 1)) +
+    '-' +
+    ((date + 1) < 10 ? '0' + date : date);
+
+  let result = {
+    hasTime: result1,
+    withoutTime: result2
+  };
+  return result;
 }
 
 /**
@@ -198,7 +234,39 @@ function dateIsDifference(startDate, endDate, dateType) {
   }
 }
 
+function msToDate(msec) {
+  let datetime = new Date(msec * 1000);
+  let year = datetime.getFullYear();
+  let month = datetime.getMonth();
+  let date = datetime.getDate();
+  let hour = datetime.getHours();
+  let minute = datetime.getMinutes();
+  let second = datetime.getSeconds();
 
+  let result1 = year +
+    '-' +
+    ((month + 1) >= 10 ? (month + 1) : '0' + (month + 1)) +
+    '-' +
+    ((date + 1) < 10 ? '0' + date : date) +
+    ' ' +
+    ((hour + 1) < 10 ? '0' + hour : hour) +
+    ':' +
+    ((minute + 1) < 10 ? '0' + minute : minute) +
+    ':' +
+    ((second + 1) < 10 ? '0' + second : second);
+
+  let result2 = year +
+    '-' +
+    ((month + 1) >= 10 ? (month + 1) : '0' + (month + 1)) +
+    '-' +
+    ((date + 1) < 10 ? '0' + date : date);
+
+  let result = {
+    hasTime: result1,
+    withoutTime: result2
+  };
+  return result;
+}
 /**
  * 求时间差
  */
@@ -263,14 +331,250 @@ const wxPromisify = fn => {
   }
 }
 
+
+/* 获取授权列表信息 */
+function getAuthoList(callback=()=>{  }) {
+  //未授权列表
+  wx.request({
+    url: api.grantorUnauthoUrl,
+    data: {
+      'loginFlag': wx.getStorageSync('loginFlag'),
+    },
+    method: 'POST',
+    success: function (res) {
+      console.log('(Success!)未授权列表:');
+      wx.setStorageSync('grantorUnautho', "");
+      if (res.statusCode == 200)
+      wx.setStorageSync('grantorUnautho', res.data);
+      callback();
+    },
+    fail: function (res) {
+      console.log(res)
+    }
+  })
+  //已授权列表
+  wx.request({
+    url: api.grantorAuthoUrl,
+    data: {
+      'loginFlag': wx.getStorageSync('loginFlag'),
+    },
+    method: 'POST',
+    success: function (res) {
+      console.log('(Success!)已授权列表:');
+      wx.setStorageSync('grantorAutho', "");
+      if (res.statusCode == 200)
+        wx.setStorageSync('grantorAutho', res.data);
+      callback();
+    },
+    fail: function (res) {
+      console.log(res)
+    }
+  })
+  //拒绝列表
+  wx.request({
+    url: api.grantorUnauthoRefuseUrl,
+    data: {
+      'loginFlag': wx.getStorageSync('loginFlag'),
+    },
+    method: 'POST',
+    success: function (res) {
+      console.log('(Success!)拒绝列表(授权):');
+      wx.setStorageSync('grantorUnauthoRefuse', "");
+      if (res.statusCode == 200)
+      wx.setStorageSync('grantorUnauthoRefuse', res.data);
+    },
+    fail: function (res) {
+      console.log(res)
+    }
+  })
+}
+
+function _getAuthoList(callback = () => { }){
+  wx.request({
+    url: api.grantorAuthoUrl,
+    data: {
+      'loginFlag': wx.getStorageSync('loginFlag'),
+    },
+    method: 'POST',
+    success: function (res) {
+      console.log('(Success!)已授权列表:');
+      wx.setStorageSync('grantorAutho', "");
+      if (res.statusCode == 200)
+        wx.setStorageSync('grantorAutho', res.data);
+      callback();
+    },
+    fail: function (res) {
+      console.log(res)
+    }
+  })
+}
+function _getUnAuthoList(callback=()=>{ }){
+  wx.request({
+    url: api.grantorUnauthoUrl,
+    data: {
+      'loginFlag': wx.getStorageSync('loginFlag'),
+    },
+    method: 'POST',
+    success: function (res) {
+      console.log('(Success!)未授权列表:');
+      wx.setStorageSync('grantorUnautho', "");
+      if (res.statusCode == 200)
+        wx.setStorageSync('grantorUnautho', res.data);
+      callback();
+    },
+    fail: function (res) {
+      console.log(res)
+    }
+  })
+}
+function _getUnAuthoRefuseList(callback=()=>{ }){
+  wx.request({
+    url: api.grantorUnauthoRefuseUrl,
+    data: {
+      'loginFlag': wx.getStorageSync('loginFlag'),
+    },
+    method: 'POST',
+    success: function (res) {
+      console.log('(Success!)拒绝列表(授权):');
+      wx.setStorageSync('grantorUnauthoRefuse', "");
+      if (res.statusCode == 200)
+        wx.setStorageSync('grantorUnauthoRefuse', res.data);
+      callback();
+    },
+    fail: function (res) {
+      console.log(res)
+    }
+  })
+}
+/* 获取申请列表信息 */
+function getApplyList(callback = () => { }) {
+  //未接受列表
+  wx.request({
+    url: api.granteeUnauthoUrl,
+    data: {
+      'loginFlag': wx.getStorageSync('loginFlag'),
+    },
+    method: 'POST',
+    success: function (res) {
+      console.log('(Success!)未接受列表:');
+      wx.setStorageSync('granteeUnautho', "");
+      if (res.statusCode == 200)
+      wx.setStorageSync('granteeUnautho', res.data);
+      callback();
+    },
+    fail: function (res) {
+      console.log(res)
+    }
+  })
+  //已接受列表
+  wx.request({
+    url: api.granteeAuthoUrl,
+    data: {
+      'loginFlag': wx.getStorageSync('loginFlag'),
+    },
+    method: 'POST',
+    success: function (res) {
+      console.log('(Success!)已接受列表:');
+      wx.setStorageSync('granteeAutho', "");
+      if (res.statusCode == 200)
+      wx.setStorageSync('granteeAutho', res.data);
+    },
+    fail: function (res) {
+      console.log(res)
+    }
+  })
+  //拒绝列表
+  wx.request({
+    url: api.granteeUnauthoRefuseUrl,
+    data: {
+      'loginFlag': wx.getStorageSync('loginFlag'),
+    },
+    method: 'POST',
+    success: function (res) {
+      console.log('(Success!)拒绝列表(接受):');
+      wx.setStorageSync('granteeUnauthoRefuse', "");
+      if (res.statusCode == 200)
+      wx.setStorageSync('granteeUnauthoRefuse', res.data);
+    },
+    fail: function (res) {
+      console.log(res)
+    }
+  })
+}
+function _getUnApplyList(callback = () => { }){
+  wx.request({
+    url: api.granteeUnauthoUrl,
+    data: {
+      'loginFlag': wx.getStorageSync('loginFlag'),
+    },
+    method: 'POST',
+    success: function (res) {
+      console.log('(Success!)未接受列表:');
+      wx.setStorageSync('granteeUnautho', "");
+      if (res.statusCode == 200)
+        wx.setStorageSync('granteeUnautho', res.data);
+      callback();
+    },
+    fail: function (res) {
+      console.log(res)
+    }
+  })
+}
+function _getApplyList(callback = () => { }){
+  wx.request({
+    url: api.granteeAuthoUrl,
+    data: {
+      'loginFlag': wx.getStorageSync('loginFlag'),
+    },
+    method: 'POST',
+    success: function (res) {
+      console.log('(Success!)已接受列表:');
+      wx.setStorageSync('granteeAutho', "");
+      if (res.statusCode == 200)
+        wx.setStorageSync('granteeAutho', res.data);
+      callback();
+    },
+    fail: function (res) {
+      console.log(res)
+    }
+  })
+}
+function _getApplyRefuseList(callback = () => { }){
+  wx.request({
+    url: api.granteeUnauthoRefuseUrl,
+    data: {
+      'loginFlag': wx.getStorageSync('loginFlag'),
+    },
+    method: 'POST',
+    success: function (res) {
+      console.log('(Success!)拒绝列表(接受):');
+      wx.setStorageSync('granteeUnauthoRefuse', "");
+      if (res.statusCode == 200)
+        wx.setStorageSync('granteeUnauthoRefuse', res.data);
+      callback();
+    },
+    fail: function (res) {
+      console.log(res)
+    }
+  })
+}
 module.exports = {
   isNull: isNull,
   HttpGet: HttpGet,
   HttpPost: HttpPost,
   formatTime: formatTime,
   formatToDate: formatToDate,
+  msToDate: msToDate,
   timeDifference: timeDifference,
   json2Form: json2Form,
   dateIsDifference: dateIsDifference,
-  wxPromisify: wxPromisify
+  wxPromisify: wxPromisify,
+  getApplyList: getApplyList,
+  getAuthoList: getAuthoList,
+  _getAuthoList: _getAuthoList,
+  _getUnAuthoList: _getUnAuthoList,
+  _getUnAuthoRefuseList: _getUnAuthoRefuseList,
+  _getUnApplyList: _getUnApplyList,
+  _getApplyList: _getApplyList,
+  _getApplyRefuseList: _getApplyRefuseList
 }

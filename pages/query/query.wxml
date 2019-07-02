@@ -10,8 +10,6 @@
         </view>
       </view>
 
-      
-
       <view class="time_selection">
         <!-- 时间选择器 -->
         <view class="page-section-title">
@@ -35,5 +33,5 @@
     </form>
   </view>
    <button  class="button-BILL-1" hover-class="button-BILL-1-p"  bindtap="formSubmit">完成</button>
-     <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap='goTable' wx:if="{{isClick_}}">生成报表</button>
+     
 </view>

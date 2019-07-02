@@ -1,4 +1,4 @@
-/* pages/apply_list_1/apply_list.wxss */
+@import "../../common/weui.wxss";
 page{
   display: flex;
   flex-direction: column;
@@ -70,39 +70,35 @@ page{
   height: 130rpx; 
   display: flex;
   flex-wrap: nowrap;
-  align-items: center;
-  border:3rpx solid blanchedalmond;
-
+  align-items: center;  
 }
 .client_info_Refuse{
-  background-color:red;
+  background-color:#bfbfbf;
   height: 130rpx; 
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  border:3rpx solid blanchedalmond;
 }
 .client_info_undeal{
-  background-color: #ddd;
+  background-color: #94c29a;
   height: 130rpx;
   width:750rpx; 
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  border:3rpx solid blanchedalmond;
-
 }
 .userinfo-avatar {
   width: 70rpx;
   height: 70rpx;
   margin-top:5rpx; 
   border-radius: 50%;
+  padding-left:20rpx;
 }
 .name{
   line-height: 130rpx;
   width:150rpx;
 }
-.btn_accept{
+.btn_waitAccept{
   height: 60rpx;
   width: 150rpx;
   border-radius: 25rpx;
@@ -113,8 +109,7 @@ page{
   display: flex;
   background-color:#ddd;
 }
-
-.btn_accept_hover{
+.btn_waitAccept_hover{
   background-color: #fff;
   height: 60rpx;
   width: 150rpx;
@@ -125,10 +120,33 @@ page{
   justify-content: center;
   display: flex;
 }
-
+.btn_accept{
+  height: 60rpx;
+  width: 150rpx;
+  border-radius: 25rpx;
+  margin-left:300rpx;
+  align-items: center;
+  vertical-align: center;
+  justify-content: center;
+  display: flex;
+}
+.btn_accept_r{
+ height: 60rpx;
+  width: 150rpx;
+  border-radius: 25rpx;
+  margin-left:300rpx;
+  align-items: center;
+  vertical-align: center;
+  justify-content: center;
+  display: flex;
+}
 /* 隐藏滚动条 */
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
   color: transparent;
+}
+
+.container {
+  padding: 0;
 }
