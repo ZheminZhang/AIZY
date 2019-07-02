@@ -48,6 +48,9 @@ Page({
       success: function (e) {
         if(e.statusCode==200){
           wx.setStorageSync('table', e.data);
+          wx.showLoading({
+            title: 'loading',
+          })
           wx.navigateTo({
             url: '../table/table',
           });
@@ -68,16 +71,6 @@ Page({
         _this.setData({
           isClick_: true,
         });
-        // var balanceItems = {
-        //   '报表项目': 0,
-        //   '流动资产：': 0,
-        //   '货币资金': 0,
-        //   '交易性金融资产': 0,
-        //   '衍生金融资产': 0,
-        //   '应收票据': 0,
-        //   '应收账款': 0,
-        // }
-        // wx.setStorageSync('table', balanceItems)
       }
     })
     
