@@ -64,7 +64,7 @@
 
           <view class="list-BILL-1">
             <image class="icon-BILL-3" src="../../images/down-circle.png"></image>
-            <text class="text-BILL-1">日期:</text>
+            <text class="text-BILL-2">日期:</text>
             <picker class="date-text" mode="date" value="{{date}}" bindchange="onDateChange">
               <view class='picker'>{{date}}
               </view>

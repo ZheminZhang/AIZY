@@ -1,5 +1,3 @@
-
-
 <view class='container-BILL'>
   <view class='tabbar-BILL'>
     <text id="tabitemProfit" class='tabitem {{activeTabId=="tabitemProfit"?"tabitem-active":""}}' bindtap='tabclick'>利润表</text>
