@@ -1,6 +1,6 @@
 var util = require('../../utils/util.js');
 var config = require('../../config/config.js');
-
+var app=getApp();
 Page({
   data: {
     disabled_name: true,
@@ -68,10 +68,16 @@ Page({
         "recordId":this.data.recordId,
       },
       success: function(e) {
-        console.log(e);
+        wx.navigateBack({
+          delta:1,
+        })
+        app.getAuthoList();
       },
       fail: function(e) {
-        console.log(e);
+        wx.showToast({
+          title: '请求发送失败',
+          icon:'none',
+        })
       }
     })
   },
@@ -87,9 +93,7 @@ Page({
       recordEndTime:options.recordEndTime,
       type: options.type,
       recordId:options.recordId,
-      tp:options.t,
+      tp:options.t,//记录的是申请或授权状态
     })
-     console.log("这tp值为")
-     console.log(this.data.tp);
   }
 })

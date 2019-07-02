@@ -70,7 +70,6 @@ Page({
 
   },
   onLoad:function(){
-    app.getAuthoList();
     app.getApplyList();
   },
   onShow: function () {

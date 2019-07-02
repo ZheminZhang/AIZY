@@ -46,11 +46,18 @@ Page({
       },
       method: 'POST',
       success: function (e) {
-        console.log(e);
-        wx.setStorageSync('table', e.data);
-        wx.navigateTo({
-          url: '../table/table',
-        });
+        if(e.statusCode==200){
+          wx.setStorageSync('table', e.data);
+          wx.navigateTo({
+            url: '../table/table',
+          });
+        }
+        else{
+          wx.showToast({
+            title: '查询的公司不存在',
+            icon: 'none',
+          })
+        }
       },
       fail: function (e) {
         wx.showToast({

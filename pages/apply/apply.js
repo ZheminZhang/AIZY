@@ -42,17 +42,24 @@ Page({
       },
       method: 'POST',
       success: function (e) {
-        console.log(e)
-        wx.showToast({
-          title: '发送成功',
-          icon: 'success'
-        })
-        app.getAuthoList();
-        app.getApplyList();
-        wx.navigateBack({
-          delta:1,
-        })
-        
+        if(e.statusCode==200)
+        {
+          wx.showToast({
+            title: '发送成功',
+            icon: 'success'
+          })
+          
+          app.getApplyList();
+          wx.navigateBack({
+            delta: 1,
+          })
+        }
+        else{
+          wx.showToast({
+            title: '公司名不存在',
+            icon: 'none',
+          })
+        }
       },
       fail: function (e) {
         wx.showToast({

@@ -1,4 +1,5 @@
 // pages/apply_list_1/apply_list.js
+var app=getApp();
 Page({
   data: {
     tabitemConsume: {},
@@ -66,13 +67,16 @@ Page({
 
   /* 加载页面 */
   onLoad: function () {
+    app.getAuthoList();
+    console.log("重新读取授权");
+  },
+  onShow:function(){
     this.setData({
       grantorUnautho: wx.getStorageSync('grantorUnautho'),
       grantorAutho: wx.getStorageSync('grantorAutho'),
       grantorUnauthoRefuse: wx.getStorageSync('grantorUnauthoRefuse')
     })
   },
-  
   msToDate: function (msec) {
     let datetime = new Date(msec * 1000);
     let year = datetime.getFullYear();

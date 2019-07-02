@@ -32,7 +32,6 @@ App({
             that.showInfo('缓存信息缺失');
             console.error('登录成功后将用户信息存在Storage的userStorageInfo字段中，该字段丢失');
           }
-
         },
         // session_key 过期
         fail: function () {
