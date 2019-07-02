@@ -69,7 +69,7 @@ page {
 
 .tabbar-BILL {
   height: 80rpx;
-  background-color: #bce2e8;
+  background-color: #87a7d6;
   color: #fff;
   font-size: 30rpx;
   align-items: center;
@@ -233,11 +233,11 @@ page {
 }
 .button-BILL-1{
   margin: 150rpx 100rpx 0 100rpx;
-  background-color:#bce2e8;
+  background-color:#87a7d6;
   color: white;
 }
 .button-BILL-1-p{
   margin: 150rpx 100rpx 0 100rpx;
-  background-color: #bce2e8;
+  background-color: #6985af;
   color: white;
 }

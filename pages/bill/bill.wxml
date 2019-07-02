@@ -5,7 +5,7 @@
     <view class='tabindicator' animation="{{indicatorAnim}}"></view>
   </view>
 
-  <swiper class='scrollview-content' current-item-id='{{activeTabId}}' bindchange='tabChange'>
+  <swiper class='scrollview-content' duration="200" circular="true" easing-function="easeInOutCubic" current-item-id='{{activeTabId}}' bindchange='tabChange'>
     <swiper-item item-id="tabitemVoice">
       <scroll-view class="tab-content">
         <view class="section-body">

@@ -1,5 +1,6 @@
 Page({
   data: {
+    clientHeight: 0,     //屏幕高度
     /* 利润 */
     profitData: [],   //资产负债数据
     profitItems: [
@@ -279,6 +280,16 @@ Page({
       }
       i++;
     }
+
+    //获取屏幕高度
+    var that = this;
+    wx.getSystemInfo({
+      success(res) {
+        that.setData({
+          clientHeight: res.windowHeight
+        });
+      }
+    });
   },
   onReady:function(){
     var query = wx.createSelectorQuery().in(this),
