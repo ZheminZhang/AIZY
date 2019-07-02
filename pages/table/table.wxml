@@ -8,9 +8,9 @@
     <view class='tabindicator' animation="{{indicatorAnim}}"></view>
   </view>
 
-  <swiper current-item-id='{{activeTabId}}' bindchange='tabChange'>
+  <swiper style='height={{clientHeight}}px-80rpx' duration="200" circular="true" easing-function="easeInOutCubic" current-item-id='{{activeTabId}}' bindchange='tabChange'>
     <swiper-item item-id="tabitemProfit">
-      <scroll-view class="table"  scroll-y="true">
+      <scroll-view class="table" style='height={{clientHeight}}px-80rpx' scroll-y="true">
         <block wx:for="{{profitItems}}">
           <view wx:if="{{index == 0}}">
             <view class="tr bg-w">
