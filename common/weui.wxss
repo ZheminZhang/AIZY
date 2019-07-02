@@ -1061,7 +1061,7 @@ icon {
 }
 .button-BILL-1{
   margin: 100rpx 100rpx 0 150rpx;
-  background-color: #bfa46f;
+  background-color: #bce2e8;
   color: white;
   width:500rpx;
   border-radius: 50rpx;

@@ -1,7 +1,7 @@
 // pages/query/query.js
 const api = require('../../config/config.js');
 var util = require('../../utils/util.js');
-
+var app=getApp();
 
 Page({
   data: {
@@ -42,10 +42,17 @@ Page({
       },
       method: 'POST',
       success: function (e) {
+        console.log(e)
         wx.showToast({
           title: '发送成功',
           icon: 'success'
         })
+        app.getAuthoList();
+        app.getApplyList();
+        wx.navigateBack({
+          delta:1,
+        })
+        
       },
       fail: function (e) {
         wx.showToast({

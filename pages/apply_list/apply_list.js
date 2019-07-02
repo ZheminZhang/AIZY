@@ -1,5 +1,6 @@
 // pages/apply_list_1/apply_list.js
-const app = require("../../app.js")
+const app = getApp();
+
 Page({
   data: {
     tabitemConsume: {},
@@ -68,17 +69,19 @@ Page({
     query.exec();
 
   },
-
+  onLoad:function(){
+    app.getAuthoList();
+    app.getApplyList();
+  },
   onShow: function () {
+    console.log("重新读取授权列表，申请列表");
     this.setData({
       granteeUnautho: wx.getStorageSync('granteeUnautho'),
       granteeAutho: wx.getStorageSync('granteeAutho'),
       granteeUnauthoRefuse: wx.getStorageSync('granteeUnauthoRefuse'),
     })
   },
-  onShow:function(){
-    
-  },
+  
   msToDate: function (msec) {
     let datetime = new Date(msec*1000);
     let year = datetime.getFullYear();

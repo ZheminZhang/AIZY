@@ -157,10 +157,11 @@ App({
       method: 'POST',
       success: function (res) {
         console.log(res);
-        console.log('成功读取申请列表');
+        console.log('成功读取未接受列表');
         wx.setStorageSync('granteeUnautho', "");
         if(res.statusCode==200)
         wx.setStorageSync('granteeUnautho', res.data);
+        console.log(res);
       },
       fail: function (res) {
         console.log(res)
@@ -174,9 +175,11 @@ App({
       },
       method: 'POST',
       success: function (res) {
+        console.log("成功读取已接受列表")
         wx.setStorageSync('granteeAutho', "");
         if(res.statusCode==200)
         wx.setStorageSync('granteeAutho', res.data);
+        console.log(res);
       },
       fail: function (res) {
         console.log(res)
@@ -190,11 +193,13 @@ App({
       },
       method: 'POST',
       success: function (res) {
+        console.log("成功读取拒绝申请列表");
         wx.setStorageSync('granteeUnauthoRefuse', "");
         if(res.statusCode==200)
         {
           wx.setStorageSync('granteeUnauthoRefuse', res.data);
         }
+        console.log(res);
       },
       fail: function (res) {
         console.log(res)

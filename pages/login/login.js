@@ -1,7 +1,6 @@
 /** index.js **/
 //获取app实例
 const app = getApp();
-
 Page({
   data: {
     userInfo: {},           // 用户信息
@@ -81,6 +80,8 @@ Page({
 
   goApply: function () {
     let loginFlag = wx.getStorageSync('loginFlag');
+    app.getAuthoList();
+    app.getApplyList();
     if (loginFlag) {
       wx.navigateTo({
         url: '../apply_list/apply_list',
