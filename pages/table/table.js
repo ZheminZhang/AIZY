@@ -150,6 +150,7 @@ Page({
         '未分配利润': 8,
         '所有者权益（或股东权益）合计': 9,
         '负债和所有者权益（或股东权益）合计': 10,
+        '': 11,
       }
     ],
     balanceView: [],  //最终呈现条目
@@ -210,6 +211,9 @@ Page({
     activeTabId: null,
   },
   onLoad: function () {
+    wx.showLoading({
+      title: 'loading',
+    })
     this.setData({
       balanceData: wx.getStorageSync('table').balance,
       cashFlowData: wx.getStorageSync('table').cashFlow,
@@ -292,6 +296,8 @@ Page({
     });
   },
   onReady:function(){
+    wx.hideLoading()
+    wx.hideLoading()
     var query = wx.createSelectorQuery().in(this),
       _this = this;
     _this.animation = wx.createAnimation({
@@ -315,6 +321,8 @@ Page({
       _this.setActiveTab('tabitemProfit');
     })
     query.exec();
+
+    wx.hideLoading();
   },
    tabChange(e) {
     if (e.detail.source == "touch") {
