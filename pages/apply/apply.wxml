@@ -11,6 +11,26 @@
       </view>
 
       <view class="time_selection">
+        <view class="page-section-title">
+          授权时间选择
+        </view>
+        <view class="time-choose">
+          <!-- 开始时间 -->
+          <picker mode="date" value="{{authStartTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='authStartTime'>
+            <view class="picker">
+              {{authStartTime}}
+            </view>
+          </picker>
+          <!-- 结束时间 -->
+          <picker mode="date" value="{{authEndTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='authEndTime'>
+            <view class="picker">
+              {{authEndTime}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="time_selection">
         <!-- 时间选择器 -->
         <view class="page-section-title">
           记录时间选择
@@ -33,5 +53,4 @@
     </form>
   </view>
    <button  class="button-BILL-1" hover-class="button-BILL-1-p"  bindtap="formSubmit">完成</button>
-     
 </view>

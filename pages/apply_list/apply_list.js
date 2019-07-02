@@ -1,15 +1,16 @@
+
 // pages/apply_list_1/apply_list.js
+var util = require('../../utils/util.js');
+
 Page({
   data: {
     tabitemConsume: {},
     tabitemRecharge: {},
     activeTabId: null,
-    //navbar: ['已授权', '申请'],
     currentTab: 0,
-    author: [
-    ],
-    application: [
-    ],
+    granteeUnautho: {},
+    granteeAutho: {},
+    granteeUnauthoRefuse:{},
   },
   navbarTap: function (e) {
     this.setData({
@@ -18,13 +19,17 @@ Page({
   },
 
   tabChange(e) {
-    var id = e.detail.currentItemId;
-    this.setActiveTab(id);
+    if (e.detail.source == "touch") {
+      this.setActiveTab(e.detail.currentItemId);
+    }
   },
-
+  goApply:function(){
+    wx.navigateTo({
+      url: '../apply/apply',
+    })
+  },
   tabclick(e) {
-    var id = e.target.id;
-    this.setActiveTab(id);
+    this.setActiveTab(e.target.id);
   },
 
   setActiveTab(id) {
@@ -38,58 +43,60 @@ Page({
     }
   },
 
-  /* 下拉刷新，自动监听 */
+  /* 下拉刷新，获取最新申请列表*/
   onPullDownRefresh: function () {
-    // Do something when pull down.
+    util.getApplyList();
   },
   
   onReady: function () {
-    /* 滑动动画相关 */
-    var query = wx.createSelectorQuery().in(this),
-      _this = this;
-    _this.animation = wx.createAnimation({
-      duration: 300,  //动画持续时间
-      timingFunction: "ease",  //动画效果
-    })
-    query.select('#tabitemConsume').boundingClientRect(function (rect) {
-      _this.setData({
-        tabitemConsume: rect
-      });
-    })
-    query.select('#tabitemRecharge').boundingClientRect(function (rect) {
-      _this.setData({
-        tabitemRecharge: rect
-      });
-      _this.setActiveTab('tabitemRecharge');
-    })
-    query.exec();
 
   },
-
-  /* 加载页面 */
-  onLoad: function () {
+  onLoad:function(){
+    util.getApplyList();
+  },
+  onShow: function () {
+    console.log("重新读取授权列表，申请列表");
     this.setData({
-      author: wx.getStorageSync('User_Data_Author'),
-      application: wx.getStorageSync('User_Data_Application')
+      granteeUnautho: wx.getStorageSync('granteeUnautho'),
+      granteeAutho: wx.getStorageSync('granteeAutho'),
+      granteeUnauthoRefuse: wx.getStorageSync('granteeUnauthoRefuse'),
     })
   },
 
   toDetail: function (e) {
-    let id = e.target.id
+    console.log('申请列表点击事件');
+    console.log(e);
+    let index = e.currentTarget.id;
     let url_ = '../authorize/authorize?' + 'tp=' + e.target.dataset["tp"]
-    if (e.target.dataset["tp"] == '1') {
-      url_ = url_ + 
-        "&name=" + this.data.author[id].name +
-        "&start_date=" + this.data.author[id].start_date +
-        "&end_date=" + this.data.author[id].end_date +
-        "&type=" + this.data.author[id].type
-    }
-    else if (e.target.dataset["tp"] == '2') {
+    if (e.target.dataset["tp"] == '4') {
       url_ = url_ +
-        "&name=" + this.data.application[id].name +
-        "&start_date=" + this.data.application[id].start_date +
-        "&end_date=" + this.data.application[id].end_date +
-        "&type=" + this.data.application[id].type
+        "&companyName=" + this.data.granteeUnautho[index].user +
+        "&id=" + this.data.granteeUnautho[index].id +
+        "&authStartTime=" + util.msToDate(this.data.granteeUnautho[index].authStartTime).withoutTime +
+        "&authEndTime=" + util.msToDate(this.data.granteeUnautho[index].authEndTime).withoutTime +
+        "&recordStartTime=" + util.msToDate(this.data.granteeUnautho[index].recordStartTime).withoutTime +
+        "&recordEndTime=" + util.msToDate(this.data.granteeUnautho[index].recordEndTime).withoutTime +
+        "&type=" + this.data.granteeUnautho[index].type + "&recordId=" + this.data.granteeUnautho[index].recordId + "&t=" + e.target.dataset["tp"];
+    }
+    else if (e.target.dataset["tp"] == '5') {
+      url_ = url_ +
+        "&companyName=" + this.data.granteeAutho[index].user +
+        "&id=" + this.data.granteeAutho[index].id +
+        "&authStartTime=" + util.msToDate(this.data.granteeAutho[index].authStartTime).withoutTime +
+        "&authEndTime=" + util.msToDate(this.data.granteeAutho[index].authEndTime).withoutTime +
+        "&recordStartTime=" + util.msToDate(this.data.granteeAutho[index].recordStartTime).withoutTime +
+        "&recordEndTime=" + util.msToDate(this.data.granteeAutho[index].recordEndTime).withoutTime +
+        "&type=" + this.data.granteeAutho[index].type + this.data.granteeAutho[index].type + "&recordId=" + this.data.granteeAutho[index].recordId + "&t=" + e.target.dataset["tp"];
+    }
+    else if (e.target.dataset["tp"] == '6') {
+      url_ = url_ +
+        "&companyName=" + this.data.granteeUnauthoRefuse[index].user +
+        "&id=" + this.data.granteeUnauthoRefuse[index].id +
+        "&authStartTime=" + util.msToDate(this.data.granteeUnauthoRefuse[index].authStartTime).withoutTime +
+        "&authEndTime=" + util.msToDate(this.data.granteeUnauthoRefuse[index].authEndTime).withoutTime +
+        "&recordStartTime=" + util.msToDate(this.data.granteeUnauthoRefuse[index].recordStartTime).withoutTime +
+        "&recordEndTime=" + util.msToDate(this.data.granteeUnauthoRefuse[index].recordEndTime).withoutTime +
+        "&type=" + this.data.granteeUnauthoRefuse[index].type + this.data.granteeUnauthoRefuse[index].type + "&recordId=" + this.data.granteeUnauthoRefuse[index].recordId + "&t=" + e.target.dataset["tp"];
     }
     wx.navigateTo({
       url: url_,
@@ -98,4 +105,12 @@ Page({
       }
     })
   },
+  addNewClient:function(){
+    wx.navigateTo({
+      url: '../query/query',
+      fail: function (e) {
+        console.log(e)
+      }
+    })
+  }
 })

@@ -1,0 +1,108 @@
+
+.table {
+  width:700rpx;
+  height: 100%;
+  border:1rpx solid black;
+  margin: 25rpx 0 25rpx 25rpx;
+}
+.tr {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 80rpx;
+  align-items: center;
+  border:1rpx solid black;
+}
+.td {
+width:500rpx;
+justify-content:center;
+text-align:center;
+height:100%;
+display:flex;
+align-items:center;
+border:1rpx solid black;   
+}
+.td_{
+width:200rpx;
+justify-content:center;
+text-align:center;
+height:100%;
+display:flex;
+align-items:center;
+border:1rpx solid black;   
+}
+.line_{
+  width:1rpx;
+  background-color: black;
+}
+.bg-w{
+  background: snow;
+}
+.bg-g{
+  background: #E6F3F9;
+}
+.th {
+  width: 500rpx;
+  justify-content: center;
+  background: #E8FFE8;
+  color:black;
+  display: flex;
+  height: 80rpx;
+  align-items: center;
+  border:1rpx solid black;
+}
+.th_{
+  width: 200rpx;
+  justify-content: center;
+  background: #E8FFE8;
+  color:black;
+  display: flex;
+  height: 80rpx;
+  align-items: center;
+  border:1rpx solid black;
+}
+.name{
+  font-size:4vw;
+  text-align:center;
+}
+.tabitem {
+  width: 120rpx;
+  text-align: center;
+  color: #e0e0e0;
+  font-weight: 400;
+}
+.tabitem-active {
+  color: #fff;
+}
+.tabindicator {
+  position: absolute;
+  width: 0rpx;
+  height: 6rpx;
+  background-color: #fff;
+  bottom: 0;
+  left: 0;
+}
+.tab-content {
+  height: 100%;
+}
+.tabbar-BILL {
+  height: 80rpx;
+  background-color: #8992c8;
+  color: #fff;
+  font-size: 30rpx;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+swiper{
+  height: 1368rpx;
+}
+
+/* 隐藏滚动条 */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}

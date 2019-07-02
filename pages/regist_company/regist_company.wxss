@@ -9,24 +9,21 @@ form{
   margin-left: 200rpx;
   width: 40%;
 }
-.page-section-title{
-  position: relative;
-  right:10rpx;
-}
-.page-section{
-  margin-bottom: 40rpx;
-  display: flex;
-  flex-wrap:nowrap;
-  position: relative;
-  left:50rpx;
-}
-.page-body{
-  position: relative;
-  top:100rpx;
-}
 .select_sell{
   position: relative;
   left:50rpx;
 }
-
+.codeBtn{
+  color: #bbb;
+  width: 200rpx;
+  font-size: 26rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-left:80rpx;
+}
+.line-BILL{
+margin:25rpx 30rpx 25rpx 30rpx;
+height:3rpx;
+background:rgba(177,182,177,0.603);
+}
 
