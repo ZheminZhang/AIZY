@@ -1,4 +1,4 @@
-var util = require('../../utils/util.js');
+var util = require('../../utils/util.js')
 
 Page({
   data: {
@@ -63,30 +63,30 @@ Page({
       url_ = url_ +
         "&companyName=" + this.data.grantorUnautho[index].user +
         "&id=" + this.data.grantorUnautho[index].id +
-        "&authStartTime=" + util.msToData(this.data.grantorUnautho[index].authStartTime).withoutTime +
-        "&authEndTime=" + util.msToData(this.data.grantorUnautho[index].authEndTime).withoutTime +
-        "&recordStartTime=" + util.msToData(this.data.grantorUnautho[index].recordStartTime).withoutTime +
-        "&recordEndTime=" + util.msToData(this.data.grantorUnautho[index].recordEndTime).withoutTime +
+        "&authStartTime=" + util.msToDate(this.data.grantorUnautho[index].authStartTime).withoutTime +
+        "&authEndTime=" + util.msToDate(this.data.grantorUnautho[index].authEndTime).withoutTime +
+        "&recordStartTime=" + util.msToDate(this.data.grantorUnautho[index].recordStartTime).withoutTime +
+        "&recordEndTime=" + util.msToDate(this.data.grantorUnautho[index].recordEndTime).withoutTime +
         "&type=" + this.data.grantorUnautho[index].type + "&recordId=" + this.data.grantorUnautho[index].recordId;
     }
     else if (e.target.dataset["tp"] == '2') {
       url_ = url_ +
         "&companyName=" + this.data.grantorAutho[index].user +
         "&id=" + this.data.grantorAutho[index].id +
-        "&authStartTime=" + util.msToData(this.data.grantorAutho[index].authStartTime).withoutTime +
-        "&authEndTime=" + util.msToData(this.data.grantorAutho[index].authEndTime).withoutTime +
-        "&recordStartTime=" + util.msToData(this.data.grantorAutho[index].recordStartTime).withoutTime +
-        "&recordEndTime=" + util.msToData(this.data.grantorAutho[index].recordEndTime).withoutTime +
+        "&authStartTime=" + util.msToDate(this.data.grantorAutho[index].authStartTime).withoutTime +
+        "&authEndTime=" + util.msToDate(this.data.grantorAutho[index].authEndTime).withoutTime +
+        "&recordStartTime=" + util.msToDate(this.data.grantorAutho[index].recordStartTime).withoutTime +
+        "&recordEndTime=" + util.msToDate(this.data.grantorAutho[index].recordEndTime).withoutTime +
         "&type=" + this.data.grantorAutho[index].type + "&recordId=" + this.data.grantorAutho[index].recordId;
     }
     else if (e.target.dataset["tp"] == '3') {
       url_ = url_ +
         "&companyName=" + this.data.grantorUnauthoRefuse[index].user +
         "&id=" + this.data.grantorUnauthoRefuse[index].id +
-        "&authStartTime=" + util.msToData(this.data.grantorUnauthoRefuse[index].authStartTime).withoutTime +
-        "&authEndTime=" + util.msToData(this.data.grantorUnauthoRefuse[index].authEndTime).withoutTime +
-        "&recordStartTime=" + util.msToData(this.data.grantorUnauthoRefuse[index].recordStartTime).withoutTime +
-        "&recordEndTime=" + util.msToData(this.data.grantorUnauthoRefuse[index].recordEndTime).withoutTime +
+        "&authStartTime=" + util.msToDate(this.data.grantorUnauthoRefuse[index].authStartTime).withoutTime +
+        "&authEndTime=" + util.msToDate(this.data.grantorUnauthoRefuse[index].authEndTime).withoutTime +
+        "&recordStartTime=" + util.msToDate(this.data.grantorUnauthoRefuse[index].recordStartTime).withoutTime +
+        "&recordEndTime=" + util.msToDate(this.data.grantorUnauthoRefuse[index].recordEndTime).withoutTime +
         "&type=" + this.data.grantorUnauthoRefuse[index].type + "&recordId=" + this.data.grantorUnauthoRefuse[index].recordId;
     }
    
