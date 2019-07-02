@@ -2,7 +2,6 @@
 const api = require('../../config/config.js');
 var util = require('../../utils/util.js');
 
-
 Page({
   data: {
     disabled_name: false,
@@ -22,8 +21,6 @@ Page({
     })
   },
   formSubmit: function (e) {
-    console.log('form发生了submit事件，携带数据为：', e)
-    console.log(date);
     //转为unix时间
     var authST = util.formatToDate(this.data.authStartTime) / 1000 + 14400;
     var authET = util.formatToDate(this.data.authEndTime) / 1000 + 14400;
@@ -33,7 +30,6 @@ Page({
     date = util.formatToDate(date) / 1000 + 14400;
     wx.request({
       url: api.requestAuthoUrl,
-      //url: 'http://127.0.0.1:80/api/analysis/analysis',
       data: {
         "companyName": this.data.companyName,
         "loginFlag": wx.getStorageSync('loginFlag'),
@@ -41,22 +37,34 @@ Page({
         "authEndTime": authET,
         "recordStartTime": recordST,
         "recordEndTime": recordET,
-        "timeStamp": date // TODO: 发起请求的时间，unix时间戳
+        "timeStamp": date
       },
       method: 'POST',
       success: function (e) {
-        wx.showToast({
-          title: '发送成功',
-          icon: 'success'
-        })
-        console.log(e);
+        if(e.statusCode==200)
+        {
+          wx.showToast({
+            title: '发送成功',
+            icon: 'success',
+            duration:1500,
+          })
+          util.getApplyList();
+          wx.navigateBack({
+            delta: 1,
+          })
+        }
+        else{
+          wx.showToast({
+            title: '公司名不存在',
+            icon: 'none',
+          })
+        }
       },
       fail: function (e) {
         wx.showToast({
           title: '发送失败',
           icon: 'none',
         })
-        console.log(e);
       }
     })
   },

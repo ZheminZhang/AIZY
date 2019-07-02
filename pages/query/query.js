@@ -7,9 +7,7 @@ Page({
   data: {
     disabled_name: false,
     companyName: '',
-    // authStartTime: '2019-06-01',
-    // authEndTime: '2019-07-01',
-    recordStartTime: '2019-03-01',
+  recordStartTime: '2019-03-01',
     recordEndTime: '2019-06-01',
     begin: '2000-06-01',
     end: '2100-06-01',
@@ -48,15 +46,18 @@ Page({
       },
       method: 'POST',
       success: function (e) {
-        wx.showToast({
-          title: '发送成功',
-          icon:'success'
-        })
-        _this.setData({
-          isClick_:true,
-        });
-        console.log(e);
-        wx.setStorageSync('table', e.data);
+        if(e.statusCode==200){
+          wx.setStorageSync('table', e.data);
+          wx.navigateTo({
+            url: '../table/table',
+          });
+        }
+        else{
+          wx.showToast({
+            title: '查询的公司不存在',
+            icon: 'none',
+          })
+        }
       },
       fail: function (e) {
         wx.showToast({
@@ -79,6 +80,7 @@ Page({
         // wx.setStorageSync('table', balanceItems)
       }
     })
+    
   },
 
   bindDateChange: function (e) {
@@ -94,9 +96,5 @@ Page({
       })
     }
   },
-  goTable: function () {
-    wx.navigateTo({
-      url: '../table/table',
-    })
-  },
+
 })

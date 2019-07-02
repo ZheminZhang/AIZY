@@ -1,7 +1,7 @@
 /** index.js **/
 //获取app实例
 const app = getApp();
-
+var util=require("../../utils/util");
 Page({
   data: {
     userInfo: {},           // 用户信息
@@ -62,7 +62,7 @@ Page({
 
     let userInfo = app.globalData.userInfo;
 
-    console.info('userInfo is:', userInfo);
+   // console.info('userInfo is:', userInfo);
 
     if (userInfo) {
       that.setData({
@@ -72,6 +72,7 @@ Page({
       wx.hideLoading();
     } else {
       console.log('globalData中userInfo为空');
+      
     }
   },
 
@@ -81,6 +82,8 @@ Page({
 
   goApply: function () {
     let loginFlag = wx.getStorageSync('loginFlag');
+    util.getAuthoList();
+    util.getApplyList();
     if (loginFlag) {
       wx.navigateTo({
         url: '../apply_list/apply_list',

@@ -1,6 +1,5 @@
 var util = require('../../utils/util.js');
 var config = require('../../config/config.js');
-
 Page({
   data: {
     disabled_name: true,
@@ -14,6 +13,7 @@ Page({
     end: '2100-06-01',
     type:[],
     recordId:'',
+    tp:'',
   },
   // TODO: 
   formSubmit: function (e) {
@@ -73,10 +73,21 @@ Page({
         "recordId":this.data.recordId,
       },
       success: function(e) {
-        console.log(e);
+       wx.showToast({
+         title: '成功',
+         icon:'success',
+         duration:1500,
+       })
+        wx.navigateBack({
+          delta: 1,
+        })
+        util.getAuthoList();
       },
       fail: function(e) {
-        console.log(e);
+        wx.showToast({
+          title: '请求发送失败',
+          icon:'none',
+        })
       }
     })
     // TODO: 目前submit后会更新申请与授权，后期应根据form不同更新不同数据
@@ -99,7 +110,6 @@ Page({
 
   // 加载url中的参数,同时完成unix转普通时间
   onLoad: function (options) {
-    console.log(options.authStartTime);
     this.setData({
       companyName: options.companyName,
       id: options.id,
@@ -109,6 +119,7 @@ Page({
       recordEndTime:options.recordEndTime,
       type: options.type,
       recordId:options.recordId,
+      tp:options.t,//记录的是申请或授权状态
     })
   }
 })

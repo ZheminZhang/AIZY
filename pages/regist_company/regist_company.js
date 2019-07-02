@@ -64,6 +64,7 @@ Page({
     console.log('获取验证码');
     //这里获得验证码
     var _this=this;
+    //向对应服务器发起请求，获得验证码
     wx.request({
       url: 'http://127.0.0.1:8080/',
       header:{
@@ -125,8 +126,12 @@ Page({
           'code': this.data.code,
         },
         method: 'POST',
+        //如果公司已注册，提醒用户改公司名
         success: function (res) {
           console.log(res)
+          wx.navigateBack({
+             delta:1,
+          })
         },
         fail: function (res) {
           console.log(res)

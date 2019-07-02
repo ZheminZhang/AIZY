@@ -1,5 +1,6 @@
+// pages/apply_list_1/apply_list.js
+var app=getApp();
 var util = require('../../utils/util.js')
-
 Page({
   data: {
     tabitemConsume: {},
@@ -9,7 +10,6 @@ Page({
     grantorAutho: {},
     grantorUnautho: {},
     grantorUnauthoRefuse: {},
-
   },
   navbarTap: function (e) {
     this.setData({
@@ -48,6 +48,10 @@ Page({
 
   /* 加载页面 */
   onLoad: function () {
+    util.getAuthoList();
+    console.log("重新读取授权");
+  },
+  onShow:function(){
     this.setData({
       grantorUnautho: wx.getStorageSync('grantorUnautho'),
       grantorAutho: wx.getStorageSync('grantorAutho'),
@@ -67,7 +71,7 @@ Page({
         "&authEndTime=" + util.msToDate(this.data.grantorUnautho[index].authEndTime).withoutTime +
         "&recordStartTime=" + util.msToDate(this.data.grantorUnautho[index].recordStartTime).withoutTime +
         "&recordEndTime=" + util.msToDate(this.data.grantorUnautho[index].recordEndTime).withoutTime +
-        "&type=" + this.data.grantorUnautho[index].type + "&recordId=" + this.data.grantorUnautho[index].recordId;
+        "&type=" + this.data.grantorUnautho[index].type + "&recordId=" + this.data.grantorUnautho[index].recordId+"&t=" + e.target.dataset["tp"];
     }
     else if (e.target.dataset["tp"] == '2') {
       url_ = url_ +
@@ -77,7 +81,7 @@ Page({
         "&authEndTime=" + util.msToDate(this.data.grantorAutho[index].authEndTime).withoutTime +
         "&recordStartTime=" + util.msToDate(this.data.grantorAutho[index].recordStartTime).withoutTime +
         "&recordEndTime=" + util.msToDate(this.data.grantorAutho[index].recordEndTime).withoutTime +
-        "&type=" + this.data.grantorAutho[index].type + "&recordId=" + this.data.grantorAutho[index].recordId;
+        "&type=" + this.data.grantorAutho[index].type + "&recordId=" + this.data.grantorAutho[index].recordId + "&t=" + e.target.dataset["tp"];
     }
     else if (e.target.dataset["tp"] == '3') {
       url_ = url_ +
@@ -87,11 +91,8 @@ Page({
         "&authEndTime=" + util.msToDate(this.data.grantorUnauthoRefuse[index].authEndTime).withoutTime +
         "&recordStartTime=" + util.msToDate(this.data.grantorUnauthoRefuse[index].recordStartTime).withoutTime +
         "&recordEndTime=" + util.msToDate(this.data.grantorUnauthoRefuse[index].recordEndTime).withoutTime +
-        "&type=" + this.data.grantorUnauthoRefuse[index].type + "&recordId=" + this.data.grantorUnauthoRefuse[index].recordId;
+        "&type=" + this.data.grantorUnauthoRefuse[index].type + "&recordId=" + this.data.grantorUnauthoRefuse[index].recordId + "&t=" + e.target.dataset["tp"];
     }
-   
-    console.log("这里开始");
-    console.log(this.data.grantorUnautho);
     wx.navigateTo({
       url: url_,
       fail: function (e) {
