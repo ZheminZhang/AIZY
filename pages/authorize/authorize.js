@@ -53,8 +53,12 @@ Page({
     var recordST = util.formatToDate(this.data.recordStartTime) / 1000 + 14400;
     var recordET = util.formatToDate(this.data.recordEndTime) / 1000 + 14400;
     var tag = "disagree"
+    util._getUnAuthoList();
     if(e.target.dataset["type"]=="agree"){
-      tag="agree";
+      tag = "agree"; util._getAuthoList();
+    }
+     else{
+      util._getUnAuthoRefuseList();
     }
     wx.request({
       url: config.authorizedUrl,
@@ -76,12 +80,11 @@ Page({
        wx.showToast({
          title: '成功',
          icon:'success',
-         duration:1500,
        })
-        wx.navigateBack({
-          delta: 1,
-        })
-        util.getAuthoList();
+        setTimeout(function () {
+          wx.navigateBack({
+            delta: 1,
+          })},1000);//设置延时，确认让用户知道登陆成功
       },
       fail: function(e) {
         wx.showToast({
@@ -91,8 +94,7 @@ Page({
       }
     })
     // TODO: 目前submit后会更新申请与授权，后期应根据form不同更新不同数据
-    util.getApplyList();
-    util.getAuthoList();
+    
     //更新红点
     var numApply = wx.getStorageSync('granteeUnautho').length;
     var numAutho = wx.getStorageSync('grantorUnautho').length;

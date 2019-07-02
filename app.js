@@ -160,8 +160,6 @@ App({
     return wx.getStorageSync('loginFlag');
   },
 
-  // TODO:获取用户个人账单统计
-
   // 封装 wx.showToast 方法
   showInfo: function (info = 'error', icon = 'none') {
     wx.showToast({

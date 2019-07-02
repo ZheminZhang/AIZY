@@ -49,9 +49,9 @@ Page({
   /* 加载页面 */
   onLoad: function () {
     util.getAuthoList();
-    console.log("重新读取授权");
   },
   onShow:function(){
+    util.getAuthoList();
     this.setData({
       grantorUnautho: wx.getStorageSync('grantorUnautho'),
       grantorAutho: wx.getStorageSync('grantorAutho'),
