@@ -26,6 +26,7 @@ Page({
         success: function () {
           // 获取用户头像/昵称等信息
           that.getUserInfo();
+
         },
         // session_key 已过期
         fail: function () {
@@ -51,7 +52,25 @@ Page({
       title: '请稍等...',
       mask: true
     });
-    app.doLogin(that.getUserInfo);
+    app.doLogin(()=>{
+      that.getUserInfo();
+      util.getApplyList(() => {
+        that.setData({
+          numApply: wx.getStorageSync('granteeUnautho').length,
+          // numAutho: wx.getStorageSync('grantorUnautho').length,
+        });
+      });
+      util.getAuthoList(()=>{
+        that.setData({
+          // numApply: wx.getStorageSync('granteeUnautho').length,
+          numAutho: wx.getStorageSync('grantorUnautho').length,
+        });
+      });
+      // console.log(that.data.numApply);
+      
+      // console.log(wx.getStorageSync('granteeUnautho').length);
+    });
+    
   },
 
   /**
@@ -102,7 +121,6 @@ Page({
   onLoad: function () {
     this.checkLoginStatus();
   },
-
   onShow: function () {
     let that = this;
     //设置用户登录信息；根据未接受申请和未同意授权，更新

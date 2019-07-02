@@ -46,12 +46,11 @@ Page({
           wx.showToast({
             title: '发送成功',
             icon: 'success',
-            duration:1500,
           })
-          util.getApplyList();
-          wx.navigateBack({
+          util._getUnApplyList();
+          setTimeout(function(){wx.navigateBack({
             delta: 1,
-          })
+          })}, 1000);
         }
         else{
           wx.showToast({
