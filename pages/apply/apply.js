@@ -1,7 +1,6 @@
 // pages/query/query.js
 const api = require('../../config/config.js');
 var util = require('../../utils/util.js');
-var app=getApp();
 
 Page({
   data: {
@@ -46,10 +45,10 @@ Page({
         {
           wx.showToast({
             title: '发送成功',
-            icon: 'success'
+            icon: 'success',
+            duration:1500,
           })
-          
-          app.getApplyList();
+          util.getApplyList();
           wx.navigateBack({
             delta: 1,
           })

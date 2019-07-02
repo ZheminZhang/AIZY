@@ -34,7 +34,7 @@ Page({
     date = util.formatToDate(date) / 1000 + 14400;
     wx.request({
       url: api.queryUrl,
-      //url: 'http://127.0.0.1:80/api/analysis/analysis',
+      //url: 'http://127.0.0.1:80',
       data: {
         "companyName": this.data.companyName,
         "loginFlag": wx.getStorageSync('loginFlag'),
@@ -65,25 +65,25 @@ Page({
           icon:'none',
         })
         console.log(e);
-
+        _this.setData({
+          isClick_: true,
+        });
+        // var balanceItems = {
+        //   '报表项目': 0,
+        //   '流动资产：': 0,
+        //   '货币资金': 0,
+        //   '交易性金融资产': 0,
+        //   '衍生金融资产': 0,
+        //   '应收票据': 0,
+        //   '应收账款': 0,
+        // }
+        // wx.setStorageSync('table', balanceItems)
       }
     })
     
   },
 
   bindDateChange: function (e) {
-    // if (e.target.id == 'authStartTime') {
-    //   this.setData({
-    //     authStartTime: e.detail.value,
-    //     authEndTime: e.detail.value
-    //   })
-    // }
-    // else if (e.target.id == 'authEndTime') {
-    //   this.setData({
-    //     authEndTime: e.detail.value
-    //   })
-    // }
-
     if(e.target.id == 'recordStartTime'){
       this.setData({
         recordStartTime: e.detail.value,
