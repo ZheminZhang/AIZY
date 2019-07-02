@@ -129,8 +129,9 @@ page {
   border:1px solid #FFFFFF;
   background-color:white;
   position:absolute;
-  right:80rpx;
+  right:30rpx;
   box-shadow: 0 2px 16px 2px rgba(0,0,0,0.03);
+  text-align: right;
 }
 .weui-input_BILL_2 {
   height:80rpx;
@@ -139,8 +140,9 @@ page {
   border:1px solid #FFFFFF;
   background-color:white;
   position:absolute;
-  right:80rpx;
+  right:30rpx;
   box-shadow: 0 2px 16px 2px rgba(0,0,0,0.03);
+  text-align: right;
 }
 .weui-input_BILL_3 {
   height:80rpx;
@@ -149,8 +151,9 @@ page {
   border:1px solid #FFFFFF;
   background-color:white;
   position:absolute;
-  right:80rpx;
+  right:30rpx;
   box-shadow: 0 2px 16px 2px rgba(0,0,0,0.03);
+  text-align: right;
 }
 
 .line-BILL-1 {

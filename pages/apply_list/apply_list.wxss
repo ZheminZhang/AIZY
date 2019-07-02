@@ -1,4 +1,4 @@
-/* pages/apply_list_1/apply_list.wxss */
+@import "../../common/weui.wxss";
 page{
   display: flex;
   flex-direction: column;
