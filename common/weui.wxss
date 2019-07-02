@@ -1094,8 +1094,8 @@ form{
   border: 1rpx solid cornflowerblue;
   margin: 10rpx;
   border-radius:15rpx;
-  width:450rpx;
- margin-left:20rpx;
+  width:250rpx;
+  margin-left:20rpx;
  justify-content:center;
  display:flex;
 
@@ -1118,6 +1118,7 @@ form{
 .time-choose {
   display: flex;
   flex-direction: column;
+  margin-left:160rpx;
 }
 .page-section{
   margin-bottom: 40rpx;
@@ -1235,4 +1236,16 @@ font-size:28rpx;
 .width-line {
   height: 1rpx;
   color: black;
+}
+.newP{
+  display:flex;
+  flex-direction:row;
+
+}
+.name{
+  text-align:center;
+  justify-content:center;
+  display:flex;
+  align-items:center;
+
 }
