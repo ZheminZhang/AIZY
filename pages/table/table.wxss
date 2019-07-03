@@ -39,7 +39,10 @@ border:1rpx solid black;
   background: snow;
 }
 .bg-g{
-  background: #E6F3F9;
+  background: #f7f5d7;
+}
+.bg-g1{
+  background: #e5f9d7;
 }
 .th {
   width: 500rpx;
@@ -68,11 +71,11 @@ border:1rpx solid black;
 .tabitem {
   width: 160rpx;
   text-align: center;
-  color: #e0e0e0;
+  color: #000;
   font-weight: 400;
 }
 .tabitem-active {
-  color: #fff;
+  color: #a686ba;
 }
 .tabindicator {
   position: absolute;
