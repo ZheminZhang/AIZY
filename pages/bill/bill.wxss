@@ -209,14 +209,18 @@ page {
   margin-right: 36rpx;
 }
 .button-BILL-1{
-  margin: 150rpx 100rpx 0 100rpx;
+  margin: 100rpx;
   background-color:#71a16d;
   color: white;
+  align-self:center;
+
 }
 .button-BILL-1-p{
-  margin: 150rpx 100rpx 0 100rpx;
+  margin: 100rpx;
   background-color: #537750;
   color: white;
+  align-self:center;
+
 }
 .picker{
 height:70rpx;
