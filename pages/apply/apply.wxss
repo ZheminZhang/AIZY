@@ -1,5 +1,8 @@
 /* pages/query/query.wxss */
 @import "../../common/weui.wxss";
+.container {
+  background-color: #f8f2d3;
+}
 .line-BILL{
   margin:10rpx 30rpx 25rpx 30rpx;
   height:2rpx;
