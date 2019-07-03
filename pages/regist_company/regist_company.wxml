@@ -28,12 +28,8 @@
       <!-- 经营范围 -->
       <view class="page-section">
       <view class="page-section-title">经营范围</view>
-    <view class="select_sell">
-    <radio-group name="business_scope">
-          <label><radio value="radio1"/>xxx</label>
-          <label><radio value="radio2"/>xxx</label>
-        </radio-group>
-    </view>
+      <textarea class="message" value="{{currentText}}" placeholder=" " bindinput='getSellArea'>
+          </textarea>
       </view>
     </form>
   </view>

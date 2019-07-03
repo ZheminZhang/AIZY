@@ -87,7 +87,7 @@ border:1rpx solid black;
 }
 .tabbar-BILL {
   height: 80rpx;
-  background-color: #8992c8;
+  background-color: #f5d9a6;
   color: #fff;
   font-size: 30rpx;
   align-items: center;

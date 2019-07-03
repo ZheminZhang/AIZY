@@ -9,6 +9,7 @@ Page({
     code: '',
     second: 60,
     isCode:'',
+    currentText:''
   },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
@@ -59,6 +60,11 @@ Page({
     this.setData({
       code: e.detail.value
     })
+  },
+  getSellArea:function(e){
+     this.setData({
+       currentText:e.detail.value,
+     })
   },
   getCode:function(){
     console.log('获取验证码');
@@ -112,29 +118,45 @@ Page({
   },
   //获得信息，1234是发起请求，服务返回是预期的验证码
   getMessage:function(){
+    var that=this;
     if(this.data.code=="1234"&&this.data.companyName!=''){
-      wx.showToast({
-        title: '注册成功',
-        icon:'success',
-      })
       wx.request({
         url: config.registUrl,
         data: {
           'loginFlag': wx.getStorageSync('loginFlag'),
           'companyName': this.data.companyName,
-          'phonenumber': this.data.phone,
           'code': this.data.code,
+          'businessScope':this.data.currentText,
         },
         method: 'POST',
         //如果公司已注册，提醒用户改公司名
         success: function (res) {
-          console.log(res)
-          wx.navigateBack({
-             delta:1,
-          })
+          if(res.statusCode==200){
+            console.log(res);
+            console.log(this.data.currentText);
+            console.log("公司注册成功！");
+            wx.showToast({
+              title: '注册成功',
+              icon: 'none',
+            })
+            wx.navigateBack({
+              delta: 1,
+            })
+          }else if(res.statusCode==404){
+            console.log(that.data.currentText);
+            wx.showToast({
+              title: '公司名已注册',
+              icon: 'none',
+            })
+          }
         },
         fail: function (res) {
           console.log(res)
+          console.log(that.data.currentText);
+          wx.showToast({
+            title: '注册失败',
+            icon: 'none',
+          })
         }
 
       })

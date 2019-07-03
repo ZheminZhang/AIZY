@@ -4,7 +4,7 @@
   <view class="page-body">
     <form catchsubmit="formSubmit" catchreset="formReset">
       <view class="page-section">
-        <view class="page-section-title">查询对象</view>
+        <view class="page-section-title">申请对象</view>
         <view class="weui-cell__bd">
           <input class="weui-input" name="name" value="{{companyName}}" disabled='{{disabled_name}}' bindinput="inputComName"/>
         </view>
@@ -12,20 +12,21 @@
 
       <view class="time_selection">
         <view class="page-section-title">
-          授权时间选择
+          授权时间
         </view>
         <view class="time-choose">
           <!-- 开始时间 -->
-          <picker mode="date" value="{{authStartTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='authStartTime'>
+          <picker mode="date" value="{{authStartTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='authStartTime'> <view class="newP"><view class="name">起</view>
             <view class="picker">
               {{authStartTime}}
-            </view>
+            </view></view>
           </picker>
           <!-- 结束时间 -->
           <picker mode="date" value="{{authEndTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='authEndTime'>
+            <view class="newP"> <view class="name">止</view>
             <view class="picker">
-              {{authEndTime}}
-            </view>
+              {{authStartTime}}
+            </view></view>
           </picker>
         </view>
       </view>
@@ -33,20 +34,23 @@
       <view class="time_selection">
         <!-- 时间选择器 -->
         <view class="page-section-title">
-          记录时间选择
+          记录时间
         </view>
         <view class="time-choose">
           <!-- 开始时间 -->
           <picker mode="date" value="{{recordStartTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='recordStartTime'>
+            <view class="newP"> <view class="name">起</view>
             <view class="picker">
               {{recordStartTime}}
-            </view>
+            </view></view>
           </picker>
           <!-- 结束时间 -->
           <picker mode="date" value="{{recordEndTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='recordEndTime'>
+          <view class="newP"> <view class="name">止</view>
             <view class="picker">
               {{recordEndTime}}
-            </view>
+            </view></view>
+           
           </picker>
         </view>
       </view>

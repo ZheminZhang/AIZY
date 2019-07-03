@@ -132,7 +132,7 @@ page {
 }
 .weui-input_BILL_2 {
   height:80rpx;
-  width:280rpx;
+  width:320rpx;
   border-radius:25rpx;
   border:1px solid #FFFFFF;
   background-color:white;
@@ -178,26 +178,7 @@ page {
   height:110rpx;
   display:flex;
   align-items:center;
-  border:3rpx solid #ddd;
-}
-.list-BILL-2 {
-  height:100rpx;
-  margin:10rpx;
-  display:flex;
-  align-items:center;
-  border:3rpx solid #ddd;
-}
-.list-BILL-3 {
-  height:100rpx;
-  margin:10rpx;
-  display:flex;
-  align-items:center;
-}
-.list-BILL-4 {
-  height:100rpx;
-  margin:10rpx;
-  display:flex;
-  align-items:center;
+  border-bottom:2rpx solid #ddd;
 }
 
 .icon-BILL-1 {
@@ -228,12 +209,26 @@ page {
   margin-right: 36rpx;
 }
 .button-BILL-1{
-  margin: 150rpx 100rpx 0 100rpx;
+  margin: 100rpx;
   background-color:#71a16d;
   color: white;
+  align-self:center;
+
 }
 .button-BILL-1-p{
-  margin: 150rpx 100rpx 0 100rpx;
+  margin: 100rpx;
   background-color: #537750;
   color: white;
+  align-self:center;
+
 }
+.picker{
+height:70rpx;
+margin:10rpx;
+width:250rpx;
+margin-left:190rpx;
+justify-content:center;
+display:flex;
+
+}
+

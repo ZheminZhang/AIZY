@@ -52,10 +52,9 @@ Page({
 
   },
   onLoad:function(){
-    util.getApplyList();
   },
   onShow: function () {
-    console.log("重新读取授权列表，申请列表");
+    util.getApplyList();
     this.setData({
       granteeUnautho: wx.getStorageSync('granteeUnautho'),
       granteeAutho: wx.getStorageSync('granteeAutho'),
@@ -64,8 +63,6 @@ Page({
   },
 
   toDetail: function (e) {
-    console.log('申请列表点击事件');
-    console.log(e);
     let index = e.currentTarget.id;
     let url_ = '../authorize/authorize?' + 'tp=' + e.target.dataset["tp"]
     if (e.target.dataset["tp"] == '4') {
