@@ -100,7 +100,7 @@ Page({
     var that = this;
     /* 得到完整识别内容发给语音服务器处理 */
     wx.request({
-      url: 'http://192.168.1.2:80/api/analysis/analysis',
+      url: config.voiceUrl,
       data: {
         "text": this.data.currentText,
       },
