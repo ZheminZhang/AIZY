@@ -49,7 +49,7 @@ Page({
         if(e.statusCode==200){
           wx.setStorageSync('table', e.data);
           wx.showLoading({
-            title: 'loading',
+            title: '报表生成中..',
           })
           wx.navigateTo({
             url: '../table/table',
