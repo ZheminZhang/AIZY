@@ -132,8 +132,6 @@ Page({
         //如果公司已注册，提醒用户改公司名
         success: function (res) {
           if(res.statusCode==200){
-            console.log(res);
-            console.log(this.data.currentText);
             console.log("公司注册成功！");
             wx.showToast({
               title: '注册成功',
