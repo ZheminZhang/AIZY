@@ -1061,14 +1061,14 @@ icon {
 }
 .button-BILL-1{
   margin: 100rpx 100rpx 0 150rpx;
-  background-color: #87a7d6;
+  background-color: #2b2b2b;
   color: white;
   width:500rpx;
   border-radius: 50rpx;
 }
 .button-BILL-1-p{
   margin: 100rpx 100rpx 0 150rpx;
-  background-color: #6985af;
+  background-color: #2b2b2b;
   color: white;
   width:500rpx
 }
@@ -1091,7 +1091,7 @@ form{
 .picker{
   height: 70rpx;
   background-color: #FFFFFF;
-  border: 1rpx solid cornflowerblue;
+  border: 1rpx solid #727171;
   margin: 10rpx;
   border-radius:15rpx;
   width:450rpx;
