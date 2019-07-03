@@ -125,7 +125,6 @@ Page({
         data: {
           'loginFlag': wx.getStorageSync('loginFlag'),
           'companyName': this.data.companyName,
-          'phone': this.data.phone,
           'code': this.data.code,
           'businessScope':this.data.currentText,
         },

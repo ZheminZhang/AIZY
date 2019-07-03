@@ -48,7 +48,6 @@ Page({
 
   /* 加载页面 */
   onLoad: function () {
-    util.getAuthoList();
   },
   onShow:function(){
     util.getAuthoList();
@@ -57,7 +56,6 @@ Page({
       grantorAutho: wx.getStorageSync('grantorAutho'),
       grantorUnauthoRefuse: wx.getStorageSync('grantorUnauthoRefuse')
     })
-    console.log(this.data.grantorUnauthoRefuse);
   },
 
   toDetail: function (e) {

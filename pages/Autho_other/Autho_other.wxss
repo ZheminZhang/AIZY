@@ -73,14 +73,14 @@ page{
   align-items: center;  
 }
 .client_info_Refuse{
-  background-color:#bfbfbf;
+  background-color:#f7edd4;
   height: 130rpx; 
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
 }
 .client_info_undeal{
-  background-color: #94c29a;
+  background-color: #4a64;
   height: 130rpx;
   width:750rpx; 
   display: flex;

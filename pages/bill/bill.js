@@ -203,11 +203,6 @@ Page({
             icon: 'success',
             duration: 500,
             success: function () {
-              setTimeout(function () {
-                wx.navigateBack({
-                  delta: 1
-                })
-              }, 500)
             }
           })
         }else if(res.statusCode == 400){
@@ -216,11 +211,6 @@ Page({
             icon: 'fail',
             duration: 500,
             success: function () {
-              setTimeout(function () {
-                wx.navigateBack({
-                  delta: 1
-                })
-              }, 500)
             }
           })
         }
