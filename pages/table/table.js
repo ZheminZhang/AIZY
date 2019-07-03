@@ -212,7 +212,7 @@ Page({
   },
   onLoad: function () {
     wx.showLoading({
-      title: 'loading',
+      title: '报表生成中..',
     })
     this.setData({
       balanceData: wx.getStorageSync('table').balance,
@@ -297,7 +297,6 @@ Page({
   },
   onReady:function(){
     wx.hideLoading()
-    wx.hideLoading()
     var query = wx.createSelectorQuery().in(this),
       _this = this;
     _this.animation = wx.createAnimation({
@@ -321,8 +320,6 @@ Page({
       _this.setActiveTab('tabitemProfit');
     })
     query.exec();
-
-    wx.hideLoading();
   },
    tabChange(e) {
     if (e.detail.source == "touch") {

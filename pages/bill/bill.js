@@ -15,11 +15,11 @@ Page({
     currentText: "",      //识别内容
     isClick:false,
     /* 记账相关信息 */
-    summary: "无",   //分类信息
+    summary: null,   //分类信息
     debit: "",            //借方科目
-    debitAmount: 0.00,    //借方金额
+    debitAmount: null,    //借方金额
     credit: "",           //贷方科目
-    creditAmount: 0.00,   //贷方金额
+    creditAmount: null,   //贷方金额
     date: "",       //日期
   },
 
