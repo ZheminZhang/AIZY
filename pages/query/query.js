@@ -29,7 +29,7 @@ Page({
     // var authET = util.formatToDate(this.data.authEndTime) / 1000 + 14400;
     var recordST = util.formatToDate(this.data.recordStartTime) / 1000 + 14400;
     var recordET = util.formatToDate(this.data.recordEndTime) / 1000 + 14400;
-    if(recordST>=recordET){
+    if(recordST>recordET){
       wx.showToast({
         title: '时间错误',
         icon:'none',
