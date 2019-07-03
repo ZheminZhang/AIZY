@@ -104,7 +104,6 @@ Page({
       },
       method: 'POST',
       success: function (res) {
-        console.log(res)
         that.setData({
           summary: res.data.data[0].summary,
           debit: res.data.data[0].debit,
@@ -198,7 +197,6 @@ Page({
       success: function(res) {
         // TODO:应该使用返回的数据进行判断
         if(res.statusCode == 200){
-          console.log("成功：" + res)
           wx.showToast({
             title: '记账成功',
             icon: 'success',
@@ -206,10 +204,10 @@ Page({
             success: function () {
             }
           })
-        }else if(res.statusCode == 400){
+        }else{
           wx.showToast({
             title: res.data,
-            icon: 'fail',
+            icon: 'none',
             duration: 500,
             success: function () {
             }

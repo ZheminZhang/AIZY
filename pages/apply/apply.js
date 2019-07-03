@@ -54,7 +54,7 @@ Page({
         }
         else{
           wx.showToast({
-            title: '公司名不存在',
+            title: e.data,
             icon: 'none',
           })
         }
