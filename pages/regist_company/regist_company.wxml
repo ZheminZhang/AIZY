@@ -11,9 +11,9 @@
       </view>
       <!-- 联系方式 -->
       <view class="page-section">
-      <view class="page-section-title">手机号码</view>
+      <view class="page-section-title">联系方式</view>
             <view class="weui-cell__bd">
-              <input class="weui-input" type='number' bindinput='bindPhoneInput'  name="contract_content" placeholder=""  value="{{phone}}"/>
+              <input class="weui-input" type='number' bindinput='bindPhoneInput'  name="contract_content" placeholder="手机号码"  value="{{phone}}"/>
             </view>
       </view>
       <!--验证码-->
@@ -28,7 +28,7 @@
       <!-- 经营范围 -->
       <view class="page-section">
       <view class="page-section-title">经营范围</view>
-      <textarea class="message" value="{{currentText}}" placeholder=" " bindinput='getSellArea'>
+      <textarea class="message" value="{{currentText}}" placeholder="输入公司经营范围，若有多个，请用空格分开" bindinput='getSellArea'>
           </textarea>
       </view>
     </form>
