@@ -5,3 +5,8 @@
   height:2rpx;
   background: rgba(177,182,177,0.603);
 }
+.newP{
+  display:flex;
+  flex-direction:row;
+
+}

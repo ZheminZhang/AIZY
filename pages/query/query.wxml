@@ -4,34 +4,33 @@
   <view class="page-body">
     <form catchsubmit="formSubmit" catchreset="formReset">
       <view class="page-section">
-        <view class="page-section-title">查询对象</view>
+        <view class="page-section-title">查询公司</view>
         <view class="weui-cell__bd">
           <input class="weui-input" name="name" value="{{companyName}}" disabled='{{disabled_name}}' bindinput="inputComName"/>
         </view>
       </view>
-
+      
       <view class="time_selection">
         <!-- 时间选择器 -->
-        <view class="page-section-title">
-          记录时间选择
-        </view>
+        <view class="page-section-title">账单日期</view>
         <view class="time-choose">
           <!-- 开始时间 -->
           <picker mode="date" value="{{recordStartTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='recordStartTime'>
+          <view class="newP"><view class="name" > 起</view>
             <view class="picker">
               {{recordStartTime}}
-            </view>
+            </view></view>
           </picker>
           <!-- 结束时间 -->
           <picker mode="date" value="{{recordEndTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='recordEndTime'>
+          <view class="newP"><view class="name"> 始</view>
             <view class="picker">
               {{recordEndTime}}
-            </view>
+            </view></view>
           </picker>
         </view>
       </view>
     </form>
   </view>
    <button  class="button-BILL-1" hover-class="button-BILL-1-p"  bindtap="formSubmit">完成</button>
-     
 </view>
