@@ -51,11 +51,6 @@ page {
   position: fixed;
   bottom: 50rpx;
 }
-.view-SR-2 {
-}
-.send-SR {
-
-}
 
 .icon-SR-1 {
   height: 60rpx;
@@ -72,7 +67,7 @@ page {
 }
 .tabbar-BILL {
   height: 80rpx;
-  background-color: #87a7d6;
+  background-color: #8ba693;
   color: #fff;
   font-size: 30rpx;
   align-items: center;
@@ -216,17 +211,13 @@ page {
   text-align: end;
   margin-right: 36rpx;
 }
-
-
-.button-SR-1 {
-}
 .button-BILL-1{
   margin: 150rpx 100rpx 0 100rpx;
-  background-color:#87a7d6;
+  background-color:#71a16d;
   color: white;
 }
 .button-BILL-1-p{
   margin: 150rpx 100rpx 0 100rpx;
-  background-color: #6985af;
+  background-color: #537750;
   color: white;
 }
