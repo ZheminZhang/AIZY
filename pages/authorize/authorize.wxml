@@ -11,7 +11,6 @@
       </view>
       <!-- 账单类型 -->
 
-
       <!-- 时间范围 -->
       <view class="time_selection">
         <!-- 时间选择器 -->
@@ -58,7 +57,7 @@
         </view>
         <view class="time-choose">
           <!-- 开始时间 -->
-          <picker mode="date" value="{{recordStartTime}}" start="{{begin}}" end="{{end}}" bindchange="" id='recordStartTime' wx:if="{{tp==1}}">
+          <picker mode="date" value="{{recordStartTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='recordStartTime' wx:if="{{tp==1}}">
             <view class="newP">
               <view class="name">起</view>
               <view class="picker">

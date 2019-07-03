@@ -25,7 +25,6 @@ Page({
       console.log("授权开始时间")
       this.setData({
         authStartTime: e.detail.value,
-        authEndTime: e.detail.value
       })
     }
     else if (e.target.id == 'authEndTime') {
@@ -38,7 +37,6 @@ Page({
     else if (e.target.id == 'recordStartTime') {
       this.setData({
         recordStartTime: e.detail.value,
-        recordEndTime: e.detail.value
       })
     }
     else if (e.target.id == 'recordEndTime') {
