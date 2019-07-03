@@ -2,7 +2,6 @@
 .table {
   width:700rpx;
   height: 100%;
-  border:1rpx solid black;
   margin: 25rpx 0 25rpx 25rpx;
 }
 .tr {
@@ -39,7 +38,10 @@ border:1rpx solid black;
   background: snow;
 }
 .bg-g{
-  background: #E6F3F9;
+  background: #f7f5d7;
+}
+.bg-g1{
+  background: #e5f9d7;
 }
 .th {
   width: 500rpx;
@@ -66,13 +68,13 @@ border:1rpx solid black;
   text-align:center;
 }
 .tabitem {
-  width: 120rpx;
+  width: 160rpx;
   text-align: center;
-  color: #e0e0e0;
+  color: #000;
   font-weight: 400;
 }
 .tabitem-active {
-  color: #fff;
+  color: #a686ba;
 }
 .tabindicator {
   position: absolute;
@@ -87,7 +89,7 @@ border:1rpx solid black;
 }
 .tabbar-BILL {
   height: 80rpx;
-  background-color: #8992c8;
+  background-color: #f5d9a6;
   color: #fff;
   font-size: 30rpx;
   align-items: center;
@@ -105,4 +107,7 @@ swiper{
   width: 0;
   height: 0;
   color: transparent;
+}
+.Gap{
+  padding:100rpx;
 }

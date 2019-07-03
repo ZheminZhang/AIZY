@@ -210,7 +210,11 @@ Page({
     activeTabId: null,
   },
   onLoad: function () {
+    wx.showLoading({
+      title: '报表生成中..',
+    })
     this.setData({
+      profitData: wx.getStorageSync('table').profit,
       balanceData: wx.getStorageSync('table').balance,
       cashFlowData: wx.getStorageSync('table').cashFlow,
     })
@@ -292,6 +296,7 @@ Page({
     });
   },
   onReady:function(){
+    wx.hideLoading()
     var query = wx.createSelectorQuery().in(this),
       _this = this;
     _this.animation = wx.createAnimation({

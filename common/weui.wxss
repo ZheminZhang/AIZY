@@ -1060,15 +1060,15 @@ icon {
   width:500rpx;
 }
 .button-BILL-1{
-  margin: 100rpx 100rpx 0 150rpx;
-  background-color: #87a7d6;
+  margin:150rpx;
+  background-color: #fac589;
   color: white;
   width:500rpx;
   border-radius: 50rpx;
 }
 .button-BILL-1-p{
-  margin: 100rpx 100rpx 0 150rpx;
-  background-color: #6985af;
+  margin:150rpx;
+  background-color: #f1b46d;
   color: white;
   width:500rpx
 }
@@ -1091,11 +1091,11 @@ form{
 .picker{
   height: 70rpx;
   background-color: #FFFFFF;
-  border: 1rpx solid cornflowerblue;
+  border: 1rpx solid #727171;
   margin: 10rpx;
   border-radius:15rpx;
-  width:450rpx;
- margin-left:20rpx;
+  width:250rpx;
+  margin-left:20rpx;
  justify-content:center;
  display:flex;
 
@@ -1118,6 +1118,7 @@ form{
 .time-choose {
   display: flex;
   flex-direction: column;
+  margin-left:160rpx;
 }
 .page-section{
   margin-bottom: 40rpx;
@@ -1235,4 +1236,16 @@ font-size:28rpx;
 .width-line {
   height: 1rpx;
   color: black;
+}
+.newP{
+  display:flex;
+  flex-direction:row;
+
+}
+.name{
+  text-align:center;
+  justify-content:center;
+  display:flex;
+  align-items:center;
+
 }

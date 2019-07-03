@@ -1,5 +1,3 @@
-
-
 <view class='container-BILL'>
   <view class='tabbar-BILL'>
     <text id="tabitemProfit" class='tabitem {{activeTabId=="tabitemProfit"?"tabitem-active":""}}' bindtap='tabclick'>利润表</text>
@@ -63,7 +61,7 @@
                 <text class="name">{{profitView[index][i]}}</text>
               </view>
             </view>
-            <view class="tr" wx:else>
+            <view class="tr bg-g1" wx:else>
               <view class="td">
                 <text class="name">{{text}}</text>
               </view>
@@ -73,6 +71,7 @@
             </view>
           </view>
         </block>
+        <view class="Gap"></view>
       </scroll-view>
     </swiper-item>
     <swiper-item item-id="tabitemDebit">
@@ -129,7 +128,7 @@
                 <text class="name">{{balanceView[index][i]}}</text>
               </view>
             </view>
-            <view class="tr" wx:else>
+            <view class="tr bg-g1" wx:else>
               <view class="td">
                 <text class="name">{{text}}</text>
               </view>
@@ -139,6 +138,7 @@
             </view>
           </view>
         </block>
+        <view class="Gap"></view>
       </scroll-view>
     </swiper-item>
     <swiper-item item-id="tabitemCash">
@@ -189,7 +189,7 @@
                 <text class="name">{{cashFlowView[index][i]}}</text>
               </view>
             </view>
-            <view class="tr" wx:else>
+            <view class="tr bg-g1" wx:else>
               <view class="td">
                 <text class="name">{{text}}</text>
               </view>
@@ -199,6 +199,7 @@
             </view>
           </view>
         </block>
+        <view class="Gap"></view>
       </scroll-view>
     </swiper-item>
   </swiper>

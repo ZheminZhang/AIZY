@@ -13,13 +13,13 @@ Page({
 
     /* 语音识别信息 */
     currentText: "",      //识别内容
-
+    isClick:false,
     /* 记账相关信息 */
-    summary: "无",   //分类信息
+    summary: null,   //分类信息
     debit: "",            //借方科目
-    debitAmount: 0.00,    //借方金额
+    debitAmount: null,    //借方金额
     credit: "",           //贷方科目
-    creditAmount: 0.00,   //贷方金额
+    creditAmount: null,   //贷方金额
     date: "",       //日期
   },
 
@@ -59,9 +59,19 @@ Page({
     manager.start({
       lang: 'zh_CN',
     })
+    wx.showToast({
+      title: '开始录音',
+      icon:'none',
+    })
+    console.log("录音开始")
   },
   streamRecordEnd: function () {
+    console.log("录音结束")
     manager.stop()
+    wx.showToast({
+      title: '录音结束',
+      icon: 'none',
+    })
   },
 
   initRecord: function () {
@@ -193,11 +203,6 @@ Page({
             icon: 'success',
             duration: 500,
             success: function () {
-              setTimeout(function () {
-                wx.navigateBack({
-                  delta: 1
-                })
-              }, 500)
             }
           })
         }else if(res.statusCode == 400){
@@ -206,11 +211,6 @@ Page({
             icon: 'fail',
             duration: 500,
             success: function () {
-              setTimeout(function () {
-                wx.navigateBack({
-                  delta: 1
-                })
-              }, 500)
             }
           })
         }

@@ -31,7 +31,6 @@
 
 
 <view class="tab-container bg-white">
-
     <view class="tab-item border-bottom"  hover-class="tab-item-hover"catchtap="goApply">
         <view class="icon_style">
             <image src="../../images/manage.png" mode="aspectFit" class="tab-icon"></image>
@@ -56,5 +55,4 @@
             <text class="tab-text">注册</text>
         </view>
     </view>
-    
 </view>

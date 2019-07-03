@@ -9,7 +9,7 @@
     <swiper-item item-id="tabitemVoice">
       <scroll-view class="tab-content">
         <view class="section-body">
-          <textarea class="message"  value="{{currentText}}" placeholder="选择语音或者手动输入，完成后点击下方图标跳转" bindinput="vtextAreaBlur">
+          <textarea class="message"  value="{{currentText}}" placeholder="语音或手动输入，完成后点击下方图标跳转" bindinput="vtextAreaBlur">
           </textarea>
         </view>
         <view class="send-SR">
@@ -27,13 +27,13 @@
       <scroll-view scroll-y="true" class="tab-content">
         <view class="Form">
           <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/down-circle.png"></image>
+            <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
             <text class="text-BILL-1">摘要:</text>
-            <input class="weui-input_BILL_1" bindinput="summaryFunction" value="{{summary}}"/>
+            <input class="weui-input_BILL_1" bindinput="summaryFunction" placeholder="摘要输入  " value="{{summary}}"/>
           </view>
 
           <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/down-circle.png"></image>
+            <image class="icon-BILL-1" src="../../images/BILL/borrow.png"></image>
             <text class="text-BILL-1">借方科目:</text>
             <input class="weui-input_BILL_2" bindinput="debitFunction" value="{{debit}}"/>
           </view>
@@ -43,12 +43,12 @@
               <image class="icon-BILL-2" 
               src="../../images/BILL/YUAN.png"></image>
               <text class="text-BILL-1">借方金额(元):</text>
-            <input class="weui-input_BILL_3" type="digit" value="{{debitAmount}}" bindinput = "debitAmFunction"/>
+            <input class="weui-input_BILL_3" type="digit" placeholder="" value="{{debitAmount}}" bindinput = "debitAmFunction"/>
           </view>
 
 
           <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/down-circle.png"></image>
+            <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
             <text class="text-BILL-1">贷方科目:</text>
             <input class="weui-input_BILL_2" bindinput="creditFunction" value="{{credit}}"/>
           </view>
@@ -58,16 +58,15 @@
               src="../../images/BILL/YUAN.png"></image>
               <text class="text-BILL-1">贷方金额(元):</text>
            
-            <input class="weui-input_BILL_3" type="digit" value="{{creditAmount}}" bindinput = "creditAmFunction"/>
+            <input class="weui-input_BILL_3" type="digit" placeholder="" value="{{creditAmount}}" bindinput = "creditAmFunction"/>
            
           </view>
 
           <view class="list-BILL-1">
-            <image class="icon-BILL-3" src="../../images/down-circle.png"></image>
-            <text class="text-BILL-1">日期:</text>
+            <image class="icon-BILL-3" src="../../images/BILL/date.png"></image>
+            <text class="text-BILL-2">日期:</text>
             <picker class="date-text" mode="date" value="{{date}}" bindchange="onDateChange">
-              <view class='picker'>{{date}}
-              </view>
+              {{date}}
             </picker>
           </view>
 

@@ -342,7 +342,6 @@ function getAuthoList(callback=()=>{  }) {
     },
     method: 'POST',
     success: function (res) {
-      console.log('(Success!)未授权列表:');
       wx.setStorageSync('grantorUnautho', "");
       if (res.statusCode == 200)
       wx.setStorageSync('grantorUnautho', res.data);
@@ -360,7 +359,6 @@ function getAuthoList(callback=()=>{  }) {
     },
     method: 'POST',
     success: function (res) {
-      console.log('(Success!)已授权列表:');
       wx.setStorageSync('grantorAutho', "");
       if (res.statusCode == 200)
         wx.setStorageSync('grantorAutho', res.data);
@@ -378,7 +376,6 @@ function getAuthoList(callback=()=>{  }) {
     },
     method: 'POST',
     success: function (res) {
-      console.log('(Success!)拒绝列表(授权):');
       wx.setStorageSync('grantorUnauthoRefuse', "");
       if (res.statusCode == 200)
       wx.setStorageSync('grantorUnauthoRefuse', res.data);
@@ -397,7 +394,6 @@ function _getAuthoList(callback = () => { }){
     },
     method: 'POST',
     success: function (res) {
-      console.log('(Success!)已授权列表:');
       wx.setStorageSync('grantorAutho', "");
       if (res.statusCode == 200)
         wx.setStorageSync('grantorAutho', res.data);
@@ -416,7 +412,6 @@ function _getUnAuthoList(callback=()=>{ }){
     },
     method: 'POST',
     success: function (res) {
-      console.log('(Success!)未授权列表:');
       wx.setStorageSync('grantorUnautho', "");
       if (res.statusCode == 200)
         wx.setStorageSync('grantorUnautho', res.data);
@@ -435,7 +430,6 @@ function _getUnAuthoRefuseList(callback=()=>{ }){
     },
     method: 'POST',
     success: function (res) {
-      console.log('(Success!)拒绝列表(授权):');
       wx.setStorageSync('grantorUnauthoRefuse', "");
       if (res.statusCode == 200)
         wx.setStorageSync('grantorUnauthoRefuse', res.data);
@@ -456,7 +450,6 @@ function getApplyList(callback = () => { }) {
     },
     method: 'POST',
     success: function (res) {
-      console.log('(Success!)未接受列表:');
       wx.setStorageSync('granteeUnautho', "");
       if (res.statusCode == 200)
       wx.setStorageSync('granteeUnautho', res.data);
@@ -474,7 +467,6 @@ function getApplyList(callback = () => { }) {
     },
     method: 'POST',
     success: function (res) {
-      console.log('(Success!)已接受列表:');
       wx.setStorageSync('granteeAutho', "");
       if (res.statusCode == 200)
       wx.setStorageSync('granteeAutho', res.data);
@@ -491,7 +483,6 @@ function getApplyList(callback = () => { }) {
     },
     method: 'POST',
     success: function (res) {
-      console.log('(Success!)拒绝列表(接受):');
       wx.setStorageSync('granteeUnauthoRefuse', "");
       if (res.statusCode == 200)
       wx.setStorageSync('granteeUnauthoRefuse', res.data);
@@ -509,7 +500,6 @@ function _getUnApplyList(callback = () => { }){
     },
     method: 'POST',
     success: function (res) {
-      console.log('(Success!)未接受列表:');
       wx.setStorageSync('granteeUnautho', "");
       if (res.statusCode == 200)
         wx.setStorageSync('granteeUnautho', res.data);
@@ -528,7 +518,6 @@ function _getApplyList(callback = () => { }){
     },
     method: 'POST',
     success: function (res) {
-      console.log('(Success!)已接受列表:');
       wx.setStorageSync('granteeAutho', "");
       if (res.statusCode == 200)
         wx.setStorageSync('granteeAutho', res.data);
@@ -547,7 +536,6 @@ function _getApplyRefuseList(callback = () => { }){
     },
     method: 'POST',
     success: function (res) {
-      console.log('(Success!)拒绝列表(接受):');
       wx.setStorageSync('granteeUnauthoRefuse', "");
       if (res.statusCode == 200)
         wx.setStorageSync('granteeUnauthoRefuse', res.data);

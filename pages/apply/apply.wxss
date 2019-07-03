@@ -3,5 +3,13 @@
 .line-BILL{
   margin:10rpx 30rpx 25rpx 30rpx;
   height:2rpx;
-  background: rgba(177,182,177,0.603);
+  background: #2b2b2b;
 }
+.container{
+  display: flex;
+  padding: 100rpx 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+}
+
