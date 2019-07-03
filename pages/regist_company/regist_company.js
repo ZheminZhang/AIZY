@@ -139,17 +139,18 @@ Page({
             wx.navigateBack({
               delta: 1,
             })
-          }else if(res.statusCode==404){
+          }else {
             wx.showToast({
-              title: '公司名已注册',
+              title: res.data,
               icon: 'none',
             })
+            console.log(res);
           }
         },
         fail: function (res) {
          
           wx.showToast({
-            title: '注册失败',
+            title: '请检查网络状态',
             icon: 'none',
           })
         }
