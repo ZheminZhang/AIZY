@@ -23,7 +23,7 @@
           </picker>
           <!-- 结束时间 -->
           <picker mode="date" value="{{recordEndTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='recordEndTime'>
-          <view class="newP"><view class="name"> 始</view>
+          <view class="newP"><view class="name">止</view>
             <view class="picker">
               {{recordEndTime}}
             </view></view>

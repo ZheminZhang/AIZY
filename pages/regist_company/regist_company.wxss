@@ -14,16 +14,47 @@ form{
   left:50rpx;
 }
 .codeBtn{
-  color: #bbb;
+  color:grey;
   width: 200rpx;
   font-size: 26rpx;
   height: 80rpx;
   line-height: 80rpx;
   margin-left:80rpx;
+  border:0rpx #fff;
+  background-color: #fff;
 }
+button::after{ border: none; }
+button[disabled]:not([type]) {
+color:rgba(0, 0, 0, 0.3);
+background-color:#fff;
+
+}
+
 .line-BILL{
 margin:25rpx 30rpx 25rpx 30rpx;
 height:3rpx;
 background:rgba(177,182,177,0.603);
 }
-
+.message{
+position:relative;
+padding:0 2px;
+height:200rpx;
+width:450rpx;
+background-color:#fff;
+margin-left:20rpx;
+}
+.page-section-title{
+  position: relative;
+  width:160rpx;
+  display:flex;
+  justify-content:center;
+  text-align:center;
+  align-items: flex-start;
+}
+.container{
+  display: flex;
+  padding: 100rpx 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+}

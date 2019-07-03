@@ -66,10 +66,7 @@ page {
   height: 90rpx;
   width: 90rpx;
 }
-.icon-SR-3 {
-  height: 120rpx;
-  width: 120rpx;
-}
+
 .tabbar-BILL {
   height: 80rpx;
   background-color: #87a7d6;
@@ -251,10 +248,7 @@ page {
 }
 .picker{
 height:70rpx;
-background-color:#FFFFFF;
-border:1rpx solid cornflowerblue;
 margin:10rpx;
-border-radius:15rpx;
 width:250rpx;
 margin-left:190rpx;
 justify-content:center;
