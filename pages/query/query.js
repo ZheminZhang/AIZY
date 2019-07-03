@@ -7,8 +7,8 @@ Page({
   data: {
     disabled_name: false,
     companyName: '',
-  recordStartTime: '2019-03-01',
-    recordEndTime: '2019-06-01',
+    recordStartTime: '',
+    recordEndTime: '',
     begin: '2000-06-01',
     end: '2100-06-01',
     name:'',
@@ -88,4 +88,10 @@ Page({
     }
   },
 
+  onReady: function () {
+    this.setData({
+      recordStartTime: util.formatTime(new Date(), "yyyy-MM-dd"),
+      recordEndTime: util.formatTime(new Date(), "yyyy-MM-dd"),
+    });
+  }
 })

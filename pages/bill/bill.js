@@ -21,6 +21,8 @@ Page({
     credit: "",           //贷方科目
     creditAmount: null,   //贷方金额
     date: "",       //日期
+
+    overed: false,   //完成按钮是否可按
   },
 
   tabChange(e) {
@@ -180,6 +182,10 @@ Page({
       return;
     }
 
+    that.setData({
+      overed: true,//按钮不可按
+    })
+
     //精确到秒，定位为当天12点
     var unixtime = util.formatToDate(that.data.date)/1000 + 14400;
   
@@ -215,10 +221,16 @@ Page({
             }
           })
         }
+        that.setData({
+          overed: false,
+        })
       },
       fail: function(res) {
         // 网络请求失败
-        console.log("失败："+res)
+        console.log("失败：" + res)
+        that.setData({
+          overed: false,
+        })
       }
     })
   },
