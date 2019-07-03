@@ -119,7 +119,7 @@ Page({
   //获得信息，1234是发起请求，服务返回是预期的验证码
   getMessage:function(){
     var that=this;
-    if(this.data.code=="1234"&&this.data.companyName!=''){
+    if(this.data.code=="1234"){
       wx.request({
         url: config.registUrl,
         data: {
