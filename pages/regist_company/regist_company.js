@@ -71,24 +71,24 @@ Page({
     //这里获得验证码
     var _this=this;
     //向对应服务器发起请求，获得验证码
-    wx.request({
-      url: 'http://127.0.0.1:8080/',
-      header:{
-        "Content-Type":"application/json"
-      },
-      method:'POST',
-      data:{
-        token:wx.getStorageSync("token"),
-        phone:this.data.phone,
-      },
-      success(res){
-        console.log(res);
-        _this.setData({
-          isCode:res.data
-        })
-        console.log(_this.data.isCode);
-      }
-    })
+    // wx.request({
+    //   url: 'http://127.0.0.1:8080/',
+    //   header:{
+    //     "Content-Type":"application/json"
+    //   },
+    //   method:'POST',
+    //   data:{
+    //     token:wx.getStorageSync("token"),
+    //     phone:this.data.phone,
+    //   },
+    //   success(res){
+    //     console.log(res);
+    //     _this.setData({
+    //       isCode:res.data
+    //     })
+    //     console.log(_this.data.isCode);
+    //   }
+    // })
     this.timer();
   },
   timer: function () {
@@ -140,7 +140,6 @@ Page({
               delta: 1,
             })
           }else if(res.statusCode==404){
-            console.log(that.data.currentText);
             wx.showToast({
               title: '公司名已注册',
               icon: 'none',
@@ -148,7 +147,7 @@ Page({
           }
         },
         fail: function (res) {
-          console.log(res)
+         
           wx.showToast({
             title: '注册失败',
             icon: 'none',
@@ -159,6 +158,7 @@ Page({
       console.log(this.data);
     }
     else{
+      console.log(res);
       wx.showToast({
         title: '验证码或手机号错误',
         icon:'none',
