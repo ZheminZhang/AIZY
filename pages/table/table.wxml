@@ -61,7 +61,7 @@
                 <text class="name">{{profitView[index][i]}}</text>
               </view>
             </view>
-            <view class="tr" wx:else>
+            <view class="tr bg-g1" wx:else>
               <view class="td">
                 <text class="name">{{text}}</text>
               </view>
@@ -127,7 +127,7 @@
                 <text class="name">{{balanceView[index][i]}}</text>
               </view>
             </view>
-            <view class="tr" wx:else>
+            <view class="tr bg-g1" wx:else>
               <view class="td">
                 <text class="name">{{text}}</text>
               </view>
@@ -187,7 +187,7 @@
                 <text class="name">{{cashFlowView[index][i]}}</text>
               </view>
             </view>
-            <view class="tr" wx:else>
+            <view class="tr bg-g1" wx:else>
               <view class="td">
                 <text class="name">{{text}}</text>
               </view>
