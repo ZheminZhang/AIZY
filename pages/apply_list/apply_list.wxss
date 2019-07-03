@@ -4,7 +4,9 @@ page{
   flex-direction: column;
   height: 100%;
 }
-
+.container{
+  padding: 0rpx;
+}
 .tabbar-APPL {
   height: 80rpx;
   background-color: #8992c8;

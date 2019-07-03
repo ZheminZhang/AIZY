@@ -17,7 +17,7 @@
         </view>
         <view class="view-SR-1">
           <view class="view-SR-2" catchtouchstart="streamRecord" catchtouchend="streamRecordEnd">
-            <image class="icon-SR-2" src="../../images/BILL/microphone.png"></image>
+            <image class="icon-SR-2" hover-class="icon-SR-3"src="../../images/BILL/microphone.png"></image>
           </view>
           <text class="text-SR-2" >按住说话</text>
         </view>

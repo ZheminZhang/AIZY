@@ -12,7 +12,7 @@
       
       <view class="time_selection">
         <!-- 时间选择器 -->
-        <view class="page-section-title">账本时间</view>
+        <view class="page-section-title">账单日期</view>
         <view class="time-choose">
           <!-- 开始时间 -->
           <picker mode="date" value="{{recordStartTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='recordStartTime'>
@@ -33,5 +33,4 @@
     </form>
   </view>
    <button  class="button-BILL-1" hover-class="button-BILL-1-p"  bindtap="formSubmit">完成</button>
-     
 </view>
