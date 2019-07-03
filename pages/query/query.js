@@ -23,7 +23,6 @@ Page({
   },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e)
-    console.log(date);
     var _this=this;
     //转为unix时间
     // var authST = util.formatToDate(this.data.authStartTime) / 1000 + 14400;
@@ -86,7 +85,6 @@ Page({
     if(e.target.id == 'recordStartTime'){
       this.setData({
         recordStartTime: e.detail.value,
-        recordEndTime: e.detail.value
       })
     }
     else if (e.target.id == 'recordEndTime'){

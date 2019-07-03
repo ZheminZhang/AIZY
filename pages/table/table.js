@@ -296,7 +296,6 @@ Page({
     });
   },
   onReady:function(){
-    wx.hideLoading()
     var query = wx.createSelectorQuery().in(this),
       _this = this;
     _this.animation = wx.createAnimation({
@@ -320,6 +319,8 @@ Page({
       _this.setActiveTab('tabitemProfit');
     })
     query.exec();
+    
+    wx.hideLoading()
   },
    tabChange(e) {
     if (e.detail.source == "touch") {
