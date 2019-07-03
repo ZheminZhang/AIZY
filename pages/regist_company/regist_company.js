@@ -118,7 +118,8 @@ Page({
         data: {
           'loginFlag': wx.getStorageSync('loginFlag'),
           'companyName': this.data.companyName,
-          'phonenumber': this.data.phone,
+          'phone': this.data.phone,
+          'businessScope': 'xx',
           'code': this.data.code,
         },
         method: 'POST',
