@@ -133,8 +133,6 @@ Page({
         success: function (res) {
           if(res.statusCode==200){
             console.log(res);
-            console.log(this.data.currentText);
-            console.log("公司注册成功！");
             wx.showToast({
               title: '注册成功',
               icon: 'none',
@@ -152,7 +150,6 @@ Page({
         },
         fail: function (res) {
           console.log(res)
-          console.log(that.data.currentText);
           wx.showToast({
             title: '注册失败',
             icon: 'none',
@@ -169,6 +166,4 @@ Page({
       })
     }
   }
-  //保存
-  
 })
