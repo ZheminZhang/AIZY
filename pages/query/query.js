@@ -54,6 +54,12 @@ Page({
             url: '../table/table',
           });
         }
+        else if (e.statusCode == 405) {
+          wx.showToast({
+            title: '没有权限查询用户',
+            icon:'none',
+          })
+        }
         else{
           wx.showToast({
             title: '查询的公司不存在',
