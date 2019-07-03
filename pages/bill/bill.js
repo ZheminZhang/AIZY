@@ -13,7 +13,7 @@ Page({
 
     /* 语音识别信息 */
     currentText: "",      //识别内容
-
+    isClick:false,
     /* 记账相关信息 */
     summary: null,   //分类信息
     debit: "",            //借方科目
@@ -59,9 +59,19 @@ Page({
     manager.start({
       lang: 'zh_CN',
     })
+    wx.showToast({
+      title: '开始录音',
+      icon:'none',
+    })
+    console.log("录音开始")
   },
   streamRecordEnd: function () {
+    console.log("录音结束")
     manager.stop()
+    wx.showToast({
+      title: '录音结束',
+      icon: 'none',
+    })
   },
 
   initRecord: function () {

@@ -1060,14 +1060,14 @@ icon {
   width:500rpx;
 }
 .button-BILL-1{
-  margin: 100rpx 100rpx 0 150rpx;
+  margin:150rpx;
   background-color: #fac589;
   color: white;
   width:500rpx;
   border-radius: 50rpx;
 }
 .button-BILL-1-p{
-  margin: 100rpx 100rpx 0 150rpx;
+  margin:150rpx;
   background-color: #f1b46d;
   color: white;
   width:500rpx

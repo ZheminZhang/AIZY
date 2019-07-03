@@ -8,5 +8,11 @@
 .newP{
   display:flex;
   flex-direction:row;
-
+}
+.container{
+  display: flex;
+  padding: 100rpx 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
 }

@@ -4,7 +4,7 @@
   <view class="page-body">
     <form catchsubmit="formSubmit" catchreset="formReset">
       <view class="page-section">
-        <view class="page-section-title">查询对象</view>
+        <view class="page-section-title">申请对象</view>
         <view class="weui-cell__bd">
           <input class="weui-input" name="name" value="{{companyName}}" disabled='{{disabled_name}}' bindinput="inputComName"/>
         </view>
@@ -23,7 +23,7 @@
           </picker>
           <!-- 结束时间 -->
           <picker mode="date" value="{{authEndTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='authEndTime'>
-            <view class="newP"> <view class="name">始</view>
+            <view class="newP"> <view class="name">止</view>
             <view class="picker">
               {{authStartTime}}
             </view></view>
@@ -46,7 +46,7 @@
           </picker>
           <!-- 结束时间 -->
           <picker mode="date" value="{{recordEndTime}}" start="{{begin}}" end="{{end}}" bindchange="bindDateChange" id='recordEndTime'>
-          <view class="newP"> <view class="name">始</view>
+          <view class="newP"> <view class="name">止</view>
             <view class="picker">
               {{recordEndTime}}
             </view></view>

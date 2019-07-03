@@ -27,7 +27,7 @@
       },
       {
         "pagePath": "pages/query/query",
-        "text": "申请",
+        "text": "查询",
         "iconPath": "images/Apply.png",
         "selectedIconPath": "images/ApplySelected.png"
       },

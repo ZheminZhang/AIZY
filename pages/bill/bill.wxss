@@ -61,10 +61,7 @@ page {
   height: 90rpx;
   width: 90rpx;
 }
-.icon-SR-3 {
-  height: 120rpx;
-  width: 120rpx;
-}
+
 .tabbar-BILL {
   height: 80rpx;
   background-color: #8ba693;
@@ -212,12 +209,26 @@ page {
   margin-right: 36rpx;
 }
 .button-BILL-1{
-  margin: 150rpx 100rpx 0 100rpx;
+  margin: 100rpx;
   background-color:#71a16d;
   color: white;
+  align-self:center;
+
 }
 .button-BILL-1-p{
-  margin: 150rpx 100rpx 0 100rpx;
+  margin: 100rpx;
   background-color: #537750;
   color: white;
+  align-self:center;
+
 }
+.picker{
+height:70rpx;
+margin:10rpx;
+width:250rpx;
+margin-left:190rpx;
+justify-content:center;
+display:flex;
+
+}
+

@@ -5,3 +5,10 @@
   height:2rpx;
   background: #2b2b2b;
 }
+.container{
+  display: flex;
+  padding: 100rpx 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+}
