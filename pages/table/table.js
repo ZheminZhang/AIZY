@@ -1,6 +1,7 @@
 Page({
   data: {
     clientHeight: 0,     //屏幕高度
+    
     /* 利润 */
     profitData: [],   //资产负债数据
     profitItems: [
@@ -51,7 +52,6 @@ Page({
         '稀释每股收益',
       ],
     ],
-    profitView: [],   //最终呈现条目
     /* 资产负债 */
     balanceData: [],  //资产负债数据
     balanceItems: [   //条目索引
@@ -142,12 +142,10 @@ Page({
         '负债和所有者权益合计',
       ],
     ],
-    balanceView: [],  //最终呈现条目
-
     /* 现金流量 */
     cashFlowData: [], //现金流量数据
     cashFlowItems: [  //条目索引
-      [,
+      [
         '销售商品_提供劳务收到的现金',
         '收到的税费返还',
         '收到其他与经营活动有关的现金',
@@ -195,7 +193,6 @@ Page({
         '期末现金及现金等价物余额',
       ],
     ],
-    cashFlowView: [], //最终呈现条目
 
     activeTabId: 'tabitemProfit',
   },
@@ -208,72 +205,6 @@ Page({
       balanceData: wx.getStorageSync('table').balance,
       cashFlowData: wx.getStorageSync('table').cashFlow,
     })
-    // var text, money, temp, i = 0, item, entry, serialNumber;
-    // /* 根据profitItems中的索引寻找profitData中的money数据 */
-    // for (item in this.data.profitItems) {
-    //   entry = this.data.profitItems[item];
-    //   for (text in entry) {
-    //     serialNumber = entry[text];   //序号
-    //     money = this.data.profitData[text];
-    //     temp = 'profitView[' + i + '][' + serialNumber + ']';
-    //     //如果没有对应的金额，默认为0。TODO：增加一个hidden属性，表示是否显示。
-    //     if (money == null) {
-    //       this.setData({
-    //         [temp]: 0,
-    //       })
-    //     }
-    //     else {
-    //       this.setData({
-    //         [temp]: money,
-    //       })
-    //     }
-    //   }
-    //   i++;
-    // }
-    // i = 0;
-    // /* 根据balanceItems中的索引寻找balanceData中的money数据 */
-    // for(item in this.data.balanceItems){
-    //   entry = this.data.balanceItems[item];
-    //   for (text in entry){
-    //     serialNumber = entry[text];   //序号
-    //     money = this.data.balanceData[text];
-    //     temp = 'balanceView['+ i+ '][' + serialNumber + ']';
-    //     //如果没有对应的金额，默认为0。TODO：增加一个hidden属性，表示是否显示。
-    //     if(money == null){
-    //       this.setData({
-    //         [temp]: 0,
-    //       })
-    //     }
-    //     else{
-    //       this.setData({
-    //         [temp]: money,
-    //       })
-    //     }
-    //   }
-    //   i++;
-    // }
-    // i = 0;
-    // /* 根据cashFlowItems中的索引寻找cashFlowData中的money数据 */
-    // for (item in this.data.cashFlowItems) {
-    //   entry = this.data.cashFlowItems[item];
-    //   for (text in entry) {
-    //     serialNumber = entry[text];   //序号
-    //     money = this.data.cashFlowData[text];
-    //     temp = 'cashFlowView[' + i + '][' + serialNumber + ']';
-    //     //如果没有对应的金额，默认为0。TODO：增加一个hidden属性，表示是否显示。
-    //     if (money == null) {
-    //       this.setData({
-    //         [temp]: 0,
-    //       })
-    //     }
-    //     else {
-    //       this.setData({
-    //         [temp]: money,
-    //       })
-    //     }
-    //   }
-    //   i++;
-    // }
 
     //获取屏幕高度
     var that = this;
@@ -286,25 +217,21 @@ Page({
     });
   },
   onReady:function(){
-
     wx.hideLoading()
   },
 
   tabChange(e) {
     if (e.detail.source == "touch") {
       var id = e.detail.currentItemId;
-      console.log("滑动切换id:"+ id)
       this.setActiveTab(id);
     }
   },
   tabclick(e) {
     var id = e.target.id;
-    console.log("点击切换id:" + id)
     this.setActiveTab(id);
   },
   setActiveTab(id) {
     //console.log("rect:"+ rect)
-    console.log("发生页面切换")
     this.setData({
       activeTabId: id,
     })
