@@ -100,7 +100,8 @@ Page({
     var that = this;
     /* 得到完整识别内容发给语音服务器处理 */
     wx.request({
-      url: config.voiceUrl,
+      //url: config.voiceUrl,
+      url: 'http://192.168.1.2:80/api/analysis/analysis',
       data: {
         "text": this.data.currentText,
       },
@@ -238,6 +239,13 @@ Page({
     this.initRecord()
   },
   onReady: function () {
+
+    this.setData({
+      date: util.formatTime(new Date(), "yyyy-MM-dd"),
+    });
+  },
+
+  onShow: function () {
     /* 滑动动画相关 */
     var query = wx.createSelectorQuery().in(this),
       _this = this;
@@ -257,9 +265,5 @@ Page({
       _this.setActiveTab('tabitemVoice');
     })
     query.exec();
-
-    this.setData({
-      date: util.formatTime(new Date(), "yyyy-MM-dd"),
-    });
   },
 })
