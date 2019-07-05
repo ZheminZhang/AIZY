@@ -56,11 +56,7 @@ Page({
     var tag = "disagree"
     util._getUnAuthoList();
     if(e.target.dataset["type"]=="agree"){
-      tag = "agree"; util._getAuthoList();
-    }
-     else{
-      util._getUnAuthoRefuseList();
-    }
+      tag = "agree";}
     wx.request({
       url: config.authorizedUrl,
       method: 'POST',
@@ -82,6 +78,13 @@ Page({
          title: '成功',
          icon:'success',
        })
+        util._getUnAuthoList();
+        if(tag=="agree"){
+          util._getAuthoList();
+        }
+        else{
+          util._getUnAuthoRefuseList();
+        }
         setTimeout(function () {
           wx.navigateBack({
             delta: 1,
