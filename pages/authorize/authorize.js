@@ -78,6 +78,7 @@ Page({
          title: '成功',
          icon:'success',
        })
+       //读取服务器的授权和未授权信息，并跳转其他页面
         util._getUnAuthoList();
         if(tag=="agree"){
           util._getAuthoList();
