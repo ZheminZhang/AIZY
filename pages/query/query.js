@@ -54,9 +54,6 @@ Page({
       success: function (e) {
         if(e.statusCode==200){
           wx.setStorageSync('table', e.data);
-          wx.showLoading({
-            title: '报表生成中..',
-          })
           wx.navigateTo({
             url: '../table/table',
           });

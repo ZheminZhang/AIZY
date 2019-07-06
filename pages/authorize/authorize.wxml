@@ -53,7 +53,7 @@
 
       <view class="time_selection">
         <view class="page-section-title">
-          账单日期
+          账本日期
         </view>
         <view class="time-choose">
           <!-- 开始时间 -->
