@@ -97,6 +97,14 @@ Page({
     };
   },
   sendData: function() {
+    let loginFlag = wx.getStorageSync("loginFlag");
+    if (!loginFlag) {
+      wx.showToast({
+        title: "您还未登录，请先登录",
+        icon: "none"
+      });
+      return;
+    }
     var that = this;
     /* 得到完整识别内容发给语音服务器处理 */
     wx.request({

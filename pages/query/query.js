@@ -20,6 +20,14 @@ Page({
     });
   },
   formSubmit: function(e) {
+    let loginFlag = wx.getStorageSync("loginFlag");
+    if (!loginFlag){
+      wx.showToast({
+        title: "您还未登录，请先登录",
+        icon: "none"
+      });
+      return;
+    }
     console.log("form发生了submit事件，携带数据为：", e);
     var _this = this;
 
