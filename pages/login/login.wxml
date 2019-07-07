@@ -40,7 +40,7 @@
         <text class="tab-text" wx:else></text>
     </view>
 
-    <view class="tab-item" hover-class="tab-item-hover" catchtap="applyInitiate" data-statu="open">
+    <view class="tab-item" hover-class="tab-item-hover" catchtap="goAuth" data-statu="open">
         <view class="icon_style">
             <image src="../../images/coin.png" mode="aspectFit" class="tab-icon"></image>
             <text class="tab-text">授权查询</text>
