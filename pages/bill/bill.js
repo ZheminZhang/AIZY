@@ -9,6 +9,7 @@ Page({
   data: {
     tabitemVoice: {},
     tabitemForm: {},
+    tabitemSign: {},
     activeTabId: null,
 
     /* 语音识别信息 */
@@ -170,6 +171,25 @@ Page({
     });
   },
 
+  // 签名账单
+  signBill: function () {
+    let loginFlag = wx.getStorageSync("loginFlag");
+    var that = this;
+    //util.getApplyList();
+    if (loginFlag) {
+      // util.getSignList();
+      console.log("123")
+      that.setActiveTab("tabitemSign");
+    } else {
+      // TODO:弹出登录提示框
+      wx.showToast({
+        title: "您还未登录，请先登录",
+        icon: "none",
+        duration: 2000
+      });
+    }
+  },
+  
   //点击完成,将结果发给服务器
   confirmData: function() {
     var that = this;

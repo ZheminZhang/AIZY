@@ -331,7 +331,6 @@ const wxPromisify = fn => {
   }
 }
 
-
 /* 获取授权列表信息 */
 function getAuthoList(callback=()=>{  }) {
   //未授权列表
@@ -546,6 +545,60 @@ function _getApplyRefuseList(callback = () => { }){
     }
   })
 }
+
+/* 获取签名列表信息 */
+function getSignList(callback = () => { }) {
+  //未授权列表
+  wx.request({
+    url: api.unsignedUrl,
+    data: {
+      'loginFlag': wx.getStorageSync('loginFlag'),
+    },
+    method: 'POST',
+    success: function (res) {
+      wx.setStorageSync('unsigned', "");
+      if (res.statusCode == 200)
+        wx.setStorageSync('unsigned', res.data);
+      callback();
+    },
+    fail: function (res) {
+      console.log(res)
+    }
+  })
+  //已授权列表
+  wx.request({
+    url: api.signedUrl,
+    data: {
+      'loginFlag': wx.getStorageSync('loginFlag'),
+    },
+    method: 'POST',
+    success: function (res) {
+      wx.setStorageSync('signed', "");
+      if (res.statusCode == 200)
+        wx.setStorageSync('signed', res.data);
+      callback();
+    },
+    fail: function (res) {
+      console.log(res)
+    }
+  })
+  //拒绝列表
+  wx.request({
+    url: api.signedRefuseUrl,
+    data: {
+      'loginFlag': wx.getStorageSync('loginFlag'),
+    },
+    method: 'POST',
+    success: function (res) {
+      wx.setStorageSync('signedRefuse', "");
+      if (res.statusCode == 200)
+        wx.setStorageSync('signedRefuse', res.data);
+    },
+    fail: function (res) {
+      console.log(res)
+    }
+  })
+}
 module.exports = {
   isNull: isNull,
   HttpGet: HttpGet,
@@ -564,5 +617,6 @@ module.exports = {
   _getUnAuthoRefuseList: _getUnAuthoRefuseList,
   _getUnApplyList: _getUnApplyList,
   _getApplyList: _getApplyList,
-  _getApplyRefuseList: _getApplyRefuseList
+  _getApplyRefuseList: _getApplyRefuseList,
+  getSignList: getSignList
 }

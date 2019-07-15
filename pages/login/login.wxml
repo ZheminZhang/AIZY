@@ -55,4 +55,12 @@
             <text class="tab-text">注册账本</text>
         </view>
     </view>
+    <view class="tab-item" hover-class="tab-item-hover" catchtap="goSign" data-statu="open">
+        <view class="icon_style">
+            <image src="../../images/coin.png" mode="aspectFit" class="tab-icon"></image>
+            <text class="tab-text">账单签名</text>
+        </view>
+        <text class="tab-text" wx:if="{{hasLogin}}">{{numSign}}</text>
+        <text class="tab-text" wx:else></text>
+    </view>
 </view>

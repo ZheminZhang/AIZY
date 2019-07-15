@@ -160,6 +160,27 @@ Page({
     }
   },
 
+  goSign: function () {
+    let loginFlag = wx.getStorageSync("loginFlag");
+    //util.getApplyList();
+    if (loginFlag) {
+      util.getSignList();
+      wx.navigateTo({
+        url: "../Sign/Sign",
+        fail: function (e) {
+          console.log(e);
+        }
+      });
+    } else {
+      // TODO:弹出登录提示框
+      wx.showToast({
+        title: "您还未登录，请先登录",
+        icon: "none",
+        duration: 2000
+      });
+    }
+  },
+
   powerDrawer: function(e) {
     var currentStatu = e.currentTarget.dataset.statu;
     this.util(currentStatu);
