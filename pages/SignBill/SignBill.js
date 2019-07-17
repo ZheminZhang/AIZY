@@ -50,9 +50,9 @@ Page({
   onLoad: function() {},
   onShow: function() {
     this.setData({
-      grantorUnautho: wx.getStorageSync("grantorUnautho"),
-      grantorAutho: wx.getStorageSync("grantorAutho"),
-      grantorUnauthoRefuse: wx.getStorageSync("grantorUnauthoRefuse")
+      grantorUnautho: wx.getStorageSync("unsigned"),
+      grantorAutho: wx.getStorageSync("signed"),
+      grantorUnauthoRefuse: wx.getStorageSync("signedRefuse")
     });
   },
 
