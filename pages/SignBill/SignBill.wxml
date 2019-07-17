@@ -1,8 +1,7 @@
-
 <view class='container-BILL'>
   <view class='tabbar-BILL'>
     <text id="tabitemForm" class='tabitem {{activeTabId=="tabitemForm"?"tabitem-active":""}}' bindtap='tabclick'>表单</text>
-
+    <text id="tabitemSign" class='tabitem {{activeTabId=="tabitemSign"?"tabitem-active":""}}' bindtap='tabclick'>签名</text>
   </view>
 
   <swiper class='scrollview-content' duration="200" circular="true" easing-function="easeInOutCubic" current-item-id='{{activeTabId}}' bindchange='tabChange'>
@@ -10,59 +9,107 @@
     <swiper-item item-id="tabitemForm">
       <scroll-view scroll-y="true" class="tab-content">
         <view class="Form">
-        <view class="list-BILL-1">
+          <view class="list-BILL-1">
             <image class="icon-BILL-3" src="../../images/BILL/date.png"></image>
             <text class="text-BILL-2">日期:</text>
             <picker class="date-text" mode="date" value="{{date}}" bindchange="onDateChange">
               <view class="picker">
-              {{date}}
-            </view>
+                {{date}}
+              </view>
             </picker>
           </view>
           <view class="list-BILL-1">
             <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
             <text class="text-BILL-1">摘要:</text>
-            <input class="weui-input_BILL_1" bindinput="summaryFunction" placeholder="摘要输入  " value="{{summary}}"/>
+            <input class="weui-input_BILL_1" bindinput="summaryFunction" placeholder="摘要输入  " value="{{summary}}" />
           </view>
 
           <view class="list-BILL-1">
             <image class="icon-BILL-1" src="../../images/BILL/borrow.png"></image>
             <text class="text-BILL-1">借方科目:</text>
-            <input class="weui-input_BILL_2" bindinput="debitFunction" value="{{debit}}"/>
+            <input class="weui-input_BILL_2" bindinput="debitFunction" value="{{debit}}" />
           </view>
 
 
           <view class="list-BILL-1">
-              <image class="icon-BILL-2" 
-              src="../../images/BILL/YUAN.png"></image>
-              <text class="text-BILL-1">借方金额(元):</text>
-            <input class="weui-input_BILL_3" type="digit" placeholder="" value="{{debitAmount}}" bindinput = "debitAmFunction"/>
+            <image class="icon-BILL-2" src="../../images/BILL/YUAN.png"></image>
+            <text class="text-BILL-1">借方金额(元):</text>
+            <input class="weui-input_BILL_3" type="digit" placeholder="" value="{{debitAmount}}" bindinput="debitAmFunction" />
           </view>
 
 
           <view class="list-BILL-1">
             <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
             <text class="text-BILL-1">贷方科目:</text>
+            <input class="weui-input_BILL_2" bindinput="creditFunction" value="{{credit}}" />
+          </view>
+
+          <view class="list-BILL-1">
+            <image class="icon-BILL-2" src="../../images/BILL/YUAN.png"></image>
+            <text class="text-BILL-1">贷方金额(元):</text>
+
+            <input class="weui-input_BILL_3" type="digit" placeholder="" value="{{creditAmount}}" bindinput="creditAmFunction" />
+
+          </view>
+
+
+
+          <!--完成按钮-->
+
+          <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="goSignBill" data-type="agree">
+            接受签名
+          </button>
+          <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="goSignBill" data-type="refuse">
+            拒绝签名
+          </button>
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item item-id="tabitemSign">
+      <scroll-view scroll-y="true" class="tab-content">  
+      <view class="Form">
+          <view class="list-BILL-1">
+            <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
+            <text class="text-BILL-1">甲方</text>
             <input class="weui-input_BILL_2" bindinput="creditFunction" value="{{credit}}"/>
           </view>
 
           <view class="list-BILL-1">
-              <image class="icon-BILL-2" 
-              src="../../images/BILL/YUAN.png"></image>
-              <text class="text-BILL-1">贷方金额(元):</text>
-           
-            <input class="weui-input_BILL_3" type="digit" placeholder="" value="{{creditAmount}}" bindinput = "creditAmFunction"/>
-           
+            <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
+            <text class="text-BILL-1">甲方签名</text>
+            <input class="weui-input_BILL_2" bindinput="creditFunction" value="{{credit}}"/>
+          </view>
+
+          <view class="list-BILL-1">
+            <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
+            <text class="text-BILL-1">乙方</text>
+            <input class="weui-input_BILL_2" bindinput="secondCompFunction" value="{{secondCompName}}"/>
+          </view>
+
+          <view class="list-BILL-1">
+            <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
+            <text class="text-BILL-1">乙方签名</text>
+            <input class="weui-input_BILL_2"/>
+          </view>
+
+          <view class="list-BILL-1">
+            <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
+            <text class="text-BILL-1">第三方</text>
+            <input class="weui-input_BILL_2" bindinput="thirdCompanyFunction" value="{{thirdCompName}}"/>
+          </view>
+
+          <view class="list-BILL-1">
+            <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
+            <text class="text-BILL-1">第三方签名</text>
+            <input class="weui-input_BILL_2"/>
           </view>
 
           
 
-          <!--完成按钮-->
-          <button class="button-BILL-1" hover-class="button-BILL-1-p" disabled='{{overed}}'  bindtap="goSignBill">签名</button>
+          <!--签名按钮-->
+          <button class="button-BILL-1" hover-class="button-BILL-1-p" disabled='{{overed}}'  bindtap="confirmData">提交账单</button>
         </view>
       </scroll-view>
     </swiper-item>
   </swiper>
 </view>
-
-
