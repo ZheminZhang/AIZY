@@ -330,7 +330,29 @@ const wxPromisify = fn => {
     })
   }
 }
-
+function getSignQuery(itemId, party, callback = () => { }){
+  wx.request({
+    url: api.signQueryUrl,
+    data: {
+      'loginFlag': wx.getStorageSync('loginFlag'),
+      'itemId':itemId,
+      'party':party,
+    },
+    method: 'POST',
+    success: function (res) {
+      wx.setStorageSync('BillInfo', "");
+      if (res.statusCode == 200)
+      {
+        wx.setStorageSync('BillInfo', res.data);
+        callback();
+        
+      }
+    },
+    fail: function (res) {
+      console.log(res)
+    }
+  })
+}
 /* 获取授权列表信息 */
 function getAuthoList(callback=()=>{  }) {
   //未授权列表
@@ -545,7 +567,6 @@ function _getApplyRefuseList(callback = () => { }){
     }
   })
 }
-
 /* 获取签名列表信息 */
 function getSignList(callback = () => { }) {
   //未授权列表
@@ -618,5 +639,6 @@ module.exports = {
   _getUnApplyList: _getUnApplyList,
   _getApplyList: _getApplyList,
   _getApplyRefuseList: _getApplyRefuseList,
-  getSignList: getSignList
+  getSignList: getSignList,
+  getSignQuery:getSignQuery
 }
