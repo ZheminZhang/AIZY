@@ -1,8 +1,12 @@
 // 服务器域名
 
-const baseUrl = 'http://27.152.156.24:8848/';
-const testUrl = 'http://27.152.156.24:8848/';
-const voicebaseUrl = 'http://27.152.156.24:80/';
+const LANIP = "192.168.1.10";
+const OPENIP = "27.152.156.24";
+var ip = LANIP
+
+const baseUrl = 'http://'+ip+':8848/';
+const testUrl = 'http://'+ip+':8848/';
+const voicebaseUrl = 'http://'+ip+':80/';
 // 登录接口
 const loginUrl = baseUrl + 'login';
 // 语音分录服务器

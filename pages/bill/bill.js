@@ -110,8 +110,8 @@ Page({
     var that = this;
     /* 得到完整识别内容发给语音服务器处理 */
     wx.request({
-      //url: config.voiceUrl,
-      url: "http://27.152.156.24:80/api/analysis/analysis",
+      url: config.voiceUrl,
+      // url: "http://27.152.156.24:80/api/analysis/analysis",
       data: {
         text: this.data.currentText
       },
