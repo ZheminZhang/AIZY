@@ -7,6 +7,7 @@ const voicebaseUrl = 'http://27.152.156.24:80/';
 const loginUrl = baseUrl + 'login';
 // 语音分录服务器
 const voiceUrl = voicebaseUrl + 'api/analysis/analysis';
+const signUrl = baseUrl+'sign';
 // 申请列表查询接口
 const granteeUnauthoUrl = baseUrl + 'granteeUnautho';
 const granteeAuthoUrl = baseUrl + 'granteeAutho';
@@ -49,4 +50,5 @@ module.exports = {
   unsignedUrl: unsignedUrl,
   signedRefuseUrl: signedRefuseUrl,
   signQueryUrl:signQueryUrl,
+  signUrl:signUrl,
 };
