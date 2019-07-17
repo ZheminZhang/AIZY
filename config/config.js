@@ -19,6 +19,7 @@ const grantorUnauthoRefuseUrl = baseUrl + 'grantorUnauthoRefuse';
 const signedUrl = baseUrl + 'signed';
 const unsignedUrl = baseUrl + 'unsigned';
 const signedRefuseUrl = baseUrl + 'signedRefuse';
+const signQueryUrl = baseUrl+'signQuery';
 // 查询接口
 const queryUrl = testUrl + 'query';
 // 记账接口
@@ -46,5 +47,6 @@ module.exports = {
   requestAuthoUrl: requestAuthoUrl,
   signedUrl: signedUrl,
   unsignedUrl: unsignedUrl,
-  signedRefuseUrl: signedRefuseUrl
+  signedRefuseUrl: signedRefuseUrl,
+  signQueryUrl:signQueryUrl,
 };

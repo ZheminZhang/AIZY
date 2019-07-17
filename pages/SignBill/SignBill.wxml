@@ -1,29 +1,12 @@
 
 <view class='container-BILL'>
   <view class='tabbar-BILL'>
-    <text id="tabitemVoice" class='tabitem {{activeTabId=="tabitemVoice"?"tabitem-active":""}}' bindtap='tabclick'>语音</text>
     <text id="tabitemForm" class='tabitem {{activeTabId=="tabitemForm"?"tabitem-active":""}}' bindtap='tabclick'>表单</text>
-    <view class='tabindicator' animation="{{indicatorAnim}}"></view>
+
   </view>
 
   <swiper class='scrollview-content' duration="200" circular="true" easing-function="easeInOutCubic" current-item-id='{{activeTabId}}' bindchange='tabChange'>
-    <swiper-item item-id="tabitemVoice">
-      <scroll-view class="tab-content">
-        <view class="section-body">
-          <textarea class="message"  value="{{currentText}}" placeholder="语音或手动输入，完成后点击下方图标跳转" bindinput="vtextAreaBlur">
-          </textarea>
-        </view>
-        <view class="send-SR">
-          <image class="icon-SR-1" src="../../images/BILL/Send.png"  bindtap="sendData"></image>
-        </view>
-        <view class="view-SR-1">
-          <view class="view-SR-2" catchtouchstart="streamRecord" catchtouchend="streamRecordEnd">
-            <image class="icon-SR-2" src="../../images/BILL/microphone.png"></image>
-          </view>
-          <text class="text-SR-2" >按住说话</text>
-        </view>
-      </scroll-view>
-    </swiper-item>
+
     <swiper-item item-id="tabitemForm">
       <scroll-view scroll-y="true" class="tab-content">
         <view class="Form">

@@ -13,7 +13,7 @@ App({
   onShow: function(options) {
     util.getAuthoList();
     util.getApplyList();
-
+    
     var numApply = wx.getStorageSync("granteeUnautho").length;
     var numAutho = wx.getStorageSync("grantorUnautho").length;
     if (numApply <= 0 && numAutho <= 0) {
