@@ -15,6 +15,10 @@ const granteeUnauthoRefuseUrl = baseUrl + 'granteeUnauthoRefuse';
 const grantorUnauthoUrl = baseUrl + 'grantorUnautho';
 const grantorAuthoUrl = baseUrl + 'grantorAutho';
 const grantorUnauthoRefuseUrl = baseUrl + 'grantorUnauthoRefuse';
+// 签名列表查询接口
+const signedUrl = baseUrl + 'signed';
+const unsignedUrl = baseUrl + 'unsigned';
+const signedRefuseUrl = baseUrl + 'signedRefuse';
 // 查询接口
 const queryUrl = testUrl + 'query';
 // 记账接口
@@ -39,5 +43,8 @@ module.exports = {
   queryUrl: queryUrl,
   insertUrl: insertUrl,
   authorizedUrl: authorizedUrl,
-  requestAuthoUrl: requestAuthoUrl
+  requestAuthoUrl: requestAuthoUrl,
+  signedUrl: signedUrl,
+  unsignedUrl: unsignedUrl,
+  signedRefuseUrl: signedRefuseUrl
 };
