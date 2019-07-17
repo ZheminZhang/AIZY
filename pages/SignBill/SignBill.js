@@ -9,7 +9,16 @@ Page({
     currentTab: 0,
     grantorAutho: {},
     grantorUnautho: {},
-    grantorUnauthoRefuse: {}
+    grantorUnauthoRefuse: {},
+    currentText: "", //识别内容
+    isClick: false,
+    /* 记账相关信息 */
+    summary: null, //分类信息
+    debit: "", //借方科目
+    debitAmount: null, //借方金额
+    credit: "", //贷方科目
+    creditAmount: null, //贷方金额
+    date: "", //日期
   },
   navbarTap: function(e) {
     this.setData({
@@ -47,7 +56,17 @@ Page({
   onReady: function() {},
 
   /* 加载页面 */
-  onLoad: function() {},
+  onLoad: function (options) {
+    this.setData({
+      credit:options.credit,
+      debit:options.debit,
+      debitAmount:options.debitAmount,
+      creditAmount:options.creditAmount,
+      summary:options.summary,
+      date:options.time,
+    });
+    console.log(options.credit);
+  },
   onShow: function() {
     this.setData({
       grantorUnautho: wx.getStorageSync("unsigned"),
@@ -138,4 +157,5 @@ Page({
       }
     });
   }
+
 });

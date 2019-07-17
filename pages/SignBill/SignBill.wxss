@@ -1,13 +1,70 @@
+/* pages/record-expend/record-expend.wxss */
 @import "../../common/weui.wxss";
-page {
+
+view {
   display: flex;
-  flex-direction: column;
+}
+
+page {
+  overflow: auto;
   height: 100%;
 }
 
-.tabbar-APPL {
+.container-BILL {
+  height: 100%;
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+
+.section-body{
+  word-wrap: break-word;
+  position: relative;
+  background: #FFFFFF;
+  box-shadow: 0 2px 16px 2px rgba(0,0,0,0.03);
+  padding:50rpx 60rpx;
+  box-sizing: border-box;
+  min-height: 260rpx;
+  margin: 40rpx 40rpx 20rpx 40rpx;
+}
+.message {
+  position: relative;
+  padding: 0 2px;
+  height: 200rpx;
+}
+
+
+.text-SR-2  {
+  width:200rpx;
+  height:80rpx;
+  font-size:32rpx;
+  margin-left:90rpx;
+  }
+
+.view-SR-1 {
+  margin: 450rpx 0rpx 0rpx 225rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  bottom: 50rpx;
+}
+
+.icon-SR-1 {
+  height: 60rpx;
+  width: 60rpx;
+  margin-left:650rpx;
+}
+.icon-SR-2 {
+  height: 90rpx;
+  width: 90rpx;
+}
+
+.tabbar-BILL {
   height: 80rpx;
-  background-color: #8992c8;
+  background-color: #8ba693;
   color: #fff;
   font-size: 30rpx;
   align-items: center;
@@ -16,11 +73,18 @@ page {
   display: flex;
   flex-direction: row;
 }
+
+.Form {
+  display: flex;
+  flex-direction: column;
+}
+
 .tabitem {
-  width: 120rpx;
+  /* width: 160rpx; */
   text-align: center;
   color: #e0e0e0;
   font-weight: 400;
+  font-size:5vw;
 }
 .tabitem-active {
   color: #fff;
@@ -41,118 +105,130 @@ page {
   flex: 1;
 }
 
-.navbar {
-  flex: none;
-  display: flex;
-  background: #fff;
-}
-.navbar .item {
-  position: relative;
-  flex: auto;
-  text-align: center;
-  line-height: 80rpx;
-}
-.navbar .item.active {
-  color: #ffcc00;
-}
-.navbar .item.active:after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 4rpx;
-  background: #ffcc00;
-}
-.client_info_deal {
-  background-color: #fff;
-  height: 130rpx;
-  display: flex;
-  flex-wrap: nowrap;
+.text-BILL-1 {
+  width:230rpx;
+  margin: 10rpx;
   align-items: center;
 }
-.client_info_Refuse {
-  background-color: #f7edd4;
-  height: 130rpx;
-  display: flex;
-  flex-wrap: nowrap;
+.text-BILL-2 {
+  width:100rpx;
+  margin: 10rpx;
   align-items: center;
 }
-.client_info_undeal {
-  background-color: #4a64;
-  height: 130rpx;
-  width: 750rpx;
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-}
-.userinfo-avatar {
-  width: 60rpx;
-  height: 60rpx;
-  margin-top: 5rpx;
-  padding-left: 20rpx;
-}
-.name {
-  line-height: 130rpx;
-  width: 450rpx;
-  padding-left: 30rpx;
-  display: flex;
-  justify-content: flex-start;
-}
-.btn_waitAccept {
-  height: 60rpx;
-  width: 150rpx;
-  border-radius: 25rpx;
-  margin-left: 30rpx;
-  align-items: center;
-  vertical-align: center;
-  justify-content: center;
-  display: flex;
-  background-color: #ddd;
-}
-.btn_waitAccept_hover {
-  background-color: #fff;
-  height: 60rpx;
-  width: 150rpx;
-  border-radius: 25rpx;
-  margin-left: 30rpx;
-  align-items: center;
-  vertical-align: center;
-  justify-content: center;
-  display: flex;
-}
-.btn_accept {
-  height: 60rpx;
-  width: 150rpx;
-  border-radius: 25rpx;
-  margin-left: 30rpx;
-  align-items: center;
-  vertical-align: center;
-  justify-content: center;
-  display: flex;
-}
-.btn_accept_r {
-  height: 60rpx;
-  width: 150rpx;
-  border-radius: 25rpx;
-  margin-left: 30rpx;
-  align-items: center;
-  vertical-align: center;
-  justify-content: center;
-  display: flex;
-}
-/* 隐藏滚动条 */
-::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  color: transparent;
+.text-BILL-3 {
+  width:400rpx;
 }
 
-.container {
-  padding: 0;
+.weui-input_BILL_1 {
+  height:80rpx;
+  width:450rpx;
+  border-radius:25rpx;
+  border:1px solid #FFFFFF;
+  background-color:white;
+  position:absolute;
+  right:30rpx;
+  box-shadow: 0 2px 16px 2px rgba(0,0,0,0.03);
+  text-align: right;
 }
-.Wait_ac {
-  display: flex;
-  flex-direction: column-reverse;
+.weui-input_BILL_2 {
+  height:80rpx;
+  width:320rpx;
+  border-radius:25rpx;
+  border:1px solid #FFFFFF;
+  background-color:white;
+  position:absolute;
+  right:30rpx;
+  box-shadow: 0 2px 16px 2px rgba(0,0,0,0.03);
+  text-align: right;
 }
+.weui-input_BILL_3 {
+  height:80rpx;
+  width:320rpx;
+  border-radius:25rpx;
+  border:1px solid #FFFFFF;
+  background-color:white;
+  position:absolute;
+  right:30rpx;
+  box-shadow: 0 2px 16px 2px rgba(0,0,0,0.03);
+  text-align: right;
+}
+
+.line-BILL-1 {
+  margin:10rpx 30rpx 25rpx 30rpx;
+  height:2rpx;
+  background: rgba(177,182,177,0.603);
+}
+.line-BILL-2 {
+  margin:25rpx 30rpx 25rpx 30rpx;
+  height:3rpx;
+  background: rgba(177,182,177,0.603);
+}
+.line-BILL-3 {
+  margin:25rpx 30rpx -5rpx 30rpx;
+  height:3rpx;
+  background: rgba(177,182,177,0.603);
+}
+.line-BILL-4 {
+  margin:-5rpx 30rpx 10rpx 30rpx;
+  height:2rpx;
+  background: rgba(177,182,177,0.603);
+}
+
+.list-BILL-1 {
+  height:110rpx;
+  display:flex;
+  align-items:center;
+  border-bottom:2rpx solid #ddd;
+}
+
+.icon-BILL-1 {
+  width: 39rpx;
+  height: 39rpx;
+  margin:0rpx 15rpx 0 10rpx;
+}
+.icon-BILL-2 {
+  width: 39rpx;
+  height: 39rpx;
+  margin:0rpx 15rpx 0 10rpx;
+}
+.icon-BILL-3 {
+  width: 39rpx;
+  height: 39rpx;
+  margin:0rpx 15rpx 0 10rpx;
+}
+
+.view-BILL-1 {
+  height:80rpx;
+  align-items:center;
+}
+
+.date-text {
+  color: gray;
+  flex: 1;
+  text-align: end;
+  margin-right: 36rpx;
+}
+.button-BILL-1{
+  margin: 100rpx;
+  background-color:#71a16d;
+  color: white;
+  align-self:center;
+
+}
+.button-BILL-1-p{
+  margin: 100rpx;
+  background-color: #537750;
+  color: white;
+  align-self:center
+}
+button::after{ border: none; }
+.picker{
+height:70rpx;
+margin:10rpx;
+width:250rpx;
+margin-left:280rpx;
+justify-content:center;
+display:flex;
+
+}
+
