@@ -22,7 +22,8 @@ Page({
     credit: "", //贷方科目
     creditAmount: null, //贷方金额
     date: "", //日期
-
+    secondCompName:'',
+    thirdCompName:'',
     overed: false //完成按钮是否可按
   },
 
@@ -110,7 +111,7 @@ Page({
     /* 得到完整识别内容发给语音服务器处理 */
     wx.request({
       //url: config.voiceUrl,
-      url: "http://192.168.1.10:80/api/analysis/analysis",
+      url: "http://27.152.156.24:80/api/analysis/analysis",
       data: {
         text: this.data.currentText
       },
@@ -163,6 +164,18 @@ Page({
     this.setData({
       creditAmount: e.detail.value
     });
+  },
+  thirdCompanyFunction:function(e){
+    this.setData({
+      thirdCompName:e.detail.value
+    })
+    console.log(this.data.thirdCompName);
+  },
+  secondCompFunction:function(e){
+    this.setData({
+      secondCompName:e.detail.value
+    })
+    console.log(this.data.secondCompName);
   },
   //选择时间
   onDateChange: function(e) {
@@ -218,7 +231,8 @@ Page({
 
     //精确到秒，定位为当天12点
     var unixtime = util.formatToDate(that.data.date) / 1000 + 14400;
-
+    console.log("交易方信息");
+    console.log(that.data.secondCompName);
     wx.request({
       url: config.insertUrl,
       data: {
@@ -228,7 +242,9 @@ Page({
         debitAmount: parseFloat(that.data.debitAmount),
         credit: that.data.credit,
         creditAmount: parseFloat(that.data.creditAmount),
-        time: unixtime
+        time: unixtime,
+        secondCompName:that.data.secondCompName,
+        thirdCompName:that.data.thirdCompName
       },
       method: "POST",
       success: function(res) {

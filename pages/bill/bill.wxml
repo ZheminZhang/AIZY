@@ -98,25 +98,25 @@
           <view class="list-BILL-1">
             <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
             <text class="text-BILL-1">乙方</text>
-            <input class="weui-input_BILL_2" bindinput="creditFunction" value="{{credit}}"/>
+            <input class="weui-input_BILL_2" bindinput="secondCompFunction" value="{{secondCompName}}"/>
           </view>
 
           <view class="list-BILL-1">
             <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
             <text class="text-BILL-1">乙方签名</text>
-            <input class="weui-input_BILL_2" bindinput="creditFunction" value="{{credit}}"/>
+            <input class="weui-input_BILL_2"/>
           </view>
 
           <view class="list-BILL-1">
             <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
             <text class="text-BILL-1">第三方</text>
-            <input class="weui-input_BILL_2" bindinput="creditFunction" value="{{credit}}"/>
+            <input class="weui-input_BILL_2" bindinput="thirdCompanyFunction" value="{{thirdCompName}}"/>
           </view>
 
           <view class="list-BILL-1">
             <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
             <text class="text-BILL-1">第三方签名</text>
-            <input class="weui-input_BILL_2" bindinput="creditFunction" value="{{credit}}"/>
+            <input class="weui-input_BILL_2"/>
           </view>
 
           

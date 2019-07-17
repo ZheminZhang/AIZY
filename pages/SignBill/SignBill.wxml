@@ -1,3 +1,4 @@
+
 <view class='container-BILL'>
   <view class='tabbar-BILL'>
     <text id="tabitemVoice" class='tabitem {{activeTabId=="tabitemVoice"?"tabitem-active":""}}' bindtap='tabclick'>语音</text>

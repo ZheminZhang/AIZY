@@ -58,7 +58,7 @@ Page({
 
   toDetail: function(e) {
     let index = e.currentTarget.id;
-    let url_ = "../authorize/authorize?" + "tp=" + e.target.dataset["tp"];
+    let url_ = "../SignBill/SignBill?" + "tp=" + e.target.dataset["tp"];
     if (e.target.dataset["tp"] == "1") {
       url_ =
         url_ +

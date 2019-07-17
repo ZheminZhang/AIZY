@@ -1,8 +1,8 @@
 // 服务器域名
 
-const baseUrl = 'http://192.168.1.10:8848/';
-const testUrl = 'http://192.168.1.10:8848/';
-const voicebaseUrl = 'http://192.168.1.10:80/';
+const baseUrl = 'http://27.152.156.24:8848/';
+const testUrl = 'http://27.152.156.24:8848/';
+const voicebaseUrl = 'http://27.152.156.24:80/';
 // 登录接口
 const loginUrl = baseUrl + 'login';
 // 语音分录服务器
