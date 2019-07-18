@@ -1,0 +1,24 @@
+/* pages/SignInfo/SignInfo.wxss */
+.list-BILL-1 {
+  height:110rpx;
+  display:flex;
+  align-items:center;
+  border-bottom:2rpx solid #ddd;
+}
+
+.icon-BILL-1 {
+  width: 39rpx;
+  height: 39rpx;
+  margin:0rpx 15rpx 0 10rpx;
+}
+.weui-input_BILL_2 {
+  height:80rpx;
+  width:450rpx;
+  border-radius:25rpx;
+  border:1px solid #FFFFFF;
+  background-color:white;
+  position:absolute;
+  right:30rpx;
+  box-shadow: 0 2px 16px 2px rgba(0,0,0,0.03);
+  text-align: right;
+}

@@ -209,7 +209,8 @@ page {
   margin-right: 36rpx;
 }
 .button-BILL-1{
-  margin: 100rpx;
+  margin-top: 100rpx;
+  margin-bottom:10rpx; 
   background-color:#71a16d;
   color: white;
   align-self:center;
@@ -229,6 +230,13 @@ width:250rpx;
 margin-left:280rpx;
 justify-content:center;
 display:flex;
-
 }
-
+.list-BILL-1_p {
+  height:80rpx;
+  display:flex;
+  align-items:center;
+  text-align: center;
+  justify-content: center;
+  border-bottom:2rpx solid #ddd;
+  background-color: #8ba693;
+}
