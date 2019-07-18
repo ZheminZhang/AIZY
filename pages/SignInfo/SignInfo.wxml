@@ -1,33 +1,20 @@
 <!--pages/SignInfo/SignInfo.wxml-->
+
 <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
-            <text class="text-BILL-1">甲方</text>
-            <view class="weui-input_BILL_2">{{firstCompName}}</view>
-          </view>
-          <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
-            <text class="text-BILL-1">甲方签名</text>
-            <scroll-view class="weui-input_BILL_2" scroll-x="true">{{firstSig}}</scroll-view>
-          </view>
-          <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
-            <text class="text-BILL-1">乙方</text>
-            <scroll-view class="weui-input_BILL_2">{{secondCompName}}</scroll-view>
-          </view>
-          <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
-            <text class="text-BILL-1">乙方签名</text>
-            <scroll-view class="weui-input_BILL_2" scroll-x="true">{{secondSig}}</scroll-view>
-          </view>
+<image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
+<text class="text-BILL-1">甲方签名:</text>
+</view>
+<view class='signature'>{{firstSig}}</view>
 
-          <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
-            <text class="text-BILL-1">第三方</text>
-            <view class="weui-input_BILL_2">{{thirdCompName}}</view>
-          </view>
+<view class="list-BILL-1">
+<image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
+<text class="text-BILL-1">乙方签名:</text>
+</view>
+<view class='signature'>{{secondSig}}</view>
 
-          <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
-            <text class="text-BILL-1">第三方签名</text>
-            <scroll-view class="weui-input_BILL_2" scroll-x="true">{{thirdSig}}</scroll-view>
-          </view>
+<view class="list-BILL-1">
+<image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
+<text class="text-BILL-1">第三方签名:</text>
+</view>
+<view class='signature'>{{thirdSig}}</view>
+  

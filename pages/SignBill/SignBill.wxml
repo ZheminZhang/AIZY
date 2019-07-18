@@ -2,7 +2,7 @@
 <view class='container-BILL'>
       <scroll-view scroll-y="true" class="tab-content">
       <view class='list-BILL-1_p'>
-    <text class='tabitem'>表单</text>
+    <text class='tabitem'>账单</text>
   </view>
         <view class="Form">
           <view class="list-BILL-1">
@@ -59,13 +59,15 @@
             <view class="weui-input_BILL_2">{{thirdCompName}}</view>
           </view>
           <!--完成按钮-->
-           <view class="list-BILL-1" bindtap='goSignInfo'>查看签名详情</view>
+           <view>
+           <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap='goSignInfo'>查看签名详情</button>
           <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="goSignBill" data-type="agree" wx:if="{{isClick}}">
-            接受签名
+            签名
           </button>
           <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="goSignBill" data-type="refuse" wx:if="{{isClick}}">
-            拒绝签名
+            拒签
           </button>
+          </view>
         </view>
       </scroll-view>
 </view>

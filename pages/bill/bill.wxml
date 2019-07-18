@@ -71,12 +71,12 @@
            
           </view>
           <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
+            <image class="icon-BILL-1" src="../../images/apply_list/author.png"></image>
             <text class="text-BILL-1">乙方</text>
             <input class="weui-input_BILL_2" bindinput="secondCompFunction" value="{{secondCompName}}"/>
           </view>
           <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
+            <image class="icon-BILL-1" src="../../images/apply_list/application.png"></image>
             <text class="text-BILL-1">第三方</text>
             <input class="weui-input_BILL_2" bindinput="thirdCompanyFunction" value="{{thirdCompName}}"/>
           </view>

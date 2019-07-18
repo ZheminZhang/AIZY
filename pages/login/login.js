@@ -8,6 +8,7 @@ Page({
     hasLogin: wx.getStorageSync("loginFlag") ? true : false, // 是否登录，根据后台返回的skey判断
     numApply: 0, // TODO:未接受申请数量
     numAutho: 0, // TODO:未授权授权数量
+    numUnsigned: 0,
     showModalStatus: false, // 模态弹窗
     imageUrl: "../../images/coin.png", //未登录的头像
     timeIDs: new Array() // TODO:清除计时器
@@ -58,6 +59,11 @@ Page({
       util.getAuthoList(() => {
         that.setData({
           numAutho: wx.getStorageSync("grantorUnautho").length
+        });
+      });
+      util.getAuthoList(() => {
+        that.setData({
+          numUnsigned: wx.getStorageSync("unsigned").length
         });
       });
     });
@@ -114,7 +120,8 @@ Page({
     that.setData({
       userInfo: app.globalData.userInfo,
       numApply: wx.getStorageSync("granteeUnautho").length,
-      numAutho: wx.getStorageSync("grantorUnautho").length
+      numAutho: wx.getStorageSync("grantorUnautho").length,
+      numUnsigned: wx.getStorageSync("unsigned").length
     });
   },
 

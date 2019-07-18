@@ -209,17 +209,16 @@ page {
   margin-right: 36rpx;
 }
 .button-BILL-1{
-  margin: 100rpx;
+  margin: 10px auto;
   background-color:#71a16d;
   color: white;
   align-self:center;
-
 }
 .button-BILL-1-p{
-  margin: 100rpx;
+  margin-top: 100rpx;
   background-color: #537750;
   color: white;
-  align-self:center
+  align-self:center;
 }
 button::after{ border: none; }
 .picker{
@@ -229,6 +228,5 @@ width:250rpx;
 margin-left:280rpx;
 justify-content:center;
 display:flex;
-
 }
 
