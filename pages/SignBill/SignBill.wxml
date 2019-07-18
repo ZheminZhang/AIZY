@@ -1,13 +1,9 @@
+
 <view class='container-BILL'>
-  <view class='tabbar-BILL'>
-    <text id="tabitemForm" class='tabitem {{activeTabId=="tabitemForm"?"tabitem-active":""}}' bindtap='tabclick'>表单</text>
-    <text id="tabitemSign" class='tabitem {{activeTabId=="tabitemSign"?"tabitem-active":""}}' bindtap='tabclick'>签名</text>
-  </view>
-
-  <swiper class='scrollview-content' duration="200" circular="true" easing-function="easeInOutCubic" current-item-id='{{activeTabId}}' bindchange='tabChange'>
-
-    <swiper-item item-id="tabitemForm">
       <scroll-view scroll-y="true" class="tab-content">
+      <view class='list-BILL-1_p'>
+    <text class='tabitem'>表单</text>
+  </view>
         <view class="Form">
           <view class="list-BILL-1">
             <image class="icon-BILL-3" src="../../images/BILL/date.png"></image>
@@ -47,60 +43,29 @@
             <text class="text-BILL-1">贷方金额(元):</text>
             <view class="weui-input_BILL_3" >{{creditAmount}}</view>
           </view>
-
-
-
+          <view class="list-BILL-1">
+            <image class="icon-BILL-1" src="../../images/apply_list/author.png"></image>
+            <text class="text-BILL-1">甲方</text>
+            <view class="weui-input_BILL_2">{{firstCompName}}</view>
+          </view>
+          <view class="list-BILL-1">
+            <image class="icon-BILL-1" src="../../images/apply_list/author.png"></image>
+            <text class="text-BILL-1">乙方</text>
+            <view class="weui-input_BILL_2">{{secondCompName}}</view>
+          </view>
+          <view class="list-BILL-1">
+            <image class="icon-BILL-1" src="../../images/apply_list/author.png"></image>
+            <text class="text-BILL-1">第三方</text>
+            <view class="weui-input_BILL_2">{{thirdCompName}}</view>
+          </view>
           <!--完成按钮-->
-
-          <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="goSignBill" data-type="agree">
+           <view class="list-BILL-1" bindtap='goSignInfo'>查看签名详情</view>
+          <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="goSignBill" data-type="agree" wx:if="{{isClick}}">
             接受签名
           </button>
-          <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="goSignBill" data-type="refuse">
+          <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="goSignBill" data-type="refuse" wx:if="{{isClick}}">
             拒绝签名
           </button>
         </view>
       </scroll-view>
-    </swiper-item>
-    <swiper-item item-id="tabitemSign">
-      <scroll-view scroll-y="true" class="tab-content">  
-      <view class="Form">
-          <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
-            <text class="text-BILL-1">甲方</text>
-            <view class="weui-input_BILL_2">{{credit}}</view>
-          </view>
-
-          <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
-            <text class="text-BILL-1">甲方签名</text>
-            <input class="weui-input_BILL_2" bindinput="creditFunction" value="{{credit}}"/>
-          </view>
-
-          <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
-            <text class="text-BILL-1">乙方</text>
-            <input class="weui-input_BILL_2" bindinput="secondCompFunction" value="{{secondCompName}}"/>
-          </view>
-
-          <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
-            <text class="text-BILL-1">乙方签名</text>
-            <input class="weui-input_BILL_2"/>
-          </view>
-
-          <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
-            <text class="text-BILL-1">第三方</text>
-            <input class="weui-input_BILL_2" bindinput="thirdCompanyFunction" value="{{thirdCompName}}"/>
-          </view>
-
-          <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
-            <text class="text-BILL-1">第三方签名</text>
-            <input class="weui-input_BILL_2"/>
-          </view>
-        </view>
-      </scroll-view>
-    </swiper-item>
-  </swiper>
 </view>
