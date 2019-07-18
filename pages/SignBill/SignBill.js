@@ -66,7 +66,7 @@ Page({
       debitAmount:options.debitAmount,
       creditAmount:options.creditAmount,
       summary:options.summary,
-      date:options.time,
+      date:util.msToDate(options.time).withoutTime,
       itemId:options.itemId,
       party:options.party,
     });

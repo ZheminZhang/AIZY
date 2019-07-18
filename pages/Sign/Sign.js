@@ -76,7 +76,7 @@ Page({
     }
     var res = wx.getStorageSync("BillInfo");
     url_ = url_ + "&credit=" + res.credit + "&debit=" + res.debit + "&creditAmount=" + res.creditAmount + "&debitAmount=" + res.debitAmount + "&time=" + res.time + "&summary=" +res.summary+"&itemId="+res.itemId+"&party="+res.party;
-    console.log(res);
+    console.log(url_);
     wx.navigateTo({
       url: url_,
       fail: function (e) {

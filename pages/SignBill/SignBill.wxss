@@ -209,7 +209,8 @@ page {
   margin-right: 36rpx;
 }
 .button-BILL-1{
-  margin: 100rpx;
+  margin-top: 100rpx;
+  margin-bottom:10rpx; 
   background-color:#71a16d;
   color: white;
   align-self:center;
