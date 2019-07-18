@@ -1,7 +1,6 @@
 // 服务器域名
-
 const LANIP = "192.168.1.10";
-const OPENIP = "27.152.156.24";
+const OPENIP = "27.152.156.226";
 var ip = LANIP
 
 const baseUrl = 'http://'+ip+':8848/';

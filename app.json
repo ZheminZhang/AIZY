@@ -10,7 +10,8 @@
     "pages/Autho_other/Autho_other",
     "pages/table/table",
     "pages/Sign/Sign",
-    "pages/SignBill/SignBill"
+    "pages/SignBill/SignBill",
+    "pages/SignInfo/SignInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",

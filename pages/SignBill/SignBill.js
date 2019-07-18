@@ -22,6 +22,12 @@ Page({
     date: "", //日期
     itemId:'',
     party:'',
+    secondSig:'',
+    firstSig:'',
+    thirdSig:'',
+    firstCompName:'',
+    secondCompName:'',
+    thirdCompName:'',
   },
   navbarTap: function(e) {
     this.setData({
@@ -60,17 +66,28 @@ Page({
 
   /* 加载页面 */
   onLoad: function (options) {
+    var res=wx.getStorageSync('BillInfo');
     this.setData({
-      credit:options.credit,
-      debit:options.debit,
-      debitAmount:options.debitAmount,
-      creditAmount:options.creditAmount,
-      summary:options.summary,
-      date:options.time,
-      itemId:options.itemId,
-      party:options.party,
-    });
-    console.log(options.party+"   --  "+options.itemId);
+      summary:res.summary, //分类信息
+      debit: res.debit, //借方科目
+      debitAmount: res.debitAmount, //借方金额
+      credit: res.credit, //贷方科目
+      creditAmount: res.creditAmount, //贷方金额
+      date: util.msToDate(res.time).withoutTime, //日期
+      itemId: res.itemId,
+      party: res.party,
+      secondSig: res.secondSig,
+      firstSig: res.firstSig,
+      thirdSig: res.thirdSig,
+      firstCompName: res.firstCompName,
+      secondCompName: res.secondCompName,
+      thirdCompName: res.thirdCompName
+    })
+    if(options.tp==7){
+       this.setData({
+         isClick:true,
+       })
+    }
   },
   onShow: function() {
     this.setData({
@@ -81,7 +98,6 @@ Page({
   },
   goSignBill:function(e){
     var tag = "disagree";
-    util._getUnAuthoList();
     if (e.target.dataset["type"] == "agree") {
       tag = "agree";
     }
@@ -99,12 +115,11 @@ Page({
         party:this.data.party,
       },
       success: function (e) {
+        util.getSignList();
         wx.showToast({
           title: "成功",
           icon: "success"
         });
-        //读取服务器的授权和未授权信息，并跳转其他页面
-        util.getSignList();
         setTimeout(function () {
           wx.navigateBack({
             delta: 1
@@ -119,5 +134,9 @@ Page({
       }
     });
   },
-
+  goSignInfo:function(){
+    wx.navigateTo({
+      url: '../SignInfo/SignInfo',
+    })
+  }
 });
