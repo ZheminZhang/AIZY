@@ -62,12 +62,10 @@ Page({
     if (e.target.dataset["tp"] == "7") {
       var itemId = this.data.grantorUnautho[index].itemId;
       var party = this.data.grantorUnautho[index].party;
-      console.log("itemId的内容：" + itemId);
       util.getSignQuery(itemId, party);
     } else if (e.target.dataset["tp"] == "8") {
       var itemId = this.data.grantorAutho[index].itemId;
       var party = this.data.grantorAutho[index].party;
-      console.log("itemId的内容：" + itemId);
       util.getSignQuery(itemId, party)
     } else if (e.target.dataset["tp"] == "9") {
       var itemId = this.data.grantorUnauthoRefuse[index].itemId;

@@ -98,7 +98,6 @@ Page({
   },
   goSignBill:function(e){
     var tag = "disagree";
-    util._getUnAuthoList();
     if (e.target.dataset["type"] == "agree") {
       tag = "agree";
     }
@@ -116,12 +115,11 @@ Page({
         party:this.data.party,
       },
       success: function (e) {
+        util.getSignList();
         wx.showToast({
           title: "成功",
           icon: "success"
         });
-        //读取服务器的授权和未授权信息，并跳转其他页面
-        util.getSignList();
         setTimeout(function () {
           wx.navigateBack({
             delta: 1
