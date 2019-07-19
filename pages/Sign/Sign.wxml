@@ -39,7 +39,7 @@
           <view class="name" data-tp="8" wx:if="{{item.party=='First'}}">您是该账单甲方</view>
           <view class="name" data-tp="9" wx:if="{{item.party=='Second'}}">您是该账单乙方</view>
           <view class="name" data-tp="9" wx:if="{{item.party=='Third'}}">您是该账单第三方</view>
-          <view class="btn_accept_r" data-tp="9">已拒绝</view>
+          <view class="btn_accept_r" data-tp="9">已拒签</view>
         </view>
         <view class="width-line" />
       </view>

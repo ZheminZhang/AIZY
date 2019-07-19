@@ -27,7 +27,8 @@ Page({
     thirdSig: "",
     firstCompName: "",
     secondCompName: "",
-    thirdCompName: ""
+    thirdCompName: "",
+    decided: false
   },
   navbarTap: function(e) {
     this.setData({
@@ -58,7 +59,7 @@ Page({
 
   /* 下拉刷新，自动监听 */
   onPullDownRefresh: function() {
-    util.getSignList();
+    util.getSignList(() => {});
     this.onShow();
   },
 
@@ -102,6 +103,10 @@ Page({
       tag = "agree";
     }
     console.log(this.data.party);
+    that = this;
+    that.setData({
+      decided: true
+    });
     wx.request({
       url: config.signUrl,
       method: "POST",
@@ -119,6 +124,9 @@ Page({
           title: "成功",
           icon: "success"
         });
+        that.setData({
+          decided: false
+        });
         util.getSignList(() =>
           wx.navigateBack({
             delta: 1
@@ -129,6 +137,9 @@ Page({
         wx.showToast({
           title: "请求发送失败",
           icon: "none"
+        });
+        that.setData({
+          decided: false
         });
       }
     });
