@@ -15,52 +15,52 @@
           <view class="list-BILL-1">
             <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
             <text class="text-BILL-1">摘要:</text>
-            <view class="weui-input_BILL_1"><text class="name">{{summary}}</text></view>
+            <text class="weui-input_BILL_1">{{summary}}</text>
           </view>
 
           <view class="list-BILL-1">
             <image class="icon-BILL-1" src="../../images/BILL/borrow.png"></image>
             <text class="text-BILL-1">借方科目:</text>
-            <view class="weui-input_BILL_2">{{debit}}</view>
+            <text class="weui-input_BILL_2">{{debit}}</text>
           </view>
 
 
           <view class="list-BILL-1">
             <image class="icon-BILL-2" src="../../images/BILL/YUAN.png"></image>
             <text class="text-BILL-1">借方金额(元):</text>
-            <view class="weui-input_BILL_3">{{debitAmount}}</view>
+            <text class="weui-input_BILL_3">{{debitAmount}}</text>
           </view>
 
 
           <view class="list-BILL-1">
             <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
             <text class="text-BILL-1">贷方科目:</text>
-            <view class="weui-input_BILL_2">{{credit}}</view>
+            <text class="weui-input_BILL_2">{{credit}}</text>
           </view>
 
           <view class="list-BILL-1">
             <image class="icon-BILL-2" src="../../images/BILL/YUAN.png"></image>
             <text class="text-BILL-1">贷方金额(元):</text>
-            <view class="weui-input_BILL_3" >{{creditAmount}}</view>
+            <text class="weui-input_BILL_3" >{{creditAmount}}</text>
           </view>
           <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/apply_list/author.png"></image>
+            <image class="icon-BILL-1" src="../../images/apply_list/author1.png"></image>
             <text class="text-BILL-1">甲方</text>
-            <view class="weui-input_BILL_2">{{firstCompName}}</view>
+            <text class="weui-input_BILL_2">{{firstCompName}}</text>
           </view>
           <view class="list-BILL-1">
             <image class="icon-BILL-1" src="../../images/apply_list/author.png"></image>
             <text class="text-BILL-1">乙方</text>
-            <view class="weui-input_BILL_2">{{secondCompName}}</view>
+            <text class="weui-input_BILL_2">{{secondCompName}}</text>
           </view>
           <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/apply_list/author.png"></image>
+            <image class="icon-BILL-1" src="../../images/apply_list/application.png"></image>
             <text class="text-BILL-1">第三方</text>
-            <view class="weui-input_BILL_2">{{thirdCompName}}</view>
+            <text class="weui-input_BILL_2">{{thirdCompName}}</text>
           </view>
           <!--完成按钮-->
            <view>
-           <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap='goSignInfo'>查看签名详情</button>
+           <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap='goSignInfo'>查看签名</button>
           <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="goSignBill" data-type="agree" wx:if="{{isClick}}">
             签名
           </button>

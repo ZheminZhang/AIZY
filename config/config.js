@@ -1,11 +1,11 @@
 // 服务器域名
-const LANIP = "192.168.1.10";
+const LANIP = "192.168.1.6";
 const OPENIP = "27.152.156.226";
 var ip = LANIP
 
 const baseUrl = 'http://'+ip+':8848/';
 const testUrl = 'http://'+ip+':8848/';
-const voicebaseUrl = 'http://'+ip+':80/';
+const voicebaseUrl = 'http://'+ip+':8849/';
 // 登录接口
 const loginUrl = baseUrl + 'login';
 // 语音分录服务器

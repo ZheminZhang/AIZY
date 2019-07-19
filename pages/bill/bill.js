@@ -99,14 +99,14 @@ Page({
     };
   },
   sendData: function() {
-    let loginFlag = wx.getStorageSync("loginFlag");
-    if (!loginFlag) {
-      wx.showToast({
-        title: "您还未登录，请先登录",
-        icon: "none"
-      });
-      return;
-    }
+    // let loginFlag = wx.getStorageSync("loginFlag");
+    // if (!loginFlag) {
+    //   wx.showToast({
+    //     title: "您还未登录，请先登录",
+    //     icon: "none"
+    //   });
+    //   return;
+    // }
     var that = this;
     /* 得到完整识别内容发给语音服务器处理 */
     wx.request({
@@ -191,7 +191,6 @@ Page({
     //util.getApplyList();
     if (loginFlag) {
       // util.getSignList();
-      console.log("123")
       that.setActiveTab("tabitemSign");
     } else {
       // TODO:弹出登录提示框
