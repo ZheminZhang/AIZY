@@ -22,9 +22,11 @@ Page({
     credit: "", //贷方科目
     creditAmount: null, //贷方金额
     date: "", //日期
-    secondCompName:'',
-    thirdCompName:'',
-    overed: false //完成按钮是否可按
+    secondCompName: "",
+    thirdCompName: "",
+    overed: false, //完成按钮是否可按
+    sent: false, //发送按钮是否可按
+    sendButtonText: "生成报表"
   },
 
   tabChange(e) {
@@ -99,16 +101,14 @@ Page({
     };
   },
   sendData: function() {
-    // let loginFlag = wx.getStorageSync("loginFlag");
-    // if (!loginFlag) {
-    //   wx.showToast({
-    //     title: "您还未登录，请先登录",
-    //     icon: "none"
-    //   });
-    //   return;
-    // }
     var that = this;
+    that.setData({
+      sent: true
+    });
     /* 得到完整识别内容发给语音服务器处理 */
+    wx.showLoading({
+      title: "账单生成中..."
+    });
     wx.request({
       url: config.voiceUrl,
       // url: "http://27.152.156.24:80/api/analysis/analysis",
@@ -122,12 +122,18 @@ Page({
           debit: res.data.data[0].debit,
           debitAmount: parseFloat(res.data.data[0].debit_amount),
           credit: res.data.data[0].credit,
-          creditAmount: parseFloat(res.data.data[0].credit_amount)
+          creditAmount: parseFloat(res.data.data[0].credit_amount),
+          sent: false
         });
+        wx.hideLoading();
         that.setActiveTab("tabitemForm");
       },
       fail: function(res) {
         console.log(res);
+        that.setData({
+          sent: false
+        });
+        wx.hideLoading();
       }
     });
   },
@@ -165,16 +171,16 @@ Page({
       creditAmount: e.detail.value
     });
   },
-  thirdCompanyFunction:function(e){
+  thirdCompanyFunction: function(e) {
     this.setData({
-      thirdCompName:e.detail.value
-    })
+      thirdCompName: e.detail.value
+    });
     console.log(this.data.thirdCompName);
   },
-  secondCompFunction:function(e){
+  secondCompFunction: function(e) {
     this.setData({
-      secondCompName:e.detail.value
-    })
+      secondCompName: e.detail.value
+    });
     console.log(this.data.secondCompName);
   },
   //选择时间
@@ -185,7 +191,7 @@ Page({
   },
 
   // 签名账单
-  signBill: function () {
+  signBill: function() {
     let loginFlag = wx.getStorageSync("loginFlag");
     var that = this;
     //util.getApplyList();
@@ -201,7 +207,7 @@ Page({
       });
     }
   },
-  
+
   //点击完成,将结果发给服务器
   confirmData: function() {
     var that = this;
@@ -242,8 +248,8 @@ Page({
         credit: that.data.credit,
         creditAmount: parseFloat(that.data.creditAmount),
         time: unixtime,
-        secondCompName:that.data.secondCompName,
-        thirdCompName:that.data.thirdCompName
+        secondCompName: that.data.secondCompName,
+        thirdCompName: that.data.thirdCompName
       },
       method: "POST",
       success: function(res) {
@@ -253,7 +259,9 @@ Page({
             title: "记账成功",
             icon: "success",
             duration: 500,
-            success: function() {}
+            success: function() {
+              // util.getSignList(() => {});
+            }
           });
         } else {
           wx.showToast({

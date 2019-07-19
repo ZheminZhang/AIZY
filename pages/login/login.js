@@ -8,7 +8,7 @@ Page({
     hasLogin: wx.getStorageSync("loginFlag") ? true : false, // 是否登录，根据后台返回的skey判断
     numApply: 0, // TODO:未接受申请数量
     numAutho: 0, // TODO:未授权授权数量
-    numUnsigned: 0,
+    numSign: 0,
     showModalStatus: false, // 模态弹窗
     imageUrl: "../../images/coin.png", //未登录的头像
     timeIDs: new Array() // TODO:清除计时器
@@ -51,20 +51,26 @@ Page({
     });
     app.doLogin(() => {
       that.getUserInfo();
-      util.getApplyList(() => {
-        that.setData({
-          numApply: wx.getStorageSync("granteeUnautho").length
-        });
+      util.getApplyList(i => {
+        if (i == 2) {
+          that.setData({
+            numApply: wx.getStorageSync("granteeUnautho").length
+          });
+        }
       });
-      util.getAuthoList(() => {
-        that.setData({
-          numAutho: wx.getStorageSync("grantorUnautho").length
-        });
+      util.getAuthoList(i => {
+        if (i == 2) {
+          that.setData({
+            numAutho: wx.getStorageSync("grantorUnautho").length
+          });
+        }
       });
-      util.getAuthoList(() => {
-        that.setData({
-          numUnsigned: wx.getStorageSync("unsigned").length
-        });
+      util.getSignList(i => {
+        if (i == 2) {
+          that.setData({
+            numSign: wx.getStorageSync("unsigned").length
+          });
+        }
       });
     });
   },
@@ -92,13 +98,15 @@ Page({
 
   goApply: function() {
     let loginFlag = wx.getStorageSync("loginFlag");
-    //util.getAuthoList();
     if (loginFlag) {
-      util.getApplyList();
-      wx.navigateTo({
-        url: "../apply_list/apply_list",
-        fail: function(e) {
-          console.log(e);
+      util.getApplyList(i => {
+        if (i == 2) {
+          wx.navigateTo({
+            url: "../apply_list/apply_list",
+            fail: function(e) {
+              console.log(e);
+            }
+          });
         }
       });
     } else {
@@ -121,14 +129,12 @@ Page({
       userInfo: app.globalData.userInfo,
       numApply: wx.getStorageSync("granteeUnautho").length,
       numAutho: wx.getStorageSync("grantorUnautho").length,
-      numUnsigned: wx.getStorageSync("unsigned").length
+      numSign: wx.getStorageSync("unsigned").length
     });
   },
 
   toComReg: function() {
     let loginFlag = wx.getStorageSync("loginFlag");
-    //util.getAuthoList();
-    //util.getApplyList();
     if (loginFlag) {
       wx.navigateTo({
         url: "../regist_company/regist_company",
@@ -148,13 +154,15 @@ Page({
 
   goAuth: function() {
     let loginFlag = wx.getStorageSync("loginFlag");
-    //util.getApplyList();
     if (loginFlag) {
-      util.getAuthoList();
-      wx.navigateTo({
-        url: "../Autho_other/Autho_other",
-        fail: function(e) {
-          console.log(e);
+      util.getAuthoList(i => {
+        if (i == 2) {
+          wx.navigateTo({
+            url: "../Autho_other/Autho_other",
+            fail: function(e) {
+              console.log(e);
+            }
+          });
         }
       });
     } else {
@@ -167,15 +175,18 @@ Page({
     }
   },
 
-  goSign: function () {
+  goSign: function() {
     let loginFlag = wx.getStorageSync("loginFlag");
-    //util.getApplyList();
     if (loginFlag) {
-      util.getSignList();
-      wx.navigateTo({
-        url: "../Sign/Sign",
-        fail: function (e) {
-          console.log(e);
+      util.getSignList(i => {
+        console.log(i);
+        if (i == 2) {
+          wx.navigateTo({
+            url: "../Sign/Sign",
+            fail: function(e) {
+              console.log(e);
+            }
+          });
         }
       });
     } else {

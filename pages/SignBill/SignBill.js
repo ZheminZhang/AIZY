@@ -20,14 +20,14 @@ Page({
     credit: "", //贷方科目
     creditAmount: null, //贷方金额
     date: "", //日期
-    itemId:'',
-    party:'',
-    secondSig:'',
-    firstSig:'',
-    thirdSig:'',
-    firstCompName:'',
-    secondCompName:'',
-    thirdCompName:'',
+    itemId: "",
+    party: "",
+    secondSig: "",
+    firstSig: "",
+    thirdSig: "",
+    firstCompName: "",
+    secondCompName: "",
+    thirdCompName: ""
   },
   navbarTap: function(e) {
     this.setData({
@@ -58,17 +58,17 @@ Page({
 
   /* 下拉刷新，自动监听 */
   onPullDownRefresh: function() {
-    util.getAuthoList();
+    util.getSignList();
     this.onShow();
   },
 
   onReady: function() {},
 
   /* 加载页面 */
-  onLoad: function (options) {
-    var res=wx.getStorageSync('BillInfo');
+  onLoad: function(options) {
+    var res = wx.getStorageSync("BillInfo");
     this.setData({
-      summary:res.summary, //分类信息
+      summary: res.summary, //分类信息
       debit: res.debit, //借方科目
       debitAmount: res.debitAmount, //借方金额
       credit: res.credit, //贷方科目
@@ -82,11 +82,11 @@ Page({
       firstCompName: res.firstCompName,
       secondCompName: res.secondCompName,
       thirdCompName: res.thirdCompName
-    })
-    if(options.tp==7){
-       this.setData({
-         isClick:true,
-       })
+    });
+    if (options.tp == 7) {
+      this.setData({
+        isClick: true
+      });
     }
   },
   onShow: function() {
@@ -96,7 +96,7 @@ Page({
       grantorUnauthoRefuse: wx.getStorageSync("signedRefuse")
     });
   },
-  goSignBill:function(e){
+  goSignBill: function(e) {
     var tag = "disagree";
     if (e.target.dataset["type"] == "agree") {
       tag = "agree";
@@ -111,22 +111,21 @@ Page({
       data: {
         loginFlag: wx.getStorageSync("loginFlag"),
         tag: tag,
-        itemId:this.data.itemId,
-        party:this.data.party,
+        itemId: this.data.itemId,
+        party: this.data.party
       },
-      success: function (e) {
-        util.getSignList();
+      success: function(e) {
         wx.showToast({
           title: "成功",
           icon: "success"
         });
-        setTimeout(function () {
+        util.getSignList(() =>
           wx.navigateBack({
             delta: 1
-          });
-        }, 500); //设置延时
+          })
+        );
       },
-      fail: function (e) {
+      fail: function(e) {
         wx.showToast({
           title: "请求发送失败",
           icon: "none"
@@ -134,9 +133,9 @@ Page({
       }
     });
   },
-  goSignInfo:function(){
+  goSignInfo: function() {
     wx.navigateTo({
-      url: '../SignInfo/SignInfo',
-    })
+      url: "../SignInfo/SignInfo"
+    });
   }
 });

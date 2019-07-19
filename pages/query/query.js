@@ -21,7 +21,7 @@ Page({
   },
   formSubmit: function(e) {
     let loginFlag = wx.getStorageSync("loginFlag");
-    if (!loginFlag){
+    if (!loginFlag) {
       wx.showToast({
         title: "您还未登录，请先登录",
         icon: "none"
@@ -29,7 +29,7 @@ Page({
       return;
     }
     console.log("form发生了submit事件，携带数据为：", e);
-    var _this = this;
+    var that = this;
 
     //转为unix时间
     // var authST = util.formatToDate(this.data.authStartTime) / 1000 + 14400;
@@ -45,6 +45,9 @@ Page({
     }
     var date = new Date();
     date = util.formatToDate(date) / 1000 + 14400;
+    that.setData({
+      overed: true //按钮不可按
+    });
     wx.request({
       url: api.queryUrl,
       //url: 'http://127.0.0.1:80',
@@ -70,11 +73,17 @@ Page({
             icon: "none"
           });
         }
+        that.setData({
+          overed: false
+        });
       },
       fail: function(e) {
         wx.showToast({
           title: "发送失败",
           icon: "none"
+        });
+        that.setData({
+          overed: false
         });
       }
     });

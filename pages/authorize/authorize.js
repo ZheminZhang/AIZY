@@ -13,7 +13,8 @@ Page({
     end: "2100-06-01",
     type: [],
     recordId: "",
-    tp: ""
+    tp: "",
+    decided: false // 是否决定授权
   },
   // TODO:
   formSubmit: function(e) {
@@ -51,10 +52,13 @@ Page({
     var recordST = util.formatToDate(this.data.recordStartTime) / 1000 + 14400;
     var recordET = util.formatToDate(this.data.recordEndTime) / 1000 + 14400;
     var tag = "disagree";
-    util._getUnAuthoList();
     if (e.target.dataset["type"] == "agree") {
       tag = "agree";
     }
+    var that = this;
+    that.setData({
+      decided: true
+    });
     wx.request({
       url: config.authorizedUrl,
       method: "POST",
@@ -76,23 +80,25 @@ Page({
           title: "成功",
           icon: "success"
         });
+        that.setData({
+          decided: false
+        });
         //读取服务器的授权和未授权信息，并跳转其他页面
-        util._getUnAuthoList();
-        if (tag == "agree") {
-          util._getAuthoList();
-        } else {
-          util._getUnAuthoRefuseList();
-        }
-        setTimeout(function() {
-          wx.navigateBack({
-            delta: 1
-          });
-        }, 500); //设置延时
+        util.getAuthoList(i => {
+          if (i == 2) {
+            wx.navigateBack({
+              delta: 1
+            });
+          }
+        });
       },
       fail: function(e) {
         wx.showToast({
           title: "请求发送失败",
           icon: "none"
+        });
+        that.setData({
+          decided: false
         });
       }
     });
