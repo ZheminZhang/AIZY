@@ -58,7 +58,7 @@ Page({
   //tp是决定是拒绝同意的标志
   toDetail: function(e) {
     wx.showLoading({
-      title: "获取账单信息中...",
+      title: "请稍后...",
       mask: true
     });
     setTimeout(() => {

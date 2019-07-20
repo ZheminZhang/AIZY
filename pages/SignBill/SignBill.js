@@ -103,17 +103,14 @@ Page({
     }
     console.log(this.data.party);
     var that = this;
-    var t1;
     var t2;
     if (tag == "agree") {
-      t1 = "签名中...";
       t2 = "签名";
     } else if (tag == "disagree") {
-      t1 = "拒签中...";
       t2 = "拒签";
     }
     wx.showLoading({
-      title: t1,
+      title: "请稍后...",
       mask: true
     });
     wx.request({

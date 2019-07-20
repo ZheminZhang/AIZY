@@ -55,17 +55,14 @@ Page({
       tag = "agree";
     }
     var that = this;
-    var t1;
     var t2;
     if (tag == "agree") {
-      t1 = "授权中...";
       t2 = "授权";
     } else if (tag == "disagree") {
-      t1 = "拒绝授权中...";
       t2 = "拒绝授权";
     }
     wx.showLoading({
-      title: t1,
+      title: "请稍后...",
       mask: true
     });
     wx.request({

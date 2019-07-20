@@ -45,7 +45,7 @@ Page({
     var date = new Date();
     date = util.formatToDate(date) / 1000 + 14400;
     wx.showLoading({
-      title: "查询中...",
+      title: "请稍后...",
       mask: true
     });
     wx.request({
@@ -78,7 +78,7 @@ Page({
       fail: function(e) {
         wx.hideLoading();
         wx.showToast({
-          title: "发送失败",
+          title: "查询失败",
           icon: "none"
         });
       }

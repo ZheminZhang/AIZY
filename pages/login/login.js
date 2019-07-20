@@ -28,6 +28,10 @@ Page({
         },
         // session_key 已过期
         fail: function() {
+          wx.showToast({
+            title: "登录已过期，请重新登录",
+            icon: "none"
+          });
           that.setData({
             hasLogin: false
           });
@@ -46,7 +50,7 @@ Page({
   doLogin: function() {
     let that = this;
     wx.showLoading({
-      title: "登录中...",
+      title: "请稍后...",
       mask: true
     });
     app.doLogin(() => {
@@ -98,7 +102,7 @@ Page({
 
   goApply: function() {
     wx.showLoading({
-      title: "获取申请查询列表中...",
+      title: "请稍后...",
       mask: true
     });
     setTimeout(() => {
@@ -161,7 +165,7 @@ Page({
 
   goAuth: function() {
     wx.showLoading({
-      title: "获取授权查询列表中...",
+      title: "请稍后...",
       mask: true
     });
     setTimeout(() => {
@@ -191,7 +195,7 @@ Page({
 
   goSign: function() {
     wx.showLoading({
-      title: "获取账单签名列表中...",
+      title: "请稍后...",
       mask: true
     });
     setTimeout(() => {

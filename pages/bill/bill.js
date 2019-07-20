@@ -102,7 +102,7 @@ Page({
     var that = this;
 
     wx.showLoading({
-      title: "账单生成中...",
+      title: "请稍后...",
       mask: true
     });
     /* 得到完整识别内容发给语音服务器处理 */
@@ -122,12 +122,15 @@ Page({
           credit: res.data.data[0].credit,
           creditAmount: parseFloat(res.data.data[0].credit_amount)
         });
-
         that.setActiveTab("tabitemForm");
       },
       fail: function(res) {
         console.log(res);
         wx.hideLoading();
+        wx.showToast({
+          title: "账单生成失败，请重试",
+          icon: "none"
+        });
       }
     });
   },
@@ -229,7 +232,7 @@ Page({
     console.log("交易方信息");
     console.log(that.data.secondCompName);
     wx.showLoading({
-      title: "提交账单中...",
+      title: "请稍后...",
       mask: true
     });
     wx.request({

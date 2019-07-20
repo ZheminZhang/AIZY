@@ -30,7 +30,7 @@ Page({
     date = util.formatToDate(date) / 1000 + 14400;
     var that = this;
     wx.showLoading({
-      title: "申请中...",
+      title: "请稍后...",
       mask: true
     });
     wx.request({
