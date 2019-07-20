@@ -68,10 +68,12 @@
       </view>
     </form>
   </view>
-  <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="submitForm" data-type="agree" wx:if="{{tp==1}}">
-    接受
-  </button>
-  <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="submitForm" data-type="refuse" wx:if="{{tp==1}}">
-    拒绝
-  </button>
+  <view>
+    <button class="button-BILL-1" hover-class="button-BILL-1-p" disabled="{{decided}}" bindtap="submitForm" data-type="agree" wx:if="{{tp==1}}">
+      接受
+    </button>
+    <button class="button-BILL-1" hover-class="button-BILL-1-p" disabled="{{decided}}" bindtap="submitForm" data-type="refuse" wx:if="{{tp==1}}">
+      拒绝
+    </button>
+  </view>
 </view>

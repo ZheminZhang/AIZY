@@ -7,11 +7,11 @@ Page({
     tabitemRecharge: {},
     activeTabId: null,
     currentTab: 0,
-    grantorAutho: {},
-    grantorUnautho: {},
-    grantorUnauthoRefuse: {}
+    signed: {},
+    unsigned: {},
+    signedRefuse: {}
   },
-  navbarTap: function (e) {
+  navbarTap: function(e) {
     this.setData({
       currentTab: e.currentTarget.dataset.idx
     });
@@ -39,46 +39,46 @@ Page({
   },
 
   /* 下拉刷新，自动监听 */
-  onPullDownRefresh: function () {
-    util.getAuthoList();
+  onPullDownRefresh: function() {
+    util.getSignList();
     this.onShow();
   },
 
-  onReady: function () { },
+  onReady: function() {},
 
   /* 加载页面 */
-  onLoad: function () { },
-  onShow: function () {
+  onLoad: function() {},
+  onShow: function() {
     this.setData({
-      grantorUnautho: wx.getStorageSync("unsigned"),
-      grantorAutho: wx.getStorageSync("signed"),
-      grantorUnauthoRefuse: wx.getStorageSync("signedRefuse")
+      unsigned: wx.getStorageSync("unsigned"),
+      signed: wx.getStorageSync("signed"),
+      signedRefuse: wx.getStorageSync("signedRefuse")
     });
   },
   //tp是决定是拒绝同意的标志
-  toDetail: function (e) {
+  toDetail: function(e) {
     var index = e.currentTarget.id;
     var url_ = "../SignBill/SignBill?" + "tp=" + e.target.dataset["tp"];
+    var itemId;
+    var party;
     if (e.target.dataset["tp"] == "7") {
-      var itemId = this.data.grantorUnautho[index].itemId;
-      var party = this.data.grantorUnautho[index].party;
-      util.getSignQuery(itemId, party);
+      itemId = this.data.unsigned[index].itemId;
+      party = this.data.unsigned[index].party;
     } else if (e.target.dataset["tp"] == "8") {
-      var itemId = this.data.grantorAutho[index].itemId;
-      var party = this.data.grantorAutho[index].party;
-      util.getSignQuery(itemId, party)
+      itemId = this.data.signed[index].itemId;
+      party = this.data.signed[index].party;
     } else if (e.target.dataset["tp"] == "9") {
-      var itemId = this.data.grantorUnauthoRefuse[index].itemId;
-      var party = this.data.grantorUnauthoRefuse[index].party;
-      util.getSignQuery(itemId, party);
+      itemId = this.data.signedRefuse[index].itemId;
+      party = this.data.signedRefuse[index].party;
     }
-    url_ = url_+ "&tp=" + e.target.dataset["tp"];
+    util.getSignQuery(itemId, party, () =>
+      wx.navigateTo({
+        url: url_,
+        fail: function(e) {
+          console.log(e);
+        }
+      })
+    );
     console.log(url_);
-    wx.navigateTo({
-      url: url_,
-      fail: function (e) {
-        console.log(e);
-      }
-    });
   }
 });

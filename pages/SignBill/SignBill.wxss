@@ -209,8 +209,9 @@ page {
   margin-right: 36rpx;
 }
 .button-BILL-1{
-  margin-top: 100rpx;
-  margin-bottom:10rpx; 
+  height:100rpx;
+  width:240rpx;
+  margin: 10rpx auto; 
   background-color:#71a16d;
   color: white;
   align-self:center;
@@ -220,7 +221,7 @@ page {
   margin: 100rpx;
   background-color: #537750;
   color: white;
-  align-self:center
+  align-self:center;
 }
 button::after{ border: none; }
 .picker{
