@@ -377,7 +377,7 @@ function getAuthoList(callback) {
     fail: function(res) {
       wx.showToast({
         title: "请求待授权查询列表失败",
-        icon: "success"
+        icon: "none"
       });
       console.log(res);
     }
@@ -397,7 +397,7 @@ function getAuthoList(callback) {
     fail: function(res) {
       wx.showToast({
         title: "请求已授权查询列表失败",
-        icon: "success"
+        icon: "none"
       });
       console.log(res);
     }
@@ -418,7 +418,7 @@ function getAuthoList(callback) {
     fail: function(res) {
       wx.showToast({
         title: "请求拒绝授权查询列表失败",
-        icon: "success"
+        icon: "none"
       });
       console.log(res);
     }
@@ -495,7 +495,7 @@ function getApplyList(callback) {
     fail: function(res) {
       wx.showToast({
         title: "请求待接收申请查询列表失败",
-        icon: "success"
+        icon: "none"
       });
       console.log(res);
     }
@@ -515,7 +515,7 @@ function getApplyList(callback) {
     fail: function(res) {
       wx.showToast({
         title: "请求已接收申请查询列表失败",
-        icon: "success"
+        icon: "none"
       });
       console.log(res);
     }
@@ -536,7 +536,7 @@ function getApplyList(callback) {
     fail: function(res) {
       wx.showToast({
         title: "请求已拒绝申请查询列表失败",
-        icon: "success"
+        icon: "none"
       });
       console.log(res);
     }
@@ -612,7 +612,7 @@ function getSignList(callback) {
     fail: function(res) {
       wx.showToast({
         title: "请求待签名账单列表失败",
-        icon: "success"
+        icon: "none"
       });
       console.log(res);
     }
@@ -632,7 +632,7 @@ function getSignList(callback) {
     fail: function(res) {
       wx.showToast({
         title: "请求已签名账单列表失败",
-        icon: "success"
+        icon: "none"
       });
       console.log(res);
     }
@@ -652,7 +652,7 @@ function getSignList(callback) {
     fail: function(res) {
       wx.showToast({
         title: "请求拒签账单列表失败",
-        icon: "success"
+        icon: "none"
       });
       console.log(res);
     }

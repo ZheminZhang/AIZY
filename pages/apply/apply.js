@@ -11,7 +11,8 @@ Page({
     recordEndTime: "",
     begin: "1950-06-01",
     end: "2100-06-01",
-    name: ""
+    name: "",
+    new: false
   },
 
   inputComName: function(e) {
@@ -98,6 +99,7 @@ Page({
   onLoad: function(options) {
     if (options.new) {
       this.setData({
+        new: true,
         authStartTime: util.formatTime(new Date(), "yyyy-MM-dd"),
         authEndTime: util.formatTime(new Date(), "yyyy-MM-dd"),
         recordStartTime: util.formatTime(new Date(), "yyyy-MM-dd"),
@@ -105,6 +107,7 @@ Page({
       });
     } else {
       this.setData({
+        new: false,
         companyName: options.companyName,
         authStartTime: options.authStartTime,
         authEndTime: options.authEndTime,
