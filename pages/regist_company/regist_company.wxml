@@ -33,7 +33,7 @@
       </view>
     </form>
   </view>
-  <button class="button-BILL-1" hover-class="button-BILL-1-p" disabled="{{registered}}" bindtap="getMessage" formType="submit">
+  <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="getMessage" formType="submit">
     注册
   </button>
 </view>

@@ -9,8 +9,7 @@ Page({
     code: "",
     second: 60,
     isCode: "",
-    currentText: "",
-    registered: false
+    currentText: ""
   },
   formSubmit: function(e) {
     console.log("form发生了submit事件，携带数据为：", e.detail.value);
@@ -116,8 +115,9 @@ Page({
   getMessage: function() {
     var that = this;
     if (this.data.code == "1234") {
-      that.setData({
-        registered: true
+      wx.showLoading({
+        title: "注册中...",
+        mask: true
       });
       wx.request({
         url: config.registUrl,
@@ -131,6 +131,7 @@ Page({
         method: "POST",
         //如果公司已注册，提醒用户改公司名
         success: function(res) {
+          wx.hideLoading();
           if (res.statusCode == 200) {
             wx.showToast({
               title: "注册成功",
@@ -146,17 +147,12 @@ Page({
             });
             console.log(res);
           }
-          that.setData({
-            registered: false
-          });
         },
         fail: function(res) {
+          wx.hideLoading();
           wx.showToast({
             title: "请检查网络状态",
             icon: "none"
-          });
-          that.setData({
-            registered: false
           });
         }
       });

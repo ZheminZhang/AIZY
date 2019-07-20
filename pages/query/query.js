@@ -4,7 +4,6 @@ var util = require("../../utils/util.js");
 
 Page({
   data: {
-    disabled_name: false,
     companyName: "",
     recordStartTime: "",
     recordEndTime: "",
@@ -45,8 +44,9 @@ Page({
     }
     var date = new Date();
     date = util.formatToDate(date) / 1000 + 14400;
-    that.setData({
-      overed: true //按钮不可按
+    wx.showLoading({
+      title: "查询中...",
+      mask: true
     });
     wx.request({
       url: api.queryUrl,
@@ -62,6 +62,7 @@ Page({
       },
       method: "POST",
       success: function(e) {
+        wx.hideLoading();
         if (e.statusCode == 200) {
           wx.setStorageSync("table", e.data);
           wx.navigateTo({
@@ -73,17 +74,12 @@ Page({
             icon: "none"
           });
         }
-        that.setData({
-          overed: false
-        });
       },
       fail: function(e) {
+        wx.hideLoading();
         wx.showToast({
           title: "发送失败",
           icon: "none"
-        });
-        that.setData({
-          overed: false
         });
       }
     });

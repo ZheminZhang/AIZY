@@ -27,8 +27,7 @@ Page({
     thirdSig: "",
     firstCompName: "",
     secondCompName: "",
-    thirdCompName: "",
-    decided: false
+    thirdCompName: ""
   },
   navbarTap: function(e) {
     this.setData({
@@ -103,9 +102,19 @@ Page({
       tag = "agree";
     }
     console.log(this.data.party);
-    that = this;
-    that.setData({
-      decided: true
+    var that = this;
+    var t1;
+    var t2;
+    if (tag == "agree") {
+      t1 = "签名中...";
+      t2 = "签名";
+    } else if (tag == "disagree") {
+      t1 = "拒签中...";
+      t2 = "拒签";
+    }
+    wx.showLoading({
+      title: t1,
+      mask: true
     });
     wx.request({
       url: config.signUrl,
@@ -120,12 +129,10 @@ Page({
         party: this.data.party
       },
       success: function(e) {
+        wx.hideLoading();
         wx.showToast({
-          title: "成功",
+          title: t2 + "成功",
           icon: "success"
-        });
-        that.setData({
-          decided: false
         });
         util.getSignList(() =>
           wx.navigateBack({
@@ -134,12 +141,10 @@ Page({
         );
       },
       fail: function(e) {
+        wx.hideLoading();
         wx.showToast({
-          title: "请求发送失败",
+          title: t2 + "失败",
           icon: "none"
-        });
-        that.setData({
-          decided: false
         });
       }
     });

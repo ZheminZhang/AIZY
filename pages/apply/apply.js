@@ -4,7 +4,6 @@ var util = require("../../utils/util.js");
 
 Page({
   data: {
-    disabled_name: false,
     companyName: "",
     authStartTime: "",
     authEndTime: "",
@@ -12,8 +11,7 @@ Page({
     recordEndTime: "",
     begin: "1950-06-01",
     end: "2100-06-01",
-    name: "",
-    applied: false
+    name: ""
   },
 
   inputComName: function(e) {
@@ -30,8 +28,9 @@ Page({
     var date = new Date();
     date = util.formatToDate(date) / 1000 + 14400;
     var that = this;
-    that.setData({
-      applied: true
+    wx.showLoading({
+      title: "申请中...",
+      mask: true
     });
     wx.request({
       url: api.requestAuthoUrl,
@@ -46,6 +45,7 @@ Page({
       },
       method: "POST",
       success: function(e) {
+        wx.hideLoading();
         if (e.statusCode == 200) {
           wx.showToast({
             title: "申请发送成功",
@@ -64,17 +64,12 @@ Page({
             icon: "none"
           });
         }
-        that.setData({
-          applied: false
-        });
       },
       fail: function(e) {
+        wx.hideLoading();
         wx.showToast({
           title: "申请发送失败",
           icon: "none"
-        });
-        that.setData({
-          applied: false
         });
       }
     });
@@ -100,12 +95,22 @@ Page({
     }
   },
 
-  onReady: function() {
-    this.setData({
-      authStartTime: util.formatTime(new Date(), "yyyy-MM-dd"),
-      authEndTime: util.formatTime(new Date(), "yyyy-MM-dd"),
-      recordStartTime: util.formatTime(new Date(), "yyyy-MM-dd"),
-      recordEndTime: util.formatTime(new Date(), "yyyy-MM-dd")
-    });
+  onLoad: function(options) {
+    if (options.new) {
+      this.setData({
+        authStartTime: util.formatTime(new Date(), "yyyy-MM-dd"),
+        authEndTime: util.formatTime(new Date(), "yyyy-MM-dd"),
+        recordStartTime: util.formatTime(new Date(), "yyyy-MM-dd"),
+        recordEndTime: util.formatTime(new Date(), "yyyy-MM-dd")
+      });
+    } else {
+      this.setData({
+        companyName: options.companyName,
+        authStartTime: options.authStartTime,
+        authEndTime: options.authEndTime,
+        recordStartTime: options.recordStartTime,
+        recordEndTime: options.recordEndTime
+      });
+    }
   }
 });

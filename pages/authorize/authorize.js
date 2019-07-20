@@ -13,8 +13,7 @@ Page({
     end: "2100-06-01",
     type: [],
     recordId: "",
-    tp: "",
-    decided: false // 是否决定授权
+    tp: ""
   },
   // TODO:
   formSubmit: function(e) {
@@ -56,8 +55,18 @@ Page({
       tag = "agree";
     }
     var that = this;
-    that.setData({
-      decided: true
+    var t1;
+    var t2;
+    if (tag == "agree") {
+      t1 = "授权中...";
+      t2 = "授权";
+    } else if (tag == "disagree") {
+      t1 = "拒绝授权中...";
+      t2 = "拒绝授权";
+    }
+    wx.showLoading({
+      title: t1,
+      mask: true
     });
     wx.request({
       url: config.authorizedUrl,
@@ -76,12 +85,10 @@ Page({
         recordId: this.data.recordId
       },
       success: function(e) {
+        wx.hideLoading();
         wx.showToast({
-          title: "成功",
+          title: t2 + "成功",
           icon: "success"
-        });
-        that.setData({
-          decided: false
         });
         //读取服务器的授权和未授权信息，并跳转其他页面
         util.getAuthoList(i => {
@@ -93,12 +100,10 @@ Page({
         });
       },
       fail: function(e) {
+        wx.hideLoading();
         wx.showToast({
-          title: "请求发送失败",
+          title: t2 + "失败",
           icon: "none"
-        });
-        that.setData({
-          decided: false
         });
       }
     });

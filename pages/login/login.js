@@ -46,10 +46,11 @@ Page({
   doLogin: function() {
     let that = this;
     wx.showLoading({
-      title: "请稍等...",
+      title: "登录中...",
       mask: true
     });
     app.doLogin(() => {
+      wx.hideLoading();
       that.getUserInfo();
       util.getApplyList(i => {
         if (i == 2) {
@@ -86,7 +87,6 @@ Page({
         hasLogin: true,
         userInfo: userInfo
       });
-      wx.hideLoading();
     } else {
       console.log("globalData中userInfo为空");
     }
@@ -97,6 +97,13 @@ Page({
    */
 
   goApply: function() {
+    wx.showLoading({
+      title: "获取申请查询列表中...",
+      mask: true
+    });
+    setTimeout(() => {
+      wx.hideLoading();
+    }, 500);
     let loginFlag = wx.getStorageSync("loginFlag");
     if (loginFlag) {
       util.getApplyList(i => {
@@ -153,6 +160,13 @@ Page({
   },
 
   goAuth: function() {
+    wx.showLoading({
+      title: "获取授权查询列表中...",
+      mask: true
+    });
+    setTimeout(() => {
+      wx.hideLoading();
+    }, 500);
     let loginFlag = wx.getStorageSync("loginFlag");
     if (loginFlag) {
       util.getAuthoList(i => {
@@ -176,6 +190,13 @@ Page({
   },
 
   goSign: function() {
+    wx.showLoading({
+      title: "获取账单签名列表中...",
+      mask: true
+    });
+    setTimeout(() => {
+      wx.hideLoading();
+    }, 500);
     let loginFlag = wx.getStorageSync("loginFlag");
     if (loginFlag) {
       util.getSignList(i => {

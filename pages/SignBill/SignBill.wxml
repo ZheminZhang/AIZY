@@ -8,65 +8,65 @@
         <image class="icon-BILL-3" src="../../images/BILL/date.png"></image>
         <text class="text-BILL-2">日期:</text>
         <view class="picker" wx:if="{{date}}">{{date}}</view>
-        <view class="picker" wx:if="{{!date}}">请下拉刷新</view>
+        <view class="picker" wx:if="{{!date}}">获取数据失败</view>
       </view>
       <view class="list-BILL-1">
         <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
         <text class="text-BILL-1">摘要:</text>
         <text class="weui-input_BILL_1" wx:if="{{summary}}">{{summary}}</text>
-        <text class="weui-input_BILL_1" wx:if="{{!summary}}">请下拉刷新</text>
+        <text class="weui-input_BILL_1" wx:if="{{!summary}}">获取数据失败</text>
       </view>
       <view class="list-BILL-1">
         <image class="icon-BILL-1" src="../../images/BILL/borrow.png"></image>
         <text class="text-BILL-1">借方科目:</text>
         <text class="weui-input_BILL_2" wx:if="{{debit}}">{{debit}}</text>
-        <text class="weui-input_BILL_2" wx:if="{{!debit}}">请下拉刷新</text>
+        <text class="weui-input_BILL_2" wx:if="{{!debit}}">获取数据失败</text>
       </view>
       <view class="list-BILL-1">
         <image class="icon-BILL-2" src="../../images/BILL/YUAN.png"></image>
         <text class="text-BILL-1">借方金额(元):</text>
         <text class="weui-input_BILL_3" wx:if="{{debitAmount}}">{{debitAmount}}</text>
-        <text class="weui-input_BILL_3" wx:if="{{!debitAmount}}">请下拉刷新</text>
+        <text class="weui-input_BILL_3" wx:if="{{!debitAmount}}">获取数据失败</text>
       </view>
       <view class="list-BILL-1">
         <image class="icon-BILL-1" src="../../images/BILL/loan.png"></image>
         <text class="text-BILL-1">贷方科目:</text>
         <text class="weui-input_BILL_2" wx:if="{{credit}}">{{credit}}</text>
-        <text class="weui-input_BILL_2" wx:if="{{!credit}}">请下拉刷新</text>
+        <text class="weui-input_BILL_2" wx:if="{{!credit}}">获取数据失败</text>
       </view>
       <view class="list-BILL-1">
         <image class="icon-BILL-2" src="../../images/BILL/YUAN.png"></image>
         <text class="text-BILL-1">贷方金额(元):</text>
         <text class="weui-input_BILL_3" wx:if="{{creditAmount}}">{{creditAmount}}</text>
-        <text class="weui-input_BILL_3" wx:if="{{!creditAmount}}">请下拉刷新</text>
+        <text class="weui-input_BILL_3" wx:if="{{!creditAmount}}">获取数据失败</text>
       </view>
       <view class="list-BILL-1">
         <image class="icon-BILL-1" src="../../images/apply_list/author1.png"></image>
         <text class="text-BILL-1">甲方</text>
         <text class="weui-input_BILL_2" wx:if="{{firstCompName}}">{{firstCompName}}</text>
-        <text class="weui-input_BILL_2" wx:if="{{!firstCompName}}">请下拉刷新</text>
+        <text class="weui-input_BILL_2" wx:if="{{!firstCompName}}">获取数据失败</text>
       </view>
       <view class="list-BILL-1">
         <image class="icon-BILL-1" src="../../images/apply_list/author.png"></image>
         <text class="text-BILL-1">乙方</text>
         <text class="weui-input_BILL_2" wx:if="{{secondCompName}}">{{secondCompName}}</text>
-        <text class="weui-input_BILL_2" wx:if="{{!secondCompName}}">请下拉刷新</text>
+        <text class="weui-input_BILL_2" wx:if="{{!secondCompName}}">获取数据失败</text>
       </view>
       <view class="list-BILL-1">
         <image class="icon-BILL-1" src="../../images/apply_list/application.png"></image>
         <text class="text-BILL-1">第三方</text>
         <text class="weui-input_BILL_2" wx:if="{{thirdCompName}}">{{thirdCompName}}</text>
-        <text class="weui-input_BILL_2" wx:if="{{!thirdCompName}}">请下拉刷新</text>
+        <text class="weui-input_BILL_2" wx:if="{{!thirdCompName}}">获取数据失败</text>
       </view>
       <!-- 完成按钮 -->
       <view>
         <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap='goSignInfo'>
           查看签名
         </button>
-        <button class="button-BILL-1" hover-class="button-BILL-1-p" disabled="{{decided}}" bindtap="goSignBill" data-type="agree" wx:if="{{isClick}}">
+        <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="goSignBill" data-type="agree" wx:if="{{isClick}}">
           签名
         </button>
-        <button class="button-BILL-1" hover-class="button-BILL-1-p" disabled="{{decided}}" bindtap="goSignBill" data-type="refuse" wx:if="{{isClick}}">
+        <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="goSignBill" data-type="refuse" wx:if="{{isClick}}">
           拒签
         </button>
       </view>

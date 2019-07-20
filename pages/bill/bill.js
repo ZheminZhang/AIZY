@@ -24,8 +24,6 @@ Page({
     date: "", //日期
     secondCompName: "",
     thirdCompName: "",
-    overed: false, //完成按钮是否可按
-    sent: false, //发送按钮是否可按
     sendButtonText: "生成报表"
   },
 
@@ -102,13 +100,12 @@ Page({
   },
   sendData: function() {
     var that = this;
-    that.setData({
-      sent: true
+
+    wx.showLoading({
+      title: "账单生成中...",
+      mask: true
     });
     /* 得到完整识别内容发给语音服务器处理 */
-    wx.showLoading({
-      title: "账单生成中..."
-    });
     wx.request({
       url: config.voiceUrl,
       // url: "http://27.152.156.24:80/api/analysis/analysis",
@@ -117,22 +114,19 @@ Page({
       },
       method: "POST",
       success: function(res) {
+        wx.hideLoading();
         that.setData({
           summary: res.data.data[0].summary,
           debit: res.data.data[0].debit,
           debitAmount: parseFloat(res.data.data[0].debit_amount),
           credit: res.data.data[0].credit,
-          creditAmount: parseFloat(res.data.data[0].credit_amount),
-          sent: false
+          creditAmount: parseFloat(res.data.data[0].credit_amount)
         });
-        wx.hideLoading();
+
         that.setActiveTab("tabitemForm");
       },
       fail: function(res) {
         console.log(res);
-        that.setData({
-          sent: false
-        });
         wx.hideLoading();
       }
     });
@@ -230,14 +224,14 @@ Page({
       return;
     }
 
-    that.setData({
-      overed: true //按钮不可按
-    });
-
     //精确到秒，定位为当天12点
     var unixtime = util.formatToDate(that.data.date) / 1000 + 14400;
     console.log("交易方信息");
     console.log(that.data.secondCompName);
+    wx.showLoading({
+      title: "提交账单中...",
+      mask: true
+    });
     wx.request({
       url: config.insertUrl,
       data: {
@@ -253,6 +247,7 @@ Page({
       },
       method: "POST",
       success: function(res) {
+        wx.hideLoading();
         // TODO:应该使用返回的数据进行判断
         if (res.statusCode == 200) {
           wx.showToast({
@@ -271,16 +266,11 @@ Page({
             success: function() {}
           });
         }
-        that.setData({
-          overed: false
-        });
       },
       fail: function(res) {
         // 网络请求失败
         console.log("失败：" + res);
-        that.setData({
-          overed: false
-        });
+        wx.hideLoading();
       }
     });
   },

@@ -4,7 +4,7 @@
       <view class="page-section">
         <view class="page-section-title">公司名称</view>
         <view class="weui-cell__bd">
-          <input class="weui-input" name="name" value="{{companyName}}" disabled='{{disabled_name}}' bindinput="inputComName" />
+          <input class="weui-input" name="name" value="{{companyName}}" bindinput="inputComName" />
         </view>
       </view>
       <view class="time_selection">
@@ -48,7 +48,5 @@
       </view>
     </form>
   </view>
-  <button class="button-BILL-1" hover-class="button-BILL-1-p" disabled="{{applied}}" bindtap="formSubmit">
-    申请
-  </button>
+  <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="formSubmit">提交申请</button>
 </view>
