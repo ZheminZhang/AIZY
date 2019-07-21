@@ -4,8 +4,10 @@
       <view class="page-section">
         <view class="page-section-title">公司名称</view>
         <view class="weui-cell__bd">
-          <input class="weui-input" name="name" value="{{companyName}}" bindinput="inputComName" wx:if="{{new}}" />
-          <view class="weui-input" wx:if="{{!new}}">{{companyName}}</view>
+          <input class="weui-input" name="name" bindinput="inputComName" wx:if="{{new}}" />
+          <input class="weui-input" value="{{companyName}}" disabled="{{true}}" wx:else>
+            {{companyName}}
+          </input>
         </view>
       </view>
       <view class="time_selection">

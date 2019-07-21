@@ -14,9 +14,6 @@
         <view class="section-body">
           <textarea class="message" value="{{currentText}}" placeholder="语音或手动输入摘要" bindinput="vtextAreaBlur"></textarea>
         </view>
-        <!-- <view class="send-SR">
-          <image class="icon-SR-1" src="../../images/BILL/Send.png" bindtap="sendData" disabled='{{sent}}'></image>
-        </view> -->
         <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="sendData">生成账单</button>
         <view class="view-SR-1">
           <view class="view-SR-2" catchtouchstart="streamRecord" catchtouchend="streamRecordEnd">

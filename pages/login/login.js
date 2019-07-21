@@ -204,7 +204,6 @@ Page({
     let loginFlag = wx.getStorageSync("loginFlag");
     if (loginFlag) {
       util.getSignList(i => {
-        console.log(i);
         if (i == 2) {
           wx.navigateTo({
             url: "../Sign/Sign",

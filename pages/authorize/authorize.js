@@ -2,7 +2,6 @@ var util = require("../../utils/util.js");
 var config = require("../../config/config.js");
 Page({
   data: {
-    disabled_name: true,
     companyName: "",
     id: -1,
     authStartTime: "", //授权开始时间
