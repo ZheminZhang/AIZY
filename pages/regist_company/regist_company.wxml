@@ -29,11 +29,11 @@
       <!-- 经营范围 -->
       <view class="page-section">
         <view class="page-section-title">经营范围</view>
-        <textarea class="message" value="{{currentText}}" placeholder="输入公司经营范围，若有多个，请用空格分开" bindinput='getSellArea'></textarea>
+        <textarea class="message" value="{{currentText}}" placeholder="输入公司经营范围，若有多个，请用逗号分开" bindinput='getSellArea'></textarea>
       </view>
     </form>
   </view>
-  <button class="button-BILL-1" hover-class="button-BILL-1-p" disabled="{{registered}}" bindtap="getMessage" formType="submit">
+  <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="getMessage" formType="submit">
     注册
   </button>
 </view>

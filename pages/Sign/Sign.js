@@ -57,6 +57,13 @@ Page({
   },
   //tp是决定是拒绝同意的标志
   toDetail: function(e) {
+    wx.showLoading({
+      title: "请稍后...",
+      mask: true
+    });
+    setTimeout(() => {
+      wx.hideLoading();
+    }, 500);
     var index = e.currentTarget.id;
     var url_ = "../SignBill/SignBill?" + "tp=" + e.target.dataset["tp"];
     var itemId;

@@ -352,6 +352,11 @@ function getSignQuery(itemId, party, callback) {
       if (res.statusCode == 200) {
         wx.setStorageSync("BillInfo", res.data);
         callback();
+      } else {
+        wx.showToast({
+          title: res.data,
+          icon: "none"
+        });
       }
     },
     fail: function(res) {
@@ -371,10 +376,22 @@ function getAuthoList(callback) {
     method: "POST",
     success: function(res) {
       wx.setStorageSync("grantorUnautho", "");
-      if (res.statusCode == 200) wx.setStorageSync("grantorUnautho", res.data);
-      callback(i++);
+      if (res.statusCode == 200) {
+        wx.setStorageSync("grantorUnautho", res.data);
+        setNum();
+        callback(i++);
+      } else {
+        wx.showToast({
+          title: res.data,
+          icon: "none"
+        });
+      }
     },
     fail: function(res) {
+      wx.showToast({
+        title: "请求待授权查询列表失败",
+        icon: "none"
+      });
       console.log(res);
     }
   });
@@ -387,10 +404,21 @@ function getAuthoList(callback) {
     method: "POST",
     success: function(res) {
       wx.setStorageSync("grantorAutho", "");
-      if (res.statusCode == 200) wx.setStorageSync("grantorAutho", res.data);
-      callback(i++);
+      if (res.statusCode == 200) {
+        wx.setStorageSync("grantorAutho", res.data);
+        callback(i++);
+      } else {
+        wx.showToast({
+          title: res.data,
+          icon: "none"
+        });
+      }
     },
     fail: function(res) {
+      wx.showToast({
+        title: "请求已授权查询列表失败",
+        icon: "none"
+      });
       console.log(res);
     }
   });
@@ -403,68 +431,26 @@ function getAuthoList(callback) {
     method: "POST",
     success: function(res) {
       wx.setStorageSync("grantorUnauthoRefuse", "");
-      if (res.statusCode == 200)
+      if (res.statusCode == 200) {
         wx.setStorageSync("grantorUnauthoRefuse", res.data);
-      callback(i++);
+        callback(i++);
+      } else {
+        wx.showToast({
+          title: res.data,
+          icon: "none"
+        });
+      }
     },
     fail: function(res) {
+      wx.showToast({
+        title: "请求拒绝授权查询列表失败",
+        icon: "none"
+      });
       console.log(res);
     }
   });
 }
 
-function _getAuthoList(callback = () => {}) {
-  wx.request({
-    url: api.grantorAuthoUrl,
-    data: {
-      loginFlag: wx.getStorageSync("loginFlag")
-    },
-    method: "POST",
-    success: function(res) {
-      wx.setStorageSync("grantorAutho", "");
-      if (res.statusCode == 200) wx.setStorageSync("grantorAutho", res.data);
-      callback();
-    },
-    fail: function(res) {
-      console.log(res);
-    }
-  });
-}
-function _getUnAuthoList(callback = () => {}) {
-  wx.request({
-    url: api.grantorUnauthoUrl,
-    data: {
-      loginFlag: wx.getStorageSync("loginFlag")
-    },
-    method: "POST",
-    success: function(res) {
-      wx.setStorageSync("grantorUnautho", "");
-      if (res.statusCode == 200) wx.setStorageSync("grantorUnautho", res.data);
-      callback();
-    },
-    fail: function(res) {
-      console.log(res);
-    }
-  });
-}
-function _getUnAuthoRefuseList(callback = () => {}) {
-  wx.request({
-    url: api.grantorUnauthoRefuseUrl,
-    data: {
-      loginFlag: wx.getStorageSync("loginFlag")
-    },
-    method: "POST",
-    success: function(res) {
-      wx.setStorageSync("grantorUnauthoRefuse", "");
-      if (res.statusCode == 200)
-        wx.setStorageSync("grantorUnauthoRefuse", res.data);
-      callback();
-    },
-    fail: function(res) {
-      console.log(res);
-    }
-  });
-}
 /* 获取申请列表信息 */
 function getApplyList(callback) {
   var i = 0;
@@ -477,10 +463,21 @@ function getApplyList(callback) {
     method: "POST",
     success: function(res) {
       wx.setStorageSync("granteeUnautho", "");
-      if (res.statusCode == 200) wx.setStorageSync("granteeUnautho", res.data);
-      callback(i++);
+      if (res.statusCode == 200) {
+        wx.setStorageSync("granteeUnautho", res.data);
+        callback(i++);
+      } else {
+        wx.showToast({
+          title: res.data,
+          icon: "none"
+        });
+      }
     },
     fail: function(res) {
+      wx.showToast({
+        title: "请求待接收申请查询列表失败",
+        icon: "none"
+      });
       console.log(res);
     }
   });
@@ -493,10 +490,21 @@ function getApplyList(callback) {
     method: "POST",
     success: function(res) {
       wx.setStorageSync("granteeAutho", "");
-      if (res.statusCode == 200) wx.setStorageSync("granteeAutho", res.data);
-      callback(i++);
+      if (res.statusCode == 200) {
+        wx.setStorageSync("granteeAutho", res.data);
+        callback(i++);
+      } else {
+        wx.showToast({
+          title: res.data,
+          icon: "none"
+        });
+      }
     },
     fail: function(res) {
+      wx.showToast({
+        title: "请求已接收申请查询列表失败",
+        icon: "none"
+      });
       console.log(res);
     }
   });
@@ -509,67 +517,27 @@ function getApplyList(callback) {
     method: "POST",
     success: function(res) {
       wx.setStorageSync("granteeUnauthoRefuse", "");
-      if (res.statusCode == 200)
+      if (res.statusCode == 200) {
         wx.setStorageSync("granteeUnauthoRefuse", res.data);
-      callback(i++);
+        setNum();
+        callback(i++);
+      } else {
+        wx.showToast({
+          title: res.data,
+          icon: "none"
+        });
+      }
     },
     fail: function(res) {
+      wx.showToast({
+        title: "请求已拒绝申请查询列表失败",
+        icon: "none"
+      });
       console.log(res);
     }
   });
 }
-function _getUnApplyList(callback = () => {}) {
-  wx.request({
-    url: api.granteeUnauthoUrl,
-    data: {
-      loginFlag: wx.getStorageSync("loginFlag")
-    },
-    method: "POST",
-    success: function(res) {
-      wx.setStorageSync("granteeUnautho", "");
-      if (res.statusCode == 200) wx.setStorageSync("granteeUnautho", res.data);
-      callback();
-    },
-    fail: function(res) {
-      console.log(res);
-    }
-  });
-}
-function _getApplyList(callback = () => {}) {
-  wx.request({
-    url: api.granteeAuthoUrl,
-    data: {
-      loginFlag: wx.getStorageSync("loginFlag")
-    },
-    method: "POST",
-    success: function(res) {
-      wx.setStorageSync("granteeAutho", "");
-      if (res.statusCode == 200) wx.setStorageSync("granteeAutho", res.data);
-      callback();
-    },
-    fail: function(res) {
-      console.log(res);
-    }
-  });
-}
-function _getApplyRefuseList(callback = () => {}) {
-  wx.request({
-    url: api.granteeUnauthoRefuseUrl,
-    data: {
-      loginFlag: wx.getStorageSync("loginFlag")
-    },
-    method: "POST",
-    success: function(res) {
-      wx.setStorageSync("granteeUnauthoRefuse", "");
-      if (res.statusCode == 200)
-        wx.setStorageSync("granteeUnauthoRefuse", res.data);
-      callback();
-    },
-    fail: function(res) {
-      console.log(res);
-    }
-  });
-}
+
 /* 获取签名列表信息 */
 function getSignList(callback) {
   //未授权列表
@@ -582,10 +550,22 @@ function getSignList(callback) {
     method: "POST",
     success: function(res) {
       wx.setStorageSync("unsigned", "");
-      if (res.statusCode == 200) wx.setStorageSync("unsigned", res.data);
-      callback(i++);
+      if (res.statusCode == 200) {
+        wx.setStorageSync("unsigned", res.data);
+        setNum();
+        callback(i++);
+      } else {
+        wx.showToast({
+          title: res.data,
+          icon: "none"
+        });
+      }
     },
     fail: function(res) {
+      wx.showToast({
+        title: "请求待签名账单列表失败",
+        icon: "none"
+      });
       console.log(res);
     }
   });
@@ -598,10 +578,21 @@ function getSignList(callback) {
     method: "POST",
     success: function(res) {
       wx.setStorageSync("signed", "");
-      if (res.statusCode == 200) wx.setStorageSync("signed", res.data);
-      callback(i++);
+      if (res.statusCode == 200) {
+        wx.setStorageSync("signed", res.data);
+        callback(i++);
+      } else {
+        wx.showToast({
+          title: res.data,
+          icon: "none"
+        });
+      }
     },
     fail: function(res) {
+      wx.showToast({
+        title: "请求已签名账单列表失败",
+        icon: "none"
+      });
       console.log(res);
     }
   });
@@ -614,14 +605,41 @@ function getSignList(callback) {
     method: "POST",
     success: function(res) {
       wx.setStorageSync("signedRefuse", "");
-      if (res.statusCode == 200) wx.setStorageSync("signedRefuse", res.data);
-      callback(i++);
+      if (res.statusCode == 200) {
+        wx.setStorageSync("signedRefuse", res.data);
+        callback(i++);
+      } else {
+        wx.showToast({
+          title: res.data,
+          icon: "none"
+        });
+      }
     },
     fail: function(res) {
+      wx.showToast({
+        title: "请求拒签账单列表失败",
+        icon: "none"
+      });
       console.log(res);
     }
   });
 }
+
+function setNum() {
+  var numApply = wx.getStorageSync("granteeUnautho").length;
+  var numAutho = wx.getStorageSync("grantorUnautho").length;
+  var numSign = wx.getStorageSync("unsigned").length;
+  if (numApply <= 0 && numAutho <= 0 && numSign <= 0) {
+    wx.hideTabBarRedDot({
+      index: 2
+    });
+  } else {
+    wx.showTabBarRedDot({
+      index: 2
+    });
+  }
+}
+
 module.exports = {
   isNull: isNull,
   HttpGet: HttpGet,
@@ -635,12 +653,7 @@ module.exports = {
   wxPromisify: wxPromisify,
   getApplyList: getApplyList,
   getAuthoList: getAuthoList,
-  _getAuthoList: _getAuthoList,
-  _getUnAuthoList: _getUnAuthoList,
-  _getUnAuthoRefuseList: _getUnAuthoRefuseList,
-  _getUnApplyList: _getUnApplyList,
-  _getApplyList: _getApplyList,
-  _getApplyRefuseList: _getApplyRefuseList,
   getSignList: getSignList,
-  getSignQuery: getSignQuery
+  getSignQuery: getSignQuery,
+  setNum: setNum
 };

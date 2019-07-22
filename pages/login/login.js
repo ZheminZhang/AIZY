@@ -28,6 +28,10 @@ Page({
         },
         // session_key 已过期
         fail: function() {
+          wx.showToast({
+            title: "登录已过期，请重新登录",
+            icon: "none"
+          });
           that.setData({
             hasLogin: false
           });
@@ -46,10 +50,11 @@ Page({
   doLogin: function() {
     let that = this;
     wx.showLoading({
-      title: "请稍等...",
+      title: "请稍后...",
       mask: true
     });
     app.doLogin(() => {
+      wx.hideLoading();
       that.getUserInfo();
       util.getApplyList(i => {
         if (i == 2) {
@@ -86,7 +91,6 @@ Page({
         hasLogin: true,
         userInfo: userInfo
       });
-      wx.hideLoading();
     } else {
       console.log("globalData中userInfo为空");
     }
@@ -97,6 +101,13 @@ Page({
    */
 
   goApply: function() {
+    wx.showLoading({
+      title: "请稍后...",
+      mask: true
+    });
+    setTimeout(() => {
+      wx.hideLoading();
+    }, 500);
     let loginFlag = wx.getStorageSync("loginFlag");
     if (loginFlag) {
       util.getApplyList(i => {
@@ -153,6 +164,13 @@ Page({
   },
 
   goAuth: function() {
+    wx.showLoading({
+      title: "请稍后...",
+      mask: true
+    });
+    setTimeout(() => {
+      wx.hideLoading();
+    }, 500);
     let loginFlag = wx.getStorageSync("loginFlag");
     if (loginFlag) {
       util.getAuthoList(i => {
@@ -176,10 +194,16 @@ Page({
   },
 
   goSign: function() {
+    wx.showLoading({
+      title: "请稍后...",
+      mask: true
+    });
+    setTimeout(() => {
+      wx.hideLoading();
+    }, 500);
     let loginFlag = wx.getStorageSync("loginFlag");
     if (loginFlag) {
       util.getSignList(i => {
-        console.log(i);
         if (i == 2) {
           wx.navigateTo({
             url: "../Sign/Sign",
