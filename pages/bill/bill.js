@@ -128,7 +128,7 @@ Page({
         console.log(res);
         wx.hideLoading();
         wx.showToast({
-          title: "账单生成失败，请重试",
+          title: "记录生成失败，请重试",
           icon: "none"
         });
       }
@@ -187,7 +187,7 @@ Page({
     });
   },
 
-  // 签名账单
+  // 签名记录
   signBill: function() {
     let loginFlag = wx.getStorageSync("loginFlag");
     var that = this;

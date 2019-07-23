@@ -2,7 +2,7 @@
 const LANIP = "192.168.1.6";
 const OPENIP = "27.152.156.141";
 var ip = OPENIP;
-var ip = LANIP;
+// var ip = LANIP;
 
 const baseUrl = "http://" + ip + ":8848/";
 const testUrl = "http://" + ip + ":8848/";

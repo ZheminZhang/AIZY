@@ -40,7 +40,7 @@ Page({
 
   /* 下拉刷新，自动监听 */
   onPullDownRefresh: function() {
-    util.getSignList();
+    util.getSignList(() => {});
     this.onShow();
   },
 
