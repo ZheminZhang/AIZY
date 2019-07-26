@@ -31,5 +31,6 @@
       </view>
     </form>
   </view>
-  <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="formSubmit">查询</button>
+  <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="formSubmit" data-type="form">生成报表</button>
+  <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="formSubmit" data-type="bill">生成流水账</button>
 </view>

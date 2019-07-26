@@ -42,14 +42,23 @@ Page({
       });
       return;
     }
-    var date = new Date();
+    var date = new Date();var url_;
+    console.log(e.target.dataset["type"]);
+    var type;
+    if (e.target.dataset["type"]=="form")
+    { url_ =api.queryUrl;
+    type = "form";}
+    else if (e.target.dataset["type"] =="bill"){
+      url_ = api.queryUrl;
+      type="bill";
+    }
     date = util.formatToDate(date) / 1000 + 14400;
     wx.showLoading({
       title: "请稍后...",
       mask: true
     });
     wx.request({
-      url: api.queryUrl,
+      url: url_,
       //url: 'http://127.0.0.1:80',
       data: {
         companyName: this.data.companyName,
@@ -63,12 +72,27 @@ Page({
       method: "POST",
       success: function(e) {
         wx.hideLoading();
-        if (e.statusCode == 200) {
+        if (e.statusCode == 200 && type== "form") {
           wx.setStorageSync("table", e.data);
           wx.navigateTo({
             url: "../table/table"
           });
-        } else {
+        } 
+        else if (e.statusCode == 200 && type == "bill"){
+          var itemid;var party;
+          util.getSignQuery(itemId, party, () =>
+            wx.navigateTo({
+              url: url_,
+              fail: function (e) {
+                console.log(e);
+              }
+            })
+          );
+          wx.navigateTo({
+            url: "../BillInfo/Billinfo"
+          });
+        }
+        else {
           wx.showToast({
             title: e.data,
             icon: "none"
@@ -96,7 +120,6 @@ Page({
       });
     }
   },
-
   onReady: function() {
     this.setData({
       recordStartTime: util.formatTime(new Date(), "yyyy-MM-dd"),
