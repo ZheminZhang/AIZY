@@ -25,6 +25,7 @@ Page({
     firstCompName: "",
     secondCompName: "",
     thirdCompName: "",
+    allInfo:'',
   },
   /* 下拉刷新，自动监听 */
   onPullDownRefresh: function () {
@@ -34,7 +35,13 @@ Page({
   onReady: function () { },
   /* 加载页面 ,默认加载查询账单的第一份*/
   onLoad: function () {
-    var res = wx.getStorageSync("BillInfo");
+    var res = wx.getStorageSync("cashFlow").flowAccount;
+    res=JSON.parse(res);
+    this.setData({
+      allInfo:res,
+    })
+    var res=res[0].Record;
+    console.log(res);
     this.setData({
       summary: res.summary, //分类信息
       debit: res.debit, //借方科目
@@ -51,15 +58,11 @@ Page({
       secondCompName: res.secondCompName,
       thirdCompName: res.thirdCompName
     });
-    if (options.tp == 7) {
-      this.setData({
-        isClick: true
-      });
-    }
   },
   onShow: function () {
   },
   billnext: function (e) {
+    var nowNum = this.data.num;
     var tag = "before";
     if (e.target.dataset["type"] == "next") {
       tag = "next";
@@ -71,26 +74,30 @@ Page({
     } else if (tag == "next") {
       n=1;;
     }
-    if (this.data.num + n > 0 || this.data.num + n<= wx.getStorageSync("signed").length)
+    if (nowNum + n>=0 || nowNum + n<allInfo.length)
     {
-      wx.showLoading({
-      title: "请稍后...",
-      mask: true
+      wx.showToast({
+      title: "加载完毕",
+      icon:'loading',
     });
-    wx.request({
-      url: config.signUrl,
-      method: "POST",
-      header: {
-        "content-type": "application/x-www-form-urlencoded"
-      },
-      data: {
-        loginFlag: wx.getStorageSync("loginFlag"),
-        tag: tag,
-        itemId: this.data.itemId,
-        party: this.data.party
-      },
-      
-    });
+    var res=this.data.allInfo[nowNum+n].Record;
+    this.setData({
+      summary: res.summary, //分类信息
+      debit: res.debit, //借方科目
+      debitAmount: res.debitAmount, //借方金额
+      credit: res.credit, //贷方科目
+      creditAmount: res.creditAmount, //贷方金额
+      date: util.msToDate(res.time).withoutTime, //日期
+      itemId: res.itemId,
+      party: res.party,
+      secondSig: res.secondSig,
+      firstSig: res.firstSig,
+      thirdSig: res.thirdSig,
+      firstCompName: res.firstCompName,
+      secondCompName: res.secondCompName,
+      thirdCompName: res.thirdCompName,
+      num:nowNum+n,
+    })
     }
     else{
       wx.showToast({

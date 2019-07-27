@@ -42,23 +42,10 @@ Page({
       });
       return;
     }
-    var date = new Date();var url_;
-    console.log(e.target.dataset["type"]);
-    var type;
-    if (e.target.dataset["type"]=="form")
-    { url_ =api.queryUrl;
-    type = "form";}
-    else if (e.target.dataset["type"] =="bill"){
-      url_ = api.queryUrl;
-      type="bill";
-    }
-    date = util.formatToDate(date) / 1000 + 14400;
-    wx.showLoading({
-      title: "请稍后...",
-      mask: true
-    });
+    var date = new Date();
+    var type = e.target.dataset["type"];
     wx.request({
-      url: url_,
+      url: api.queryUrl,
       //url: 'http://127.0.0.1:80',
       data: {
         companyName: this.data.companyName,
@@ -71,6 +58,7 @@ Page({
       },
       method: "POST",
       success: function(e) {
+        console.log(e);
         wx.hideLoading();
         if (e.statusCode == 200 && type== "form") {
           wx.setStorageSync("table", e.data);
@@ -79,15 +67,7 @@ Page({
           });
         } 
         else if (e.statusCode == 200 && type == "bill"){
-          var itemid;var party;
-          util.getSignQuery(itemId, party, () =>
-            wx.navigateTo({
-              url: url_,
-              fail: function (e) {
-                console.log(e);
-              }
-            })
-          );
+          wx.setStorageSync("cashFlow",e.data);
           wx.navigateTo({
             url: "../BillInfo/Billinfo"
           });
