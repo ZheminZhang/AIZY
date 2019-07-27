@@ -54,6 +54,9 @@
         <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="billnext" data-type="before">
           上一页
         </button>
+        <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap='goSignInfo'>
+          查看签名
+        </button>
         <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="billnext" data-type="next" >
           下一页
         </button>

@@ -10,6 +10,13 @@ page {
 icon {
   vertical-align: middle;
 }
+.list-BILL-1 {
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 2rpx solid #ddd;
+}
+
 .weui-cells {
   position: relative;
   margin-top: 1.17647059em;
@@ -1072,6 +1079,16 @@ icon {
   color: white;
   width:500rpx
 }
+.icon-BILL-2 {
+  width: 39rpx;
+  height: 39rpx;
+  margin: 0rpx 15rpx 0 10rpx;
+  align-self:center;
+
+}
+button::after {
+  border: none;
+}
 .container {
   padding: 100rpx 0;
 }
@@ -1097,6 +1114,7 @@ margin-left:20rpx;
 justify-content:center;
 display:flex;
 border-bottom:0.5px dashed #aad08f;
+box-shadow: 0 2px 16px 2px rgba(0, 0, 0, 0.03);
 }
 .page-section-title{
   position: relative;
@@ -1107,10 +1125,12 @@ border-bottom:0.5px dashed #aad08f;
   text-align:center;
 }
 .time_selection{
-  margin-bottom: 40rpx;
+  margin-bottom: 20rpx;
   display: flex;
   flex-wrap:nowrap;
   flex-direction: row;
+  background-color:#fff;
+
 }
 .time-choose {
 display:flex;
@@ -1119,11 +1139,12 @@ margin-left:120rpx;
 
 }
 .page-section{
-  margin-bottom: 40rpx;
-  display: flex;
-  flex-wrap:nowrap;
-  position: relative;
-
+margin-bottom:20rpx;
+display:flex;
+flex-wrap:nowrap;
+position:relative;
+align-items:center;
+background-color:#fff;
 }
 .btn-area{
 width:50%;

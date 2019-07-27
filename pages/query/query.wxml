@@ -1,9 +1,9 @@
 <!-- pages/query/query.wxml -->
-<import src="../../template/query_t/query_t.wxml" />
 <view class="container">
   <view class="page-body">
     <form catchsubmit="formSubmit" catchreset="formReset">
       <view class="page-section">
+       <image class="icon-BILL-2" src="../../images/comp.png"></image>
         <view class="page-section-title">查询公司</view>
         <view class="weui-cell__bd">
           <input class="weui-input" name="name" value="{{companyName}}" bindinput="inputComName" />
@@ -11,6 +11,7 @@
       </view>
       <view class="time_selection">
         <!-- 时间选择器 -->
+         <image class="icon-BILL-2" src="../../images/date.png"></image>
         <view class="page-section-title">账单日期</view>
         <view class="time-choose">
           <!-- 开始时间 -->

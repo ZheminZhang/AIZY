@@ -36,7 +36,7 @@ Page({
   /* 加载页面 ,默认加载查询账单的第一份*/
   onLoad: function () {
     var res = wx.getStorageSync("cashFlow").flowAccount;
-    res=JSON.parse(res);
+    console.log(res);
     this.setData({
       allInfo:res,
     })
@@ -74,12 +74,10 @@ Page({
     } else if (tag == "next") {
       n=1;;
     }
-    if (nowNum + n>=0 || nowNum + n<allInfo.length)
+    console.log(this.data.allInfo.length);
+    console.log(nowNum+n);
+    if ((nowNum + n)>=0&&(nowNum + n)<this.data.allInfo.length)
     {
-      wx.showToast({
-      title: "加载完毕",
-      icon:'loading',
-    });
     var res=this.data.allInfo[nowNum+n].Record;
     this.setData({
       summary: res.summary, //分类信息
@@ -97,13 +95,20 @@ Page({
       secondCompName: res.secondCompName,
       thirdCompName: res.thirdCompName,
       num:nowNum+n,
-    })
+    });
     }
     else{
+      var text='顶';
+      if(n==1) text='底';
       wx.showToast({
-        title: '您的页面已到顶',
+        title: '您的页面已到'+text,
         icon:'none',
       })
     }
+  },
+  goSignInfo: function () {
+    wx.navigateTo({
+      url: "../SignInfo/SignInfo"
+    });
   }
 })

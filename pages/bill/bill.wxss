@@ -165,12 +165,6 @@ page {
   background: rgba(177, 182, 177, 0.603);
 }
 
-.list-BILL-1 {
-  height: 110rpx;
-  display: flex;
-  align-items: center;
-  border-bottom: 2rpx solid #ddd;
-}
 
 .icon-BILL-1 {
   width: 39rpx;
