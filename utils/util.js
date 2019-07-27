@@ -563,7 +563,7 @@ function getSignList(callback) {
     },
     fail: function(res) {
       wx.showToast({
-        title: "请求待签名账单列表失败",
+        title: "请求待签名记录列表失败",
         icon: "none"
       });
       console.log(res);
@@ -590,7 +590,7 @@ function getSignList(callback) {
     },
     fail: function(res) {
       wx.showToast({
-        title: "请求已签名账单列表失败",
+        title: "请求已签名记录列表失败",
         icon: "none"
       });
       console.log(res);
@@ -617,7 +617,7 @@ function getSignList(callback) {
     },
     fail: function(res) {
       wx.showToast({
-        title: "请求拒签账单列表失败",
+        title: "请求拒签记录列表失败",
         icon: "none"
       });
       console.log(res);

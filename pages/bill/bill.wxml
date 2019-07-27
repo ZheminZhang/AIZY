@@ -4,7 +4,7 @@
       语音
     </text>
     <text id="tabitemForm" class='tabitem {{activeTabId=="tabitemForm"?"tabitem-active":""}}' bindtap='tabclick'>
-      账单
+      记录
     </text>
     <!-- <view class='tabindicator' animation="{{indicatorAnim}}"></view> -->
   </view>
@@ -14,7 +14,7 @@
         <view class="section-body">
           <textarea class="message" value="{{currentText}}" placeholder="语音或手动输入摘要" bindinput="vtextAreaBlur"></textarea>
         </view>
-        <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="sendData">生成账单</button>
+        <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="sendData">生成记录</button>
         <view class="view-SR-1">
           <view class="view-SR-2" catchtouchstart="streamRecord" catchtouchend="streamRecordEnd">
             <image class="icon-SR-2" src="../../images/BILL/microphone.png"></image>
@@ -71,7 +71,7 @@
           <!-- 签名按钮 -->
         </view>
         <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="confirmData">
-          提交账单
+          提交记录
         </button>
       </scroll-view>
     </swiper-item>
