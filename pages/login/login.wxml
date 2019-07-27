@@ -29,7 +29,7 @@
   <view class="tab-item" hover-class="tab-item-hover" catchtap="goSign" data-statu="open">
     <view class="icon_style">
       <image src="../../images/4.png" mode="aspectFit" class="tab-icon"></image>
-      <text class="tab-text">账单签名</text>
+      <text class="tab-text">记录签名</text>
     </view>
     <view class="icon_style">
       <text class="tab-text" wx:if="{{hasLogin}}">{{numSign}}</text>

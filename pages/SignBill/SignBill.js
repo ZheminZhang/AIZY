@@ -56,12 +56,6 @@ Page({
     }
   },
 
-  /* 下拉刷新，自动监听 */
-  onPullDownRefresh: function() {
-    util.getSignList(() => {});
-    this.onShow();
-  },
-
   onReady: function() {},
 
   /* 加载页面 */
