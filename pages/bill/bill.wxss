@@ -216,3 +216,18 @@ button::after {
   justify-content: center;
   display: flex;
 }
+.btn_up{
+  width:320rpx;
+  height: 80rpx;
+  border-radius: 25rpx;
+  background-color: #8ba693;
+  position: absolute;
+  right:30rpx;
+  box-shadow: 0 2px 16px 2px rgba(0, 0, 0, 0.03);
+}
+.name{
+   text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 4.5vw;
+}

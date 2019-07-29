@@ -12,7 +12,25 @@ Page({
     begin: "1950-06-01",
     end: "2100-06-01",
     name: "",
-    new: false
+    new: false,
+    radioItems: [
+      { name: 'yes', value: '美国' },
+      { name: 'no', value: '中国', checked: 'true' }
+    ]
+  },
+  radioChange(e) {
+    const checked = e.detail.value
+    const changed = {}
+    for (let i = 0; i < this.data.radioItems.length; i++) {
+      if (checked.indexOf(this.data.radioItems[i].name) !== -1) {
+        changed['radioItems[' + i + '].checked'] = true
+      } else {
+        changed['radioItems[' + i + '].checked'] = false
+      }
+    }
+    this.setData(changed)
+    console.log(this.data.radioItems);
+    console.log(this.data.radioItems[1].checked);
   },
 
   inputComName: function(e) {

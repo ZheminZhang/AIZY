@@ -68,6 +68,20 @@
           </view>
         </view>
       </view>
+      <view class="page-section">
+        <image class="icon-BILL-2" src="../../images/comp.png"></image>
+        <view class="page-section-title">查看附件</view>
+        <view class="weui-cell__bd">
+          <radio-group class="group" bindchange="radioChange">
+            <view class="label-2" wx:for="{{radioItems}}">
+              <radio id="{{item.name}}" value="{{item.name}}" checked="{{item.checked}}"></radio>
+              <label class="label-2-text" for="{{item.name}}">
+                <text>{{item.name}}</text>
+              </label>
+            </view>
+          </radio-group>
+        </view>
+      </view>
     </form>
   </view>
   <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="formSubmit" wx:if="{{new}}">

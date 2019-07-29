@@ -12,7 +12,8 @@
     "pages/Sign/Sign",
     "pages/SignBill/SignBill",
     "pages/SignInfo/SignInfo",
-    "pages/BillInfo/Billinfo"
+    "pages/BillInfo/Billinfo",
+    "pages/uploadImage/uploadImage"
   ],
   "window": {
     "backgroundTextStyle": "light",
