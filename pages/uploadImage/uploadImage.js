@@ -1,5 +1,13 @@
-const sourceType = [['camera'], ['album'], ['camera', 'album']]
-const sizeType = [['compressed'], ['original'], ['compressed', 'original']]
+const sourceType = [
+  ['camera'],
+  ['album'],
+  ['camera', 'album']
+]
+const sizeType = [
+  ['compressed'],
+  ['original'],
+  ['compressed', 'original']
+]
 
 Page({
   //设置分享
@@ -20,6 +28,16 @@ Page({
 
     countIndex: 8,
     count: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  },
+  onLoad: function(options) {
+    var imageList = [];
+    console.log(options.filePath);
+    if (options.filePath) {
+      imageList[0] = options.filePath;
+      this.setData({
+        imageList: imageList
+      })
+    }
   },
   sourceTypeChange(e) {
     this.setData({
@@ -58,35 +76,18 @@ Page({
       urls: this.data.imageList
     })
   },
-  upload: function () {
-    wx.uploadFile({
-      url: "http://127.0.0.1:3000" + '/upload',
+  upload: function() {
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 2];
+    prevPage.setData({
       filePath: this.data.imageList[0],
-      name: 'file',
-      header: {
-        "Content-Type": "multipart/form-data",
-      },
-      formData: {
-        'user': 'test'
-      },
-      success(res) {
-        if (res.statusCode = 200) {
-          console.log("成功上传");
-          wx.showToast({
-            title: '上传成功',
-            icon: 'success',
-          })
-        }
-        else {
-          wx.showToast({
-            title: '上传失败',
-            icon: 'none',
-          })
-        }
-      },
-      fail(res) {
-        console.log("失败");
-      }
+      activeTabId: 'tabitemForm',
+      isClick: true,
+    })
+    prevPage.setActiveTab('tabitemForm');
+    console.log("-------####");
+    wx.navigateBack({
+      delta: 1,
     })
   }
 })

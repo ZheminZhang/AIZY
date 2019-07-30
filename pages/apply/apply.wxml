@@ -74,7 +74,7 @@
         <view class="weui-cell__bd">
           <radio-group class="group" bindchange="radioChange">
             <view class="label-2" wx:for="{{radioItems}}">
-              <radio id="{{item.name}}" value="{{item.name}}" checked="{{item.checked}}"></radio>
+              <radio id="{{item.name}}" value="{{item.name}}" checked="{{item.checked}}" disabled="{{!new}}"></radio>
               <label class="label-2-text" for="{{item.name}}">
                 <text>{{item.name}}</text>
               </label>

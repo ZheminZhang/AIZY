@@ -1,0 +1,4 @@
+<!--pages/BillImage/BillImage.wxml-->
+<view class='container'>
+<image wx:if="{{imageSrc}}" src="{{imageSrc}}" mode="center" class="userinfo-avatar" bindtap="previewImage"/>
+</view>

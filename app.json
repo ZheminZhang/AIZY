@@ -13,7 +13,8 @@
     "pages/SignBill/SignBill",
     "pages/SignInfo/SignInfo",
     "pages/BillInfo/Billinfo",
-    "pages/uploadImage/uploadImage"
+    "pages/uploadImage/uploadImage",
+    "pages/BillImage/BillImage"
   ],
   "window": {
     "backgroundTextStyle": "light",

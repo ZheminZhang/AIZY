@@ -9,7 +9,7 @@ Page({
     activeTabId: null,
     currentTab: 0,
     currentText: "", //识别内容
-    num:0,
+    num: 0,
     /* 记账相关信息 */
     summary: null, //分类信息
     debit: "", //借方科目
@@ -25,7 +25,11 @@ Page({
     firstCompName: "",
     secondCompName: "",
     thirdCompName: "",
-    allInfo:'',
+    allInfo: '',
+    startTime: '',
+    endTime: '',
+    date: '',
+    imageSrc:'',
   },
   /* 下拉刷新，自动监听 */
   onPullDownRefresh: function () {
@@ -34,13 +38,13 @@ Page({
   },
   onReady: function () { },
   /* 加载页面 ,默认加载查询账单的第一份*/
-  onLoad: function () {
+  onLoad: function (options) {
     var res = wx.getStorageSync("cashFlow").flowAccount;
     console.log(res);
     this.setData({
-      allInfo:res,
+      allInfo: res,
     })
-    var res=res[0].Record;
+    var res = res[0].Record;
     console.log(res);
     this.setData({
       summary: res.summary, //分类信息
@@ -56,8 +60,12 @@ Page({
       thirdSig: res.thirdSig,
       firstCompName: res.firstCompName,
       secondCompName: res.secondCompName,
-      thirdCompName: res.thirdCompName
+      thirdCompName: parseInt(res.thirdCompName),
+      startTime: parseInt(options.recordStartTime),
+      endTime: parseInt(options.recordEndTime),
+      datetemp: parseInt(options.date),
     });
+    console.log(this.data.startTime, "---", this.data.endTime);
   },
   onShow: function () {
   },
@@ -70,45 +78,65 @@ Page({
     var that = this;
     var n;
     if (tag == "before") {
-      n=-1;
+      n = -1;
     } else if (tag == "next") {
-      n=1;;
+      n = 1;;
     }
     console.log(this.data.allInfo.length);
-    console.log(nowNum+n);
-    if ((nowNum + n)>=0&&(nowNum + n)<this.data.allInfo.length)
-    {
-    var res=this.data.allInfo[nowNum+n].Record;
-    this.setData({
-      summary: res.summary, //分类信息
-      debit: res.debit, //借方科目
-      debitAmount: res.debitAmount, //借方金额
-      credit: res.credit, //贷方科目
-      creditAmount: res.creditAmount, //贷方金额
-      date: util.msToDate(res.time).withoutTime, //日期
-      itemId: res.itemId,
-      party: res.party,
-      secondSig: res.secondSig,
-      firstSig: res.firstSig,
-      thirdSig: res.thirdSig,
-      firstCompName: res.firstCompName,
-      secondCompName: res.secondCompName,
-      thirdCompName: res.thirdCompName,
-      num:nowNum+n,
-    });
+    console.log(nowNum + n);
+    if ((nowNum + n) >= 0 && (nowNum + n) < this.data.allInfo.length) {
+      var res = this.data.allInfo[nowNum + n].Record;
+      this.setData({
+        summary: res.summary, //分类信息
+        debit: res.debit, //借方科目
+        debitAmount: res.debitAmount, //借方金额
+        credit: res.credit, //贷方科目
+        creditAmount: res.creditAmount, //贷方金额
+        date: util.msToDate(res.time).withoutTime, //日期
+        itemId: res.itemId,
+        party: res.party,
+        secondSig: res.secondSig,
+        firstSig: res.firstSig,
+        thirdSig: res.thirdSig,
+        firstCompName: res.firstCompName,
+        secondCompName: res.secondCompName,
+        thirdCompName: res.thirdCompName,
+        num: nowNum + n,
+      });
     }
-    else{
-      var text='顶';
-      if(n==1) text='底';
+    else {
+      var text = '顶';
+      if (n == 1) text = '底';
       wx.showToast({
-        title: '您的页面已到'+text,
-        icon:'none',
+        title: '您的页面已到' + text,
+        icon: 'none',
       })
     }
   },
   goSignInfo: function () {
     wx.navigateTo({
       url: "../SignInfo/SignInfo"
+    });
+  },
+  //判断是否有权限并获取图片展示出来
+  checkfile: function () {
+    var that=this;
+    var url_ = config.downloadUrl + "?companyName=" + that.data.firstCompName + "&loginFlag=" + wx.getStorageSync("loginFlag") + "&startTime=" + that.data.startTime + "&endTime=" + that.data.endTime + "&timeStamp=" + that.data.datetemp + "&attachment=" + 1 + "&itemId=" + that.data.itemId;
+    wx.downloadFile({
+      url: url_,
+      success: function (res) {
+        console.log("------",res);
+        that.setData({
+          imageSrc: res.tempFilePath
+        })
+        var url_="../BillImage/BillImage"+"?filePath="+that.data.imageSrc;
+        wx.navigateTo({
+          url: url_,
+        })
+      },
+      fail: function (res) {
+        console.log("********",res);
+      }
     });
   }
 })

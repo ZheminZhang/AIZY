@@ -35,6 +35,7 @@ Page({
     // var authET = util.formatToDate(this.data.authEndTime) / 1000 + 14400;
     var recordST = util.formatToDate(this.data.recordStartTime) / 1000 + 14400;
     var recordET = util.formatToDate(this.data.recordEndTime) / 1000 + 14400;
+    
     if (recordST > recordET) {
       wx.showToast({
         title: "时间错误",
@@ -43,6 +44,7 @@ Page({
       return;
     }
     var date = new Date();
+    var dateTemp = util.formatToDate(date) / 1000 + 14400;
     var type = e.target.dataset["type"];
     wx.request({
       url: api.queryUrl,
@@ -54,7 +56,8 @@ Page({
         // "authEndTime": authET,
         startTime: recordST,
         endTime: recordET,
-        timeStamp: date // TODO: 发起请求的时间，unix时间戳
+        timeStamp: date ,// TODO: 发起请求的时间，unix时间戳
+        attachment:0,
       },
       method: "POST",
       success: function(e) {
@@ -69,7 +72,7 @@ Page({
         else if (e.statusCode == 200 && type == "bill"){
           wx.setStorageSync("cashFlow",e.data);
           wx.navigateTo({
-            url: "../BillInfo/Billinfo"
+            url: "../BillInfo/Billinfo" + "?recordStartTime=" + recordST + "&recordEndTime=" + recordET +"&date="+dateTemp,
           });
         }
         else {
