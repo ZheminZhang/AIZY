@@ -11,35 +11,40 @@ Page({
     tabitemForm: {},
     tabitemSign: {},
     activeTabId: null,
-
+    filetext:'上传',
     /* 语音识别信息 */
     currentText: "", //识别内容
     isClick: false,
     /* 记账相关信息 */
-    summary: null, //分类信息
+    summary: "",//null, //分类信息
     debit: "", //借方科目
     debitAmount: null, //借方金额
-    credit: "", //贷方科目
+    credit:"", //贷方科目
     creditAmount: null, //贷方金额
-    date: "", //日期
+    date:"", //日期
     secondCompName: "",
     thirdCompName: "",
-    sendButtonText: "生成报表"
+    sendButtonText: "生成报表",
+    filePath:'',
   },
 
   tabChange(e) {
     if (e.detail.source == "touch") {
       var id = e.detail.currentItemId;
+      console.log(e.detail.currentItemId);
       this.setActiveTab(id);
     }
   },
 
   tabclick(e) {
     var id = e.target.id;
+    console.log(id);
     this.setActiveTab(id);
   },
 
   setActiveTab(id) {
+    console.log(id);
+    console.log(this.data.activeTabId);
     var rect = this.data[id];
     if (rect) {
       this.animation.width(rect.width).translate(rect.left, 0);
@@ -77,7 +82,17 @@ Page({
       icon: "none"
     });
   },
-
+  upload:function(){
+    if(this.data.filetext=="上传"){
+      this.setData({
+        filetext:'查看',
+      })
+    }
+    var url_ = '../uploadImage/uploadImage' + "?filePath=" + this.data.filePath;
+    wx.navigateTo({
+      url: url_,
+    })
+  },
   initRecord: function() {
     //有新的识别内容返回，则会调用此事件
     manager.onRecognize = res => {
@@ -235,47 +250,45 @@ Page({
       title: "请稍后...",
       mask: true
     });
-    wx.request({
+    wx.uploadFile({
       url: config.insertUrl,
-      data: {
-        loginFlag: wx.getStorageSync("loginFlag"),
+      filePath: this.data.filePath,
+      name:'file',
+      header: {
+        "Content-Type": "multipart/form-data",
+      },
+      formData: {
+        loginFlag:wx.getStorageSync('loginFlag'),
         summary: that.data.summary,
         debit: that.data.debit,
-        debitAmount: parseFloat(that.data.debitAmount),
+        debitAmount:parseFloat(that.data.debitAmount),
         credit: that.data.credit,
-        creditAmount: parseFloat(that.data.creditAmount),
+        creditAmount:parseFloat(that.data.creditAmount),
         time: unixtime,
-        secondCompName: that.data.secondCompName,
-        thirdCompName: that.data.thirdCompName
+        secondCompName:that.data.secondCompName,
+        thirdCompName:that.data.thirdCompName,
       },
-      method: "POST",
-      success: function(res) {
-        wx.hideLoading();
-        // TODO:应该使用返回的数据进行判断
+      method:'post',
+      success(res) {
+        console.log(res);
         if (res.statusCode == 200) {
+          console.log("成功上传");
           wx.showToast({
-            title: "记账成功",
-            icon: "success",
-            duration: 500,
-            success: function() {
-              // util.getSignList(() => {});
-            }
-          });
-        } else {
+            title: '上传成功',
+            icon: 'success',
+          })
+        }
+        else {
           wx.showToast({
-            title: res.data,
-            icon: "none",
-            duration: 500,
-            success: function() {}
-          });
+            title: '上传失败',
+            icon: 'none',
+          })
         }
       },
-      fail: function(res) {
-        // 网络请求失败
-        console.log("失败：" + res);
-        wx.hideLoading();
+      fail(res) {
+        console.log("失败");
       }
-    });
+    })
   },
 
   onLoad: function(options) {
@@ -288,7 +301,7 @@ Page({
     });
   },
 
-  onShow: function() {
+  onShow: function(res) {
     /* 滑动动画相关 */
     var query = wx.createSelectorQuery().in(this),
       _this = this;
@@ -297,6 +310,7 @@ Page({
       timingFunction: "ease" //动画效果
     });
     query.select("#tabitemForm").boundingClientRect(function(rect) {
+      console.log("来自show");
       _this.setData({
         tabitemForm: rect
       });
@@ -305,7 +319,7 @@ Page({
       _this.setData({
         tabitemVoice: rect
       });
-      _this.setActiveTab("tabitemVoice");
+    
     });
     query.exec();
   }
