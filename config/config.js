@@ -7,6 +7,7 @@ var ip = LANIP;
 const baseUrl = "http://" + ip + ":8848/";
 const testUrl = "http://" + ip + ":8848/";
 const voicebaseUrl = "http://" + ip + ":8849/";
+const downloadUrl = baseUrl + "download";
 // 登录接口
 const loginUrl = baseUrl + "login";
 // 语音分录服务器
@@ -54,5 +55,6 @@ module.exports = {
   unsignedUrl: unsignedUrl,
   signedRefuseUrl: signedRefuseUrl,
   signQueryUrl: signQueryUrl,
-  signUrl: signUrl
+  signUrl: signUrl,
+  downloadUrl: downloadUrl
 };

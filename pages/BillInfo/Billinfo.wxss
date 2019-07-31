@@ -172,6 +172,7 @@ page {
   background: rgba(177, 182, 177, 0.603);
 }
 
+
 .icon-BILL-1 {
   width: 39rpx;
   height: 39rpx;
@@ -214,6 +215,7 @@ page {
   color: white;
   align-self: center;
   margin-top:60rpx;
+
 }
 button::after {
   border: none;
