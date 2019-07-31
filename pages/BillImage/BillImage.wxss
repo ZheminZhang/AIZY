@@ -1,6 +1,6 @@
 /* pages/BillImage/BillImage.wxss */
 @import "../../common/weui.wxss";
 .img{
-  height: 1000rpx;
-  width:450rpx;
+  height: 300rpx;
+  width:200rpx;
 }
