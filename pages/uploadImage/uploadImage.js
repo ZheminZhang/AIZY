@@ -30,12 +30,12 @@ Page({
     count: [1, 2, 3, 4, 5, 6, 7, 8, 9]
   },
   onLoad: function(options) {
-    var imageList = [];
-    console.log(options.filePath);
-    if (options.filePath) {
-      imageList[0] = options.filePath;
+    console.log(typeof(options.filePath));
+    var temp=JSON.parse(options.filePath);
+    console.log("上一个页面的信息",temp);
+    if (temp) {
       this.setData({
-        imageList: imageList
+        imageList:temp,
       })
     }
   },
@@ -70,7 +70,6 @@ Page({
   },
   previewImage(e) {
     const current = e.target.dataset.src
-
     wx.previewImage({
       current,
       urls: this.data.imageList
@@ -80,12 +79,12 @@ Page({
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
     prevPage.setData({
-      filePath: this.data.imageList[0],
+      filePath: this.data.imageList,
       activeTabId: 'tabitemForm',
       isClick: true,
     })
+    
     prevPage.setActiveTab('tabitemForm');
-    console.log("-------####");
     wx.navigateBack({
       delta: 1,
     })

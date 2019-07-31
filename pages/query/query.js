@@ -56,7 +56,7 @@ Page({
         // "authEndTime": authET,
         startTime: recordST,
         endTime: recordET,
-        timeStamp: date ,// TODO: 发起请求的时间，unix时间戳
+        timeStamp: dateTemp ,// TODO: 发起请求的时间，unix时间戳
         attachment:0,
       },
       method: "POST",

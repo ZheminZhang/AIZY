@@ -28,17 +28,17 @@ Page({
     allInfo: '',
     startTime: '',
     endTime: '',
-    date: '',
-    imageSrc:'',
+    imageSrc: [],
+    datetemp:'',
   },
   /* 下拉刷新，自动监听 */
-  onPullDownRefresh: function () {
-    util.getSignList(() => { });
+  onPullDownRefresh: function() {
+    util.getSignList(() => {});
     this.onShow();
   },
-  onReady: function () { },
+  onReady: function() {},
   /* 加载页面 ,默认加载查询账单的第一份*/
-  onLoad: function (options) {
+  onLoad: function(options) {
     var res = wx.getStorageSync("cashFlow").flowAccount;
     console.log(res);
     this.setData({
@@ -65,11 +65,11 @@ Page({
       endTime: parseInt(options.recordEndTime),
       datetemp: parseInt(options.date),
     });
-    console.log(this.data.startTime, "---", this.data.endTime);
+
+    console.log("---",this.data.datetemp);
   },
-  onShow: function () {
-  },
-  billnext: function (e) {
+  onShow: function() {},
+  billnext: function(e) {
     var nowNum = this.data.num;
     var tag = "before";
     if (e.target.dataset["type"] == "next") {
@@ -103,8 +103,7 @@ Page({
         thirdCompName: res.thirdCompName,
         num: nowNum + n,
       });
-    }
-    else {
+    } else {
       var text = '顶';
       if (n == 1) text = '底';
       wx.showToast({
@@ -113,30 +112,45 @@ Page({
       })
     }
   },
-  goSignInfo: function () {
+  goSignInfo: function() {
     wx.navigateTo({
       url: "../SignInfo/SignInfo"
     });
   },
   //判断是否有权限并获取图片展示出来
-  checkfile: function () {
-    var that=this;
+  checkfile: function() {
+    var that = this;
     var url_ = config.downloadUrl + "?companyName=" + that.data.firstCompName + "&loginFlag=" + wx.getStorageSync("loginFlag") + "&startTime=" + that.data.startTime + "&endTime=" + that.data.endTime + "&timeStamp=" + that.data.datetemp + "&attachment=" + 1 + "&itemId=" + that.data.itemId;
-    wx.downloadFile({
-      url: url_,
-      success: function (res) {
-        console.log("------",res);
-        that.setData({
-          imageSrc: res.tempFilePath
-        })
-        var url_="../BillImage/BillImage"+"?filePath="+that.data.imageSrc;
-        wx.navigateTo({
-          url: url_,
-        })
-      },
-      fail: function (res) {
-        console.log("********",res);
-      }
-    });
+    var tempPath=[];
+    that.download(url_,0,tempPath);
+  },
+  download(url,index,tempPath){
+    var that=this;
+    if(index<9){
+      wx.downloadFile({
+        url: url+ "&index=" + index,
+        success: function (res) {
+          console.log(index, "------", res);
+          if (res.statusCode==666) {
+            that.setData({
+              imageSrc: tempPath,
+            })
+            console.log(tempPath);
+            var urlTemp= "../BillImage/BillImage" + "?filePath=" + JSON.stringify(tempPath);
+            wx.navigateTo({
+              url: urlTemp,
+            });
+           
+          } else {
+            tempPath.push(res.tempFilePath);
+            console.log(index);
+            that.download(url, index + 1, tempPath);
+          }
+        },
+        fail: function (res) {
+          console.log("********", res);
+        }
+      });
+    }
   }
 })
