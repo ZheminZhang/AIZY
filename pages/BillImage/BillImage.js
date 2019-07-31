@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-     imageSrc:''
+     imageSrc:[],
   },
 
   /**
@@ -13,13 +13,15 @@ Page({
    */
   onLoad: function (options) {
      this.setData({
-       imageSrc:options.filePath,
+       imageSrc:JSON.parse(options.filePath),
      })
+     console.log(this.data.imageSrc);
   },
   previewImage(e) {
     const current = e.target.dataset.src;
     var imageList=[];
-    imageList[0] = this.data.imageSrc;
+    imageList= this.data.imageSrc;
+    console.log(imageList);
     wx.previewImage({
       current,
       urls: imageList,

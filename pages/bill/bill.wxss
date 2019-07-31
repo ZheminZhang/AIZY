@@ -9,6 +9,14 @@ page {
   overflow: auto;
   height: 100%;
 }
+.attach{
+  display: flex;
+  justify-content: space-around;
+}
+.tab-icon {
+	width: 40rpx;
+	height: 40rpx;
+}
 
 .section-body {
   word-wrap: break-word;

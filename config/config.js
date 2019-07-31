@@ -9,6 +9,7 @@ const testUrl = "http://" + ip + ":8848/";
 const voicebaseUrl = "http://" + ip + ":8849/";
 const downloadUrl = baseUrl + "download";
 // 登录接口
+const uploadUrl = baseUrl + "upload";
 const loginUrl = baseUrl + "login";
 // 语音分录服务器
 const voiceUrl = voicebaseUrl + "api/analysis/analysis";

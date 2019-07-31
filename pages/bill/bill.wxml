@@ -68,10 +68,11 @@
             <text class="text-BILL-1">第三方</text>
             <input class="weui-input_BILL_2" bindinput="thirdCompanyFunction" placeholder="请输入第三方  " value="{{thirdCompName}}" />
           </view>
-          <view class="list-BILL-1">
+          <view class="list-BILL-1" bindtap="upload">
             <image class="icon-BILL-1" src="../../images/apply_list/application.png"></image>
             <text class="text-BILL-1">附件</text>
-            <button class="btn_up" bindtap="upload"><text class="name">{{filetext}}</text></button>
+            <text class="text-BILL-1">上传</text>
+            <image class="tab-icon" src="../../images/left.png"></image>
           </view>
           <!-- 签名按钮 -->
         </view>

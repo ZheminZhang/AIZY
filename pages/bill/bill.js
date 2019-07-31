@@ -25,7 +25,7 @@ Page({
     secondCompName: "",
     thirdCompName: "",
     sendButtonText: "生成报表",
-    filePath:'',
+    filePath:[],
   },
 
   tabChange(e) {
@@ -88,7 +88,8 @@ Page({
         filetext:'查看',
       })
     }
-    var url_ = '../uploadImage/uploadImage' + "?filePath=" + this.data.filePath;
+    console.log("上传再次查看",this.data.filePath);
+    var url_ = '../uploadImage/uploadImage' + "?filePath=" + JSON.stringify(this.data.filePath);
     wx.navigateTo({
       url: url_,
     })
@@ -250,33 +251,26 @@ Page({
       title: "请稍后...",
       mask: true
     });
-    wx.uploadFile({
+    wx.request({
       url: config.insertUrl,
-      filePath: this.data.filePath,
-      name:'file',
-      header: {
-        "Content-Type": "multipart/form-data",
-      },
-      formData: {
-        loginFlag:wx.getStorageSync('loginFlag'),
+      data: {
+        loginFlag: wx.getStorageSync('loginFlag'),
         summary: that.data.summary,
         debit: that.data.debit,
-        debitAmount:parseFloat(that.data.debitAmount),
+        debitAmount: parseFloat(that.data.debitAmount),
         credit: that.data.credit,
-        creditAmount:parseFloat(that.data.creditAmount),
+        creditAmount: parseFloat(that.data.creditAmount),
         time: unixtime,
-        secondCompName:that.data.secondCompName,
-        thirdCompName:that.data.thirdCompName,
+        secondCompName: that.data.secondCompName,
+        thirdCompName: that.data.thirdCompName,
       },
-      method:'post',
+      method: 'post',
       success(res) {
         console.log(res);
         if (res.statusCode == 200) {
-          console.log("成功上传");
-          wx.showToast({
-            title: '上传成功',
-            icon: 'success',
-          })
+          var itemId=res.data;
+          console.log(that.data.filePath);
+          that.uploadDIY(that.data.filePath,0,0,0,that.data.filePath.length,itemId,unixtime);
         }
         else {
           wx.showToast({
@@ -290,7 +284,65 @@ Page({
       }
     })
   },
-
+  uploadDIY(filePaths, succNum, failNum, i, length,itemId,unixtime) {
+    var that = this;
+    wx.uploadFile({
+      url: config.uploadUrl,
+      filePath: filePaths[i],
+      name: 'file',
+      header: {
+        "Content-Type": "multipart/form-data",
+      },
+      formData: {
+        loginFlag: wx.getStorageSync('loginFlag'),
+        summary: that.data.summary,
+        debit: that.data.debit,
+        debitAmount: parseFloat(that.data.debitAmount),
+        credit: that.data.credit,
+        creditAmount: parseFloat(that.data.creditAmount),
+        time: unixtime,
+        secondCompName: that.data.secondCompName,
+        thirdCompName: that.data.thirdCompName,
+        index:i,
+        itemId:itemId,
+      },
+      success(res) {
+        console.log(res);
+        if (res.statusCode = 200) {
+          succNum++;
+          console.log("成功上传");
+          wx.showToast({
+            title: '上传成功',
+            icon: 'success',
+          })
+        }
+        else {
+          failNum++;
+          wx.showToast({
+            title: '上传失败',
+            icon: 'none',
+          })
+        }
+      },
+      fail(res) {
+        failNum++;
+        console.log("失败");
+      },
+      complete: () => {
+        i++;
+        if (i == length) {
+          console.log('总共' + succNum + '张上传成功,' + failNum + '张上传失败！');
+          wx.showToast({
+            title: '上传成功',
+            icon: 'success',
+          });
+        }
+        else {
+          that.uploadDIY(filePaths, succNum, failNum, i, length,itemId,unixtime);
+        }
+      }
+    })
+  },
   onLoad: function(options) {
     // 页面加载 options为页面跳转所带来的参数
     this.initRecord();
@@ -305,6 +357,7 @@ Page({
     /* 滑动动画相关 */
     var query = wx.createSelectorQuery().in(this),
       _this = this;
+      console.log("Bill:",this.data.filePath);
     _this.animation = wx.createAnimation({
       duration: 500, //动画持续时间
       timingFunction: "ease" //动画效果
