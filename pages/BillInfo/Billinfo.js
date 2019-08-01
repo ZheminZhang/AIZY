@@ -122,6 +122,12 @@ Page({
     var that = this;
     var url_ = config.downloadUrl + "?companyName=" + that.data.firstCompName + "&loginFlag=" + wx.getStorageSync("loginFlag") + "&startTime=" + that.data.startTime + "&endTime=" + that.data.endTime + "&timeStamp=" + that.data.datetemp + "&attachment=" + 1 + "&itemId=" + that.data.itemId;
     var tempPath=[];
+    wx.showLoading({
+      title: '请稍等',
+    });
+      setTimeout(function () {
+        wx.hideLoading();
+      }, 2000)
     that.download(url_,0,tempPath);
   },
   download(url,index,tempPath){
