@@ -50,14 +50,14 @@
         <input class="weui-input_BILL_2" bindinput="thirdCompanyFunction" value="{{thirdCompName}}" disabled="{{true}}" />
       </view>
       <view class="list-BILL-1" bindtap="checkfile" hover-class="list-BILL-1-p">
-            <image class="icon-BILL-1" src="../../images/attach.png"></image>
-            <text class="text-BILL-1">附件</text>
-            <view class="uploadImg">
-              <text>查看</text>
-              <image class="tab-icon" src="../../images/left.png"></image>
-            </view>
+        <image class="icon-BILL-1" src="../../images/attach.png"></image>
+        <text class="text-BILL-1">附件</text>
+        <view class="uploadImg">
+          <text>查看</text>
+          <image class="tab-icon" src="../../images/left.png"></image>
+        </view>
 
-          </view>
+      </view>
       <!-- 完成按钮 -->
       <view>
         <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="billnext" data-type="before">
