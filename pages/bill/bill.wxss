@@ -4,7 +4,9 @@
 view {
   display: flex;
 }
-
+.list_show{
+  border-bottom: 2rpx solid #ddd
+}
 page {
   overflow: auto;
   height: 100%;

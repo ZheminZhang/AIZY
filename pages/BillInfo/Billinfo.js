@@ -60,13 +60,13 @@ Page({
       thirdSig: res.thirdSig,
       firstCompName: res.firstCompName,
       secondCompName: res.secondCompName,
-      thirdCompName: parseInt(res.thirdCompName),
+      thirdCompName: res.thirdCompName,
       startTime: parseInt(options.recordStartTime),
       endTime: parseInt(options.recordEndTime),
       datetemp: parseInt(options.date),
     });
 
-    console.log("---",this.data.datetemp);
+    console.log("---",this.data);
   },
   onShow: function() {},
   billnext: function(e) {
@@ -122,12 +122,7 @@ Page({
     var that = this;
     var url_ = config.downloadUrl + "?companyName=" + that.data.firstCompName + "&loginFlag=" + wx.getStorageSync("loginFlag") + "&startTime=" + that.data.startTime + "&endTime=" + that.data.endTime + "&timeStamp=" + that.data.datetemp + "&attachment=" + 1 + "&itemId=" + that.data.itemId;
     var tempPath=[];
-    wx.showLoading({
-      title: '请稍等',
-    });
-      setTimeout(function () {
-        wx.hideLoading();
-      }, 2000)
+   
     that.download(url_,0,tempPath);
   },
   download(url,index,tempPath){
@@ -142,11 +137,10 @@ Page({
               imageSrc: tempPath,
             })
             console.log(tempPath);
-            var urlTemp= "../BillImage/BillImage" + "?filePath=" + JSON.stringify(tempPath);
-            wx.navigateTo({
-              url: urlTemp,
-            });
-           
+              var urlTemp = "../BillImage/BillImage" + "?filePath=" + JSON.stringify(tempPath);
+              wx.navigateTo({
+                url: urlTemp,
+              });
           } else {
             tempPath.push(res.tempFilePath);
             console.log(index);
