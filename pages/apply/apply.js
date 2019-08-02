@@ -14,8 +14,8 @@ Page({
     name: "",
     new: false,
     radioItems: [
-      { name: 'yes'},
-      { name: 'no', checked: 1 }
+      { name: '是'},
+      { name: '否', checked: 1 }
     ]
   },
   radioChange(e) {

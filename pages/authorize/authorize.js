@@ -14,11 +14,11 @@ Page({
     recordId: "",
     tp: "",
     radioItems: [{
-        name: 'yes',
+        name: '是',
         checked:0,
       },
       {
-        name: 'no',
+        name: '否',
         checked:0,
       }
     ]

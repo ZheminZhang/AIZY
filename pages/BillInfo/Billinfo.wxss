@@ -4,12 +4,20 @@
 view {
   display: flex;
 }
-
+.uploadImg{
+  position: absolute;
+  right: 30rpx;
+  text-align: right;
+  align-items: center;
+}
 page {
   overflow: auto;
   height: 100%;
 }
-
+.tab-icon {
+	width: 40rpx;
+	height: 40rpx;
+}
 .container-BILL {
   height: 100%;
   display: flex;

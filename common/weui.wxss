@@ -16,7 +16,13 @@ icon {
   align-items: center;
   border-bottom: 2rpx solid #ddd;
 }
-
+.list-BILL-1-p {
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 2rpx solid #ddd;
+  background-color:#fff; 
+}
 .weui-cells {
   position: relative;
   margin-top: 1.17647059em;
@@ -100,7 +106,7 @@ icon {
     width:450rpx;
     border: 1px solid #FFFFFF;
     background-color: white; 
-    margin-left: 20rpx;
+    margin-left: 70rpx;
     display: flex;
     box-shadow: 0 2px 16px 2px rgba(0,0,0,0.03);
 }
@@ -1095,8 +1101,9 @@ button::after {
 
 label {
   display: inline-block;
-  min-width: 270rpx;
-  margin-right: 20rpx;
+min-width: 100rpx;
+margin-right: 20rpx;
+
 }
 form{
   width: 100%;
