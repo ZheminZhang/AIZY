@@ -26,6 +26,7 @@ Page({
     thirdCompName: "",
     sendButtonText: "生成报表",
     filePath:[],
+    timestamp:'',
   },
 
   tabChange(e) {
@@ -240,13 +241,19 @@ Page({
     }
 
     //精确到秒，定位为当天12点
+    var timestamp = parseInt(new Date().valueOf() / 1000);
+    that.setData({
+      timestamp:timestamp,
+    })
     var unixtime = util.formatToDate(that.data.date) / 1000 + 14400;
     console.log("交易方信息");
     console.log(that.data.secondCompName);
     wx.showLoading({
       title: "请稍后...",
-      mask: true
-    });
+    }); 
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 2000)
     wx.request({
       url: config.insertUrl,
       data: {
@@ -259,14 +266,23 @@ Page({
         time: unixtime,
         secondCompName: that.data.secondCompName,
         thirdCompName: that.data.thirdCompName,
+        timeStamp:timestamp,
       },
       method: 'post',
       success(res) {
-        console.log(res);
+        console.log("------",res);
         if (res.statusCode == 200) {
           var itemId=res.data;
           console.log(that.data.filePath);
-          that.uploadDIY(that.data.filePath,0,0,0,that.data.filePath.length,itemId,unixtime);
+          if (that.data.filePath.length!=0){
+            that.uploadDIY(that.data.filePath, 0, 0, 0, that.data.filePath.length, itemId, unixtime);
+          }
+          else{
+            wx.showToast({
+              title: '记录成功',
+              icon:'success',
+            })
+          }
         }
         else {
           wx.showToast({
@@ -297,14 +313,15 @@ Page({
         credit: that.data.credit,
         creditAmount: parseFloat(that.data.creditAmount),
         time: unixtime,
+        timeStamp: parseInt(that.data.timestamp),
         secondCompName: that.data.secondCompName,
         thirdCompName: that.data.thirdCompName,
         index:i,
         itemId:itemId,
       },
       success(res) {
-        console.log(res);
-        if (res.statusCode = 200) {
+        console.log(">>>>>>>>",res);
+        if (res.statusCode == 200) {
           succNum++;
           console.log("成功上传");
         }

@@ -83,11 +83,10 @@ Page({
               imageSrc: tempPath,
             })
             console.log(tempPath);
-            var urlTemp = "../BillImage/BillImage" + "?filePath=" + JSON.stringify(tempPath);
-            wx.navigateTo({
-              url: urlTemp,
-            });
-
+              var urlTemp = "../BillImage/BillImage" + "?filePath=" + JSON.stringify(tempPath);
+              wx.navigateTo({
+                url: urlTemp,
+              });  
           } else {
             tempPath.push(res.tempFilePath);
             console.log(index);
