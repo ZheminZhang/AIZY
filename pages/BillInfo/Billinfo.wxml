@@ -49,11 +49,15 @@
         <text class="text-BILL-1">第三方</text>
         <input class="weui-input_BILL_2" bindinput="thirdCompanyFunction" value="{{thirdCompName}}" disabled="{{true}}" />
       </view>
-      <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/apply_list/application.png"></image>
-            <text class="text-BILL-1">附件</text>
-            <button class="btn_up" bindtap="checkfile"><text class="name">查看</text></button>
-          </view>
+      <view class="list-BILL-1" bindtap="checkfile" hover-class="list-BILL-1-p">
+        <image class="icon-BILL-1" src="../../images/attach.png"></image>
+        <text class="text-BILL-1">附件</text>
+        <view class="uploadImg">
+          <text>查看</text>
+          <image class="tab-icon" src="../../images/left.png"></image>
+        </view>
+
+      </view>
       <!-- 完成按钮 -->
       <view>
         <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="billnext" data-type="before">
@@ -62,7 +66,7 @@
         <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap='goSignInfo'>
           查看签名
         </button>
-        <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="billnext" data-type="next" >
+        <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="billnext" data-type="next">
           下一页
         </button>
       </view>

@@ -70,10 +70,18 @@ Page({
           });
         } 
         else if (e.statusCode == 200 && type == "bill"){
-          wx.setStorageSync("cashFlow",e.data);
-          wx.navigateTo({
-            url: "../BillInfo/Billinfo" + "?recordStartTime=" + recordST + "&recordEndTime=" + recordET +"&date="+dateTemp,
-          });
+          if(e.data.flowAccount.length==0){
+            wx.showToast({
+              title: '所选时间无流水账记录',
+              icon:'none',
+            })
+          }
+          else{
+            wx.setStorageSync("cashFlow", e.data);
+            wx.navigateTo({
+              url: "../BillInfo/Billinfo" + "?recordStartTime=" + recordST + "&recordEndTime=" + recordET + "&date=" + dateTemp,
+            });
+          }
         }
         else {
           wx.showToast({

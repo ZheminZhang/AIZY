@@ -83,11 +83,7 @@ Page({
     });
   },
   upload:function(){
-    if(this.data.filetext=="上传"){
-      this.setData({
-        filetext:'查看',
-      })
-    }
+    
     console.log("上传再次查看",this.data.filePath);
     var url_ = '../uploadImage/uploadImage' + "?filePath=" + JSON.stringify(this.data.filePath);
     wx.navigateTo({
@@ -311,15 +307,11 @@ Page({
         if (res.statusCode = 200) {
           succNum++;
           console.log("成功上传");
-          wx.showToast({
-            title: '上传成功',
-            icon: 'success',
-          })
         }
         else {
           failNum++;
           wx.showToast({
-            title: '上传失败',
+            title: '第'+i+'张图片上传失败',
             icon: 'none',
           })
         }

@@ -82,6 +82,7 @@ Page({
       filePath: this.data.imageList,
       activeTabId: 'tabitemForm',
       isClick: true,
+      filetext:'查看',
     })
     
     prevPage.setActiveTab('tabitemForm');
