@@ -1,15 +1,16 @@
 // 服务器域名
 const LANIP = "192.168.1.6";
 const OPENIP = "27.152.156.141";
-//var ip = OPENIP;
+var ip = OPENIP;
 var ip = LANIP;
 
 const baseUrl = "http://" + ip + ":8848/";
 const testUrl = "http://" + ip + ":8848/";
 const voicebaseUrl = "http://" + ip + ":8849/";
-const downloadUrl=baseUrl+"download";
+const downloadUrl = baseUrl + "download";
+const signDownloadUrl = baseUrl + "signDownload";
 // 登录接口
-const uploadUrl=baseUrl+"upload";
+const uploadUrl = baseUrl + "upload";
 const loginUrl = baseUrl + "login";
 // 语音分录服务器
 const voiceUrl = voicebaseUrl + "api/analysis/analysis";
@@ -57,6 +58,7 @@ module.exports = {
   signedRefuseUrl: signedRefuseUrl,
   signQueryUrl: signQueryUrl,
   signUrl: signUrl,
-  downloadUrl:downloadUrl,
-  uploadUrl:uploadUrl,
+  downloadUrl: downloadUrl,
+  uploadUrl: uploadUrl,
+  signDownloadUrl: signDownloadUrl
 };
