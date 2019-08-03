@@ -8,6 +8,7 @@ const baseUrl = "http://" + ip + ":8848/";
 const testUrl = "http://" + ip + ":8848/";
 const voicebaseUrl = "http://" + ip + ":8849/";
 const downloadUrl = baseUrl + "download";
+const signDownloadUrl = baseUrl + "signDownload";
 // 登录接口
 const uploadUrl = baseUrl + "upload";
 const loginUrl = baseUrl + "login";
@@ -57,5 +58,7 @@ module.exports = {
   signedRefuseUrl: signedRefuseUrl,
   signQueryUrl: signQueryUrl,
   signUrl: signUrl,
-  downloadUrl: downloadUrl
+  downloadUrl: downloadUrl,
+  uploadUrl: uploadUrl,
+  signDownloadUrl: signDownloadUrl
 };

@@ -28,7 +28,7 @@ Page({
     firstCompName: "",
     secondCompName: "",
     thirdCompName: "",
-    datetemp:'',
+    datetemp: ""
   },
   navbarTap: function(e) {
     this.setData({
@@ -58,17 +58,24 @@ Page({
   },
 
   onReady: function() {},
-  checkfile: function () {
+  checkfile: function() {
     var that = this;
     //这里没有startTime，默认设置为今天
-    var url_ = config.downloadUrl + "?companyName=" + that.data.firstCompName + "&loginFlag=" + wx.getStorageSync("loginFlag") + "&startTime=" + that.data.datetemp + "&endTime=" + that.data.datetemp + "&timeStamp=" + that.data.datetemp + "&attachment=" + 1 + "&itemId=" + that.data.itemId;
+    var url_ =
+      config.signDownloadUrl +
+      "?&loginFlag=" +
+      wx.getStorageSync("loginFlag") +
+      "&itemId=" +
+      that.data.itemId +
+      "&party=" +
+      that.data.party;
     var tempPath = [];
     wx.showLoading({
-      title: '请稍等',
+      title: "请稍等"
     });
-    setTimeout(function () {
+    setTimeout(function() {
       wx.hideLoading();
-    }, 2000)
+    }, 2000);
     that.download(url_, 0, tempPath);
   },
   download(url, index, tempPath) {
@@ -76,24 +83,28 @@ Page({
     if (index < 9) {
       wx.downloadFile({
         url: url + "&index=" + index,
-        success: function (res) {
+        success: function(res) {
+          console.log(url);
           console.log(index, "------", res);
           if (res.statusCode == 666) {
             that.setData({
-              imageSrc: tempPath,
-            })
+              imageSrc: tempPath
+            });
             console.log(tempPath);
-              var urlTemp = "../BillImage/BillImage" + "?filePath=" + JSON.stringify(tempPath);
-              wx.navigateTo({
-                url: urlTemp,
-              });  
+            var urlTemp =
+              "../BillImage/BillImage" +
+              "?filePath=" +
+              JSON.stringify(tempPath);
+            wx.navigateTo({
+              url: urlTemp
+            });
           } else {
             tempPath.push(res.tempFilePath);
             console.log(index);
             that.download(url, index + 1, tempPath);
           }
         },
-        fail: function (res) {
+        fail: function(res) {
           console.log("********", res);
         }
       });
@@ -117,7 +128,7 @@ Page({
       firstCompName: res.firstCompName,
       secondCompName: res.secondCompName,
       thirdCompName: res.thirdCompName,
-      datetemp:res.time,
+      datetemp: res.time
     });
     if (options.tp == 7) {
       this.setData({
