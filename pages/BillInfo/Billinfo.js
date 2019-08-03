@@ -171,7 +171,7 @@ Page({
       fail: function(res) {
         wx.hideLoading();
         wx.showToast({
-          title: "附件上传失败",
+          title: "附件下载失败",
           icon: "none"
         });
         console.log("********", res);

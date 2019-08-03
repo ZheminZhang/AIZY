@@ -271,22 +271,29 @@ Page({
       method: "post",
       success(res) {
         console.log("------", res);
-
-        var itemId = res.data;
-        console.log(that.data.filePath);
-        // 上传附件
-        if (that.data.filePath.length) {
-          that.uploadDIY(
-            that.data.filePath,
-            0,
-            that.data.filePath.length,
-            itemId,
-            unixtime
-          );
+        if (res.statusCode == 200) {
+          var itemId = res.data;
+          console.log(that.data.filePath);
+          // 上传附件
+          if (that.data.filePath.length) {
+            that.uploadDIY(
+              that.data.filePath,
+              0,
+              that.data.filePath.length,
+              itemId,
+              unixtime
+            );
+          } else {
+            wx.hideLoading();
+            wx.showToast({
+              title: "记录成功",
+              icon: "success"
+            });
+          }
         } else {
           wx.hideLoading();
           wx.showToast({
-            title: "记录成功",
+            title: res.data,
             icon: "none"
           });
         }
