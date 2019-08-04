@@ -13,19 +13,16 @@ Page({
     end: "2100-06-01",
     name: "",
     new: false,
-    radioItems: [
-      { name: '是'},
-      { name: '否', checked: 1 }
-    ]
+    radioItems: [{ name: "是" }, { name: "否", checked: 1 }]
   },
   radioChange(e) {
-    const checked = e.detail.value
-    const changed = {}
+    const checked = e.detail.value;
+    const changed = {};
     for (let i = 0; i < this.data.radioItems.length; i++) {
       if (checked.indexOf(this.data.radioItems[i].name) !== -1) {
-        changed['radioItems[' + i + '].checked'] = 1;
+        changed["radioItems[" + i + "].checked"] = 1;
       } else {
-        changed['radioItems[' + i + '].checked'] = 0;
+        changed["radioItems[" + i + "].checked"] = 0;
       }
     }
     this.setData(changed);
@@ -47,13 +44,13 @@ Page({
     date = util.formatToDate(date) / 1000 + 14400;
     var that = this;
     if (this.data.radioItems[0].checked)
-    var attachment=this.data.radioItems[0].checked;
-    else{
-      attachment=0;
+      var attachment = this.data.radioItems[0].checked;
+    else {
+      attachment = 0;
     }
     console.log(attachment);
     wx.showLoading({
-      title: "请稍后...",
+      title: "请稍等...",
       mask: true
     });
     wx.request({
@@ -66,7 +63,7 @@ Page({
         recordStartTime: recordST,
         recordEndTime: recordET,
         timeStamp: date,
-        attachment:attachment,
+        attachment: attachment
       },
       method: "POST",
       success: function(e) {
@@ -130,15 +127,14 @@ Page({
         recordEndTime: util.formatTime(new Date(), "yyyy-MM-dd")
       });
     } else {
-      var options=wx.getStorageSync('infoQuery');
+      var options = wx.getStorageSync("infoQuery");
       const changed = {};
       if (options.attachment == 0) {
-        changed['radioItems[' + 1 + '].checked'] = 1;
-        changed['radioItems[' + 0 + '].checked'] = 0;
-      }
-      else {
-        changed['radioItems[' + 1 + '].checked'] = 0;
-        changed['radioItems[' + 0 + '].checked'] = 1;
+        changed["radioItems[" + 1 + "].checked"] = 1;
+        changed["radioItems[" + 0 + "].checked"] = 0;
+      } else {
+        changed["radioItems[" + 1 + "].checked"] = 0;
+        changed["radioItems[" + 0 + "].checked"] = 1;
       }
       this.setData({
         new: false,

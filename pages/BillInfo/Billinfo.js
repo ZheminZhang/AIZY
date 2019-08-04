@@ -139,38 +139,43 @@ Page({
       "&itemId=" +
       that.data.itemId;
     var tempPath = [];
-
+    wx.showLoading({
+      title: "请稍等..."
+    });
     that.download(url_, 0, tempPath);
   },
   download(url, index, tempPath) {
     var that = this;
-    if (index < 9) {
-      wx.downloadFile({
-        url: url + "&index=" + index,
-        success: function(res) {
-          console.log(index, "------", res);
-          if (res.statusCode == 666) {
-            that.setData({
-              imageSrc: tempPath
-            });
-            console.log(tempPath);
-            var urlTemp =
-              "../BillImage/BillImage" +
-              "?filePath=" +
-              JSON.stringify(tempPath);
-            wx.navigateTo({
-              url: urlTemp
-            });
-          } else {
-            tempPath.push(res.tempFilePath);
-            console.log(index);
-            that.download(url, index + 1, tempPath);
-          }
-        },
-        fail: function(res) {
-          console.log("********", res);
+
+    wx.downloadFile({
+      url: url + "&index=" + index,
+      success: function(res) {
+        console.log(index, "------", res);
+        if (res.statusCode == 200) {
+          tempPath.push(res.tempFilePath);
+          console.log(index);
+          that.download(url, index + 1, tempPath);
+        } else {
+          wx.hideLoading();
+          that.setData({
+            imageSrc: tempPath
+          });
+          console.log(tempPath);
+          var urlTemp =
+            "../BillImage/BillImage" + "?filePath=" + JSON.stringify(tempPath);
+          wx.navigateTo({
+            url: urlTemp
+          });
         }
-      });
-    }
+      },
+      fail: function(res) {
+        wx.hideLoading();
+        wx.showToast({
+          title: "附件下载失败",
+          icon: "none"
+        });
+        console.log("********", res);
+      }
+    });
   }
 });
