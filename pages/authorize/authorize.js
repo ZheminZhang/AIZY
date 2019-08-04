@@ -13,13 +13,14 @@ Page({
     type: [],
     recordId: "",
     tp: "",
-    radioItems: [{
-        name: '是',
-        checked:0,
+    radioItems: [
+      {
+        name: "是",
+        checked: 0
       },
       {
-        name: '否',
-        checked:0,
+        name: "否",
+        checked: 0
       }
     ]
   },
@@ -88,7 +89,7 @@ Page({
       attachment = 0;
     }
     wx.showLoading({
-      title: "请稍后...",
+      title: "请稍等...",
       mask: true
     });
     wx.request({
@@ -106,7 +107,7 @@ Page({
         recordEndTime: recordET,
         tag: tag,
         recordId: this.data.recordId,
-        attachment:attachment,
+        attachment: attachment
       },
       success: function(e) {
         wx.hideLoading();
@@ -150,14 +151,13 @@ Page({
   // 加载url中的参数,同时完成unix转普通时间
   onLoad: function(option) {
     const changed = {};
-    var options = wx.getStorageSync('infoQuery');
-    if(options.attachment==0){
-      changed['radioItems[' + 1 + '].checked'] = 1;
-      changed['radioItems[' + 0 + '].checked'] =0;
-    }
-    else{
-      changed['radioItems[' + 1 + '].checked'] = 0;
-      changed['radioItems[' + 0 + '].checked'] = 1;
+    var options = wx.getStorageSync("infoQuery");
+    if (options.attachment == 0) {
+      changed["radioItems[" + 1 + "].checked"] = 1;
+      changed["radioItems[" + 0 + "].checked"] = 0;
+    } else {
+      changed["radioItems[" + 1 + "].checked"] = 0;
+      changed["radioItems[" + 0 + "].checked"] = 1;
     }
     console.log(options.attachment);
     this.setData({
@@ -169,7 +169,7 @@ Page({
       id: options.id,
       type: options.type,
       recordId: options.recordId,
-      tp: option.tp,//记录的是申请或授权状态
+      tp: option.tp //记录的是申请或授权状态
     });
     this.setData(changed);
   }

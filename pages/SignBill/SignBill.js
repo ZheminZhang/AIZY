@@ -28,7 +28,7 @@ Page({
     firstCompName: "",
     secondCompName: "",
     thirdCompName: "",
-    datetemp:'',
+    datetemp: ""
   },
   navbarTap: function(e) {
     this.setData({
@@ -58,46 +58,57 @@ Page({
   },
 
   onReady: function() {},
-  checkfile: function () {
+  checkfile: function() {
     var that = this;
     //这里没有startTime，默认设置为今天
-    var url_ = config.downloadUrl + "?companyName=" + that.data.firstCompName + "&loginFlag=" + wx.getStorageSync("loginFlag") + "&startTime=" + that.data.datetemp + "&endTime=" + that.data.datetemp + "&timeStamp=" + that.data.datetemp + "&attachment=" + 1 + "&itemId=" + that.data.itemId;
+    var url_ =
+      config.signDownloadUrl +
+      "?&loginFlag=" +
+      wx.getStorageSync("loginFlag") +
+      "&itemId=" +
+      that.data.itemId +
+      "&party=" +
+      that.data.party;
     var tempPath = [];
     wx.showLoading({
-      title: '请稍等',
+      title: "请稍等..."
     });
-    setTimeout(function () {
-      wx.hideLoading();
-    }, 2000)
     that.download(url_, 0, tempPath);
   },
   download(url, index, tempPath) {
     var that = this;
-    if (index < 9) {
-      wx.downloadFile({
-        url: url + "&index=" + index,
-        success: function (res) {
-          console.log(index, "------", res);
-          if (res.statusCode == 666) {
-            that.setData({
-              imageSrc: tempPath,
-            })
-            console.log(tempPath);
-              var urlTemp = "../BillImage/BillImage" + "?filePath=" + JSON.stringify(tempPath);
-              wx.navigateTo({
-                url: urlTemp,
-              });  
-          } else {
-            tempPath.push(res.tempFilePath);
-            console.log(index);
-            that.download(url, index + 1, tempPath);
-          }
-        },
-        fail: function (res) {
-          console.log("********", res);
+
+    wx.downloadFile({
+      url: url + "&index=" + index,
+      success: function(res) {
+        console.log(url);
+        console.log(index, "------", res);
+        if (res.statusCode == 200) {
+          tempPath.push(res.tempFilePath);
+          console.log(index);
+          that.download(url, index + 1, tempPath);
+        } else {
+          wx.hideLoading();
+          that.setData({
+            imageSrc: tempPath
+          });
+          console.log(tempPath);
+          var urlTemp =
+            "../BillImage/BillImage" + "?filePath=" + JSON.stringify(tempPath);
+          wx.navigateTo({
+            url: urlTemp
+          });
         }
-      });
-    }
+      },
+      fail: function(res) {
+        wx.hideLoading();
+        wx.showToast({
+          title: "附件下载失败",
+          icon: "none"
+        });
+        console.log("********", res);
+      }
+    });
   },
   /* 加载页面 */
   onLoad: function(options) {
@@ -117,7 +128,7 @@ Page({
       firstCompName: res.firstCompName,
       secondCompName: res.secondCompName,
       thirdCompName: res.thirdCompName,
-      datetemp:res.time,
+      datetemp: res.time
     });
     if (options.tp == 7) {
       this.setData({
@@ -146,7 +157,7 @@ Page({
       t2 = "拒签";
     }
     wx.showLoading({
-      title: "请稍后...",
+      title: "请稍等...",
       mask: true
     });
     wx.request({
