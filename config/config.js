@@ -1,12 +1,18 @@
 // 服务器域名
 const LANIP = "192.168.1.6";
-const OPENIP = "27.152.156.141";
-var ip = OPENIP;
-var ip = LANIP;
+const OPENIP = "27.152.157.128";
+const TXIP = "www.lianzhang.club";
+// const LANIP = "192.168.1.6";
+// const OPENIP = "27.152.157.128";
+// const TXIP = "106.52.162.25";
 
-const baseUrl = "http://" + ip + ":8848/";
-const testUrl = "http://" + ip + ":8848/";
-const voicebaseUrl = "http://" + ip + ":8849/";
+var ip = OPENIP;
+// var ip = LANIP;
+var ip = TXIP;
+
+const baseUrl = "https://" + ip + ":8848/";
+const testUrl = "https://" + ip + ":8848/";
+const voicebaseUrl = "https://" + ip + ":8849/";
 const downloadUrl = baseUrl + "download";
 const signDownloadUrl = baseUrl + "signDownload";
 // 登录接口
