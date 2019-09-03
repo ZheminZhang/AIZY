@@ -1,4 +1,5 @@
 var config = require("../../config/config.js");
+var zhenzisms = require('../../utils/zhenzisms.js');
 Page({
   data: {
     hidden: true,
@@ -6,6 +7,7 @@ Page({
     btnDisabled: false,
     companyName: "",
     phone: "",
+    scode:'',
     code: "",
     second: 60,
     isCode: "",
@@ -67,25 +69,19 @@ Page({
     console.log("获取验证码");
     //这里获得验证码
     var _this = this;
-    //向对应服务器发起请求，获得验证码
-    // wx.request({
-    //   url: 'http://127.0.0.1:8080/',
-    //   header:{
-    //     "Content-Type":"application/json"
-    //   },
-    //   method:'POST',
-    //   data:{
-    //     token:wx.getStorageSync("token"),
-    //     phone:this.data.phone,
-    //   },
-    //   success(res){
-    //     console.log(res);
-    //     _this.setData({
-    //       isCode:res.data
-    //     })
-    //     console.log(_this.data.isCode);
-    //   }
-    // })
+    var that = this;
+    var code = Math.floor(Math.random()*9999);
+    this.setData({
+      scode:code,
+    })
+    zhenzisms.client.init('https://sms_developer.zhenzikj.com', '102505', '608ddfa4-da63-42df-94be-f0a90b7a2271');//
+    zhenzisms.client.sendCode(function (res) {
+      wx.showToast({
+        title: res.data.data,
+        icon: 'none',
+        duration: 2000
+      })
+    }, that.data.phone, '验证码为:{code}', '', 60 * 5, 4);
     this.timer();
   },
   timer: function() {
@@ -114,7 +110,9 @@ Page({
   //获得信息，1234是发起请求，服务返回是预期的验证码
   getMessage: function() {
     var that = this;
-    if (this.data.code == "1234") {
+    var result = zhenzisms.client.validateCode(this.data.phone, this.data.code);
+    if (result == 'ok') {
+      console.log('验证正确');
       wx.showLoading({
         title: "请稍等...",
         mask: true
@@ -129,8 +127,7 @@ Page({
           businessScope: this.data.currentText
         },
         method: "POST",
-        //如果公司已注册，提醒用户改公司名
-        success: function(res) {
+        success: function (res) {
           wx.hideLoading();
           if (res.statusCode == 200) {
             wx.showToast({
@@ -148,7 +145,7 @@ Page({
             console.log(res);
           }
         },
-        fail: function(res) {
+        fail: function (res) {
           wx.hideLoading();
           wx.showToast({
             title: "注册失败",
@@ -156,12 +153,15 @@ Page({
           });
         }
       });
-      console.log(this.data);
-    } else {
-      wx.showToast({
-        title: "验证码或手机号错误",
-        icon: "none"
-      });
+    } else if (result == 'empty') {
+      console.log('验证错误, 未生成验证码!');
+    } else if (result == 'number_error') {
+      console.log('验证错误，手机号不一致!');
+    } else if (result == 'code_error') {
+      console.log('验证错误，验证码不一致!');
+    } else if (result == 'code_expired') {
+      console.log('验证错误，验证码已过期!');
     }
+    
   }
 });
