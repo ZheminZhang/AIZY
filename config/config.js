@@ -1,4 +1,5 @@
 // 服务器域名
+
 const LANIP = "192.168.2.241";
 const OPENIP = "27.152.157.128";
 const TXIP = "www.lianzhang.club";
@@ -7,8 +8,9 @@ const TXIP = "www.lianzhang.club";
 // const TXIP = "106.52.162.25";
 
 var ip = OPENIP;
-var ip = LANIP;
+//var ip = LANIP;
 var ip = TXIP;
+
 
 const baseUrl = "https://" + ip + ":8848/";
 const testUrl = "https://" + ip + ":8848/";
