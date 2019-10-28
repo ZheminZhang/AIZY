@@ -241,7 +241,14 @@ Page({
       });
       return;
     }
-
+      else if(that.data.debitAmount!=that.data.creditAmount){
+      wx.showToast({
+        title: "借方金额和贷方金额必须相等",
+        icon: "none",
+        duration: 1500
+      });
+      return;
+      }
     //精确到秒，定位为当天12点
     var timestamp = parseInt(new Date().valueOf() / 1000);
     that.setData({
@@ -314,6 +321,18 @@ Page({
       wx.showToast({
         title: "记录成功",
         icon: "success"
+      });
+      this.setData({
+        summary: "", //null, //分类信息
+        debit: "", //借方科目
+        debitAmount: null, //借方金额
+        credit: "", //贷方科目
+        creditAmount: null, //贷方金额
+        secondCompName: "",
+        thirdCompName: "",
+        sendButtonText: "生成报表",
+        filePath: [],
+        timestamp: ""
       });
       return;
     }

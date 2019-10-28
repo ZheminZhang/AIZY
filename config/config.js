@@ -8,7 +8,7 @@ const TXIP = "www.lianzhang.club";
 // const TXIP = "106.52.162.25";
 
 var ip = OPENIP;
-var ip = LANIP;
+//var ip = LANIP;
 var ip = TXIP;
 
 
