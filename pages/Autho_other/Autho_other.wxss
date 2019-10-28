@@ -10,7 +10,7 @@ page {
   background-color: #8992c8;
   color: #fff;
   font-size: 30rpx;
-  align-items: center;
+  align-items: center;gou
   justify-content: space-around;
   position: relative;
   display: flex;
