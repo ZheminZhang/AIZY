@@ -278,6 +278,7 @@ Page({
       method: "post",
       success(res) {
         console.log("------", res);
+        that.clearData();
         if (res.statusCode == 200) {
           var itemId = res.data;
           console.log(that.data.filePath);
@@ -321,18 +322,6 @@ Page({
       wx.showToast({
         title: "记录成功",
         icon: "success"
-      });
-      this.setData({
-        summary: "", //null, //分类信息
-        debit: "", //借方科目
-        debitAmount: null, //借方金额
-        credit: "", //贷方科目
-        creditAmount: null, //贷方金额
-        secondCompName: "",
-        thirdCompName: "",
-        sendButtonText: "生成报表",
-        filePath: [],
-        timestamp: ""
       });
       return;
     }
@@ -403,5 +392,22 @@ Page({
       });
     });
     query.exec();
+  },
+
+  clearData() {
+    this.setData({
+      summary: "", //null, //分类信息
+      debit: "", //借方科目
+      debitAmount: null, //借方金额
+      credit: "", //贷方科目
+      creditAmount: null, //贷方金额
+      secondCompName: "",
+      thirdCompName: "",
+      sendButtonText: "生成报表",
+      filePath: [],
+      timestamp: "",
+      currentText: ""
+    });
+    return;
   }
 });
