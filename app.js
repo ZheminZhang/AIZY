@@ -11,6 +11,7 @@ App({
   /* 监听小程序启动或切前台
      向后台request授权与申请信息，得到数据存入storage */
   onShow: function(options) {
+    return;
     var j = 0;
     util.getApplyList(() => {});
     util.getAuthoList(() => {});

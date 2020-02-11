@@ -1,7 +1,7 @@
 <view class='container-BILL'>
   <scroll-view scroll-y="true" class="tab-content">
     <view class='list-BILL-1_p'>
-      <text class='tabitem'>记录</text>
+      <text class='tabitem'>问卷</text>
     </view>
     <view class="Form">
       <view class="list-BILL-1">
@@ -56,7 +56,6 @@
           <text>查看</text>
           <image class="tab-icon" src="../../images/left.png"></image>
         </view>
-
       </view>
       <!-- 完成按钮 -->
       <view>

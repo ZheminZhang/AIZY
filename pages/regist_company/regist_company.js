@@ -1,5 +1,5 @@
 var config = require("../../config/config.js");
-var zhenzisms = require('../../utils/zhenzisms.js');
+var zhenzisms = require("../../utils/zhenzisms.js");
 Page({
   data: {
     hidden: true,
@@ -7,11 +7,15 @@ Page({
     btnDisabled: false,
     companyName: "",
     phone: "",
-    scode:'',
+    scode: "",
     code: "",
     second: 60,
     isCode: "",
-    currentText: ""
+    currentText: "",
+    sex: [
+      { name: "A", value: "男", checked: "true" },
+      { name: "B", value: "女" }
+    ]
   },
   formSubmit: function(e) {
     console.log("form发生了submit事件，携带数据为：", e.detail.value);
@@ -70,18 +74,29 @@ Page({
     //这里获得验证码
     var _this = this;
     var that = this;
-    var code = Math.floor(Math.random()*9999);
+    var code = Math.floor(Math.random() * 9999);
     this.setData({
-      scode:code,
-    })
-    zhenzisms.client.init('https://sms_developer.zhenzikj.com', '102505', '608ddfa4-da63-42df-94be-f0a90b7a2271');//
-    zhenzisms.client.sendCode(function (res) {
-      wx.showToast({
-        title: res.data.data,
-        icon: 'none',
-        duration: 2000
-      })
-    }, that.data.phone, '验证码为:{code}', '', 60 * 5, 4);
+      scode: code
+    });
+    zhenzisms.client.init(
+      "https://sms_developer.zhenzikj.com",
+      "102505",
+      "608ddfa4-da63-42df-94be-f0a90b7a2271"
+    ); //
+    zhenzisms.client.sendCode(
+      function(res) {
+        wx.showToast({
+          title: res.data.data,
+          icon: "none",
+          duration: 2000
+        });
+      },
+      that.data.phone,
+      "验证码为:{code}",
+      "",
+      60 * 5,
+      4
+    );
     this.timer();
   },
   timer: function() {
@@ -111,8 +126,8 @@ Page({
   getMessage: function() {
     var that = this;
     var result = zhenzisms.client.validateCode(this.data.phone, this.data.code);
-    if (result == 'ok') {
-      console.log('验证正确');
+    if (result == "ok") {
+      console.log("验证正确");
       wx.showLoading({
         title: "请稍等...",
         mask: true
@@ -127,7 +142,7 @@ Page({
           businessScope: this.data.currentText
         },
         method: "POST",
-        success: function (res) {
+        success: function(res) {
           wx.hideLoading();
           if (res.statusCode == 200) {
             wx.showToast({
@@ -145,7 +160,7 @@ Page({
             console.log(res);
           }
         },
-        fail: function (res) {
+        fail: function(res) {
           wx.hideLoading();
           wx.showToast({
             title: "注册失败",
@@ -153,15 +168,14 @@ Page({
           });
         }
       });
-    } else if (result == 'empty') {
-      console.log('验证错误, 未生成验证码!');
-    } else if (result == 'number_error') {
-      console.log('验证错误，手机号不一致!');
-    } else if (result == 'code_error') {
-      console.log('验证错误，验证码不一致!');
-    } else if (result == 'code_expired') {
-      console.log('验证错误，验证码已过期!');
+    } else if (result == "empty") {
+      console.log("验证错误, 未生成验证码!");
+    } else if (result == "number_error") {
+      console.log("验证错误，手机号不一致!");
+    } else if (result == "code_error") {
+      console.log("验证错误，验证码不一致!");
+    } else if (result == "code_expired") {
+      console.log("验证错误，验证码已过期!");
     }
-    
   }
 });

@@ -1,9 +1,11 @@
 var util = require("../../utils/util.js");
 var config = require("../../config/config.js");
+var zhuan_dingwei = require("../../libs/dingwei.js");
 
 // 获取全局唯一的语音识别管理器
 const plugin = requirePlugin("WechatSI");
 const manager = plugin.getRecordRecognitionManager();
+const app = getApp();
 
 Page({
   data: {
@@ -26,7 +28,156 @@ Page({
     thirdCompName: "",
     sendButtonText: "生成报表",
     filePath: [],
-    timestamp: ""
+    timestamp: "",
+    items: [
+      { name: "A", value: "干咳（无痰）" },
+      { name: "B", value: "咳嗽（有痰）", checked: "true" },
+      { name: "C", value: "严重咳嗽" },
+      { name: "D", value: "无" }
+    ],
+    items1: [
+      { name: "A", value: "躺着出现气喘/呼吸困难" },
+      { name: "B", value: "坐着出现气喘/呼吸困难", checked: "true" },
+      { name: "C", value: "走动后出现呼吸困难" },
+      { name: "D", value: "无" }
+    ],
+    items2: [
+      { name: "A", value: "恶心呕吐" },
+      { name: "B", value: "腹泻", checked: "true" },
+      { name: "C", value: "无" }
+    ],
+    items3: [
+      { name: "A", value: "是" },
+      { name: "B", value: "否", checked: "true" }
+    ],
+    items4: [
+      { name: "A", value: "是" },
+      { name: "B", value: "否", checked: "true" }
+    ],
+    items5: [
+      { name: "A", value: "是" },
+      { name: "B", value: "否", checked: "true" }
+    ],
+    items6: [
+      { name: "A", value: "体温正常" },
+      { name: "B", value: "低烧（37.2-38℃）", checked: "true" },
+      { name: "C", value: "高烧（大于38℃）" }
+    ],
+    items7: [
+      { name: "A", value: "是" },
+      { name: "B", value: "否", checked: "true" }
+    ],
+    items8: [
+      { name: "A", value: "是" },
+      { name: "B", value: "否", checked: "true" }
+    ],
+    items9: [
+      { name: "A", value: "是" },
+      { name: "B", value: "否", checked: "true" }
+    ],
+    zhouWei: "",
+    age: "",
+    temp1: "",
+    temp2: "",
+    temp3: "",
+    zhengZhuang: "",
+    zhengZhuangDays: "",
+    city: "",
+    party: "",
+    nowCity: "",
+    itemValue: "",
+    item1Value: "",
+    item2Value: "",
+    item3Value: "",
+    item4Value: "",
+    item5Value: "",
+    item6Value: "",
+    item7Value: "",
+    item8Value: "",
+    item9Value: "",
+    //默认未获取地址
+    hasLocation: false,
+    info: "",
+    longitude: "",
+    latitude: ""
+  },
+
+  getlocal_dingweui: function(e) {
+    var that = this;
+    wx.getLocation({
+      type: "wgs84",
+      success: function(res) {
+        that.setData({
+          longitude: res.longitude,
+          latitude: res.latitude
+        });
+        console.log("wx location:");
+        console.log(that.data.longitude);
+        console.log(that.data.latitude);
+        var gcj02tobd09 = zhuan_dingwei.wgs84togcj02(
+          that.data.longitude,
+          that.data.latitude
+        );
+        console.log(gcj02tobd09);
+        that.setData({
+          longitude: gcj02tobd09[0],
+          latitude: gcj02tobd09[1]
+        });
+        console.log("-------");
+        // that.get_baidu_dingwei();
+        that.getAddress();
+      }
+    });
+  },
+
+  getAddress: function() {
+    wx.request({
+      url: config.addressUrl,
+      data: {
+        latitude: this.data.latitude,
+        longitude: this.data.longitude
+      },
+      method: "post",
+      success(res) {
+        console.log("------", res);
+        // that.clearData();
+        if (res.statusCode == 200) {
+        } else {
+        }
+      },
+      fail(res) {
+        wx.hideLoading();
+        wx.showToast({
+          title: "记录失败",
+          icon: "none"
+        });
+        console.log("失败");
+      }
+    });
+  },
+
+  get_baidu_dingwei: function() {
+    console.log("-----------");
+    var that = this;
+    console.log("gcj02tobd09 location:");
+    console.log(that.data.longitude);
+    console.log(that.data.latitude);
+
+    wx.request({
+      url: "https://baoxian.grwlkj.com/home/index/get_user_city",
+      method: "get",
+      data: {
+        longitude: that.data.longitude,
+        latitude: that.data.latitude
+      },
+      success(res) {
+        console.log("res", res);
+        var info = res.data.data;
+        that.setData({
+          info: info
+        });
+      }
+    });
   },
 
   tabChange(e) {
@@ -114,8 +265,8 @@ Page({
     };
   },
   sendData: function() {
+    // this.getlocal_dingweui();
     var that = this;
-
     wx.showLoading({
       title: "请稍等...",
       mask: true
@@ -129,7 +280,23 @@ Page({
       },
       method: "POST",
       success: function(res) {
+        console.log(res);
         wx.hideLoading();
+        getApp().globalData.description = res.data.description;
+        getApp().globalData.similarity = res.data.similarity;
+        console.log("before switch: " + res.data.description);
+        wx.switchTab({
+          url: "../zhenDuan/zhenDuan",
+          success: function(e) {},
+          fail: function(e) {
+            console.log(e);
+          }
+        });
+        // wx.showToast({
+        //   title: res.data.similarity,
+        //   icon: "none"
+        // });
+        return;
         that.setData({
           summary: res.data.data[0].summary,
           debit: res.data.data[0].debit,
@@ -151,7 +318,130 @@ Page({
   },
 
   /* 表单页面 */
+  //周围人数
+  ageFunction: function(e) {
+    this.setData({
+      age: e.detail.value
+    });
+  },
+  //周围人数
+  zhouWeiFunction: function(e) {
+    this.setData({
+      zhouWei: e.detail.value
+    });
+  },
+  //症状
+  zhengZhuangFunction: function(e) {
+    this.setData({
+      zhengZhuang: e.detail.value
+    });
+  },
+  //症状天数
+  zhengZhuangDaysFunction: function(e) {
+    this.setData({
+      zhengZhuangDays: e.detail.value
+    });
+  },
+  //去过城市
+  cityFunction: function(e) {
+    this.setData({
+      city: e.detail.value
+    });
+  },
+  //聚会
+  partyFunction: function(e) {
+    this.setData({
+      party: e.detail.value
+    });
+  },
+  //去过城市
+  nowCityFunction: function(e) {
+    this.setData({
+      nowCity: e.detail.value
+    });
+  },
+  radioChange: function(e) {
+    this.setData({
+      itemValue: e.detail.value
+    });
+    console.log("radio发生change事件，携带value值为：", e.detail.value);
+  },
+  radioChange1: function(e) {
+    this.setData({
+      item1Value: e.detail.value
+    });
+    console.log("radio发生change事件，携带value值为：", e.detail.value);
+  },
+  radioChange2: function(e) {
+    this.setData({
+      item2Value: e.detail.value
+    });
+    console.log("radio发生change事件，携带value值为：", e.detail.value);
+  },
+  radioChange3: function(e) {
+    this.setData({
+      item3Value: e.detail.value
+    });
+    console.log("radio发生change事件，携带value值为：", e.detail.value);
+  },
+  radioChange4: function(e) {
+    this.setData({
+      item4Value: e.detail.value
+    });
+    console.log("radio发生change事件，携带value值为：", e.detail.value);
+  },
+  radioChange5: function(e) {
+    this.setData({
+      item5Value: e.detail.value
+    });
+    console.log("radio发生change事件，携带value值为：", e.detail.value);
+  },
+  radioChange6: function(e) {
+    this.setData({
+      item6Value: e.detail.value
+    });
+    console.log("radio发生change事件，携带value值为：", e.detail.value);
+  },
+  radioChange7: function(e) {
+    this.setData({
+      item7Value: e.detail.value
+    });
+    console.log("radio发生change事件，携带value值为：", e.detail.value);
+  },
+  radioChange8: function(e) {
+    this.setData({
+      item8Value: e.detail.value
+    });
+    console.log("radio发生change事件，携带value值为：", e.detail.value);
+  },
+  radioChange9: function(e) {
+    this.setData({
+      item9Value: e.detail.value
+    });
+    console.log("radio发生change事件，携带value值为：", e.detail.value);
+  },
   //摘要信息输入
+  tempFunction1: function(e) {
+    var text = e.detail.value;
+    //this.data.summary = text;
+    this.setData({
+      temp1: text
+    });
+  },
+  tempFunction2: function(e) {
+    var text = e.detail.value;
+    //this.data.summary = text;
+    this.setData({
+      temp2: text
+    });
+  },
+  tempFunction3: function(e) {
+    var text = e.detail.value;
+    //this.data.summary = text;
+    this.setData({
+      temp3: text
+    });
+  },
   summaryFunction: function(e) {
     var text = e.detail.value;
     //this.data.summary = text;
@@ -212,6 +502,7 @@ Page({
       that.setActiveTab("tabitemSign");
     } else {
       // TODO:弹出登录提示框
+      return;
       wx.showToast({
         title: "您还未登录，请先登录",
         icon: "none",
@@ -222,33 +513,8 @@ Page({
 
   //点击完成,将结果发给服务器
   confirmData: function() {
+    // this.getlocal_dingweui();
     var that = this;
-    if (
-      parseFloat(that.data.debitAmount) <= 0 ||
-      parseFloat(that.data.creditAmount) <= 0
-    ) {
-      wx.showToast({
-        title: "金额不能为0",
-        icon: "none",
-        duration: 1500
-      });
-      return;
-    } else if (that.data.debit == "" || that.data.credit == "") {
-      wx.showToast({
-        title: "请输入科目",
-        icon: "none",
-        duration: 1500
-      });
-      return;
-    }
-      else if(that.data.debitAmount!=that.data.creditAmount){
-      wx.showToast({
-        title: "借方金额和贷方金额必须相等",
-        icon: "none",
-        duration: 1500
-      });
-      return;
-      }
     //精确到秒，定位为当天12点
     var timestamp = parseInt(new Date().valueOf() / 1000);
     that.setData({
@@ -264,22 +530,34 @@ Page({
     wx.request({
       url: config.insertUrl,
       data: {
-        loginFlag: wx.getStorageSync("loginFlag"),
-        summary: that.data.summary,
-        debit: that.data.debit,
-        debitAmount: parseFloat(that.data.debitAmount),
-        credit: that.data.credit,
-        creditAmount: parseFloat(that.data.creditAmount),
-        time: unixtime,
-        secondCompName: that.data.secondCompName,
-        thirdCompName: that.data.thirdCompName,
+        text: this.data.currentText,
+        itemValue: that.data.itemValue,
+        item1Value: that.data.item1Value,
+        item2Value: that.data.item2Value,
+        item3Value: that.data.item3Value,
+        item4Value: that.data.item4Value,
+        item5Value: that.data.item5Value,
+        item6Value: that.data.item6Value,
+        item7Value: that.data.item7Value,
+        item8Value: that.data.item8Value,
+        item9Value: that.data.item9Value,
+        zhouWei: that.data.zhouWei,
+        age: that.data.age,
+        temp1: that.data.temp1,
+        temp2: that.data.temp2,
+        temp3: that.data.temp3,
+        zhengZhuang: that.data.zhengZhuang,
+        zhengZhuangDays: that.data.zhengZhuangDays,
+        city: that.data.city,
+        party: that.data.party,
+        nowCity: that.data.nowCity,
         timeStamp: timestamp
       },
       method: "post",
       success(res) {
         console.log("------", res);
-        that.clearData();
-        if (res.statusCode == 200) {
+        // that.clearData();
+        if (res.statusCode == 200 && false) {
           var itemId = res.data;
           console.log(that.data.filePath);
           // 上传附件
@@ -300,10 +578,20 @@ Page({
           }
         } else {
           wx.hideLoading();
-          wx.showToast({
-            title: res.data,
-            icon: "none"
+          getApp().globalData.description = res.data.description;
+          getApp().globalData.similarity = res.data.similarity;
+          console.log("before switch: " + res.data.description);
+          wx.switchTab({
+            url: "../zhenDuan/zhenDuan",
+            success: function(e) {},
+            fail: function(e) {
+              console.log(e);
+            }
           });
+          // wx.showToast({
+          //   title: res.data.similarity,
+          //   icon: "none"
+          // });
         }
       },
       fail(res) {
@@ -362,13 +650,94 @@ Page({
     });
   },
   onLoad: function(options) {
+    console.log("bill onLoad");
     // 页面加载 options为页面跳转所带来的参数
     this.initRecord();
+    // this.getlocal_dingweui();
+  },
+  initRadio: function() {
+    console.log("call initRadio");
+    console.log("items:");
+    for (var i in this.data.items) {
+      console.log(this.data.items[i]);
+      if (this.data.items[i].checked == "true") {
+        this.setData({
+          itemValue: this.data.items[i].name
+        });
+      }
+    }
+    console.log("items1:");
+    for (var i in this.data.items1) {
+      console.log(this.data.items1[i]);
+      if (this.data.items1[i].checked == "true") {
+        this.setData({
+          item1Value: this.data.items1[i].name
+        });
+      }
+    }
+    console.log("items2:");
+    for (var i in this.data.items2) {
+      if (this.data.items2[i].checked == "true") {
+        this.setData({
+          item2Value: this.data.items2[i].name
+        });
+      }
+    }
+    for (var i in this.data.items3) {
+      if (this.data.items3[i].checked == "true") {
+        this.setData({
+          item3Value: this.data.items3[i].name
+        });
+      }
+    }
+    for (var i in this.data.items4) {
+      if (this.data.items4[i].checked == "true") {
+        this.setData({
+          item4Value: this.data.items4[i].name
+        });
+      }
+    }
+    for (var i in this.data.items5) {
+      if (this.data.items5[i].checked == "true") {
+        this.setData({
+          item5Value: this.data.items5[i].name
+        });
+      }
+    }
+    for (var i in this.data.items6) {
+      if (this.data.items6[i].checked == "true") {
+        this.setData({
+          item6Value: this.data.items6[i].name
+        });
+      }
+    }
+    for (var i in this.data.items7) {
+      if (this.data.items7[i].checked == "true") {
+        this.setData({
+          item7Value: this.data.items7[i].name
+        });
+      }
+    }
+    for (var i in this.data.items8) {
+      if (this.data.items8[i].checked == "true") {
+        this.setData({
+          item8Value: this.data.items8[i].name
+        });
+      }
+    }
+    for (var i in this.data.items9) {
+      if (this.data.items9[i].checked == "true") {
+        this.setData({
+          item9Value: this.data.items9[i].name
+        });
+      }
+    }
   },
   onReady: function() {
     this.setData({
       date: util.formatTime(new Date(), "yyyy-MM-dd")
     });
+    this.initRadio();
   },
 
   onShow: function(res) {

@@ -16,6 +16,7 @@ Page({
 
   // 检查本地 storage 中是否有skey登录态标识
   checkLoginStatus: function() {
+    return;
     let that = this;
     let loginFlag = wx.getStorageSync("loginFlag");
     if (loginFlag) {
@@ -55,6 +56,7 @@ Page({
     });
     app.doLogin(() => {
       wx.hideLoading();
+      return;
       that.getUserInfo();
       util.getApplyList(i => {
         if (i == 2) {
@@ -121,6 +123,7 @@ Page({
         }
       });
     } else {
+      return;
       // TODO:弹出登录提示框
       wx.showToast({
         title: "您还未登录，请先登录",
@@ -155,6 +158,7 @@ Page({
       });
     } else {
       // TODO:弹出登录提示框
+      return;
       wx.showToast({
         title: "您还未登录，请先登录",
         icon: "none",
@@ -185,6 +189,7 @@ Page({
       });
     } else {
       // TODO:弹出登录提示框
+      return;
       wx.showToast({
         title: "您还未登录，请先登录",
         icon: "none",
@@ -215,6 +220,7 @@ Page({
       });
     } else {
       // TODO:弹出登录提示框
+      return;
       wx.showToast({
         title: "您还未登录，请先登录",
         icon: "none",

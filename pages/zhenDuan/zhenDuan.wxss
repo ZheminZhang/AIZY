@@ -1,6 +1,9 @@
 /* pages/record-expend/record-expend.wxss */
 @import "../../common/weui.wxss";
-
+ec-canvas {
+  width: 100%;
+  height: 100%;
+}
 view {
   display: flex;
 }

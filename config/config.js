@@ -1,16 +1,19 @@
 // 服务器域名
 
 const LANIP = "192.168.2.241";
-const OPENIP = "27.152.157.128";
+const OPENIP = "120.78.181.108";
 const TXIP = "www.lianzhang.club";
 // const LANIP = "192.168.1.6";
 // const OPENIP = "27.152.157.128";
 // const TXIP = "106.52.162.25";
 
-var ip = OPENIP;
-//var ip = LANIP;
-var ip = TXIP;
+var ip = "";
+ip = OPENIP;
+// ip = LANIP;
+// ip = TXIP;
+ip = "localhost";
 
+const httpUrl = "http://" + ip + ":8888/";
 
 const baseUrl = "https://" + ip + ":8848/";
 const testUrl = "https://" + ip + ":8848/";
@@ -21,7 +24,8 @@ const signDownloadUrl = baseUrl + "signDownload";
 const uploadUrl = baseUrl + "upload";
 const loginUrl = baseUrl + "login";
 // 语音分录服务器
-const voiceUrl = voicebaseUrl + "api/analysis/analysis";
+// const voiceUrl = voicebaseUrl + "api/analysis/analysis";
+const voiceUrl = httpUrl;
 const signUrl = baseUrl + "sign";
 // 申请列表查询接口
 const granteeUnauthoUrl = baseUrl + "granteeUnautho";
@@ -39,13 +43,16 @@ const signQueryUrl = baseUrl + "signQuery";
 // 查询接口
 const queryUrl = testUrl + "query";
 // 记账接口
-const insertUrl = baseUrl + "insert";
+// const insertUrl = baseUrl + "insert";
+const insertUrl = httpUrl;
 // TODO: 注释
 const registUrl = baseUrl + "regist";
 
 const authorizedUrl = baseUrl + "authorize";
 
 const requestAuthoUrl = baseUrl + "requestAutho";
+
+const addressUrl = httpUrl + "address/";
 
 module.exports = {
   loginUrl: loginUrl,
@@ -68,5 +75,6 @@ module.exports = {
   signUrl: signUrl,
   downloadUrl: downloadUrl,
   uploadUrl: uploadUrl,
-  signDownloadUrl: signDownloadUrl
+  signDownloadUrl: signDownloadUrl,
+  addressUrl: addressUrl
 };
