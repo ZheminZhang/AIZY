@@ -43,12 +43,30 @@ page {
   margin-left: 90rpx;
 }
 
+/* .view-SR-1 {
+  margin: 450rpx 0rpx 0rpx 225rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  bottom: 50rpx;
+} */
+
 .view-SR-1 {
   margin: 450rpx 0rpx 0rpx 225rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: fixed;
+  bottom: 50rpx;
+}
+
+.view-SR-3 {
+  margin: 0rpx 0rpx 0rpx 0rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* position: fixed; */
   bottom: 50rpx;
 }
 

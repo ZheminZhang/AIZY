@@ -1,223 +1,197 @@
 <view class='container-BILL'>
-  <view class='tabbar-BILL'>
-    <text id="tabitemVoice" class='tabitem {{activeTabId=="tabitemVoice"?"tabitem-active":""}}' bindtap='tabclick'>
-      语音
-    </text>
-    <text id="tabitemForm" class='tabitem {{activeTabId=="tabitemForm"?"tabitem-active":""}}' bindtap='tabclick'>
-      问卷
-    </text>
-    <!-- <view class='tabindicator' animation="{{indicatorAnim}}"></view> -->
-  </view>
-  <swiper class='scrollview-content' duration="200" circular="true" easing-function="easeInOutCubic" current-item-id='{{activeTabId}}' bindchange='tabChange'>
-    <swiper-item item-id="tabitemVoice">
-      <scroll-view class="tab-content">
-        <view class="section-body">
-          <textarea class="message" value="{{currentText}}" placeholder="语音或手动输入症状" bindinput="vtextAreaBlur"></textarea>
+  <scroll-view scroll-y="true" class="tab-content">
+    <view class="Form">
+      <view class="list-BILL-1">
+        <image class="icon-BILL-3" src="../../images/BILL/date.png"></image>
+        <text class="text-BILL-2">日期:</text>
+        <picker disabled="{{true}}" class="date-text" mode="date" value="{{date}}" bindchange="onDateChange">
+          <view class="picker">{{date}}</view>
+        </picker>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:600rpx">请简述一下您现阶段出现的症状:</text>
+      </view>
+      <view class="section-body">
+        <textarea class="message" value="{{currentText}}" placeholder="语音或手动输入症状" bindinput="vtextAreaBlur"></textarea>
+      </view>
+      <view class="view-SR-3">
+        <view catchtouchstart="streamRecord" catchtouchend="streamRecordEnd">
+          <image class="icon-SR-2" src="../../images/BILL/microphone.png"></image>
         </view>
-        <!-- <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="sendData">智能诊断</button> -->
-        <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="confirmData">
-          智能诊断
-        </button>
-        <view class="view-SR-1">
-          <view class="view-SR-2" catchtouchstart="streamRecord" catchtouchend="streamRecordEnd">
-            <image class="icon-SR-2" src="../../images/BILL/microphone.png"></image>
-          </view>
-          <text class="text-SR-2">按住说话</text>
+        <text class="text-SR-2">按住说话</text>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-TEMP-1">最近三次体温(℃):</text>
+        <input type="digit" class="weui-input_TEMP_1" bindinput="tempFunction1" placeholder="" value="{{temp1}}" />
+        <input type="digit" class="weui-input_TEMP_2" bindinput="tempFunction2" placeholder="" value="{{temp2}}" />
+        <input type="digit" class="weui-input_TEMP_3" bindinput="tempFunction3" placeholder="" value="{{temp3}}" />
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1">咳嗽情况:</text>
+      </view>
+      <view class="list-KeSou-1">
+        <radio-group class="radio-group" bindchange="radioChange">
+          <label class="radio" wx:for="{{items}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:400rpx">气喘/呼吸困难状况:</text>
+      </view>
+      <view class="list-KeSou-1" style="height: 200rpx">
+        <radio-group class="radio-group" bindchange="radioChange1">
+          <label class="radio" wx:for="{{items1}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:400rpx">是否有以下肠胃症状:</text>
+      </view>
+      <view class="list-KeSou-1" style="height: 80rpx">
+        <radio-group class="radio-group" bindchange="radioChange2">
+          <label class="radio" wx:for="{{items2}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:400rpx">是否出现咽喉痛:</text>
+      </view>
+      <view class="list-KeSou-1" style="height: 80rpx">
+        <radio-group class="radio-group" bindchange="radioChange3">
+          <label class="radio" wx:for="{{items3}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:400rpx">是否出现全身乏力酸疼:</text>
+      </view>
+      <view class="list-KeSou-1" style="height: 80rpx">
+        <radio-group class="radio-group" bindchange="radioChange4">
+          <label class="radio" wx:for="{{items4}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:500rpx">是否出现打喷嚏及流涕现象:</text>
+      </view>
+      <view class="list-KeSou-1" style="height: 80rpx">
+        <radio-group class="radio-group" bindchange="radioChange5">
+          <label class="radio" wx:for="{{items5}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:400rpx">是否发热及发热程度:</text>
+      </view>
+      <view class="list-KeSou-1">
+        <radio-group class="radio-group" bindchange="radioChange6">
+          <label class="radio" wx:for="{{items6}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1">您的年龄:</text>
+        <input type="digit" class="weui-input_BILL_2" bindinput="ageFunction" value="{{age}}" />
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:400rpx">舌苔是否偏厚:</text>
+      </view>
+      <view class="list-KeSou-1" style="height: 80rpx">
+        <radio-group class="radio-group" bindchange="radioChange7">
+          <label class="radio" wx:for="{{items7}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1" style="height: 150rpx">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:400rpx">生活周边是否出现相似症状的人及人数:</text>
+        <input type="number" class="weui-input_BILL_2" style="width: 100rpx" bindinput="zhouWeiFunction" value="{{zhouWei}}" />
+      </view>
+      <view class="list-BILL-1" style="height: 150rpx">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:500rpx">上述症状已经持续的天数:</text>
+        <input type="number" class="weui-input_BILL_2" style="width: 100rpx" bindinput="zhengZhuangDaysFunction" value="{{zhengZhuangDays}}" />
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:600rpx">您在过去两周内去过哪些城市:</text>
+      </view>
+      <view class="section-body">
+        <textarea class="message" style="margin: 10rpx;" bindinput="cityFunction" value="{{city}}" />
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:600rpx">您过去5天内在哪里参加过聚会:</text>
+      </view>
+      <view class="section-body">
+        <textarea class="message" style="margin: 10rpx;" bindinput="partyFunction" value="{{party}}" />
+      </view>
+      <view class="list-BILL-1" style="height: 150rpx">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:500rpx">您现在在哪个城市:</text>
+        <input class="weui-input_BILL_2" bindinput="nowCityFunction" value="{{nowCity}}" />
+      </view>
+      <view class="list-BILL-1" style="height: 150rpx">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:400rpx">您是否与已知的新型冠状病毒感染者接触过:</text>
+      </view>
+      <view class="list-KeSou-1" style="height: 80rpx">
+        <radio-group class="radio-group" bindchange="radioChange8">
+          <label class="radio" wx:for="{{items8}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:600rpx">您是否与已知的武汉人员有过接触:</text>
+      </view>
+      <view class="list-KeSou-1" style="height: 80rpx">
+        <radio-group class="radio-group" bindchange="radioChange9">
+          <label class="radio" wx:for="{{items9}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1" bindtap="upload" hover-class="list-BILL-1-p">
+        <image class="icon-BILL-1" src="../../images/attach.png"></image>
+        <text class="text-BILL-1">附件</text>
+        <view class="uploadImg">
+          <text>{{filetext}}</text>
+          <image class="tab-icon" src="../../images/left.png"></image>
         </view>
-      </scroll-view>
-    </swiper-item>
-    <swiper-item item-id="tabitemForm">
-      <scroll-view scroll-y="true" class="tab-content">
-        <view class="Form">
-          <view class="list-BILL-1">
-            <image class="icon-BILL-3" src="../../images/BILL/date.png"></image>
-            <text class="text-BILL-2">日期:</text>
-            <picker class="date-text" mode="date" value="{{date}}" bindchange="onDateChange">
-              <view class="picker">{{date}}</view>
-            </picker>
-          </view>
-          <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
-            <text class="text-TEMP-1">最近三次体温（℃）:</text>
-            <input type="digit" class="weui-input_TEMP_1" bindinput="tempFunction1" placeholder="" value="{{temp1}}" />
-            <input type="digit" class="weui-input_TEMP_2" bindinput="tempFunction2" placeholder="" value="{{temp2}}" />
-            <input type="digit" class="weui-input_TEMP_3" bindinput="tempFunction3" placeholder="" value="{{temp3}}" />
-          </view>
-          <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
-            <text class="text-BILL-1">年龄:</text>
-            <input type="digit" class="weui-input_BILL_2" bindinput="ageFunction" value="{{age}}" />
-          </view>
-          <view class="list-BILL-1">
-            <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
-            <text class="text-BILL-1">咳嗽情况:</text>
-          </view>
-          <view class="list-KeSou-1">
-            <radio-group class="radio-group" bindchange="radioChange">
-              <label class="radio" wx:for="{{items}}">
-                <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
-                {{item.value}}
-              </label>
-            </radio-group>
-          </view>
-          <view class="list-BILL-1">
-            <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
-            <text class="text-BILL-1" style="width:400rpx">气喘/呼吸困难状况:</text>
-          </view>
-          <view class="list-KeSou-1" style="height: 200rpx">
-            <radio-group class="radio-group" bindchange="radioChange1">
-              <label class="radio" wx:for="{{items1}}">
-                <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
-                {{item.value}}
-              </label>
-            </radio-group>
-          </view>
-          <view class="list-BILL-1">
-            <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
-            <text class="text-BILL-1" style="width:400rpx">是否有以下肠胃症状:</text>
-          </view>
-          <view class="list-KeSou-1" style="height: 80rpx">
-            <radio-group class="radio-group" bindchange="radioChange2">
-              <label class="radio" wx:for="{{items2}}">
-                <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
-                {{item.value}}
-              </label>
-            </radio-group>
-          </view>
-          <view class="list-BILL-1">
-            <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
-            <text class="text-BILL-1" style="width:400rpx">是否出现咽喉痛:</text>
-          </view>
-          <view class="list-KeSou-1" style="height: 80rpx">
-            <radio-group class="radio-group" bindchange="radioChange3">
-              <label class="radio" wx:for="{{items3}}">
-                <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
-                {{item.value}}
-              </label>
-            </radio-group>
-          </view>
-          <view class="list-BILL-1">
-            <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
-            <text class="text-BILL-1" style="width:400rpx">是否出现全身乏力酸疼:</text>
-          </view>
-          <view class="list-KeSou-1" style="height: 80rpx">
-            <radio-group class="radio-group" bindchange="radioChange4">
-              <label class="radio" wx:for="{{items4}}">
-                <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
-                {{item.value}}
-              </label>
-            </radio-group>
-          </view>
-          <view class="list-BILL-1">
-            <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
-            <text class="text-BILL-1" style="width:500rpx">是否出现打喷嚏及流涕现象:</text>
-          </view>
-          <view class="list-KeSou-1" style="height: 80rpx">
-            <radio-group class="radio-group" bindchange="radioChange5">
-              <label class="radio" wx:for="{{items5}}">
-                <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
-                {{item.value}}
-              </label>
-            </radio-group>
-          </view>
-          <view class="list-BILL-1">
-            <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
-            <text class="text-BILL-1" style="width:400rpx">是否发热及发热程度:</text>
-          </view>
-          <view class="list-KeSou-1">
-            <radio-group class="radio-group" bindchange="radioChange6">
-              <label class="radio" wx:for="{{items6}}">
-                <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
-                {{item.value}}
-              </label>
-            </radio-group>
-          </view>
-          <view class="list-BILL-1">
-            <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
-            <text class="text-BILL-1" style="width:400rpx">舌苔是否偏厚:</text>
-          </view>
-          <view class="list-KeSou-1" style="height: 80rpx">
-            <radio-group class="radio-group" bindchange="radioChange7">
-              <label class="radio" wx:for="{{items7}}">
-                <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
-                {{item.value}}
-              </label>
-            </radio-group>
-          </view>
-          <view class="list-BILL-1" style="height: 150rpx">
-            <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
-            <text class="text-BILL-1" style="width:400rpx">生活周边是否出现相似症状的人及人数:</text>
-            <input type="number" class="weui-input_BILL_2" style="width: 100rpx" bindinput="zhouWeiFunction" value="{{zhouWei}}" />
-          </view>
-          <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
-            <text class="text-BILL-1" style="width:600rpx">请简述一下您现阶段出现的症状:</text>
-          </view>
-          <view>
-            <textarea class="text-BILL-1" style="margin: 10rpx;" bindinput="zhengZhuangFunction" value="{{zhengZhuang}}" />
-          </view>
-          <view class="list-BILL-1" style="height: 150rpx">
-            <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
-            <text class="text-BILL-1" style="width:500rpx">上述症状已经持续的天数:</text>
-            <input type="number" class="weui-input_BILL_2" style="width: 100rpx" bindinput="zhengZhuangDaysFunction" value="{{zhengZhuangDays}}" />
-          </view>
-          <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
-            <text class="text-BILL-1" style="width:600rpx">您在过去两周内去过哪些城市:</text>
-          </view>
-          <view>
-            <textarea class="text-BILL-1" style="margin: 10rpx;" bindinput="cityFunction" value="{{city}}" />
-          </view>
-          <view class="list-BILL-1">
-            <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
-            <text class="text-BILL-1" style="width:600rpx">您过去5天内在哪里参加过聚会:</text>
-          </view>
-          <view>
-            <textarea class="text-BILL-1" style="margin: 10rpx;" bindinput="partyFunction" value="{{party}}" />
-          </view>
-          <view class="list-BILL-1" style="height: 150rpx">
-            <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
-            <text class="text-BILL-1" style="width:500rpx">您现在在哪个城市:</text>
-            <input class="weui-input_BILL_2" bindinput="nowCityFunction" value="{{nowCity}}" />
-          </view>
-          <view class="list-BILL-1" style="height: 150rpx">
-            <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
-            <text class="text-BILL-1" style="width:400rpx">您是否与已知的新型冠状病毒感染者接触过:</text>
-          </view>
-          <view class="list-KeSou-1" style="height: 80rpx">
-            <radio-group class="radio-group" bindchange="radioChange8">
-              <label class="radio" wx:for="{{items8}}">
-                <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
-                {{item.value}}
-              </label>
-            </radio-group>
-          </view>
-          <view class="list-BILL-1">
-            <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
-            <text class="text-BILL-1" style="width:600rpx">您是否与已知的武汉人员有过接触:</text>
-          </view>
-          <view class="list-KeSou-1" style="height: 80rpx">
-            <radio-group class="radio-group" bindchange="radioChange9">
-              <label class="radio" wx:for="{{items9}}">
-                <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
-                {{item.value}}
-              </label>
-            </radio-group>
-          </view>
-          <view class="list-BILL-1" bindtap="upload" hover-class="list-BILL-1-p">
-            <image class="icon-BILL-1" src="../../images/attach.png"></image>
-            <text class="text-BILL-1">附件</text>
-            <view class="uploadImg">
-              <text>{{filetext}}</text>
-              <image class="tab-icon" src="../../images/left.png"></image>
-            </view>
-          </view>
-          <!-- 签名按钮 -->
-        </view>
-        <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="confirmData">
-          提交问卷
-        </button>
-      </scroll-view>
-    </swiper-item>
-  </swiper>
+      </view>
+      <!-- 签名按钮 -->
+    </view>
+    <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="confirmData">提交问卷</button>
+  </scroll-view>
 </view>
