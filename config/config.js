@@ -11,7 +11,7 @@ var ip = "";
 ip = OPENIP;
 // ip = LANIP;
 // ip = TXIP;
-ip = "localhost";
+// ip = "localhost";
 
 const httpUrl = "http://" + ip + ":8888/";
 
