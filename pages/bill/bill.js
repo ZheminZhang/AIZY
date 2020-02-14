@@ -33,47 +33,47 @@ Page({
       { name: "A", value: "干咳（无痰）" },
       { name: "B", value: "咳嗽（有痰）" },
       { name: "C", value: "严重咳嗽" },
-      { name: "D", value: "无", checked: "true" }
+      { name: "D", value: "无" }
     ],
     items1: [
       { name: "A", value: "躺着出现气喘/呼吸困难" },
       { name: "B", value: "坐着出现气喘/呼吸困难" },
       { name: "C", value: "走动后出现呼吸困难" },
-      { name: "D", value: "无", checked: "true" }
+      { name: "D", value: "无" }
     ],
     items2: [
       { name: "A", value: "恶心呕吐" },
       { name: "B", value: "腹泻" },
-      { name: "C", value: "无", checked: "true" }
+      { name: "C", value: "无" }
     ],
     items3: [
       { name: "A", value: "是" },
-      { name: "B", value: "否", checked: "true" }
+      { name: "B", value: "否" }
     ],
     items4: [
       { name: "A", value: "是" },
-      { name: "B", value: "否", checked: "true" }
+      { name: "B", value: "否" }
     ],
     items5: [
       { name: "A", value: "是" },
-      { name: "B", value: "否", checked: "true" }
+      { name: "B", value: "否" }
     ],
     items6: [
-      { name: "A", value: "体温正常", checked: "true" },
+      { name: "A", value: "体温正常" },
       { name: "B", value: "低烧（37.2-38℃）" },
       { name: "C", value: "高烧（大于38℃）" }
     ],
     items7: [
       { name: "A", value: "是" },
-      { name: "B", value: "否", checked: "true" }
+      { name: "B", value: "否" }
     ],
     items8: [
       { name: "A", value: "是" },
-      { name: "B", value: "否", checked: "true" }
+      { name: "B", value: "否" }
     ],
     items9: [
       { name: "A", value: "是" },
-      { name: "B", value: "否", checked: "true" }
+      { name: "B", value: "否" }
     ],
     zhouWei: "",
     age: "",
