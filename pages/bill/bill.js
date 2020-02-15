@@ -75,6 +75,10 @@ Page({
       { name: "A", value: "是" },
       { name: "B", value: "否" }
     ],
+    items10: [
+      { name: "A", value: "男" },
+      { name: "B", value: "女" }
+    ],
     zhouWei: "",
     age: "",
     temp1: "",
@@ -95,6 +99,7 @@ Page({
     item7Value: "",
     item8Value: "",
     item9Value: "",
+    item10Value: "",
     //默认未获取地址
     hasLocation: false,
     info: "",
@@ -420,6 +425,12 @@ Page({
     });
     console.log("radio发生change事件，携带value值为：", e.detail.value);
   },
+  radioChange10: function(e) {
+    this.setData({
+      item10Value: e.detail.value
+    });
+    console.log("radio发生change事件，携带value值为：", e.detail.value);
+  },
   //摘要信息输入
   tempFunction1: function(e) {
     var text = e.detail.value;
@@ -514,6 +525,9 @@ Page({
   //点击完成,将结果发给服务器
   confirmData: function() {
     // this.getlocal_dingweui();
+    if (!this.checkQuestion()) {
+      return;
+    }
     var that = this;
     //精确到秒，定位为当天12点
     var timestamp = parseInt(new Date().valueOf() / 1000);
@@ -733,6 +747,149 @@ Page({
       }
     }
   },
+
+  checkQuestion: function() {
+    console.log("call checkQuestion");
+    if (this.data.currentText == "") {
+      wx.showToast({
+        title: "请简述一下您现阶段出现的症状",
+        icon: "none"
+      });
+      return false;
+    }
+    if (
+      this.data.temp1 == "" ||
+      this.data.temp2 == "" ||
+      this.data.temp3 == ""
+    ) {
+      wx.showToast({
+        title: "请填写最近三次体温",
+        icon: "none"
+      });
+      return false;
+    }
+    if (this.data.itemValue == "") {
+      wx.showToast({
+        title: "请选择咳嗽情况",
+        icon: "none"
+      });
+      return false;
+    }
+    if (this.data.item1Value == "") {
+      wx.showToast({
+        title: "请选择气喘/呼吸困难状况",
+        icon: "none"
+      });
+      return false;
+    }
+    if (this.data.item2Value == "") {
+      wx.showToast({
+        title: "请选择肠胃症状",
+        icon: "none"
+      });
+      return false;
+    }
+    if (this.data.item3Value == "") {
+      wx.showToast({
+        title: "请选择是否出现咽喉痛",
+        icon: "none"
+      });
+      return false;
+    }
+    if (this.data.item4Value == "") {
+      wx.showToast({
+        title: "请选择是否出现全身乏力酸疼",
+        icon: "none"
+      });
+      return false;
+    }
+    if (this.data.item5Value == "") {
+      wx.showToast({
+        title: "请选择是否出现打喷嚏及流涕现象",
+        icon: "none"
+      });
+      return false;
+    }
+    if (this.data.item6Value == "") {
+      wx.showToast({
+        title: "请选择是否发热及发热程度",
+        icon: "none"
+      });
+      return false;
+    }
+    if (this.data.age == "") {
+      wx.showToast({
+        title: "请填写年龄",
+        icon: "none"
+      });
+      return false;
+    }
+    if (this.data.item10Value == "") {
+      wx.showToast({
+        title: "请选择性别",
+        icon: "none"
+      });
+      return false;
+    }
+    if (this.data.item7Value == "") {
+      wx.showToast({
+        title: "请选择舌苔是否偏厚",
+        icon: "none"
+      });
+      return false;
+    }
+    if (this.data.zhouWei == "") {
+      wx.showToast({
+        title: "请填写生活周边是否出现相似症状的人及人数",
+        icon: "none"
+      });
+      return false;
+    }
+    if (this.data.zhengZhuangDays == "") {
+      wx.showToast({
+        title: "请填写上述症状已经持续的天数",
+        icon: "none"
+      });
+      return false;
+    }
+    if (this.data.city == "") {
+      wx.showToast({
+        title: "请填写在过去两周内去过哪些城市",
+        icon: "none"
+      });
+      return false;
+    }
+    if (this.data.party == "") {
+      wx.showToast({
+        title: "请填写过去5天内在哪里参加过聚会",
+        icon: "none"
+      });
+      return false;
+    }
+    if (this.data.nowCity == "") {
+      wx.showToast({
+        title: "请填写现在在哪个城市",
+        icon: "none"
+      });
+      return false;
+    }
+    if (this.data.item8Value == "") {
+      wx.showToast({
+        title: "请选择是否与已知的新型冠状病毒感染者接触过",
+        icon: "none"
+      });
+      return false;
+    }
+    if (this.data.item9Value == "") {
+      wx.showToast({
+        title: "请选择是否与已知的武汉人员有过接触",
+        icon: "none"
+      });
+      return false;
+    }
+    return true;
+  },
+
   onReady: function() {
     this.setData({
       date: util.formatTime(new Date(), "yyyy-MM-dd")

@@ -119,6 +119,18 @@
       </view>
       <view class="list-BILL-1">
         <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:400rpx">您的性别:</text>
+      </view>
+      <view class="list-KeSou-1" style="height: 80rpx">
+        <radio-group class="radio-group" bindchange="radioChange10">
+          <label class="radio" wx:for="{{items10}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
         <text class="text-BILL-1" style="width:400rpx">舌苔是否偏厚:</text>
       </view>
       <view class="list-KeSou-1" style="height: 80rpx">
