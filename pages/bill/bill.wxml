@@ -194,14 +194,14 @@
           </label>
         </radio-group>
       </view>
-      <view class="list-BILL-1" bindtap="upload" hover-class="list-BILL-1-p">
+      <!-- <view class="list-BILL-1" bindtap="upload" hover-class="list-BILL-1-p">
         <image class="icon-BILL-1" src="../../images/attach.png"></image>
         <text class="text-BILL-1">附件</text>
         <view class="uploadImg">
           <text>{{filetext}}</text>
           <image class="tab-icon" src="../../images/left.png"></image>
         </view>
-      </view>
+      </view> -->
       <!-- 签名按钮 -->
     </view>
     <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="confirmData">提交问卷</button>

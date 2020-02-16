@@ -10,10 +10,11 @@ const TXIP = "www.lianzhang.club";
 var ip = "";
 ip = OPENIP;
 // ip = LANIP;
-// ip = TXIP;
+ip = TXIP;
 // ip = "localhost";
 
 const httpUrl = "http://" + ip + ":8888/";
+const httpsUrl = "https://" + ip + ":8888";
 
 const baseUrl = "https://" + ip + ":8848/";
 const testUrl = "https://" + ip + ":8848/";
@@ -25,7 +26,7 @@ const uploadUrl = baseUrl + "upload";
 const loginUrl = baseUrl + "login";
 // 语音分录服务器
 // const voiceUrl = voicebaseUrl + "api/analysis/analysis";
-const voiceUrl = httpUrl;
+const voiceUrl = httpsUrl;
 const signUrl = baseUrl + "sign";
 // 申请列表查询接口
 const granteeUnauthoUrl = baseUrl + "granteeUnautho";
@@ -44,7 +45,7 @@ const signQueryUrl = baseUrl + "signQuery";
 const queryUrl = testUrl + "query";
 // 记账接口
 // const insertUrl = baseUrl + "insert";
-const insertUrl = httpUrl;
+const insertUrl = httpsUrl;
 // TODO: 注释
 const registUrl = baseUrl + "regist";
 
@@ -52,7 +53,7 @@ const authorizedUrl = baseUrl + "authorize";
 
 const requestAuthoUrl = baseUrl + "requestAutho";
 
-const addressUrl = httpUrl + "address/";
+const addressUrl = httpsUrl + "address/";
 
 module.exports = {
   loginUrl: loginUrl,
