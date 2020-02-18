@@ -33,7 +33,8 @@ function initChart(canvas, width, height) {
             shadowBlur: 0,
             color: [
               [0.3, "#67e0e3"],
-              [0.7, "#37a2da"],
+              [0.5, "#37a2da"],
+              [0.7, "#FF8800"],
               [1, "#fd666d"]
             ]
           }
@@ -70,7 +71,7 @@ Page({
 
   onShareAppMessage: function(res) {
     return {
-      title: "ECharts 可以在微信小程序中使用啦！",
+      title: "新型冠状病毒自测小程序",
       path: "/pages/login/login",
       success: function() {},
       fail: function() {}
