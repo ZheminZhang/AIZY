@@ -1,0 +1,59 @@
+<!-- <view class='container-BILL'>
+    <form catchsubmit="formSubmit" catchreset="formReset">
+        <view class="page-section">
+            <view class="page-section-title"></view>
+            <view class="weui-cell__bd">
+                <Select prop-array='{{selectArray}}' bind:mySelectEvent='mySelect'></Select>
+            </view>
+        </view>
+    </form>
+</view> -->
+<view class="section">
+    <view class="tui-table-view">
+        <view id="10" class="tui-col-3" bindtap='selectLang'>
+            <image class="icon-flag" mode="widthFix" src="../../images/flags/10.png"></image>
+            <!-- <icon class="iconfont icon-shouye"></icon> -->
+            <view>中文</view>
+        </view>
+        <view id="20" class="tui-col-3" bindtap='selectLang'>
+            <image class="icon-flag" mode="widthFix" src="../../images/flags/20.png"></image>
+            <!-- <icon class="iconfont icon-xinfeng"></icon> -->
+            <view>English</view>
+        </view>
+        <view id="30" class="tui-col-3" bindtap='selectLang'>
+            <image class="icon-flag" mode="widthFix" src="../../images/flags/30.png"></image>
+            <!-- <icon class="iconfont icon-duihuaxinxi"></icon> -->
+            <view>Español</view>
+        </view>
+        <view id="40" class="tui-col-3" bindtap='selectLang'>
+            <image class="icon-flag" mode="widthFix" src="../../images/flags/40.png"></image>
+            <!-- <icon class="iconfont icon-dibiao"></icon> -->
+            <view>日本語</view>
+        </view>
+        <view id="50" class="tui-col-3" bindtap='selectLang'>
+            <image class="icon-flag" mode="widthFix" src="../../images/flags/50.png"></image>
+            <!-- <icon type="search" size='30'></icon> -->
+            <view>한국어</view>
+        </view>
+        <view id="60" class="tui-col-3" bindtap='selectLang'>
+            <image class="icon-flag" mode="widthFix" src="../../images/flags/60.png"></image>
+            <!-- <icon class="iconfont icon-dianhua"></icon> -->
+            <view>فارسی‎</view>
+        </view>
+        <view id="70" class="tui-col-3" bindtap='selectLang'>
+            <image class="icon-flag" mode="widthFix" src="../../images/flags/70.png"></image>
+            <!-- <icon class="iconfont icon-shezhi"></icon> -->
+            <view>Italiano</view>
+        </view>
+        <view id="80" class="tui-col-3" bindtap='selectLang'>
+            <image class="icon-flag" mode="widthFix" src="../../images/flags/80.png"></image>
+            <!-- <icon type="info" size='30' color='#797979'></icon> -->
+            <view>Português</view>
+        </view>
+        <view id="90" class="tui-col-3" bindtap='selectLang'>
+            <image class="icon-flag" mode="widthFix" src="../../images/flags/90.png"></image>
+            <!-- <icon class="iconfont icon-gengduotianchong"></icon> -->
+            <view>Malaysia</view>
+        </view>
+    </view>
+</view>

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/bill/bill",
     "pages/login/login",
     "pages/regist_company/regist_company",
@@ -15,7 +16,8 @@
     "pages/BillInfo/Billinfo",
     "pages/uploadImage/uploadImage",
     "pages/BillImage/BillImage",
-    "pages/zhenDuan/zhenDuan"
+    "pages/zhenDuan/zhenDuan",
+    "pages/zhenDuan30/zhenDuan30"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,27 +25,6 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": false
-  },
-  "tabBar": {
-    "list": [
-      {
-        "pagePath": "pages/bill/bill",
-        "text": "症状",
-        "iconPath": "images/bill.png",
-        "selectedIconPath": "images/billSelected.png"
-      },
-      {
-        "pagePath": "pages/zhenDuan/zhenDuan",
-        "text": "诊断",
-        "iconPath": "images/Apply.png",
-        "selectedIconPath": "images/ApplySelected.png"
-      }
-    ],
-    "color": "#bfbfbf",
-    "selectedColor": "#1AAD19"
-  },
-  "networkTimeout": {
-    "request": 3000
   },
   "plugins": {
     "WechatSI": {

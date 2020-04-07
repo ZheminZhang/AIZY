@@ -1,0 +1,229 @@
+<view class='container-BILL'>
+  <scroll-view scroll-y="true" class="tab-content">
+    <view class="Form">
+      <view class="list-BILL-1">
+        <image class="icon-BILL-3" src="../../images/BILL/date.png"></image>
+        <text class="text-BILL-2">fecha:</text>
+        <picker disabled="{{true}}" class="date-text" mode="date" value="{{date}}" bindchange="onDateChange">
+          <view class="picker">{{date}}</view>
+        </picker>
+      </view>
+      <!-- <view class="list-BILL-1">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:600rpx">describa sus síntomas en este momento:</text>
+      </view>
+      <view class="section-body">
+        <textarea class="message" value="{{currentText}}" placeholder="" bindinput="vtextAreaBlur"></textarea>
+      </view> -->
+      <!-- <view class="view-SR-3">
+        <view catchtouchstart="streamRecord" catchtouchend="streamRecordEnd">
+          <image class="icon-SR-2" src="../../images/BILL/microphone.png"></image>
+        </view>
+        <text class="text-SR-2">按住说话</text>
+      </view> -->
+      <view class="list-BILL-1">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-TEMP-1">Temperaturas del cuerpo de las últimas 3 veces(℃):</text>
+      </view>
+      <view class="list-BILL-1">
+        <input type="digit" class="weui-input_TEMP_1" bindinput="tempFunction1" placeholder="" value="{{temp1}}" />
+        <input type="digit" class="weui-input_TEMP_2" bindinput="tempFunction2" placeholder="" value="{{temp2}}" />
+        <input type="digit" class="weui-input_TEMP_3" bindinput="tempFunction3" placeholder="" value="{{temp3}}" />
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1">tos:</text>
+      </view>
+      <view class="list-KeSou-1">
+        <radio-group class="radio-group" bindchange="radioChange">
+          <label class="radio" wx:for="{{items}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:400rpx">asma o disnea:</text>
+      </view>
+      <view class="list-KeSou-1">
+        <radio-group class="radio-group" bindchange="radioChange1">
+          <label class="radio" wx:for="{{items1}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:100%">síntoma del intestinal y estomacal:</text>
+      </view>
+      <view class="list-KeSou-1" style="height: 80rpx">
+        <radio-group class="radio-group" bindchange="radioChange2">
+          <label class="radio" wx:for="{{items2}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:400rpx">hay dolor de garganta:</text>
+      </view>
+      <view class="list-KeSou-1" style="height: 80rpx">
+        <radio-group class="radio-group" bindchange="radioChange3">
+          <label class="radio" wx:for="{{items3}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:400rpx; height:250rpx">
+          dolor del cuerpo y debilidades general:
+        </text>
+      </view>
+      <view class="list-KeSou-1" style="height: 100rpx">
+        <radio-group class="radio-group" bindchange="radioChange4">
+          <label class="radio" wx:for="{{items4}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1" style="height: 100rpx">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:500rpx">estornuda moqueo:</text>
+      </view>
+      <view class="list-KeSou-1" style="height: 80rpx">
+        <radio-group class="radio-group" bindchange="radioChange5">
+          <label class="radio" wx:for="{{items5}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:400rpx">fiebre y grados:</text>
+      </view>
+      <view class="list-KeSou-1">
+        <radio-group class="radio-group" bindchange="radioChange6">
+          <label class="radio" wx:for="{{items6}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width: 300rpx">qué edad tiene:</text>
+        <input type="digit" class="weui-input_BILL_2" style="width: 200rpx" bindinput="ageFunction" value="{{age}}" />
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:400rpx">sexo:</text>
+      </view>
+      <view class="list-KeSou-1" style="height: 80rpx">
+        <radio-group class="radio-group" bindchange="radioChange10">
+          <label class="radio" wx:for="{{items10}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:400rpx">grueso de sarro de Lengua:</text>
+      </view>
+      <view class="list-KeSou-1" style="height: 80rpx">
+        <radio-group class="radio-group" bindchange="radioChange7">
+          <label class="radio" wx:for="{{items7}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1" style="height: 150rpx">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:600rpx">
+          hay la gente que al tu aldo tiene la síntoma cómo así y cuánto son:
+        </text>
+      </view>
+      <view class="list-BILL-1">
+        <input type="number" class="weui-input_BILL_2" style="width: 100rpx" bindinput="zhouWeiFunction" value="{{zhouWei}}" />
+      </view>
+      <view class="list-BILL-1" style="height: 150rpx">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:500rpx">cuántos días duran las síntomas:</text>
+        <input type="number" class="weui-input_BILL_2" style="width: 100rpx" bindinput="zhengZhuangDaysFunction" value="{{zhengZhuangDays}}" />
+      </view>
+      <!-- <view class="list-BILL-1" style="height: 200rpx">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:600rpx">
+          las ciudades que has estado en las últimas dos semanas:
+        </text>
+      </view>
+      <view class="section-body">
+        <textarea class="message" style="margin: 10rpx;" bindinput="cityFunction" value="{{city}}" />
+      </view> -->
+      <!-- <view class="list-BILL-1" style="height: 200rpx">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:600rpx;">
+          la reunión que has estado las últimas 5 dias:
+        </text>
+      </view>
+      <view class="section-body">
+        <textarea class="message" style="margin: 10rpx;" bindinput="partyFunction" value="{{party}}" />
+      </view> -->
+      <!-- <view class="list-BILL-1">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:500rpx">dónde está la ciudad ahora:</text>
+      </view>
+      <view class="list-BILL-1">
+        <input class="weui-input_BILL_2" style="width: 300rpx" bindinput="nowCityFunction" value="{{nowCity}}" />
+      </view> -->
+      <view class="list-BILL-1" style="height: 180rpx">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:500rpx">
+          has ponerte en contacto con infectados del coronavirus:
+        </text>
+      </view>
+      <view class="list-KeSou-1" style="height: 80rpx">
+        <radio-group class="radio-group" bindchange="radioChange8">
+          <label class="radio" wx:for="{{items8}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1" style="height: 180rpx">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:600rpx">
+          has ponerte en contacto con la gente de wuhan:
+        </text>
+      </view>
+      <view class="list-KeSou-1" style="height: 80rpx">
+        <radio-group class="radio-group" bindchange="radioChange9">
+          <label class="radio" wx:for="{{items9}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <!-- <view class="list-BILL-1" bindtap="upload" hover-class="list-BILL-1-p">
+        <image class="icon-BILL-1" src="../../images/attach.png"></image>
+        <text class="text-BILL-1">附件</text>
+        <view class="uploadImg">
+          <text>{{filetext}}</text>
+          <image class="tab-icon" src="../../images/left.png"></image>
+        </view>
+      </view> -->
+      <!-- 签名按钮 -->
+    </view>
+    <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="confirmData">
+      Presentación
+    </button>
+  </scroll-view>
+</view>

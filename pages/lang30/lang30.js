@@ -7,6 +7,8 @@ const plugin = requirePlugin("WechatSI");
 const manager = plugin.getRecordRecognitionManager();
 const app = getApp();
 
+// 西班牙语
+
 Page({
   data: {
     tabitemVoice: {},
@@ -30,54 +32,54 @@ Page({
     filePath: [],
     timestamp: "",
     items: [
-      { name: "A", value: "干咳（无痰）" },
-      { name: "B", value: "咳嗽（有痰）" },
-      { name: "C", value: "严重咳嗽" },
-      { name: "D", value: "无" },
+      { name: "A", value: "Tos(seca sin gargajo)" },
+      { name: "B", value: "tos(hay gargajo)" },
+      { name: "C", value: "Tos bronca" },
+      { name: "D", value: "No tos" }
     ],
     items1: [
-      { name: "A", value: "躺着出现气喘/呼吸困难" },
-      { name: "B", value: "坐着出现气喘/呼吸困难" },
-      { name: "C", value: "走动后出现呼吸困难" },
-      { name: "D", value: "无" },
+      { name: "A", value: "tenderse tiene asma o disnea" },
+      { name: "B", value: "sentado tiene asma o disnea" },
+      { name: "C", value: "tiene asma o disnea después de caminar" },
+      { name: "D", value: "no" }
     ],
     items2: [
-      { name: "A", value: "恶心呕吐" },
-      { name: "B", value: "腹泻" },
-      { name: "C", value: "无" },
+      { name: "A", value: "Náuseas y vomito" },
+      { name: "B", value: "diarrea" },
+      { name: "C", value: "no" }
     ],
     items3: [
-      { name: "A", value: "是" },
-      { name: "B", value: "否" },
+      { name: "A", value: "si" },
+      { name: "B", value: "no" }
     ],
     items4: [
-      { name: "A", value: "是" },
-      { name: "B", value: "否" },
+      { name: "A", value: "si" },
+      { name: "B", value: "no" }
     ],
     items5: [
-      { name: "A", value: "是" },
-      { name: "B", value: "否" },
+      { name: "A", value: "si" },
+      { name: "B", value: "no" }
     ],
     items6: [
-      { name: "A", value: "体温正常" },
-      { name: "B", value: "低烧（37.2-38℃）" },
-      { name: "C", value: "高烧（大于38℃）" },
+      { name: "A", value: "temperatura corporal normal" },
+      { name: "B", value: "poca fiebre(37.2-38℃)" },
+      { name: "C", value: "alta fiebre(mas de38℃)" }
     ],
     items7: [
-      { name: "A", value: "是" },
-      { name: "B", value: "否" },
+      { name: "A", value: "si" },
+      { name: "B", value: "no" }
     ],
     items8: [
-      { name: "A", value: "是" },
-      { name: "B", value: "否" },
+      { name: "A", value: "si" },
+      { name: "B", value: "no" }
     ],
     items9: [
-      { name: "A", value: "是" },
-      { name: "B", value: "否" },
+      { name: "A", value: "si" },
+      { name: "B", value: "no" }
     ],
     items10: [
-      { name: "A", value: "男" },
-      { name: "B", value: "女" },
+      { name: "A", value: "masculino" },
+      { name: "B", value: "femenino" }
     ],
     zhouWei: "",
     age: "",
@@ -104,17 +106,17 @@ Page({
     hasLocation: false,
     info: "",
     longitude: "",
-    latitude: "",
+    latitude: ""
   },
 
-  getlocal_dingweui: function (e) {
+  getlocal_dingweui: function(e) {
     var that = this;
     wx.getLocation({
       type: "wgs84",
-      success: function (res) {
+      success: function(res) {
         that.setData({
           longitude: res.longitude,
-          latitude: res.latitude,
+          latitude: res.latitude
         });
         console.log("wx location:");
         console.log(that.data.longitude);
@@ -126,21 +128,21 @@ Page({
         console.log(gcj02tobd09);
         that.setData({
           longitude: gcj02tobd09[0],
-          latitude: gcj02tobd09[1],
+          latitude: gcj02tobd09[1]
         });
         console.log("-------");
         // that.get_baidu_dingwei();
         that.getAddress();
-      },
+      }
     });
   },
 
-  getAddress: function () {
+  getAddress: function() {
     wx.request({
       url: config.addressUrl,
       data: {
         latitude: this.data.latitude,
-        longitude: this.data.longitude,
+        longitude: this.data.longitude
       },
       method: "post",
       success(res) {
@@ -154,14 +156,14 @@ Page({
         wx.hideLoading();
         wx.showToast({
           title: "记录失败",
-          icon: "none",
+          icon: "none"
         });
         console.log("失败");
-      },
+      }
     });
   },
 
-  get_baidu_dingwei: function () {
+  get_baidu_dingwei: function() {
     console.log("-----------");
     var that = this;
     console.log("gcj02tobd09 location:");
@@ -173,15 +175,15 @@ Page({
       method: "get",
       data: {
         longitude: that.data.longitude,
-        latitude: that.data.latitude,
+        latitude: that.data.latitude
       },
       success(res) {
         console.log("res", res);
         var info = res.data.data;
         that.setData({
-          info: info,
+          info: info
         });
-      },
+      }
     });
   },
 
@@ -207,91 +209,91 @@ Page({
       this.animation.width(rect.width).translate(rect.left, 0);
       this.setData({
         activeTabId: id,
-        indicatorAnim: this.animation.step().export(),
+        indicatorAnim: this.animation.step().export()
       });
     }
   },
 
   /* 语音识别页面 */
   //记账信息
-  vtextAreaBlur: function (e) {
+  vtextAreaBlur: function(e) {
     this.setData({
-      currentText: e.detail.value,
+      currentText: e.detail.value
     });
   },
 
   //开始与结束录音
-  streamRecord: function () {
+  streamRecord: function() {
     manager.start({
-      lang: "zh_CN",
+      lang: "zh_CN"
     });
     wx.showToast({
       title: "开始录音",
-      icon: "none",
+      icon: "none"
     });
     console.log("录音开始");
   },
-  streamRecordEnd: function () {
+  streamRecordEnd: function() {
     console.log("录音结束");
     manager.stop();
     wx.showToast({
       title: "录音结束",
-      icon: "none",
+      icon: "none"
     });
   },
-  upload: function () {
+  upload: function() {
     console.log("上传再次查看", this.data.filePath);
     var url_ =
       "../uploadImage/uploadImage" +
       "?filePath=" +
       JSON.stringify(this.data.filePath);
     wx.navigateTo({
-      url: url_,
+      url: url_
     });
   },
-  initRecord: function () {
+  initRecord: function() {
     //有新的识别内容返回，则会调用此事件
-    manager.onRecognize = (res) => {
+    manager.onRecognize = res => {
       let text = res.result;
       this.setData({
-        currentText: text,
+        currentText: text
       });
     };
     // 识别结束事件
-    manager.onStop = (res) => {
+    manager.onStop = res => {
       let text = res.result;
       if (text == "") {
         // 用户没有说话，可以做一下提示处理...
         return;
       }
       this.setData({
-        currentText: text,
+        currentText: text
       });
     };
   },
-  sendData: function () {
+  sendData: function() {
     // this.getlocal_dingweui();
     var that = this;
     wx.showLoading({
-      title: "请稍等...",
-      mask: true,
+      title: "Un momento...",
+      mask: true
     });
     /* 得到完整识别内容发给语音服务器处理 */
     wx.request({
       url: config.voiceUrl,
       // url: "http://27.152.156.24:80/api/analysis/analysis",
       data: {
-        text: this.data.currentText,
+        text: this.data.currentText
       },
       method: "POST",
-      success: function (res) {
+      success: function(res) {
         console.log(res);
         wx.hideLoading();
         getApp().globalData.description = res.data.description;
         getApp().globalData.similarity = res.data.similarity;
         console.log("before switch: " + res.data.description);
         wx.navigateTo({
-          url: "../zhenDuan/zhenDuan",
+          url: "../zhenDuan/zhenDuan"
         });
         // wx.switchTab({
         //   url: "../zhenDuan/zhenDuan",
@@ -310,204 +312,204 @@ Page({
           debit: res.data.data[0].debit,
           debitAmount: parseFloat(res.data.data[0].debit_amount),
           credit: res.data.data[0].credit,
-          creditAmount: parseFloat(res.data.data[0].credit_amount),
+          creditAmount: parseFloat(res.data.data[0].credit_amount)
         });
         that.setActiveTab("tabitemForm");
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log(res);
         wx.hideLoading();
         wx.showToast({
           title: "记录生成失败，请重试",
-          icon: "none",
+          icon: "none"
         });
-      },
+      }
     });
   },
 
   /* 表单页面 */
   //周围人数
-  ageFunction: function (e) {
+  ageFunction: function(e) {
     this.setData({
-      age: e.detail.value,
+      age: e.detail.value
     });
   },
   //周围人数
-  zhouWeiFunction: function (e) {
+  zhouWeiFunction: function(e) {
     this.setData({
-      zhouWei: e.detail.value,
+      zhouWei: e.detail.value
     });
   },
   //症状
-  zhengZhuangFunction: function (e) {
+  zhengZhuangFunction: function(e) {
     this.setData({
-      zhengZhuang: e.detail.value,
+      zhengZhuang: e.detail.value
     });
   },
   //症状天数
-  zhengZhuangDaysFunction: function (e) {
+  zhengZhuangDaysFunction: function(e) {
     this.setData({
-      zhengZhuangDays: e.detail.value,
+      zhengZhuangDays: e.detail.value
     });
   },
   //去过城市
-  cityFunction: function (e) {
+  cityFunction: function(e) {
     this.setData({
-      city: e.detail.value,
+      city: e.detail.value
     });
   },
   //聚会
-  partyFunction: function (e) {
+  partyFunction: function(e) {
     this.setData({
-      party: e.detail.value,
+      party: e.detail.value
     });
   },
   //去过城市
-  nowCityFunction: function (e) {
+  nowCityFunction: function(e) {
     this.setData({
-      nowCity: e.detail.value,
+      nowCity: e.detail.value
     });
   },
-  radioChange: function (e) {
+  radioChange: function(e) {
     this.setData({
-      itemValue: e.detail.value,
-    });
-    console.log("radio发生change事件，携带value值为：", e.detail.value);
-  },
-  radioChange1: function (e) {
-    this.setData({
-      item1Value: e.detail.value,
+      itemValue: e.detail.value
     });
     console.log("radio发生change事件，携带value值为：", e.detail.value);
   },
-  radioChange2: function (e) {
+  radioChange1: function(e) {
     this.setData({
-      item2Value: e.detail.value,
+      item1Value: e.detail.value
     });
     console.log("radio发生change事件，携带value值为：", e.detail.value);
   },
-  radioChange3: function (e) {
+  radioChange2: function(e) {
     this.setData({
-      item3Value: e.detail.value,
+      item2Value: e.detail.value
     });
     console.log("radio发生change事件，携带value值为：", e.detail.value);
   },
-  radioChange4: function (e) {
+  radioChange3: function(e) {
     this.setData({
-      item4Value: e.detail.value,
+      item3Value: e.detail.value
     });
     console.log("radio发生change事件，携带value值为：", e.detail.value);
   },
-  radioChange5: function (e) {
+  radioChange4: function(e) {
     this.setData({
-      item5Value: e.detail.value,
+      item4Value: e.detail.value
     });
     console.log("radio发生change事件，携带value值为：", e.detail.value);
   },
-  radioChange6: function (e) {
+  radioChange5: function(e) {
     this.setData({
-      item6Value: e.detail.value,
+      item5Value: e.detail.value
     });
     console.log("radio发生change事件，携带value值为：", e.detail.value);
   },
-  radioChange7: function (e) {
+  radioChange6: function(e) {
     this.setData({
-      item7Value: e.detail.value,
+      item6Value: e.detail.value
     });
     console.log("radio发生change事件，携带value值为：", e.detail.value);
   },
-  radioChange8: function (e) {
+  radioChange7: function(e) {
     this.setData({
-      item8Value: e.detail.value,
+      item7Value: e.detail.value
     });
     console.log("radio发生change事件，携带value值为：", e.detail.value);
   },
-  radioChange9: function (e) {
+  radioChange8: function(e) {
     this.setData({
-      item9Value: e.detail.value,
+      item8Value: e.detail.value
     });
     console.log("radio发生change事件，携带value值为：", e.detail.value);
   },
-  radioChange10: function (e) {
+  radioChange9: function(e) {
     this.setData({
-      item10Value: e.detail.value,
+      item9Value: e.detail.value
+    });
+    console.log("radio发生change事件，携带value值为：", e.detail.value);
+  },
+  radioChange10: function(e) {
+    this.setData({
+      item10Value: e.detail.value
     });
     console.log("radio发生change事件，携带value值为：", e.detail.value);
   },
   //摘要信息输入
-  tempFunction1: function (e) {
+  tempFunction1: function(e) {
     var text = e.detail.value;
     //this.data.summary = text;
     this.setData({
-      temp1: text,
+      temp1: text
     });
   },
-  tempFunction2: function (e) {
+  tempFunction2: function(e) {
     var text = e.detail.value;
     //this.data.summary = text;
     this.setData({
-      temp2: text,
+      temp2: text
     });
   },
-  tempFunction3: function (e) {
+  tempFunction3: function(e) {
     var text = e.detail.value;
     //this.data.summary = text;
     this.setData({
-      temp3: text,
+      temp3: text
     });
   },
-  summaryFunction: function (e) {
+  summaryFunction: function(e) {
     var text = e.detail.value;
     //this.data.summary = text;
     this.setData({
-      summary: text,
+      summary: text
     });
   },
   //借方科目
-  debitFunction: function (e) {
+  debitFunction: function(e) {
     this.setData({
-      debit: e.detail.value,
+      debit: e.detail.value
     });
   },
   //借方金额
-  debitAmFunction: function (e) {
+  debitAmFunction: function(e) {
     this.setData({
-      debitAmount: e.detail.value,
+      debitAmount: e.detail.value
     });
   },
   //贷方科目
-  creditFunction: function (e) {
+  creditFunction: function(e) {
     this.setData({
-      credit: e.detail.value,
+      credit: e.detail.value
     });
   },
   //贷方金额
-  creditAmFunction: function (e) {
+  creditAmFunction: function(e) {
     this.setData({
-      creditAmount: e.detail.value,
+      creditAmount: e.detail.value
     });
   },
-  thirdCompanyFunction: function (e) {
+  thirdCompanyFunction: function(e) {
     this.setData({
-      thirdCompName: e.detail.value,
+      thirdCompName: e.detail.value
     });
     console.log(this.data.thirdCompName);
   },
-  secondCompFunction: function (e) {
+  secondCompFunction: function(e) {
     this.setData({
-      secondCompName: e.detail.value,
+      secondCompName: e.detail.value
     });
     console.log(this.data.secondCompName);
   },
   //选择时间
-  onDateChange: function (e) {
+  onDateChange: function(e) {
     this.setData({
-      date: e.detail.value,
+      date: e.detail.value
     });
   },
 
   // 签名记录
-  signBill: function () {
+  signBill: function() {
     let loginFlag = wx.getStorageSync("loginFlag");
     var that = this;
     //util.getApplyList();
@@ -520,13 +522,13 @@ Page({
       wx.showToast({
         title: "您还未登录，请先登录",
         icon: "none",
-        duration: 2000,
+        duration: 2000
       });
     }
   },
 
   //点击完成,将结果发给服务器
-  confirmData: function () {
+  confirmData: function() {
     // this.getlocal_dingweui();
     if (!this.checkQuestion()) {
       return;
@@ -535,13 +537,13 @@ Page({
     //精确到秒，定位为当天12点
     var timestamp = parseInt(new Date().valueOf() / 1000);
     that.setData({
-      timestamp: timestamp,
+      timestamp: timestamp
     });
     var unixtime = util.formatToDate(that.data.date) / 1000 + 14400;
     console.log("交易方信息");
     console.log(that.data.secondCompName);
     wx.showLoading({
-      title: "请稍等...",
+      title: "请稍等..."
     });
 
     wx.request({
@@ -568,7 +570,7 @@ Page({
         city: that.data.city,
         party: that.data.party,
         nowCity: that.data.nowCity,
-        timeStamp: timestamp,
+        timeStamp: timestamp
       },
       method: "post",
       success(res) {
@@ -590,7 +592,7 @@ Page({
             wx.hideLoading();
             wx.showToast({
               title: "记录成功",
-              icon: "success",
+              icon: "success"
             });
           }
         } else {
@@ -598,16 +600,15 @@ Page({
           getApp().globalData.description = res.data.description;
           getApp().globalData.similarity = res.data.similarity;
           console.log("before switch: " + res.data.description);
+          getApp().globalData.chartTitle =
+            "posibilidad de definir\n el diagnóstico";
           wx.navigateTo({
-            url: "../zhenDuan/zhenDuan",
+            url: "../zhenDuan30/zhenDuan30",
+            success: function() {},
+            fail: function(e) {
+              console.log(e);
+            }
           });
-          // wx.switchTab({
-          //   url: "../zhenDuan/zhenDuan",
-          //   success: function(e) {},
-          //   fail: function(e) {
-          //     console.log(e);
-          //   }
-          // });
           // wx.showToast({
           //   title: res.data.similarity,
           //   icon: "none"
@@ -618,10 +619,10 @@ Page({
         wx.hideLoading();
         wx.showToast({
           title: "记录失败",
-          icon: "none",
+          icon: "none"
         });
         console.log("失败");
-      },
+      }
     });
   },
   uploadDIY(filePaths, i, length, itemId, unixtime) {
@@ -629,7 +630,7 @@ Page({
       wx.hideLoading();
       wx.showToast({
         title: "记录成功",
-        icon: "success",
+        icon: "success"
       });
       return;
     }
@@ -639,7 +640,7 @@ Page({
       filePath: filePaths[i],
       name: "file",
       header: {
-        "Content-Type": "multipart/form-data",
+        "Content-Type": "multipart/form-data"
       },
       formData: {
         loginFlag: wx.getStorageSync("loginFlag"),
@@ -653,35 +654,41 @@ Page({
         secondCompName: that.data.secondCompName,
         thirdCompName: that.data.thirdCompName,
         index: i,
-        itemId: itemId,
+        itemId: itemId
       },
-      success: (res) => {
+      success: res => {
         console.log(">>>>>>>>", res);
         that.uploadDIY(filePaths, i + 1, length, itemId, unixtime);
         console.log("成功上传");
       },
-      fail: (res) => {
+      fail: res => {
         wx.hideLoading();
         wx.showToast({
           title: "附件上传失败",
-          icon: "none",
+          icon: "none"
         });
-      },
+      }
     });
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
     console.log("bill onLoad");
     // 页面加载 options为页面跳转所带来的参数
     this.initRecord();
     // this.getlocal_dingweui();
   },
-  initRadio: function () {
+  initRadio: function() {
     console.log("call initRadio");
+    console.log("items:");
+    console.log("languageId");
+    console.log(getApp().globalData.languageId);
+    this.setData({
+      // items: language30.items
+    });
     for (var i in this.data.items) {
       console.log(this.data.items[i]);
       if (this.data.items[i].checked == "true") {
         this.setData({
-          itemValue: this.data.items[i].name,
+          itemValue: this.data.items[i].name
         });
       }
     }
@@ -690,7 +697,7 @@ Page({
       console.log(this.data.items1[i]);
       if (this.data.items1[i].checked == "true") {
         this.setData({
-          item1Value: this.data.items1[i].name,
+          item1Value: this.data.items1[i].name
         });
       }
     }
@@ -698,69 +705,69 @@ Page({
     for (var i in this.data.items2) {
       if (this.data.items2[i].checked == "true") {
         this.setData({
-          item2Value: this.data.items2[i].name,
+          item2Value: this.data.items2[i].name
         });
       }
     }
     for (var i in this.data.items3) {
       if (this.data.items3[i].checked == "true") {
         this.setData({
-          item3Value: this.data.items3[i].name,
+          item3Value: this.data.items3[i].name
         });
       }
     }
     for (var i in this.data.items4) {
       if (this.data.items4[i].checked == "true") {
         this.setData({
-          item4Value: this.data.items4[i].name,
+          item4Value: this.data.items4[i].name
         });
       }
     }
     for (var i in this.data.items5) {
       if (this.data.items5[i].checked == "true") {
         this.setData({
-          item5Value: this.data.items5[i].name,
+          item5Value: this.data.items5[i].name
         });
       }
     }
     for (var i in this.data.items6) {
       if (this.data.items6[i].checked == "true") {
         this.setData({
-          item6Value: this.data.items6[i].name,
+          item6Value: this.data.items6[i].name
         });
       }
     }
     for (var i in this.data.items7) {
       if (this.data.items7[i].checked == "true") {
         this.setData({
-          item7Value: this.data.items7[i].name,
+          item7Value: this.data.items7[i].name
         });
       }
     }
     for (var i in this.data.items8) {
       if (this.data.items8[i].checked == "true") {
         this.setData({
-          item8Value: this.data.items8[i].name,
+          item8Value: this.data.items8[i].name
         });
       }
     }
     for (var i in this.data.items9) {
       if (this.data.items9[i].checked == "true") {
         this.setData({
-          item9Value: this.data.items9[i].name,
+          item9Value: this.data.items9[i].name
         });
       }
     }
   },
 
-  checkQuestion: function () {
+  checkQuestion: function() {
     console.log("call checkQuestion");
     if (this.data.currentText == "") {
-      wx.showToast({
-        title: "请简述一下您现阶段出现的症状",
-        icon: "none",
-      });
-      return false;
+      // wx.showToast({
+      //   title: "describa sus síntomas en este momento",
+      //   icon: "none"
+      // });
+      // return false;
     }
     if (
       this.data.temp1 == "" ||
@@ -768,158 +775,159 @@ Page({
       this.data.temp3 == ""
     ) {
       wx.showToast({
-        title: "请填写最近三次体温",
-        icon: "none",
+        title: "Temperaturas del cuerpo de las últimas 3 veces(℃)",
+        icon: "none"
       });
       return false;
     }
     if (this.data.itemValue == "") {
       wx.showToast({
-        title: "请选择咳嗽情况",
-        icon: "none",
+        title: "tos",
+        icon: "none"
       });
       return false;
     }
     if (this.data.item1Value == "") {
       wx.showToast({
-        title: "请选择气喘/呼吸困难状况",
-        icon: "none",
+        title: "asma o disnea",
+        icon: "none"
       });
       return false;
     }
     if (this.data.item2Value == "") {
       wx.showToast({
-        title: "请选择肠胃症状",
-        icon: "none",
+        title: "síntoma del intestinal y estomacal",
+        icon: "none"
       });
       return false;
     }
     if (this.data.item3Value == "") {
       wx.showToast({
-        title: "请选择是否出现咽喉痛",
-        icon: "none",
+        title: "hay dolor de garganta",
+        icon: "none"
       });
       return false;
     }
     if (this.data.item4Value == "") {
       wx.showToast({
-        title: "请选择是否出现全身乏力酸疼",
-        icon: "none",
+        title: "dolor del cuerpo y debilidades general",
+        icon: "none"
       });
       return false;
     }
     if (this.data.item5Value == "") {
       wx.showToast({
-        title: "请选择是否出现打喷嚏及流涕现象",
-        icon: "none",
+        title: "estornuda moqueo",
+        icon: "none"
       });
       return false;
     }
     if (this.data.item6Value == "") {
       wx.showToast({
-        title: "请选择是否发热及发热程度",
-        icon: "none",
+        title: "fiebre y grados",
+        icon: "none"
       });
       return false;
     }
     if (this.data.age == "") {
       wx.showToast({
-        title: "请填写年龄",
-        icon: "none",
+        title: "qué edad tiene",
+        icon: "none"
       });
       return false;
     }
     if (this.data.item10Value == "") {
       wx.showToast({
-        title: "请选择性别",
-        icon: "none",
+        title: "sexo",
+        icon: "none"
       });
       return false;
     }
     if (this.data.item7Value == "") {
       wx.showToast({
-        title: "请选择舌苔是否偏厚",
-        icon: "none",
+        title: "grueso de sarro de Lengua",
+        icon: "none"
       });
       return false;
     }
     if (this.data.zhouWei == "") {
       wx.showToast({
-        title: "请填写生活周边是否出现相似症状的人及人数",
-        icon: "none",
+        title:
+          "hay la gente que al tu aldo tiene la síntoma cómo así y cuánto son",
+        icon: "none"
       });
       return false;
     }
     if (this.data.zhengZhuangDays == "") {
       wx.showToast({
-        title: "请填写上述症状已经持续的天数",
-        icon: "none",
+        title: "cuántos días duran las síntomas",
+        icon: "none"
       });
       return false;
     }
-    if (this.data.city == "") {
-      wx.showToast({
-        title: "请填写在过去两周内去过哪些城市",
-        icon: "none",
-      });
-      return false;
-    }
-    if (this.data.party == "") {
-      wx.showToast({
-        title: "请填写过去5天内在哪里参加过聚会",
-        icon: "none",
-      });
-      return false;
-    }
-    if (this.data.nowCity == "") {
-      wx.showToast({
-        title: "请填写现在在哪个城市",
-        icon: "none",
-      });
-      return false;
-    }
+    // if (this.data.city == "") {
+    //   wx.showToast({
+    //     title: "las ciudades que has estado en las últimas dos semanas",
+    //     icon: "none"
+    //   });
+    //   return false;
+    // }
+    // if (this.data.party == "") {
+    //   wx.showToast({
+    //     title: "la reunión que has estado las últimas 5 dias",
+    //     icon: "none"
+    //   });
+    //   return false;
+    // }
+    // if (this.data.nowCity == "") {
+    //   wx.showToast({
+    //     title: "dónde está la ciudad ahora",
+    //     icon: "none"
+    //   });
+    //   return false;
+    // }
     if (this.data.item8Value == "") {
       wx.showToast({
-        title: "请选择是否与已知的新型冠状病毒感染者接触过",
-        icon: "none",
+        title: "has ponerte en contacto con infectados del coronavirus",
+        icon: "none"
       });
       return false;
     }
     if (this.data.item9Value == "") {
       wx.showToast({
-        title: "请选择是否与已知的武汉人员有过接触",
-        icon: "none",
+        title: "has ponerte en contacto con la gente de wuhan",
+        icon: "none"
       });
       return false;
     }
     return true;
   },
 
-  onReady: function () {
+  onReady: function() {
     this.setData({
-      date: util.formatTime(new Date(), "yyyy-MM-dd"),
+      date: util.formatTime(new Date(), "yyyy-MM-dd")
     });
     this.initRadio();
   },
 
-  onShow: function (res) {
+  onShow: function(res) {
     /* 滑动动画相关 */
     var query = wx.createSelectorQuery().in(this),
       _this = this;
     console.log("Bill:", this.data.filePath);
     _this.animation = wx.createAnimation({
       duration: 500, //动画持续时间
-      timingFunction: "ease", //动画效果
+      timingFunction: "ease" //动画效果
     });
-    query.select("#tabitemForm").boundingClientRect(function (rect) {
+    query.select("#tabitemForm").boundingClientRect(function(rect) {
       console.log("来自show");
       _this.setData({
-        tabitemForm: rect,
+        tabitemForm: rect
       });
     });
-    query.select("#tabitemVoice").boundingClientRect(function (rect) {
+    query.select("#tabitemVoice").boundingClientRect(function(rect) {
       _this.setData({
-        tabitemVoice: rect,
+        tabitemVoice: rect
       });
     });
     query.exec();
@@ -937,8 +945,8 @@ Page({
       sendButtonText: "生成报表",
       filePath: [],
       timestamp: "",
-      currentText: "",
+      currentText: ""
     });
     return;
-  },
+  }
 });

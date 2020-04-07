@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "诊断",
+  "navigationBarBackgroundColor": "#fffae6",
+  "usingComponents": {
+    "ec-canvas": "../../ec-canvas/ec-canvas"
+  }
+}

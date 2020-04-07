@@ -13,8 +13,8 @@ ip = OPENIP;
 ip = TXIP;
 // ip = "localhost";
 
-const httpUrl = "http://" + ip + ":8888/";
-const httpsUrl = "https://" + ip + ":8888";
+const httpUrl = "http://" + ip + ":8888/aizy/";
+const httpsUrl = "https://" + ip + ":8888/aizy/";
 
 const baseUrl = "https://" + ip + ":8848/";
 const testUrl = "https://" + ip + ":8848/";
@@ -77,5 +77,5 @@ module.exports = {
   downloadUrl: downloadUrl,
   uploadUrl: uploadUrl,
   signDownloadUrl: signDownloadUrl,
-  addressUrl: addressUrl
+  addressUrl: addressUrl,
 };

@@ -1,0 +1,11 @@
+<!-- pages/query/query.wxml -->
+<!-- <view class="list-BILL-1">
+  <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+  <text class="text-BILL-1" style="width:600rpx">症状描述:</text>
+</view>
+<view>
+  <textarea disabled="{{true}}" style="margin: 10rpx;" value="{{description}}" />
+</view> -->
+<view class="container" style="top: 0rpx; bottom:0rpx">
+  <ec-canvas id="mychart-dom-gauge" canvas-id="mychart-gauge" ec="{{ ec }}"></ec-canvas>
+</view>

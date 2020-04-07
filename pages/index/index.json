@@ -1,0 +1,9 @@
+{
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#c8e8c7",
+  "navigationBarTitleText": "选择语言",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "Select": "/common/select/select"
+  }
+}

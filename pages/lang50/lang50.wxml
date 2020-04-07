@@ -1,0 +1,225 @@
+<view class='container-BILL'>
+  <scroll-view scroll-y="true" class="tab-content">
+    <view class="Form">
+      <view class="list-BILL-1">
+        <image class="icon-BILL-3" src="../../images/BILL/date.png"></image>
+        <text class="text-BILL-2">날짜:</text>
+        <picker disabled="{{true}}" class="date-text" mode="date" value="{{date}}" bindchange="onDateChange">
+          <view class="picker">{{date}}</view>
+        </picker>
+      </view>
+      <!-- <view class="list-BILL-1">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:600rpx">describa sus síntomas en este momento:</text>
+      </view>
+      <view class="section-body">
+        <textarea class="message" value="{{currentText}}" placeholder="" bindinput="vtextAreaBlur"></textarea>
+      </view> -->
+      <!-- <view class="view-SR-3">
+        <view catchtouchstart="streamRecord" catchtouchend="streamRecordEnd">
+          <image class="icon-SR-2" src="../../images/BILL/microphone.png"></image>
+        </view>
+        <text class="text-SR-2">按住说话</text>
+      </view> -->
+      <view class="list-BILL-1">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-TEMP-1">최근 3회 측정한 체온:</text>
+        <input type="digit" class="weui-input_TEMP_1" bindinput="tempFunction1" placeholder="" value="{{temp1}}" />
+        <input type="digit" class="weui-input_TEMP_2" bindinput="tempFunction2" placeholder="" value="{{temp2}}" />
+        <input type="digit" class="weui-input_TEMP_3" bindinput="tempFunction3" placeholder="" value="{{temp3}}" />
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width: 400rpx">기침 상태</text>
+      </view>
+      <view class="list-KeSou-1">
+        <radio-group class="radio-group" bindchange="radioChange">
+          <label class="radio" wx:for="{{items}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width: 600rpx">호흡장애, 호흡곤란 상태 질문</text>
+      </view>
+      <view class="list-KeSou-1">
+        <radio-group class="radio-group" bindchange="radioChange1">
+          <label class="radio" wx:for="{{items1}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1" style="height: 80rpx">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width: 700rpx">다음과 같은 위장관련증상이 있습니까?</text>
+      </view>
+      <view class="list-KeSou-1">
+        <radio-group class="radio-group" bindchange="radioChange2">
+          <label class="radio" wx:for="{{items2}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:600rpx">인후통 증상이 있습니까?</text>
+      </view>
+      <view class="list-KeSou-1">
+        <radio-group class="radio-group" bindchange="radioChange3">
+          <label class="radio" wx:for="{{items3}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:700rpx">온몸이 무기력하거나 몸살증상이 있습니까?</text>
+      </view>
+      <view class="list-KeSou-1">
+        <radio-group class="radio-group" bindchange="radioChange4">
+          <label class="radio" wx:for="{{items4}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1" style="height: 100rpx">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:700rpx">재채기를 하거나 콧물이 납니까?</text>
+      </view>
+      <view class="list-KeSou-1">
+        <radio-group class="radio-group" bindchange="radioChange5">
+          <label class="radio" wx:for="{{items5}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1" style="height: 80rpx">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:700rpx">발열증세 및 발열 정도는 어떻습니까?</text>
+      </view>
+      <view class="list-KeSou-1">
+        <radio-group class="radio-group" bindchange="radioChange6">
+          <label class="radio" wx:for="{{items6}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width: 300rpx">당신의 연령은?</text>
+        <input type="digit" class="weui-input_BILL_2" style="width: 200rpx" bindinput="ageFunction" value="{{age}}" />
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:400rpx">성별</text>
+      </view>
+      <view class="list-KeSou-1" style="height: 80rpx">
+        <radio-group class="radio-group" bindchange="radioChange10">
+          <label class="radio" wx:for="{{items10}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1" style="height: 80rpx">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:700rpx">혀에 백태(설태)가 두껍게 끼어있습니까?</text>
+      </view>
+      <view class="list-KeSou-1" style="height: 80rpx">
+        <radio-group class="radio-group" bindchange="radioChange7">
+          <label class="radio" wx:for="{{items7}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1" style="height: 160rpx">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:700rpx">
+          주변 지인들 중에 증상이 발견된 사람이 있습니까? 있다면 몇 명입니까?
+        </text>
+      </view>
+      <view class="list-BILL-1">
+        <input type="number" class="weui-input_BILL_2" style="width: 100rpx" bindinput="zhouWeiFunction" value="{{zhouWei}}" />
+      </view>
+      <view class="list-BILL-1">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:500rpx">위 증상이 지속된 날짜수</text>
+        <input type="number" class="weui-input_BILL_2" style="width: 100rpx" bindinput="zhengZhuangDaysFunction" value="{{zhengZhuangDays}}" />
+      </view>
+      <!-- <view class="list-BILL-1" style="height: 200rpx">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:600rpx">
+          las ciudades que has estado en las últimas dos semanas:
+        </text>
+      </view>
+      <view class="section-body">
+        <textarea class="message" style="margin: 10rpx;" bindinput="cityFunction" value="{{city}}" />
+      </view> -->
+      <!-- <view class="list-BILL-1" style="height: 200rpx">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:600rpx;">
+          la reunión que has estado las últimas 5 dias:
+        </text>
+      </view>
+      <view class="section-body">
+        <textarea class="message" style="margin: 10rpx;" bindinput="partyFunction" value="{{party}}" />
+      </view> -->
+      <!-- <view class="list-BILL-1">
+        <image class="icon-BILL-1" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:500rpx">dónde está la ciudad ahora:</text>
+      </view>
+      <view class="list-BILL-1">
+        <input class="weui-input_BILL_2" style="width: 300rpx" bindinput="nowCityFunction" value="{{nowCity}}" />
+      </view> -->
+      <view class="list-BILL-1" style="height: 150rpx">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:700rpx">
+          당신 은 이미 알 고 있 는 신형 관상 바이러스 감염 자 와 접촉 한 적 이 있 습 니까?
+        </text>
+      </view>
+      <view class="list-KeSou-1">
+        <radio-group class="radio-group" bindchange="radioChange8">
+          <label class="radio" wx:for="{{items8}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="list-BILL-1" style="height: 160rpx">
+        <image class="icon-BILL-2" src="../../images/BILL/summary.png"></image>
+        <text class="text-BILL-1" style="width:600rpx">
+          당신 은 이미 알 고 있 는 무한 인원 과 접촉 한 적 이 있 습 니까?
+        </text>
+      </view>
+      <view class="list-KeSou-1" style="height: 80rpx">
+        <radio-group class="radio-group" bindchange="radioChange9">
+          <label class="radio" wx:for="{{items9}}">
+            <radio class="radio-item-1" value="{{item.name}}" checked="{{item.checked}}" />
+            {{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <!-- <view class="list-BILL-1" bindtap="upload" hover-class="list-BILL-1-p">
+        <image class="icon-BILL-1" src="../../images/attach.png"></image>
+        <text class="text-BILL-1">附件</text>
+        <view class="uploadImg">
+          <text>{{filetext}}</text>
+          <image class="tab-icon" src="../../images/left.png"></image>
+        </view>
+      </view> -->
+      <!-- 签名按钮 -->
+    </view>
+    <button class="button-BILL-1" hover-class="button-BILL-1-p" bindtap="confirmData">
+      제출 하 다
+    </button>
+  </scroll-view>
+</view>
